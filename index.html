@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+
+<html class="no-js">
+<!--<![endif]-->
+
+
+<head>
+<meta name="generator" content="HTML Tidy for Windows (vers 18 June 2008), see www.w3.org">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="NCI, CBIIT, DCEG, Machiela">
+
+
+
+<link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.8/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="../common/css/bootstrap-multiselect.css">
+<link rel="stylesheet" href="../common/css/style.css">
+<link rel="stylesheet" href="../common/css/social.css">
+<link rel="stylesheet" href="NCIDOSE.css">
+
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.js"></script>
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.js"></script>
+<script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js" type="text/javascript"></script>
+<script type="text/javascript"src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript"src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+<script type="text/javascript"src="http://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+<script type="text/javascript"src="NCIDOSE.js"> </script>
+<script type="text/javascript"src="../common/js/purify.js"></script>
+<script type="text/javascript"src="../common/js/bootstrap-multiselect.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.0.7/jquery.browser.min.js"></script>
+<script type="text/javascript"src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.20/pdfmake.min.js"></script>
+	
+
+	<script type="text/javascript" src="	https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+
+
+	<script type="text/javascript" src="CreatePDF.js"></script>
+
+	<!-- Google Analytics -->
+	<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body role="document">
+	<div class="header">
+		<div class="container">
+			<a href="http://dceg.cancer.gov/" target="dceg">
+			</a>
+		</div>
+	</div>
+	<div class="container theme-showcase" role="main">
+		<!-- Main Menu Tabs -->
+	<!--[if lt IE 9]>
+            <div class="alert alert-danger" role="alert">You are using an <strong>outdated</strong> version of IE that is not supported for this tool.  Please upgrade your browser to IE version 10.</div>
+    <![endif]-->
+		<!-- 
+		<div >
+			<img src="LDlink_logo.png" alt="Logo for the LDlink tool" class="logo pull-left" style="width:100px;">
+		</div>
+ 		-->
+		<ul id="NCIDOSE-tabs" class="nav nav-tabs responsive">
+			<!-- HOME -->
+			<li>
+				<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">Home</a>
+			</li>
+			<!-- NCICT -->
+			<li>
+				<a id="NCICT" href="#NCICT-tab" data-toggle="tab" >NCICT</a>
+			</li>
+			<!-- NCIxxx -->
+			<li>
+				<a id="NCIxxx" href="#NCIxxx-tab" data-toggle="tab" >NCIxxx</a>
+			</li>
+
+		</ul>
+		<!-- Tab Content -->
+		<div class="tab-content">
+			
+			<!-- Home -->
+			<div class="tab-pane fade" id="home-tab">			
+				<h3>NCIDOSE HOME</h3>				
+				<p id="NCIDOSE_version"></p>
+			</div>
+
+			<!-- NCIxxx -->
+			<div class="tab-pane fade" id="NCIxxx-tab">
+				<h3>NCIxxx</h3>
+		    </div>
+
+			<!-- NCICT -->
+			<div class="tab-pane fade" id="NCICT-tab">
+				<ul id="NCIDOSE-tabs" class="nav nav-tabs responsive">
+					<!-- NCICT HOME -->
+					<li>
+						<a id="NCICT-home-tab-anchor" href="#NCICT_home-tab" data-toggle="tab">NCICT</a>
+					</li>
+					<!-- NCICT Agreement -->
+					<li>
+						<a id="Agreement" href="#NCICT_Agreement-tab" data-toggle="tab">Agreement</a>
+					</li>
+					<!-- Help -->
+					<li>
+						<a id="Help" href="#NCICT_help-tab" data-toggle="tab" >Help</a>
+					</li>
+
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade" id="NCICT_home-tab">			
+					<h3>About NCICT</h3>
+								<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).<br></p>
+								<!-- Add new notes here.  Surround paragrahs with <p></p> -->
+
+							
+								<p> <b>Citation</b>: Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry. Health Physics 102 292–304
+								
+								</br></br>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015 NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans Journal of Radiological Protection 35 891–909
+
+								</br></br>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation Medical Physics 39 2129–46
+
+								</br></br>Lee C, Kim K P, Long D, Fisher R, Tien C, Simon S L, Bouville A and Bolch W E 2011 Organ doses for reference adult male and female undergoing computed tomography estimated by Monte Carlo simulations Medical Physics 38 1196–206
+
+								</br></br>Lee C, Lodwick D, Hasenauer D, Williams J L, Lee C and Bolch W E 2007 Hybrid computational phantoms of the male and female newborn patient: NURBS-based whole-body models Physics in Medicine and Biology 52 3309–33
+
+								</br></br>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams J L and Bolch W E 2010 The UF family of reference hybrid phantoms for computational radiation dosimetry. Physics in Medicine and Biology 55 339–63
+
+								</br></br>Lee C, Lodwick D, Williams J L and Bolch W E 2008 Hybrid computational phantoms of the 15-year male and female adolescent: applications to CT organ dosimetry for patients of variable morphometry. Medical physics 35 2366–82
+
+								</br></br>Lee E, Lamart S, Little M P and Lee C 2014 Database of normalised computed tomography dose index for retrospective CT dosimetry Journal of Radiological Protection 34 363–88
+
+								</br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901			
+								</p>
+					</div>
+					<div class="tab-pane fade" id="NCICT_Agreement-tab">				
+						<h3>Software Transfer Agreement</h3>
+						<p>Fill out the following information and click Generate to download the STA PDF.</p>
+						<div class="container-fluid" style="border-style: solid;border-width: 1px">
+							<div class="row" style="padding:10px">
+								<form id="ldpairForm" class="ldlinkForm">
+									<div class="form-group">
+										<div class="col-sm-3">
+											<input id="first_name" name="first_name" type="text" class="form-control" placeholder="First Name"/>
+										</div>
+										<div class="col-sm-3">
+											<input id="last_name" name="last_name" type="text" class="form-control" placeholder="Last Name"/>
+										</div>
+										<div class="col-sm-6">
+											<input id="institution" name="institution" type="text" class="form-control" placeholder="Institution"/>
+										</div>
+									<div class="col-sm-3">
+											<input id="email" style="margin-top:10px" name="email" type="text" class="form-control" placeholder="Email" />
+											<input id="research" style="margin-top:10px" name="research" type="text" class="form-control" placeholder="Research"/>
+									</div>
+									<div class="col-sm-12">
+											<textarea rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Reason"></textarea>
+									</div>
+									<div class="col-sm-12">
+										<input type="submit" id="sta" style="margin-top:30px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" onclick="Create_PDF()"/>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+			</div>
+			<!-- Help -->
+			<div class="tab-pane fade" id="NCICT_help-tab">
+				<h3>Help</h3>
+			</div>
+		</div>
+	</div>
+
+	<!-- Common Footer -->
+	<div class="container footer">
+        <div class="center-block">
+            <ul class="list-inline">
+                <li><a target="_blank" title="Home" href="http://www.cancer.gov/">Home</a></li>
+                <li>|</li>
+                <li><a title="Support" target="_top" href="mailto:NCILDlinkWebAdmin@mail.nih.gov?subject=LDlink">Support</a></li>
+                <li>|</li>
+                <li><a target="_blank" title="Policies" href="http://www.cancer.gov/global/web/policies">Policies</a></li>
+                <li>|</li>
+                <li><a target="_blank" title="Accessibility" href="http://www.cancer.gov/global/web/policies/accessibility">Accessibility</a></li>
+                <li>|</li>
+                <li><a target="_blank" title="Viewing Files" href="http://cancer.gov/global/viewing-files">Viewing Files</a></li>
+                <li>|</li>
+                <li><a target="_blank" title="FOIA" href="http://www.cancer.gov/global/web/policies/foia">FOIA</a></li>
+            </ul>
+            <ul class="list-inline">
+                <li><a target="_blank" href="http://www.hhs.gov/">U.S. Department of Health and Human Services</a></li>
+                <li>|</li>
+                <li><a target="_blank" href="http://www.nih.gov">National Institutes of Health</a></li>
+                <li>|</li>
+                <li><a target="_blank" href="http://www.cancer.gov/">National Cancer Institute</a></li>
+                <li>|</li>
+                <li><a target="_blank" href="http://usa.gov">USA.gov</a></li>
+            </ul>
+            <div class="text-center">
+                NIH ... Turning Discovery Into Health<sup>&reg;</sup>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+			<div class="navbar-text social" style="float:right;">SHARE
+				<a href="http://www.facebook.com/sharer.php?u=http://analysistools.nci.nih.gov/LDlink&t=LDlink: an interactive suite of web-based applications designed to easily and efficiently explore linkage disequilibrium in population groups" target="facebook"><i class="fa fa-lg fa-facebook"></i></a>
+				<a href="http://twitter.com/share?url=http://analysistools.nci.nih.gov/LDlink&text=#LDlink: an interactive web tool to easily and efficiently explore linkage disequilibrium in population groups" target="twitter"><i class="fa fa-lg fa-twitter"></i></a>
+				<a href="https://plus.google.com/share?url=http://analysistools.nci.nih.gov/LDlink" target="googlePlus"><i class="fa fa-lg fa-google-plus"></i></a>
+				<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://analysistools.nci.nih.gov/LDlink" target="linkedin"><i class="fa fa-lg fa-linkedin"></i></a>
+			</div>
+	</div>
+
+	
+	<script>
+		window.ga = window.ga || function() {
+			(ga.q = ga.q || []).push(arguments)
+		};
+		ga.l = +new Date;
+		ga('create', 'UA-62346354-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+</body>
+</html>
+
