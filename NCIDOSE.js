@@ -1,97 +1,226 @@
-function Create_PDF(){
-	var doc = new jsPDF();  
-	var cont1=""
-	var cont2=""        
-	var cont3=""               
+var NCIDOSE_version = "Version 1.0";
+
+var modules = [ "ldhap", "ldmatrix", "ldpair", "ldproxy", "snpclip", "snpchip" ];
+
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+$(document).ready(function() {
+
+	updateVersion(NCIDOSE_version);
+	//addValidators();
+	$('#ldlink-tabs').on('click', 'a', function(e) {
+		//console.warn("You clicked a tab");
+		//console.info("Check for an attribute called data-url");
+		//If data-url use that.
+		var currentTab = e.target.id.substr(0, e.target.id.search('-'));
+		//console.log(currentTab);
+		var last_url_params = $("#"+currentTab+"-tab-anchor").attr("data-url-params");
+		//console.log("last_url_params: "+last_url_params);
+		if(typeof last_url_params === "undefined") {
+			window.history.pushState({},'', "?tab="+currentTab);
+		} else {
+			window.history.pushState({},'', "?"+last_url_params);
+		}
+
+	});
 	
-	//recipient
-	var full_name=document.getElementById("first_name").value +" "+ document.getElementById("last_name").value;
-	var title=document.getElementById("title").value; 
-	var email=document.getElementById("email").value;
-	var phone=document.getElementById("phone").value;
-	var fax=document.getElementById("fax").value;
-	var address=document.getElementById("address").value;
-	console.log(address);
-	//recipient investigator
-	var full_name_inv=document.getElementById("first_name_inv").value +" "+ document.getElementById("last_name_inv").value
-	var title_inv=document.getElementById("title_inv").value; 	var email=document.getElementById("email").value;
+	
+	$('[data-toggle="popover"]').popover();
+	loadHelp();
+	// Apply Bindings
 
-	//activity
-	var institution=document.getElementById("institution").value; 
-	var reason=document.getElementById("reason").value; 
-
-
-
-
-	$.ajax({
-		url:'NCI_STA.html',
-		type: 'GET',
-		async:false
-	}).success(function(data) {
-		data=data.replace('$[Recipient Name]',full_name);
-		data=data.replace("$[reason]", reason);				
-		cont1 = data;
-			//cont=data;
-
+	$.each(modules, function(key, id) {
+		$("#"+ id + "-results-container").hide();
+		$('#'+ id + '-message').hide();
+		$('#'+ id + '-message-warning').hide();
+		$('#'+ id + "-loading").hide();
+	});
+	$('.NCICTForm').on('submit', function(e) {
+		//alert('Validate');
+		Make_PDF(e);
 	});
 
-	$.ajax({
-		url:'NCI_STA2.html',
-		type: 'GET',
-		async:false
-	}).success(function(data) {
-		cont2 = data;
-			//cont=data;
+	setupTabs();
 
+
+});
+
+// Set file support trigger
+$(document).on('change','.btn-file :file',function() {
+		var input = $(this), numFiles = input.get(0).files ? 
+		input.get(0).files.length : 1, label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+		input.trigger('fileselect', [ numFiles, label ]);
+	}
+);
+
+
+
+
+
+function setupTabs() {
+	//Clear the active tab on a reload
+	$.each(modules, function(key, id) {
+		$("#"+id+"-tab-anchor").removeClass('active');
 	});
+	$("#home-tab-anchor").removeClass('active');
+	$("#help-tab-anchor").removeClass('active');
+	//Look for a tab variable on the url
+	var url = "{tab:''}";
+	var search = location.search.substring(1);
+	if(search.length >0 ) {
+		url = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"').replace(/\n/, '\\\\n').replace(/\t/, '') + '"}');
+	}
 
-	$.ajax({
-		url:'NCI_STA3.html',
-		type: 'GET',
-		async:false
-	}).success(function(data) {
-		data=data.replace('$[Recipient Name]',full_name);
-		data=data.replace('$[Recipient Title]',title);
-		data=data.replace('$[Mailing Address]',address)
+	var currentTab;
+	if(typeof url.tab !="undefined") {
+		currentTab = url.tab.toLowerCase();
+	} else {
+		currentTab = 'home';
+	}
 
-		data=data.replace('$[Investigator Name]',full_name_inv);
-		data=data.replace('$[Investigator Title]',title_inv);
+	if(currentTab.search('hap')>=0) currentTab = 'ldhap';
+	if(currentTab.search('matrix')>=0) currentTab = 'ldmatrix';
+	if(currentTab.search('pair')>=0) currentTab = 'ldpair';
+	if(currentTab.search('proxy')>=0) currentTab = 'ldproxy';
+	if(currentTab.search('clip')>=0) currentTab = 'snpclip';
+	if(currentTab.search('chip')>=0) currentTab = 'snpchip';
 
-		data=data.replace('$[Recipient Printed Name and Title, below the line, signature above]',full_name_inv+"\n"+title_inv);
+	$('#'+currentTab+'-tab').addClass("in").addClass('active');
+	$('#'+currentTab+'-tab-anchor').parent().addClass('active');
 
-		data=data.replace("$[phone]", phone);				
-		data=data.replace("$[fax]", fax);				
+	if(typeof url.inputs !="undefined") {
+		//console.dir(url.inputs.replace(/\t/, '').replace(/\n/, '\\\\n'));
+		updateData(currentTab, url.inputs.replace(/\t/, '').replace(/\n/, '\\\\n'));
+	}
 
-		cont3 = data;
+}
 
-			//cont=data;
+function refreshPopulation(pop, id) {
 
+	$.each(pop, function(key, value){
+		$('option[value="'+value+'"]', $('#'+id+'-population-codes')).prop('selected', true);
 	});
-	doc.fromHTML
-	(
-		cont1,
-		15,
-	    1,
-	    {
-	      'width': 180
-    	});
-	doc.addPage();
-	doc.fromHTML
-	(
-	    cont2,
-	    15,
-	    1,
-	    {
-	      'width': 180
-    	});
-	doc.addPage();
-	doc.fromHTML
-	(
-	    cont3,
-	    15,
-	    1,
-	    {
-	      'width': 180
-    	});
-	   	    doc.output("dataurlnewwindow");
+	$('#'+id+'-population-codes').multiselect('refresh');
+
+}
+
+
+
+
+
+/*
+function pushInputs(currentTab, inputs) {
+	window.history.pushState({},'', "?tab="+currentTab+"&inputs="+JSON.stringify(inputs));
+}
+*/
+
+function showFFWarning() {
+	// Is this a version of Mozilla?
+	if ($.browser.mozilla) {
+		var userAgent = navigator.userAgent.toLowerCase();
+		// Is it Firefox?
+		if (userAgent.indexOf('firefox') != -1) {
+			userAgent = userAgent.substring(userAgent.indexOf('firefox/') + 8);
+			var version = userAgent.substring(0, userAgent.indexOf('.'));
+			if (version < 36) {
+				$('.ffWarning').show();
+			}
+		}
+	}
+}
+
+
+
+
+
+
+function updateVersion(version) {
+	$("#ldlink_version").text(version);
+}
+
+
+
+
+
+function loadHelp() {
+	$('#help-tab').load('help.html');
+}
+
+
+
+
+
+
+function isPopulationSet(elementId) {
+	//console.log("Check population: "+elementId);
+
+	var	population =  $('#'+elementId+'-population-codes').val();
+	//console.dir(population);
+	if(population == null ) {
+		$('#'+elementId+'-population-codes-zero').popover('show');
+		return false;
+	} else {
+		$('#'+elementId+'-population-codes-zero').popover('hide');
+		return true;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Utilities */
+
+$(document).ready(function() {
+
+
+
+
+});
+
+
+function toggleChevron(e) {
+    $(e.target).prev('.panel-heading').find("i.indicator")
+        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+}
+
+Array.prototype.contains = function(v) {
+    for(var i = 0; i < this.length; i++) {
+        if(this[i] === v) return true;
+    }
+    return false;
+};
+
+Array.prototype.unique = function() {
+    var arr = [];
+    for(var i = 0; i < this.length; i++) {
+        if(!arr.contains(this[i])) {
+            arr.push(this[i]);
+        }
+    }
+    return arr; 
 }
