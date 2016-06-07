@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="../common/css/bootstrap-multiselect.css">
 <link rel="stylesheet" href="../common/css/style.css">
 <link rel="stylesheet" href="../common/css/social.css">
-<link rel="stylesheet" href="NCIDOSE.css">
+<link rel="stylesheet" href="./NCIDOSE.css">
 
 <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.js"></script>
 <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.js"></script>
@@ -39,26 +39,22 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.0.7/jquery.browser.min.js"></script>
 <script type="text/javascript"src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.js"></script>
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.20/pdfmake.min.js"></script>
-	
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.20/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 
-	<script type="text/javascript" src="	https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
-
-
-	<script type="text/javascript" src="CreatePDF.js"></script>
-
-	<!-- Google Analytics -->
-	<script async src='//www.google-analytics.com/analytics.js'></script>
+<script type="text/javascript" src="CreatePDF.js"></script>
+<!-- Google Analytics -->
+<script async src='//www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body role="document">
 	<div class="header">
 		<div class="container">
-			<a href="http://dceg.cancer.gov/" target="dceg">
 			</a>
 		</div>
 	</div>
-	<div class="container theme-showcase" role="main">
+	<div class="container theme-showcase" role="main" >
 		<!-- Main Menu Tabs -->
 	<!--[if lt IE 9]>
             <div class="alert alert-danger" role="alert">You are using an <strong>outdated</strong> version of IE that is not supported for this tool.  Please upgrade your browser to IE version 10.</div>
@@ -79,7 +75,7 @@
 			</li>
 			<!-- NCIxxx -->
 			<li>
-				<a id="NCIxxx" href="#NCIxxx-tab" data-toggle="tab" >NCIxxx</a>
+				<a id="NCIxxx" href="#NCIxxx-tab" data-toggle="tab" >2nd Tab</a>
 			</li>
 
 		</ul>
@@ -93,8 +89,8 @@
 			</div>
 
 			<!-- NCIxxx -->
-			<div class="tab-pane fade" id="NCIxxx-tab">
-				<h3>NCIxxx</h3>
+			<div class="tab-pane fade" id="2nd tab-tab">
+				<h3>2nd_tab</h3>
 		    </div>
 
 			<!-- NCICT -->
@@ -143,34 +139,78 @@
 					<div class="tab-pane fade" id="NCICT_Agreement-tab">				
 						<h3>Software Transfer Agreement</h3>
 						<p>Fill out the following information and click Generate to download the STA PDF.</p>
-						<div class="container-fluid" style="border-style: solid;border-width: 1px">
-							<div class="row" style="padding:10px">
-								<form id="ldpairForm" class="ldlinkForm">
-									<div class="form-group">
-										<div class="col-sm-3">
-											<input id="first_name" name="first_name" type="text" class="form-control" placeholder="First Name"/>
-										</div>
-										<div class="col-sm-3">
-											<input id="last_name" name="last_name" type="text" class="form-control" placeholder="Last Name"/>
-										</div>
-										<div class="col-sm-6">
-											<input id="institution" name="institution" type="text" class="form-control" placeholder="Institution"/>
-										</div>
-									<div class="col-sm-3">
-											<input id="email" style="margin-top:10px" name="email" type="text" class="form-control" placeholder="Email" />
-											<input id="research" style="margin-top:10px" name="research" type="text" class="form-control" placeholder="Research"/>
-									</div>
-									<div class="col-sm-12">
-											<textarea rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Reason"></textarea>
-									</div>
-									<div class="col-sm-12">
-										<input type="submit" id="sta" style="margin-top:30px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" onclick="Create_PDF()"/>
-									</div>
-								</form>
-							</div>
+						<div class="container-fluid" style="border-style: solid;border-width: 1px" >
+						      <legend class="legend">Recipeint</legend>
+
+							<form class="form-horizontal" style="padding:10px">
+							    <div class="row" style="margin-bottom:10px">
+							        <label class="col-sm-2">First Name*:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="first_name" value="Scott" required/></div>
+							        <label class="col-sm-2">Last Name*:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="last_name" value="Goldweber"required/></div>
+							        <label class="col-sm-2">Title:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="title" value="Warden of the North"/required></div>
+							    </div> 
+
+							    <div class="row" style="margin-bottom:10px">
+							        <label class="col-sm-2">Email*:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="email"/></div>
+							        <label class="col-sm-2">Phone*:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="phone"value="111-111-1111"/required></div>
+							        <label class="col-sm-2">Fax*:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="fax"value="000-000-0000"/required></div>
+							    </div>
+
+							    <div class="row" style="margin-bottom:10px">
+							        <label class="col-sm-2">Address*:</label>
+							        <div class="col-sm-6">
+							        	<textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required>1111 Winterfell, The North 123445 Westeros</textarea>
+							        </div>
+							    </div>
+
+							
+							</form>
 						</div>
-					</div>
-			</div>
+
+						<div class="container-fluid" style="border-style: solid;border-width: 1px;margin-top:3%" >
+							<legend class="legend">Recipeint Investigator</legend>
+							<form class="form-horizontal" style="padding:10px">
+							    <div class="row" style="margin-bottom:10px">
+							        <label class="col-sm-2">First Name*:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="first_name_inv"/></div>
+							        <label class="col-sm-2">Last Name*:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="last_name_inv"/></div>
+							        <label class="col-sm-2">Title:</label>
+							        <div class="col-sm-2"><input type="text" class="form-control" id="title_inv" /></div>
+							    </div>
+							</form>
+						</div>
+
+						<div class="container-fluid" style="border-style: solid;border-width: 1px;margin-top:3%" >
+							<legend class="legend">Research Activity</legend>
+							<form class="form-horizontal" style="padding:10px">
+							    <div class="row" style="margin-bottom:10px">
+							        <label class="col-sm-2">Institution*:</label>
+							        <div class="col-sm-10"><input type="text" class="form-control" id="institution"/></div>
+							    </div>
+							    <div class="row">
+							    	<label class="col-sm-2">Purpose*:</label>
+								</div>
+							    <div class="row">
+							    	<div class="col-sm-12">
+										<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250"></textarea>
+									</div>    	
+							    </div>
+							    	
+							</form>
+						</div>
+
+						<div class="col-sm-12">
+							<input type="submit" id="sta" style="margin-top:30px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" onclick="Create_PDF()"/>
+						</div>
+
+
+				</div>
 			<!-- Help -->
 			<div class="tab-pane fade" id="NCICT_help-tab">
 				<h3>Help</h3>
