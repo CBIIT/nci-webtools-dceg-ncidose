@@ -1,2 +1,0 @@
-RS Number	Position	Alleles	Details
-rs34804805	chr2:86426629	T=0.981, G=0.019	Variant kept
