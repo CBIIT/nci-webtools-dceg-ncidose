@@ -1,3 +1,6 @@
+var restService = {protocol:'http',hostname:document.location.hostname,fqn:"nci.nih.gov",port:8765,route : "ncictRest"}
+var restServerUrl = restService.protocol + "://" + restService.hostname + "/"+ restService.route;
+
 function Create_PDF(){
 	var doc = new jsPDF();  
 	var cont1=""
@@ -5,14 +8,21 @@ function Create_PDF(){
 	var cont3=""               
 	
 	//recipient
+	var first=document.getElementById("first_name").value;
+	var last= document.getElementById("last_name").value;
 	var full_name=document.getElementById("first_name").value +" "+ document.getElementById("last_name").value;
 	var title=document.getElementById("title").value; 
 	var email=document.getElementById("email").value;
+	var institution=document.getElementById("institution").value;
 	var phone=document.getElementById("phone").value;
 	var fax=document.getElementById("fax").value;
 	var address=document.getElementById("address").value;
 	console.log(address);
+	
 	//recipient investigator
+	
+	var first_inv=document.getElementById("first_name_inv").value;
+	var last_inv= document.getElementById("last_name_inv").value;
 	var full_name_inv=document.getElementById("first_name_inv").value +" "+ document.getElementById("last_name_inv").value
 	var title_inv=document.getElementById("title_inv").value; 	var email=document.getElementById("email").value;
 
@@ -20,8 +30,25 @@ function Create_PDF(){
 	var institution=document.getElementById("institution").value; 
 	var reason=document.getElementById("reason").value; 
 
+	var Inputs = {
+		first : document.getElementById("first_name").value,
+		last : document.getElementById("last_name").value,
+		title: document.getElementById("title").value,
+		email: document.getElementById("email").value,
+		institution: document.getElementById("institution").value,
+		first_inv: document.getElementById("first_name_inv").value,
+		last_inv: document.getElementById("last_name_inv").value,
+		title_inv: document.getElementById("title_inv").value,
+		purpose: document.getElementById("reason").value
+	};
 
-
+	var url = restServerUrl;
+	$.ajax({
+		type : 'POST',
+		url : "/ncictRest/",
+		data : JSON.stringify(Inputs),
+		contentType : 'application/json' // JSON
+	});
 
 	$.ajax({
 		url:'NCI_STA.html',
@@ -97,5 +124,7 @@ function Create_PDF(){
     	});
 		doc.text(90,285, 'Page 3 of 3 ');
 	   	doc.output("dataurlnewwindow");
+
+
 
 }
