@@ -657,5 +657,9 @@ textarea:invalid, .error {
   .dataTables_wrapper .dataTables_filter {
     margin-top: 0.5em; } 
 }
+.legend{
 
-    
+font-family: Arial, Helvetica, sans-serif;
+font-size:14px;
+color:#566473;
+font-weight: bold;
