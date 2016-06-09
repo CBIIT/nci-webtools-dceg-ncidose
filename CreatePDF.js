@@ -30,6 +30,19 @@ function Create_PDF(){
 	var institution=document.getElementById("institution").value; 
 	var reason=document.getElementById("reason").value; 
 
+var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    }
+	    var today = mm+'/'+dd+'/'+yyyy;
+	console.log(today);
 	var Inputs = {
 		first : document.getElementById("first_name").value,
 		last : document.getElementById("last_name").value,
@@ -39,7 +52,8 @@ function Create_PDF(){
 		first_inv: document.getElementById("first_name_inv").value,
 		last_inv: document.getElementById("last_name_inv").value,
 		title_inv: document.getElementById("title_inv").value,
-		purpose: document.getElementById("reason").value
+		purpose: document.getElementById("reason").value,
+		date:today
 	};
 
 	var url = restServerUrl;
