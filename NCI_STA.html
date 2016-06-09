@@ -1,6 +1,14 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 
-<html>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
 
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
@@ -9,83 +17,83 @@
 <!--
  /* Font Definitions */
  @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
+    {font-family:Wingdings;
+    panose-1:5 0 0 0 0 0 0 0 0 0;}
 @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
+    {font-family:Wingdings;
+    panose-1:5 0 0 0 0 0 0 0 0 0;}
 @font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
+    {font-family:Calibri;
+    panose-1:2 15 5 2 2 2 4 3 2 4;}
 @font-face
-	{font-family:Tahoma;
-	panose-1:2 11 6 4 3 5 4 4 2 4;}
+    {font-family:Tahoma;
+    panose-1:2 11 6 4 3 5 4 4 2 4;}
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	margin-bottom:.0001pt;
-	text-autospace:none;
-	font-size:12.0pt;
-	font-family:"Times New Roman","serif";}
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:12.0pt;
+    font-family:"Times New Roman","serif";}
 p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
-	{mso-style-link:"Comment Text Char";
-	margin:0in;
-	margin-bottom:.0001pt;
-	text-autospace:none;
-	font-size:10.0pt;
-	font-family:"Times New Roman","serif";}
+    {mso-style-link:"Comment Text Char";
+    margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:10.0pt;
+    font-family:"Times New Roman","serif";}
 p.MsoHeader, li.MsoHeader, div.MsoHeader
-	{margin:0in;
-	margin-bottom:.0001pt;
-	text-autospace:none;
-	font-size:12.0pt;
-	font-family:"Times New Roman","serif";}
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:12.0pt;
+    font-family:"Times New Roman","serif";}
 p.MsoFooter, li.MsoFooter, div.MsoFooter
-	{margin:0in;
-	margin-bottom:.0001pt;
-	text-autospace:none;
-	font-size:12.0pt;
-	font-family:"Times New Roman","serif";}
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:12.0pt;
+    font-family:"Times New Roman","serif";}
 p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
-	{margin:0in;
-	margin-bottom:.0001pt;
-	text-autospace:none;
-	font-size:10.0pt;
-	font-family:"Times New Roman","serif";
-	font-weight:bold;}
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:10.0pt;
+    font-family:"Times New Roman","serif";
+    font-weight:bold;}
 p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
-	{margin:0in;
-	margin-bottom:.0001pt;
-	text-autospace:none;
-	font-size:8.0pt;
-	font-family:"Tahoma","sans-serif";}
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:8.0pt;
+    font-family:"Tahoma","sans-serif";}
 span.CommentTextChar
-	{mso-style-name:"Comment Text Char";
-	mso-style-link:"Comment Text";
-	font-family:"Times New Roman","serif";}
+    {mso-style-name:"Comment Text Char";
+    mso-style-link:"Comment Text";
+    font-family:"Times New Roman","serif";}
  /* Page Definitions */
  @page WordSection1
-	{size:8.5in 11.0in;
-	border:10px solid black;}
+    {size:8.5in 11.0in;
+    border:10px solid black;}
 div.WordSection1
-	{page:WordSection1;
-	size:8.5in 11.0in;
+    {page:WordSection1;
+    size:8.5in 11.0in;
 @page WordSection2
-	{size:8.5in 11.0in;
-	}
+    {size:8.5in 11.0in;
+    }
 div.WordSection2
-	{page:WordSection2;
-	size:8.5in 11.0in;	
+    {page:WordSection2;
+    size:8.5in 11.0in;  
  /* List Definitions */
  ol
-	{margin-bottom:0in;}
+    {margin-bottom:0in;}
 ul
-	{margin-bottom:0in;}
+    {margin-bottom:0in;}
 -->
 </style>
 </head>
 <body lang=EN-US style='text-justify-trim:punctuation'style="margin-right:.in height:11in;width:8.5in">
-<div style="margin-right:.5in;">
+<div style="margin-right:.5in;background-color: white" id ="test">
 	<p align=right style='margin-top:.5in;text-align:right'><b>NCI reference# ____________</b></p>
 
 <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b>SOFTWARE
@@ -96,7 +104,7 @@ TRANSFER AGREEMENT</b></p>
 <p class=MsoNormal style='margin-bottom:11.0pt;margin-left:.5in'>Provider: National
 Cancer Institute (NCI)</p>
 
-<p class=MsoNormal style='margin-bottom:8.0pt;margin-left:.5in'>Recipient: $[Recipient Name]</p> 
+<p class=MsoNormal style='margin-bottom:8.0pt;margin-left:.5in; text-decoration:underline'>Recipient: $[Recipient Name]</p> 
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -122,10 +130,8 @@ solely in connection with the following research activity and for the following
 reasons (hereinafter Project)<i> [Describe with specificity the scope of use
 of Software under this agreement]</i>:</span></p>
 
-<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:4.0pt;
-margin-left:22.3pt'><span style='font-size:11.0pt;text-decoration:underline'>$[reason]<br><br>
+<p style='font-size:11.0pt;text-decoration:underline;margin-left:0.5in'><p>$[reason]<br><br>
 
-<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt'>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-size:11.0pt;'>NOW, THEREFORE, in
 consideration of the premises and mutual covenants contained herein, the
