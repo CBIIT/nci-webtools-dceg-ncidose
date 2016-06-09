@@ -31,11 +31,12 @@ def store():
 	last_inv= data["last_inv"]
 	title_inv= data["title_inv"]
 	purpose= data["purpose"]
+	date=data["date"]
 
 	with open('./content/contacts.csv', 'a') as csvfile:
-		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose']
+		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose})
+		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
 	return "True"
 
 @app.after_request
