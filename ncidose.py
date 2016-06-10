@@ -18,7 +18,7 @@ app = Flask(__name__)
 def index():
     return return_template('index.html')
 
-@app.route('/ncictRest/', methods = ['POST'])
+@app.route('/ncidoseRest/', methods = ['POST'])
 def store():
 	mimetype = 'application/json'
 	data = json.loads(request.stream.read())
