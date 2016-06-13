@@ -7,6 +7,7 @@ from rpy2.robjects.vectors import IntVector, FloatVector
 from socket import gethostname
 import json
 import csv
+import random
 
 
 # Load Env variables
@@ -32,12 +33,19 @@ def store():
 	title_inv= data["title_inv"]
 	purpose= data["purpose"]
 	date=data["date"]
+	page=data["page"].encode('utf-8').strip()
+
+	token_id=random.randrange(1, 1000000)
+	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
+	html_file.write(page)
+
+	os.system("weasyprint " "./content/NCI_STA_"+str(token_id)+".html" " ./content/NCI_STA_"+str(token_id)+".pdf")
 
 	with open('./content/contacts.csv', 'a') as csvfile:
 		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
-	return "True"
+	return str(token_id)
 
 @app.after_request
 def after_request(response):
