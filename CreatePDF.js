@@ -1,11 +1,14 @@
 var restService = {protocol:'http',hostname:document.location.hostname,fqn:"nci.nih.gov",port:8765,route : "ncictRest"}
 var restServerUrl = restService.protocol + "://" + restService.hostname + "/"+ restService.route;
 
+
+//var link = document.querySelector('link[rel="import"]');
+//var importedDoc = link.import;
+//var form = importedDoc.getElementById("test");
+//var a4  =[ 595.28,  841.89];  // for a4 size paper width and height
 function Create_PDF(){
 	var doc = new jsPDF();  
-	var cont1=""
-	var cont2=""        
-	var cont3=""               
+	var cont=""
 	
 	//recipient
 	var first=document.getElementById("first_name").value;
@@ -17,6 +20,7 @@ function Create_PDF(){
 	var phone=document.getElementById("phone").value;
 	var fax=document.getElementById("fax").value;
 	var address=document.getElementById("address").value;
+		address=address.split("\n").join("<br>");
 	console.log(address);
 	
 	//recipient investigator
@@ -28,9 +32,10 @@ function Create_PDF(){
 
 	//activity
 	var institution=document.getElementById("institution").value; 
-	var reason=document.getElementById("reason").value; 
-
-var today = new Date();
+	var reason=document.getElementById("reason").value;
+		reason=reason.replace("\n","<br>") 
+	
+	var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
 
@@ -43,7 +48,31 @@ var today = new Date();
     }
 	    var today = mm+'/'+dd+'/'+yyyy;
 	console.log(today);
-	var Inputs = {
+
+
+	$.ajax({
+		url:'./content/NCI_STA.html',
+		type: 'GET',
+		async:false
+	}).success(function(data) {
+		data=data.replace('$[Recipient Name]',full_name);
+		data=data.replace('$[Recipient Title]',title);
+
+		data=data.replace('$[Recipient Name_sig]',full_name);
+		data=data.replace('$[Recipient Title_sig]',title);
+
+
+		data=data.replace("$[reason]", reason);
+		
+		data=data.replace('$[Mailing Address]',address)
+		data=data.replace('$[Investigator Name]',full_name_inv);
+		data=data.replace('$[Investigator Title]',title_inv);
+		data=data.replace("$[phone]", phone);				
+		data=data.replace("$[fax]", fax);								
+		cont = data;
+	});
+  	
+		var Inputs = {
 		first : document.getElementById("first_name").value,
 		last : document.getElementById("last_name").value,
 		title: document.getElementById("title").value,
@@ -53,38 +82,19 @@ var today = new Date();
 		last_inv: document.getElementById("last_name_inv").value,
 		title_inv: document.getElementById("title_inv").value,
 		purpose: document.getElementById("reason").value,
-		date:today
+		date:today,
+		page:cont
 	};
-
-	var url = restServerUrl;
 	$.ajax({
 		type : 'POST',
-		url : "/ncictRest/",
+		url : "/ncidoseRest/",
 		data : JSON.stringify(Inputs),
 		contentType : 'application/json' // JSON
-	});
+		}).success(function(token){
+			console.log(token)
+			window.open("content/NCI_STA_"+token+".pdf",'_blank');
 
-	$.ajax({
-		url:'NCI_STA.html',
-		type: 'GET',
-		async:false
-	}).success(function(data) {
-		data=data.replace('$[Recipient Name]',full_name);
-		data=data.replace("$[reason]", reason);				
-		cont1 = data;
-			//cont=data;
-
-	});
-
-	$.ajax({
-		url:'NCI_STA2.html',
-		type: 'GET',
-		async:false
-	}).success(function(data) {
-		cont2 = data;
-			//cont=data;
-
-	});
+		});
 
 	$.ajax({
 		url:'NCI_STA3.html',
@@ -108,7 +118,7 @@ var today = new Date();
 			//cont=data;
 
 	});
-	doc.fromHTML
+/*	doc.fromHTML
 	(
 		cont1,
 		15,
@@ -137,8 +147,52 @@ var today = new Date();
 	      'width': 180
     	});
 		doc.text(90,285, 'Page 3 of 3 ');
-	   	doc.output("dataurlnewwindow");
+doc.output("dataurlnewwindow");*/
+
+
+
+//var test="<html><head><style>h1 {    text-decoration: overline;}h2 {    text-decoration: line-through;}h3 {   text-decoration: underline;}</style></head><body><h1>This is heading 1</h1><h2>This is heading 2</h2><h3>This is heading 3</h3></body></html>";
+
+
+//  console.log(importedDoc);
+
+//source =htmlObject.getElementsByTagName("div")[0];
+/*document.getElementById("test_object").innerHTML=cont1;
+
+var STA_html = document.querySelector('link[rel="import"]');
+var importedSTA = STA_html.import;
+var test_div =importedSTA.getElementById("test");
+var margins = {
+   top: 15,
+   bottom: 60,
+   left: 10,
+   right: 10,
+   width: 180
+};
+//doc.addHTML(document.getElementById("test_object"), margins.top, margins.left, function() {
+//   doc.output("dataurlnewwindow");
+//});
+doc.addHTML(document.body, margins.top, margins.left, function() {
+   doc.output("datauri");
+});
+//doc.output("dataurlnewwindow");
+
+ getCanvas().then(function(canvas){
+  var 
+  img = canvas.toDataURL("image/png"),
+  doc = new jsPDF({
+          unit:'px', 
+          format:'a4'
+        });     
+        doc.addImage(img, 'JPEG', 20, 20);
+        doc.save('techumber-html-to-pdf.pdf');
+ });
+ 
+// create canvas object
+
+setTimeout(function(){ document.getElementById("test_object").innerHTML=""; }, 1000);*/
 
 
 
 }
+
