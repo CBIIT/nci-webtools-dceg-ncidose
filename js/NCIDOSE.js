@@ -1,6 +1,6 @@
 var NCIDOSE_version = "Version 1.0";
 
-var modules = [ "ldhap", "ldmatrix", "ldpair", "ldproxy", "snpclip", "snpchip" ];
+var modules = [ "NCICT", "2nd Tab" ];
 
 Object.size = function(obj) {
     var size = 0, key;
@@ -32,7 +32,6 @@ $(document).ready(function() {
 	
 	
 	$('[data-toggle="popover"]').popover();
-	loadHelp();
 	// Apply Bindings
 
 	$.each(modules, function(key, id) {
@@ -62,14 +61,12 @@ $(document).on('change','.btn-file :file',function() {
 
 
 
-
 function setupTabs() {
 	//Clear the active tab on a reload
 	$.each(modules, function(key, id) {
 		$("#"+id+"-tab-anchor").removeClass('active');
 	});
 	$("#home-tab-anchor").removeClass('active');
-	$("#help-tab-anchor").removeClass('active');
 	//Look for a tab variable on the url
 	var url = "{tab:''}";
 	var search = location.search.substring(1);
@@ -84,12 +81,7 @@ function setupTabs() {
 		currentTab = 'home';
 	}
 
-	if(currentTab.search('hap')>=0) currentTab = 'ldhap';
-	if(currentTab.search('matrix')>=0) currentTab = 'ldmatrix';
-	if(currentTab.search('pair')>=0) currentTab = 'ldpair';
-	if(currentTab.search('proxy')>=0) currentTab = 'ldproxy';
-	if(currentTab.search('clip')>=0) currentTab = 'snpclip';
-	if(currentTab.search('chip')>=0) currentTab = 'snpchip';
+
 
 	$('#'+currentTab+'-tab').addClass("in").addClass('active');
 	$('#'+currentTab+'-tab-anchor').parent().addClass('active');
@@ -101,24 +93,6 @@ function setupTabs() {
 
 }
 
-function refreshPopulation(pop, id) {
-
-	$.each(pop, function(key, value){
-		$('option[value="'+value+'"]', $('#'+id+'-population-codes')).prop('selected', true);
-	});
-	$('#'+id+'-population-codes').multiselect('refresh');
-
-}
-
-
-
-
-
-/*
-function pushInputs(currentTab, inputs) {
-	window.history.pushState({},'', "?tab="+currentTab+"&inputs="+JSON.stringify(inputs));
-}
-*/
 
 function showFFWarning() {
 	// Is this a version of Mozilla?
@@ -137,70 +111,12 @@ function showFFWarning() {
 
 
 
-
-
-
 function updateVersion(version) {
-	$("#ldlink_version").text(version);
+	$("#NCIDOSE_version").text(version);
 }
 
 
 
-
-
-function loadHelp() {
-	$('#help-tab').load('help.html');
-}
-
-
-
-
-
-
-function isPopulationSet(elementId) {
-	//console.log("Check population: "+elementId);
-
-	var	population =  $('#'+elementId+'-population-codes').val();
-	//console.dir(population);
-	if(population == null ) {
-		$('#'+elementId+'-population-codes-zero').popover('show');
-		return false;
-	} else {
-		$('#'+elementId+'-population-codes-zero').popover('hide');
-		return true;
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Utilities */
-
-$(document).ready(function() {
-
-
-
-
-});
 
 
 function toggleChevron(e) {

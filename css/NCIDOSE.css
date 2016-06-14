@@ -658,9 +658,71 @@ textarea:invalid, .error {
     margin-top: 0.5em; } 
 }
 .legend{
-
+/* css for agreement*/
 font-family: Arial, Helvetica, sans-serif;
 font-size:14px;
 color:#566473;
 font-weight: bold;
+
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:12.0pt;
+    font-family:"Times New Roman","serif";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+    {mso-style-link:"Comment Text Char";
+    margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:10.0pt;
+    font-family:"Times New Roman","serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:12.0pt;
+    font-family:"Times New Roman","serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:12.0pt;
+    font-family:"Times New Roman","serif";}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:10.0pt;
+    font-family:"Times New Roman","serif";
+    font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+    {margin:0in;
+    margin-bottom:.0001pt;
+    text-autospace:none;
+    font-size:8.0pt;
+    font-family:"Tahoma","sans-serif";}
+span.CommentTextChar
+    {mso-style-name:"Comment Text Char";
+    mso-style-link:"Comment Text";
+    font-family:"Times New Roman","serif";}
+ /* Page Definitions */
+@page {
+  @top-right {
+    content: "NCI reference# ____________";
+  }
+  @bottom-center {
+    content: " Page " counter(page) " of " counter(pages);
+  }
 }
+@media all {
+    .page-break { display: none; }
+}
+
+@media print {
+    .page-break { display: block; page-break-before: always; }
+}
+ ol
+    {margin-bottom:0in;}
+ul
+    {margin-bottom:0in;}

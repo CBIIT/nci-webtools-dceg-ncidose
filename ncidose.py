@@ -33,6 +33,7 @@ def store():
 	title_inv= data["title_inv"]
 	purpose= data["purpose"]
 	date=data["date"]
+	address=data["address"]
 	page=data["page"].encode('utf-8').strip()
 
 	token_id=random.randrange(1, 1000000)

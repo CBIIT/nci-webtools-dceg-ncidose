@@ -15,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="NCI, CBIIT, DCEG, Machiela">
 
-
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 
 <link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -25,8 +25,7 @@
 <link rel="stylesheet" href="../common/css/bootstrap-multiselect.css">
 <link rel="stylesheet" href="../common/css/style.css">
 <link rel="stylesheet" href="../common/css/social.css">
-<link rel="stylesheet" href="./NCIDOSE.css">
-<link rel="import" href="NCI_STA.html" >
+<link rel="stylesheet" href="./css/NCIDOSE.css">
 
 <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.js"></script>
 <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.js"></script>
@@ -34,19 +33,22 @@
 <script type="text/javascript"src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript"src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
 <script type="text/javascript"src="http://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
-<script type="text/javascript"src="NCIDOSE.js"> </script>
 <script type="text/javascript"src="../common/js/purify.js"></script>
 <script type="text/javascript"src="../common/js/bootstrap-multiselect.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.0.7/jquery.browser.min.js"></script>
 <script type="text/javascript"src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.js"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-<script type="text/javascript" src="CreatePDF.js"></script>
+<script type="text/javascript" src="./js/CreatePDF.js"></script>
+<script type="text/javascript"src="./js/NCIDOSE.js"> </script>
+
 <!-- Google Analytics -->
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
+<div class="container">
+			<a href="http://dceg.cancer.gov/" target="dceg">
+				<img class="division-logo" src="/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
+			</a>
+		</div>
 </head>
 <body role="document">
 	<div class="header">
@@ -55,15 +57,7 @@
 		</div>
 	</div>
 	<div class="container theme-showcase" role="main" >
-		<!-- Main Menu Tabs -->
-	<!--[if lt IE 9]>
-            <div class="alert alert-danger" role="alert">You are using an <strong>outdated</strong> version of IE that is not supported for this tool.  Please upgrade your browser to IE version 10.</div>
-    <![endif]-->
-		<!-- 
-		<div >
-			<img src="LDlink_logo.png" alt="Logo for the LDlink tool" class="logo pull-left" style="width:100px;">
-		</div>
- 		-->
+
 		<ul id="NCIDOSE-tabs" class="nav nav-tabs responsive">
 			<!-- HOME -->
 			<li>
@@ -71,11 +65,11 @@
 			</li>
 			<!-- NCICT -->
 			<li>
-				<a id="NCICT" href="#NCICT-tab" data-toggle="tab" >NCICT</a>
+				<a id="NCICT-tab-anchor" href="#NCICT-tab" data-toggle="tab" >NCICT</a>
 			</li>
 			<!-- NCIxxx -->
 			<li>
-				<a id="NCIxxx" href="#NCIxxx-tab" data-toggle="tab" >2nd Tab</a>
+				<a id="2nd Tab-tab-anchor" href="#2nd-tab" data-toggle="tab" >2nd Tab</a>
 			</li>
 
 		</ul>
@@ -89,8 +83,8 @@
 			</div>
 
 			<!-- NCIxxx -->
-			<div class="tab-pane fade" id="2nd tab-tab">
-				<h3>2nd_tab</h3>
+			<div class="tab-pane fade" id="2nd-tab">
+				<h3>2nd Tab Home</h3>
 		    </div>
 
 			<!-- NCICT -->
@@ -102,11 +96,11 @@
 					</li>
 					<!-- NCICT Agreement -->
 					<li>
-						<a id="Agreement" href="#NCICT_Agreement-tab" data-toggle="tab">Agreement</a>
+						<a id="Agreement-tab-anchor" href="#NCICT_Agreement-tab" data-toggle="tab">Agreement</a>
 					</li>
 					<!-- Help -->
 					<li>
-						<a id="Help" href="#NCICT_help-tab" data-toggle="tab" >Help</a>
+						<a id="Help-tab-anchor" href="#NCICT_help-tab" data-toggle="tab" >Help</a>
 					</li>
 
 				</ul>
@@ -203,9 +197,10 @@
 				</div>
 			<!-- Help -->
 			<div class="tab-pane fade" id="NCICT_help-tab">
-				<object type="text/html" data="/NCICT/help.html"style="width:100%;height:1000px">
+				<object type="text/html" data="/NCIDOSE/help.html"style="width:100%;height:1000px">
 				</object>
 			</div>
+		</div>
 		</div>
 	</div>
 
@@ -215,7 +210,7 @@
             <ul class="list-inline">
                 <li><a target="_blank" title="Home" href="http://www.cancer.gov/">Home</a></li>
                 <li>|</li>
-                <li><a title="Support" target="_top" href="mailto:NCILDlinkWebAdmin@mail.nih.gov?subject=LDlink">Support</a></li>
+                <li><a title="Support" target="_top" href="mailto:NCIDOSEWebAdmin@mail.nih.gov?subject=NCIDOSE">Support</a></li>
                 <li>|</li>
                 <li><a target="_blank" title="Policies" href="http://www.cancer.gov/global/web/policies">Policies</a></li>
                 <li>|</li>
@@ -239,14 +234,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
-			<div class="navbar-text social" style="float:right;">SHARE
-				<a href="http://www.facebook.com/sharer.php?u=http://analysistools.nci.nih.gov/LDlink&t=LDlink: an interactive suite of web-based applications designed to easily and efficiently explore linkage disequilibrium in population groups" target="facebook"><i class="fa fa-lg fa-facebook"></i></a>
-				<a href="http://twitter.com/share?url=http://analysistools.nci.nih.gov/LDlink&text=#LDlink: an interactive web tool to easily and efficiently explore linkage disequilibrium in population groups" target="twitter"><i class="fa fa-lg fa-twitter"></i></a>
-				<a href="https://plus.google.com/share?url=http://analysistools.nci.nih.gov/LDlink" target="googlePlus"><i class="fa fa-lg fa-google-plus"></i></a>
-				<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://analysistools.nci.nih.gov/LDlink" target="linkedin"><i class="fa fa-lg fa-linkedin"></i></a>
-			</div>
-	</div>
+   
 
 	
 	<script>
