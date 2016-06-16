@@ -71,7 +71,9 @@ function Create_PDF(){
 		cont = data;
 	});
   		
-  		address=address.split("\n").join("<br>");
+  		address=address.replace("<br>"," ");
+  		address=address.replace(","," ");
+  		reason=reason.replace("<br>"," ");
 		
 		var Inputs = {
 		first : document.getElementById("first_name").value,
@@ -83,6 +85,7 @@ function Create_PDF(){
 		last_inv: document.getElementById("last_name_inv").value,
 		title_inv: document.getElementById("title_inv").value,
 		purpose: document.getElementById("reason").value,
+		address: address,
 		date:today,
 		page:cont
 	};
