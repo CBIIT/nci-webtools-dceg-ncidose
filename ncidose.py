@@ -43,9 +43,9 @@ def store():
 	os.system("weasyprint " "./content/NCI_STA_"+str(token_id)+".html" " ./content/NCI_STA_"+str(token_id)+".pdf")
 
 	with open('./content/contacts.csv', 'a') as csvfile:
-		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
+		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
+		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
 	return str(token_id)
 
 @app.after_request
