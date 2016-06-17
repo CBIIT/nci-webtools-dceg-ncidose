@@ -2,13 +2,11 @@ import os
 import re
 import string
 from flask import Flask, render_template, request, jsonify, make_response, send_from_directory
-from rpy2.robjects.packages import SignatureTranslatedAnonymousPackage
-from rpy2.robjects.vectors import IntVector, FloatVector
-from socket import gethostname
 import json
 import csv
 import random
-
+import subprocess
+from weasyprint import HTML, CSS
 
 # Load Env variables
 
@@ -37,11 +35,15 @@ def store():
 	page=data["page"].encode('utf-8').strip()
 
 	token_id=random.randrange(1, 1000000)
-	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
-	html_file.write(page)
-
-	os.system("weasyprint " "./content/NCI_STA_"+str(token_id)+".html" " ./content/NCI_STA_"+str(token_id)+".pdf")
-
+#	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
+#	html_file.write(page)
+#	print(page)
+#	subprocess.call(["weasyprint", "-s", "./css/agreement.css", 
+#		("./content/NCI_STA_"+str(token_id)+".html"), 
+#		("./content/NCI_STA_"+str(token_id)+".pdf")])
+	HTML(string=page).write_pdf('./content/NCI_STA_'+str(token_id)+'.pdf',
+    	stylesheets=[CSS('./css/agreement.css')])
+	
 	with open('./content/contacts.csv', 'a') as csvfile:
 		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
