@@ -75,10 +75,10 @@
 		</ul>
 		<!-- Tab Content -->
 		<div class="tab-content">
-			
+
 			<!-- Home -->
-			<div class="tab-pane fade" id="home-tab">			
-				<h3>NCIDOSE HOME</h3>				
+			<div class="tab-pane fade" id="home-tab">
+				<h3>NCIDOSE HOME</h3>
 				<p id="NCIDOSE_version"></p>
 			</div>
 
@@ -105,14 +105,14 @@
 
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane fade" id="NCICT_home-tab">			
+					<div class="tab-pane fade" id="NCICT_home-tab">
 					<h3>About NCICT</h3>
 								<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).<br></p>
 								<!-- Add new notes here.  Surround paragrahs with <p></p> -->
 
-							
+
 								<p> <b>Citation</b>: Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry. Health Physics 102 292–304
-								
+
 								</br></br>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015 NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans Journal of Radiological Protection 35 891–909
 
 								</br></br>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation Medical Physics 39 2129–46
@@ -127,12 +127,13 @@
 
 								</br></br>Lee E, Lamart S, Little M P and Lee C 2014 Database of normalised computed tomography dose index for retrospective CT dosimetry Journal of Radiological Protection 34 363–88
 
-								</br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901			
+								</br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901
 								</p>
 					</div>
-					<div class="tab-pane fade" id="NCICT_Agreement-tab">				
+					<div class="tab-pane fade" id="NCICT_Agreement-tab">
 						<h3>Software Transfer Agreement</h3>
 						<p>Fill out the following information and click Generate to download the STA PDF.</p>
+						<div id="errorMessage"></div>
 							<div class="container-fluid" style="border-style: solid;border-width: 1px" >
 							      <legend class="legend">Recipeint</legend>
 
@@ -143,7 +144,7 @@
 								        <div class="col-sm-2"><input type="text" class="form-control" id="last_name" "required/></div>
 								        <label class="col-sm-2">Title:</label>
 								        <div class="col-sm-2"><input type="text" class="form-control" id="title" required></div>
-								    </div> 
+								    </div>
 
 								    <div class="row" style="margin-bottom:10px">
 								        <label class="col-sm-2">Email*:</label>
@@ -186,9 +187,9 @@
 								    <div class="row">
 								    	<div class="col-sm-12">
 											<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250" required></textarea>
-										</div>    	
+										</div>
 								    </div>
-								    	
+
 							</div>
 
 							<div class="col-sm-12">
@@ -234,9 +235,9 @@
             </div>
         </div>
     </div>
-   
 
-	
+
+
 	<script>
 		window.ga = window.ga || function() {
 			(ga.q = ga.q || []).push(arguments)
