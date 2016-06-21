@@ -8,6 +8,7 @@ var fields = ['first_name','last_name','email','phone','fax','address','first_na
 //var a4  =[ 595.28,  841.89];  // for a4 size paper width and height
 function Create_PDF(){
     //validation
+    clearTransferAgreementPage();
     if(validateTransferAgreement()){
 		    $('#errorMessage').html("<font color='red'>Please fill in required field(s)</font>");
 	        $('#errorMessage').show();
