@@ -121,7 +121,7 @@ function validateTransferAgreement(){
 	var index = 0;
 
 	for (index = 0; index < fields.length; index++){
-		if($.trim($('#' + fields[index])).length == 0){
+		if($.trim($('#' + fields[index]).val()).length == 0){
 				$('#'+fields[index]).css("background-color", "yellow");
 				hasError = true;
 	    }
