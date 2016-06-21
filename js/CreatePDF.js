@@ -1,6 +1,6 @@
 var restService = {protocol:'http',hostname:document.location.hostname,fqn:"nci.nih.gov",port:8765,route : "ncictRest"}
 var restServerUrl = restService.protocol + "://" + restService.hostname + "/"+ restService.route;
-var fields = ['#first_name','#last_name','#email','#phone','#fax','#address','#first_name_inv','#last_name_inv','#institution','#reason'];
+var fields = ['first_name','last_name','email','phone','fax','address','first_name_inv','last_name_inv','institution','reason'];
 
 //var link = document.querySelector('link[rel="import"]');
 //var importedDoc = link.import;
