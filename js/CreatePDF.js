@@ -112,7 +112,7 @@ function Create_PDF(){
 function clearTransferAgreementPage(){
 	var index = 0;
 	for(index = 0; index < fields.length; index++){
-		$('#'+fields[index]).css('');
+		$('#'+fields[index]).css("background-color","");
 	}
 	$('#errorMessage').hide();
 }
