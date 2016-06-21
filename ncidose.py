@@ -19,7 +19,7 @@ def index():
 
 @app.route('/ncidoseRest/', methods = ['POST'])
 def store():
-	mimetype = 'application/json'
+mimetype = 'application/json'
 	data = json.loads(request.stream.read())
 	first = data["first"]
 	last = data["last"]
@@ -33,7 +33,8 @@ def store():
 	date=data["date"]
 	address=data["address"]
 	page=data["page"].encode('utf-8').strip()
-
+ 	address='"%s"'%address
+ 	purpose='"%s"'%purpose
 	token_id=random.randrange(1, 1000000)
 #	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
 #	html_file.write(page)
