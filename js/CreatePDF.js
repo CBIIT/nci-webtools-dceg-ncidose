@@ -1,6 +1,5 @@
 var restService = {protocol:'http',hostname:document.location.hostname,fqn:"nci.nih.gov",port:8765,route : "ncictRest"}
 var restServerUrl = restService.protocol + "://" + restService.hostname + "/"+ restService.route;
-var fields = ['first_name','last_name','email','phone','fax','address','first_name_inv','last_name_inv','institution','reason'];
 
 //var link = document.querySelector('link[rel="import"]');
 //var importedDoc = link.import;
@@ -8,12 +7,7 @@ var fields = ['first_name','last_name','email','phone','fax','address','first_na
 //var a4  =[ 595.28,  841.89];  // for a4 size paper width and height
 function Create_PDF(){
     //validation
-    clearTransferAgreementPage();
-    if(validateTransferAgreement()){
-		    $('#errorMessage').html("<font color='red'>Please fill in required field(s)</font>");
-	        $('#errorMessage').show();
-	        return;
-	}
+    
 
 	var cont=""
 
@@ -109,23 +103,3 @@ function Create_PDF(){
 		});
 }
 
-function clearTransferAgreementPage(){
-	var index = 0;
-	for(index = 0; index < fields.length; index++){
-		$('#'+fields[index]).css("background-color","");
-	}
-	$('#errorMessage').hide();
-}
-
-function validateTransferAgreement(){
-	var hasError = false;
-	var index = 0;
-
-	for (index = 0; index < fields.length; index++){
-		if($.trim($('#' + fields[index]).val()).length == 0){
-				$('#'+fields[index]).css("background-color", "yellow");
-				hasError = true;
-	    }
-	}
-    return hasError;
-}
