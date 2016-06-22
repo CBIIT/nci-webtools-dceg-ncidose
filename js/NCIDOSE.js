@@ -1,5 +1,5 @@
 var NCIDOSE_version = "Version 1.0";
-
+var fields = ['first_name','last_name','email','phone','fax','address','first_name_inv','last_name_inv','institution','reason','title','title_inv'];
 var modules = [ "NCICT", "2nd Tab" ];
 
 Object.size = function(obj) {
@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 	updateVersion(NCIDOSE_version);
 	//addValidators();
-	$('#ldlink-tabs').on('click', 'a', function(e) {
+	$('#NCICT-tabs').on('click', 'a', function(e) {
 		//console.warn("You clicked a tab");
 		//console.info("Check for an attribute called data-url");
 		//If data-url use that.
@@ -143,3 +143,66 @@ Array.prototype.unique = function() {
 
 
 
+function validateEmail() {
+
+
+      var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  	  return regex.test($('#email').val());
+
+}
+
+function addEventListeners() {
+	$('#email').on('keydown', function(e) {
+		validateEmail();
+	});
+
+	$('#generate').click(function() {
+		clearTransferAgreementPage();
+   		 if(validateTransferAgreement()&&validateEmail()==true){
+		    $('#errorMessage').html("<font color='red'>Please fill in required field(s)</font>");
+	        $('#errorMessage').show();
+	        return;
+	}
+
+	 else if(validateTransferAgreement()&&validateEmail()==false){
+		    $('#errorMessage').html("<font color='red'>Please fill in required field(s)</font><br><font color='red'>Please Please enter a valid email address</font>");
+	        $('#errorMessage').show();
+	        return;
+	}
+
+	 else if(!validateTransferAgreement()&&validateEmail()==false){
+		    $('#errorMessage').html("<font color='red'>Please enter a valid email address</font>");
+	        $('#errorMessage').show();
+	        return;
+	}
+	else{
+		Create_PDF();
+	}
+
+	})
+}
+
+
+function clearTransferAgreementPage(){
+	var index = 0;
+	for(index = 0; index < fields.length; index++){
+		$('#'+fields[index]).css("background-color","");
+	}
+	$('#errorMessage').hide();
+}
+
+function validateTransferAgreement(){
+	var hasError = false;
+	var index = 0;
+
+	for (index = 0; index < fields.length; index++){
+		if($.trim($('#' + fields[index]).val()).length == 0){
+				$('#'+fields[index]).css("background-color", "yellow");
+				hasError = true;
+	    }
+	}
+    return hasError;
+}
+
+
+addEventListeners();
