@@ -19,7 +19,7 @@ def index():
 
 @app.route('/ncidoseRest/', methods = ['POST'])
 def store():
-mimetype = 'application/json'
+	mimetype='application/json'
 	data = json.loads(request.stream.read())
 	first = data["first"]
 	last = data["last"]
