@@ -3,6 +3,10 @@
    display:none;
 }
 */
+header {
+	margin: 0px 0;
+}
+
 .nav-tabs {
     border-bottom-color: #d9d9d9;
 }
@@ -44,14 +48,9 @@
 }
 
 .tab-content {
-    padding: 10px;
     width: 100%;
     min-height: 600px;
-    background: white;
-    border-width: 0 1px 1px 1px;
-    border-style: solid;
-    border-color: #d9d9d9;
-    border-radius: 0 0 4px 4px;
+    background: white;  
     overflow: hidden;
 }
 
@@ -60,7 +59,13 @@
 }
 
 
-
+#ncict-pane .tab-content {
+    padding: 10px;   
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    border-radius: 0 0 4px 4px;   
+}
 
 
 
@@ -92,6 +97,10 @@ input[readonly] {
   background-color: white;
 }
 
+.logo_text
+{
+	color: DarkCyan;
+}
 
 img.logo {
     max-height:150px;
