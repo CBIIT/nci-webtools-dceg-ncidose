@@ -19,66 +19,90 @@
 
 <link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.8/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="../common/css/bootstrap-multiselect.css">
 <link rel="stylesheet" href="../common/css/style.css">
 <link rel="stylesheet" href="../common/css/social.css">
 <link rel="stylesheet" href="./css/NCIDOSE.css">
 
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.js"></script>
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.0.min.js"></script>
 <script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js" type="text/javascript"></script>
 <script type="text/javascript"src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript"src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+<script type="text/javascript"src="http://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
 <script type="text/javascript"src="../common/js/purify.js"></script>
+<script type="text/javascript"src="../common/js/bootstrap-multiselect.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.0.7/jquery.browser.min.js"></script>
+<script type="text/javascript"src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.js"></script>
 
 <script type="text/javascript" src="./js/CreatePDF.js"></script>
 <script type="text/javascript"src="./js/NCIDOSE.js"> </script>
 
-<div class="container">
-			<a href="http://dceg.cancer.gov/" target="dceg">
-				<img class="division-logo" src="/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
-			</a>
-		</div>
+<!-- Google Analytics -->
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
 </head>
+
 <body role="document">
-	<div class="header">
-		<div class="container">
-			</a>
-		</div>
-	</div>
-	<div class="container theme-showcase" role="main" >
+	<header class="container">		
+		<a href="http://dceg.cancer.gov/" target="dceg">
+			<img class="division-logo" src="/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
+		</a>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<!-- a menu botton that is only shown on the small device size -->
+					<button class="btn btn-success navbar-toggle" data-toggle ="collapse" data-target=".navbar-collapse">
+						<span class="glyphicon glyphicon-chevron-down"></span>
+					</button>
+					<a class="navbar-brand" href="#">NCIDose</a>
+				</div>
 
-		<ul id="NCIDOSE-tabs" class="nav nav-tabs responsive">
-			<!-- HOME -->
-			<li>
-				<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">Home</a>
-			</li>
-			<!-- NCICT -->
-			<li>
-				<a id="NCICT-tab-anchor" href="#NCICT-tab" data-toggle="tab" >NCICT</a>
-			</li>
-			<!-- NCIxxx -->
-			<li>
-				<a id="2nd Tab-tab-anchor" href="#2nd-tab" data-toggle="tab" >2nd Tab</a>
-			</li>
+				<div class="navbar-collapse collapse">
+					<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive">
+						<!-- HOME -->
+						<li class="nav active">
+							<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">Home</a>
+						</li>
+						<!-- NCICT -->
+						<li class="nav" >
+							<a id="NCICT-tab-anchor" href="#NCICT-tab" data-toggle="tab" >NCICT</a>
+						</li>
+						<!-- NCIxxx -->
+						<li class="nav">
+							<a id="2nd Tab-tab-anchor" href="#2nd-tab" data-toggle="tab" >2nd Tab</a>
+						</li>
 
-		</ul>
-		<!-- Tab Content -->
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main class="container" role="main" >		
+
+		<!-- NCIDose Tab Content -->
 		<div class="tab-content">
-
 			<!-- Home -->
 			<div class="tab-pane fade" id="home-tab">
-				<h3>NCIDOSE HOME</h3>
+				<h3>Home (Place Holder)</h3>
 				<p id="NCIDOSE_version"></p>
 			</div>
 
 			<!-- NCIxxx -->
 			<div class="tab-pane fade" id="2nd-tab">
-				<h3>2nd Tab Home</h3>
-		    </div>
+				<h3>2nd Tab (Place Holder)</h3>
+			</div>
 
 			<!-- NCICT -->
 			<div class="tab-pane fade" id="NCICT-tab">
-				<ul id="NCIDOSE-tabs" class="nav nav-tabs responsive">
-					<!-- NCICT HOME -->
-					<li>
-						<a id="NCICT-home-tab-anchor" href="#NCICT_home-tab" data-toggle="tab">NCICT</a>
+				<ul id="NCICT-tabs" class="nav nav-tabs responsive">
+					<!-- NCICT About -->
+					<li class="active">
+						<a id="NCICT-about-tab-anchor" href="#NCICT_about-tab" data-toggle="tab">About</a>
 					</li>
 					<!-- NCICT Agreement -->
 					<li>
@@ -86,142 +110,159 @@
 					</li>
 					<!-- Help -->
 					<li>
-						<a id="Help-tab-anchor" href="#NCICT_help-tab" data-toggle="tab" >Help</a>
+						<a id="Help-tab-anchor" href="#NCICT_help-tab" data-toggle="tab">Help</a>
 					</li>
 
 				</ul>
-				<div class="tab-content">
-					<div class="tab-pane fade" id="NCICT_home-tab">
+			
+				<!-- NCICT Tab Content -->
+				<div class="tab-content"> 
+				    <!-- NCICT_About Tab -->
+				    <div class="tab-pane fade in active" id="NCICT_about-tab">
 					<h3>About NCICT</h3>
-								<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).<br></p>
-								<!-- Add new notes here.  Surround paragrahs with <p></p> -->
+					<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).</br></p>
+				
+					<!-- Add new notes here.  Surround paragrahs with <p></p> -->
+					<p> <b>Citation</b>: Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry. Health Physics 102 292–304
 
+					    </br></br>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015 NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans Journal of Radiological Protection 35 891–909
 
-								<p> <b>Citation</b>: Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry. Health Physics 102 292–304
+					    </br></br>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation Medical Physics 39 2129–46
 
-								</br></br>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015 NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans Journal of Radiological Protection 35 891–909
+					    </br></br>Lee C, Kim K P, Long D, Fisher R, Tien C, Simon S L, Bouville A and Bolch W E 2011 Organ doses for reference adult male and female undergoing computed tomography estimated by Monte Carlo simulations Medical Physics 38 1196–206
 
-								</br></br>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation Medical Physics 39 2129–46
+					    </br></br>Lee C, Lodwick D, Hasenauer D, Williams J L, Lee C and Bolch W E 2007 Hybrid computational phantoms of the male and female newborn patient: NURBS-based whole-body models Physics in Medicine and Biology 52 3309–33
 
-								</br></br>Lee C, Kim K P, Long D, Fisher R, Tien C, Simon S L, Bouville A and Bolch W E 2011 Organ doses for reference adult male and female undergoing computed tomography estimated by Monte Carlo simulations Medical Physics 38 1196–206
+					    </br></br>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams J L and Bolch W E 2010 The UF family of reference hybrid phantoms for computational radiation dosimetry. Physics in Medicine and Biology 55 339–63
 
-								</br></br>Lee C, Lodwick D, Hasenauer D, Williams J L, Lee C and Bolch W E 2007 Hybrid computational phantoms of the male and female newborn patient: NURBS-based whole-body models Physics in Medicine and Biology 52 3309–33
+					    </br></br>Lee C, Lodwick D, Williams J L and Bolch W E 2008 Hybrid computational phantoms of the 15-year male and female adolescent: applications to CT organ dosimetry for patients of variable morphometry. Medical physics 35 2366–82
 
-								</br></br>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams J L and Bolch W E 2010 The UF family of reference hybrid phantoms for computational radiation dosimetry. Physics in Medicine and Biology 55 339–63
+					    </br></br>Lee E, Lamart S, Little M P and Lee C 2014 Database of normalised computed tomography dose index for retrospective CT dosimetry Journal of Radiological Protection 34 363–88
 
-								</br></br>Lee C, Lodwick D, Williams J L and Bolch W E 2008 Hybrid computational phantoms of the 15-year male and female adolescent: applications to CT organ dosimetry for patients of variable morphometry. Medical physics 35 2366–82
+					    </br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901
+					</p>
+				    </div>
+				    
+				    <!-- NCICT_Agreement Tab -->
+				    <div class="tab-pane fade" id="NCICT_Agreement-tab">
+					<h3>Software Transfer Agreement</h3>
+					<p>Fill out the following information and click Generate to download the STA PDF.</p>
+					<div id="errorMessage"></div>
 
-								</br></br>Lee E, Lamart S, Little M P and Lee C 2014 Database of normalised computed tomography dose index for retrospective CT dosimetry Journal of Radiological Protection 34 363–88
+					<!-- Recipient Section -->
+					<div class="panel panel-default">
+					    <div class="panel-heading"><h2 class="panel-title">Recipient</h2></div>
+					    <div class="panel-body">
 
-								</br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901
-								</p>
+						<div class="row" style="margin-bottom:10px">
+						    <label class="col-sm-2">First Name*:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required/></div>
+						    <label class="col-sm-2">Last Name*:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" "required/></div>
+						    <label class="col-sm-2">Title:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="title" required></div>    
+						</div>            
+
+						<div class="row" style="margin-bottom:10px">
+						    <label class="col-sm-2">Email*:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="email" required/></div>
+						    <label class="col-sm-2">Phone*:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
+						    <label class="col-sm-2">Fax*:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="fax"required></div>
+						</div>
+
+						<div class="row" style="margin-bottom:10px">
+						    <label class="col-sm-2">Address*:</label>
+						    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required></textarea></div>
+						</div>
+					    </div>
 					</div>
-					<div class="tab-pane fade" id="NCICT_Agreement-tab">
-						<h3>Software Transfer Agreement</h3>
-						<p>Fill out the following information and click Generate to download the STA PDF.</p>
-						<div id="errorMessage"></div>
-							<div class="container-fluid" style="border-style: solid;border-width: 1px" >
-							      <legend class="legend">Recipeint</legend>
 
-								    <div class="row" style="margin-bottom:10px">
-								        <label class="col-sm-2">First Name*:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required/></div>
-								        <label class="col-sm-2">Last Name*:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="last_name" "required/></div>
-								        <label class="col-sm-2">Title:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="title" required></div>
-								    </div>
+					<!-- Investigator Section -->
+					<div class="panel panel-default">
+					    <div class="panel-heading"><h2 class="panel-title">Investigator</h2></div>
+					    <div class="panel-body">							
+						<div class="row" style="margin-bottom:10px">
+						    <label class="col-sm-2">First Name*:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="first_name_inv" required/></div>
+						    <label class="col-sm-2">Last Name*:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="last_name_inv"  required/></div>
+						    <label class="col-sm-2">Title:</label>
+						    <div class="col-sm-2"><input type="text" class="form-control" id="title_inv"  required/></div>
+						</div>
+					    </div>
+					</div>
 
-								    <div class="row" style="margin-bottom:10px">
-								        <label class="col-sm-2">Email*:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="email" required/></div>
-								        <label class="col-sm-2">Phone*:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
-								        <label class="col-sm-2">Fax*:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="fax"required></div>
-								    </div>
+					<!-- Research Activity Section -->
+					<div class="panel panel-default">
+					    <div class="panel-heading"><h2 class="panel-title">Research Activity</h2></div>
+					    <div class="panel-body">
+					    
+						<div class="row" style="margin-bottom:10px">
+						    <label class="col-sm-2">Institution*:</label>
+						    <div class="col-sm-10"><input type="text" class="form-control" id="institution"  required/></div>
+						</div>
+						<div class="row">
+						    <label class="col-sm-2">Purpose*:</label>
+						</div>
+						<div class="row">
+						    <div class="col-sm-12">
+						        <textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250" required></textarea>
+						    </div>
+						</div>
 
-								    <div class="row" style="margin-bottom:10px">
-								        <label class="col-sm-2">Address*:</label>
-								        <div class="col-sm-6">
-								        	<textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required></textarea>
-								        </div>
-								    </div>
-							</div>
+					    </div>
+					</div>
 
-							<div class="container-fluid" style="border-style: solid;border-width: 1px;margin-top:3%" >
-								<legend class="legend">Recipeint Investigator</legend>
-								    <div class="row" style="margin-bottom:10px">
-								        <label class="col-sm-2">First Name*:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="first_name_inv" required/></div>
-								        <label class="col-sm-2">Last Name*:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="last_name_inv"  required/></div>
-								        <label class="col-sm-2">Title:</label>
-								        <div class="col-sm-2"><input type="text" class="form-control" id="title_inv"  required/></div>
-								    </div>
-							</div>
+					<!-- Submit -->
+					<div class="col-sm-12">
+					    <input type="submit" id="sta" style="margin-top:30px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" onclick="Create_PDF()"/>
+					</div>
+				    </div>
 
-							<div class="container-fluid" style="border-style: solid;border-width: 1px;margin-top:3%" >
-								<legend class="legend">Research Activity</legend>
-								    <div class="row" style="margin-bottom:10px">
-								        <label class="col-sm-2">Institution*:</label>
-								        <div class="col-sm-10"><input type="text" class="form-control" id="institution"  required/></div>
-								    </div>
-								    <div class="row">
-								    	<label class="col-sm-2">Purpose*:</label>
-									</div>
-								    <div class="row">
-								    	<div class="col-sm-12">
-											<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250" required></textarea>
-										</div>
-								    </div>
+				    <!-- NCICT_Help Tab -->
+				    <div class="tab-pane fade" id="NCICT_help-tab">
+					<object type="text/html" data="/NCIDOSE/help.html"style="width:100%;height:1000px"></object>
+				    </div>                                                                    
+			       
+				</div>  <!-- End of NCICT Tab Content-->
 
-							</div>
-
-							<div class="col-sm-12">
-								<input type="submit" id="sta" style="margin-top:30px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" onclick="Create_PDF()"/>
-							</div>
-				</div>
-			<!-- Help -->
-			<div class="tab-pane fade" id="NCICT_help-tab">
-				<object type="text/html" data="/NCIDOSE/help.html"style="width:100%;height:1000px">
-				</object>
-			</div>
-		</div>
-		</div>
-	</div>
+			</div> <!-- End of NCICT -->
+        	</div> <!-- End of NCIDose Tab Content -->
+	       
+	</main> <!-- End of main-->
 
 	<!-- Common Footer -->
 	<div class="container footer">
-        <div class="center-block">
-            <ul class="list-inline">
-                <li><a target="_blank" title="Home" href="http://www.cancer.gov/">Home</a></li>
-                <li>|</li>
-                <li><a title="Support" target="_top" href="mailto:NCIDOSEWebAdmin@mail.nih.gov?subject=NCIDOSE">Support</a></li>
-                <li>|</li>
-                <li><a target="_blank" title="Policies" href="http://www.cancer.gov/global/web/policies">Policies</a></li>
-                <li>|</li>
-                <li><a target="_blank" title="Accessibility" href="http://www.cancer.gov/global/web/policies/accessibility">Accessibility</a></li>
-                <li>|</li>
-                <li><a target="_blank" title="Viewing Files" href="http://cancer.gov/global/viewing-files">Viewing Files</a></li>
-                <li>|</li>
-                <li><a target="_blank" title="FOIA" href="http://www.cancer.gov/global/web/policies/foia">FOIA</a></li>
-            </ul>
-            <ul class="list-inline">
-                <li><a target="_blank" href="http://www.hhs.gov/">U.S. Department of Health and Human Services</a></li>
-                <li>|</li>
-                <li><a target="_blank" href="http://www.nih.gov">National Institutes of Health</a></li>
-                <li>|</li>
-                <li><a target="_blank" href="http://www.cancer.gov/">National Cancer Institute</a></li>
-                <li>|</li>
-                <li><a target="_blank" href="http://usa.gov">USA.gov</a></li>
-            </ul>
-            <div class="text-center">
-                NIH ... Turning Discovery Into Health<sup>&reg;</sup>
-            </div>
+		<div class="center-block">
+		    <ul class="list-inline">
+		        <li><a target="_blank" title="Home" href="http://www.cancer.gov/">Home</a></li>
+		        <li>|</li>
+		        <li><a title="Support" target="_top" href="mailto:NCIDOSEWebAdmin@mail.nih.gov?subject=NCIDOSE">Support</a></li>
+		        <li>|</li>
+		        <li><a target="_blank" title="Policies" href="http://www.cancer.gov/global/web/policies">Policies</a></li>
+		        <li>|</li>
+		        <li><a target="_blank" title="Accessibility" href="http://www.cancer.gov/global/web/policies/accessibility">Accessibility</a></li>
+		        <li>|</li>
+		        <li><a target="_blank" title="Viewing Files" href="http://cancer.gov/global/viewing-files">Viewing Files</a></li>
+		        <li>|</li>
+		        <li><a target="_blank" title="FOIA" href="http://www.cancer.gov/global/web/policies/foia">FOIA</a></li>
+		    </ul>
+		    <ul class="list-inline">
+		        <li><a target="_blank" href="http://www.hhs.gov/">U.S. Department of Health and Human Services</a></li>
+		        <li>|</li>
+		        <li><a target="_blank" href="http://www.nih.gov">National Institutes of Health</a></li>
+		        <li>|</li>
+		        <li><a target="_blank" href="http://www.cancer.gov/">National Cancer Institute</a></li>
+		        <li>|</li>
+		        <li><a target="_blank" href="http://usa.gov">USA.gov</a></li>
+		    </ul>
+		    <div class="text-center">
+		        NIH ... Turning Discovery Into Health<sup>&reg;</sup>
+		    </div>
         </div>
-    </div>
-
+   	</div>
 
 
 	<script>
