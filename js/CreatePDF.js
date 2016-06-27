@@ -98,7 +98,7 @@ function Create_PDF(){
 		contentType : 'application/json' // JSON
 		}).success(function(token){
 			console.log(token)
-			window.open("app/content/NCI_STA_"+token+".pdf",'_blank');
+			window.open("content/NCI_STA_"+token+".pdf",'_blank');
 
 		});
 }
