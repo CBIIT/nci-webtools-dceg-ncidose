@@ -7,7 +7,7 @@ var restServerUrl = restService.protocol + "://" + restService.hostname + "/"+ r
 //var a4  =[ 595.28,  841.89];  // for a4 size paper width and height
 function Create_PDF(){
     //validation
-    
+
 
 	var cont=""
 
@@ -98,7 +98,7 @@ function Create_PDF(){
 		contentType : 'application/json' // JSON
 		}).success(function(token){
 			console.log(token)
-			window.open("content/NCI_STA_"+token+".pdf",'_blank');
+			window.open("app/content/NCI_STA_"+token+".pdf",'_blank');
 
 		});
 }
