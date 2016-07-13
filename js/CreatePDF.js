@@ -69,7 +69,7 @@ function Create_PDF(){
 		data=data.replace('$[Investigator Name]',full_name_inv);
 		data=data.replace('$[Investigator Title]',title_inv);
 		data=data.replace("$[phone]", phone);
-		data=data.replace("$[fax]", fax);
+		data=data.replace("$[email]", email);
 		cont = data;
 	});
 
