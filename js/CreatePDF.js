@@ -21,8 +21,8 @@ function Create_PDF(){
 	var phone=document.getElementById("phone").value;
 	var fax=document.getElementById("fax").value;
 	var address=document.getElementById("address").value;
-		address=address.split("\n").join("<br>");
-	console.log(address);
+	address=address.split("\n").join("<br>");
+	console.log(email);
 
 	//recipient investigator
 
