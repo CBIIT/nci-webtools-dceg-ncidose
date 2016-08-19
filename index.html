@@ -36,23 +36,30 @@
 					<button class="btn btn-success navbar-toggle" data-toggle ="collapse" data-target=".navbar-collapse">
 						<span class="glyphicon glyphicon-chevron-down"></span>
 					</button>
-					<a class="navbar-brand" href="#"><span class="logo_text">NCIDose</span></a>
 				</div>
 
 				<div class="navbar-collapse collapse">
 					<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive">
 						<!-- HOME -->
 						<li class="nav active">
-							<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">Home</a>
+							<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">NCIDOSE</a>
+						</li>
+						<!-- Phantoms -->
+						<li class="nav" >
+							<a id="NCICT-tab-anchor" href="#Phantoms-tab" data-toggle="tab" >Human Phantoms</a>
 						</li>
 						<!-- NCICT -->
 						<li class="nav" >
 							<a id="NCICT-tab-anchor" href="#NCICT-tab" data-toggle="tab" >NCICT</a>
 						</li>
-						<!-- NCIxxx -->
-						<li class="nav">
-							<a id="2nd Tab-tab-anchor" href="#2nd-tab" data-toggle="tab" >2nd Tab</a>
+						<!-- DOSE Coefficients -->
+						<li class="nav" >
+							<a id="NCICT-tab-anchor" href="#DOSE-Coefficients-tab" data-toggle="tab" >DOSE Coefficients</a>
 						</li>
+						<!-- Agreement -->
+					<li>
+						<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
+					</li>
 
 					</ul>
 				</div>
@@ -66,38 +73,17 @@
 		<div class="tab-content">
 			<!-- Home -->
 			<div class="tab-pane fade" id="home-tab">
-				<h3>Home (Place Holder)</h3>
+				<h3>NCIDOSE (Place Holder)</h3>
 				<p id="NCIDOSE_version"></p>
 			</div>
 
-			<!-- NCIxxx -->
-			<div class="tab-pane fade" id="2nd-tab">
-				<h3>2nd Tab (Place Holder)</h3>
+			<!-- Phantoms -->
+			<div class="tab-pane fade" id="Phantoms-tab">
+				<h3>Phantoms Tab (Place Holder)</h3>
 			</div>
 
 			<!-- NCICT -->
 			<div class="tab-pane fade" id="NCICT-tab">
-				<ul id="NCICT-tabs" class="nav nav-tabs responsive">
-					<!-- NCICT About -->
-					<li class="active">
-						<a id="NCICT-about-tab-anchor" href="#NCICT_about-tab" data-toggle="tab">About</a>
-					</li>
-					<!-- NCICT Agreement -->
-					<li>
-						<a id="Agreement-tab-anchor" href="#NCICT_Agreement-tab" data-toggle="tab">Agreement</a>
-					</li>
-					<!-- Help -->
-					<li>
-						<a id="Help-tab-anchor" href="#NCICT_help-tab" data-toggle="tab">Help</a>
-					</li>
-
-				</ul>
-			
-				<!-- NCICT Tab Content -->
-				<div id="ncict-pane">
-					<div class="tab-content"> 
-					    <!-- NCICT_About Tab -->
-					    <div class="tab-pane fade in active" id="NCICT_about-tab">
 						<h3>About NCICT</h3>
 						<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).</br></p>
 				
@@ -120,95 +106,91 @@
 
 						    </br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901
 						</p>
-					    </div>
-					    
-					    <!-- NCICT_Agreement Tab -->
-					    <div class="tab-pane fade" id="NCICT_Agreement-tab">
-						<h3>Software Transfer Agreement</h3>
-						<p>Fill out the following information and click Generate to download the STA PDF.</p>
-						<div id="errorMessage"></div>
+			</div>
 
-						<!-- Recipient Section -->
-						<div class="panel panel-default">
-						    <div class="panel-heading"><h2 class="panel-title">Recipient</h2></div>
-						    <div class="panel-body">
+			<!-- Coefficients -->
+			<div class="tab-pane fade" id="DOSE-Coefficients-tab">
+				<h3>Coefficients Tab (Place Holder)</h3>
+			</div>
 
-							<div class="row" style="margin-bottom:10px">
-							    <label class="col-sm-2">First Name*:</label>
-							    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required/></div>
-							    <label class="col-sm-2">Last Name*:</label>
-							    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required/></div>
-							    <label class="col-sm-2">Title*:</label>
-							    <div class="col-sm-2"><input type="text" class="form-control" id="title" required></div>    
-							</div>            
+			<!-- Agreement -->
+			<div class="tab-pane fade" id="Agreement-tab">
+				<h3>Software Transfer Agreement</h3>
+							<p>Fill out the following information and click Generate to download the STA PDF.</p>
+							<div id="errorMessage"></div>
 
-							<div class="row" style="margin-bottom:10px">
-							    <label class="col-sm-2">Email*:</label>
-							    <div class="col-sm-2"><input type="email" class="form-control" id="email" required /></div>
-							    <label class="col-sm-2">Phone*:</label>
-							    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
-							    <label class="col-sm-2">Fax*:</label>
-							    <div class="col-sm-2"><input type="text" class="form-control" id="fax"required></div>
-							</div>
+							<!-- Recipient Section -->
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h2 class="panel-title">Recipient</h2></div>
+							    <div class="panel-body">
 
-							<div class="row" style="margin-bottom:10px">
-							    <label class="col-sm-2">Address*:</label>
-							    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required></textarea></div>
-							</div>
-						    </div>
-						</div>
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">First Name*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required/></div>
+								    <label class="col-sm-2">Last Name*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required/></div>
+								    <label class="col-sm-2">Title*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="title" required></div>    
+								</div>            
 
-						<!-- Investigator Section -->
-						<div class="panel panel-default">
-						    <div class="panel-heading"><h2 class="panel-title">Investigator</h2></div>
-						    <div class="panel-body">							
-							<div class="row" style="margin-bottom:10px">
-							    <label class="col-sm-2">First Name*:</label>
-							    <div class="col-sm-2"><input type="text" class="form-control" id="first_name_inv" required/></div>
-							    <label class="col-sm-2">Last Name*:</label>
-							    <div class="col-sm-2"><input type="text" class="form-control" id="last_name_inv"  required/></div>
-							    <label class="col-sm-2">Title*:</label>
-							    <div class="col-sm-2"><input type="text" class="form-control" id="title_inv"  required/></div>
-							</div>
-						    </div>
-						</div>
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">Email*:</label>
+								    <div class="col-sm-2"><input type="email" class="form-control" id="email" required /></div>
+								    <label class="col-sm-2">Phone*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
+								    <label class="col-sm-2">Fax*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="fax"required></div>
+								</div>
 
-						<!-- Research Activity Section -->
-						<div class="panel panel-default">
-						    <div class="panel-heading"><h2 class="panel-title">Research Activity</h2></div>
-						    <div class="panel-body">
-						    
-							<div class="row" style="margin-bottom:10px">
-							    <label class="col-sm-2">Institution*:</label>
-							    <div class="col-sm-10"><input type="text" class="form-control" id="institution"  required/></div>
-							</div>
-							<div class="row">
-							    <label class="col-sm-2">Purpose*:</label>
-							</div>
-							<div class="row">
-							    <div class="col-sm-12">
-								<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250" required></textarea>
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">Address*:</label>
+								    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required></textarea></div>
+								</div>
 							    </div>
 							</div>
 
-						    </div>
-						</div>
+							<!-- Investigator Section -->
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h2 class="panel-title">Investigator</h2></div>
+							    <div class="panel-body">							
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">First Name*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="first_name_inv" required/></div>
+								    <label class="col-sm-2">Last Name*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="last_name_inv"  required/></div>
+								    <label class="col-sm-2">Title*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="title_inv"  required/></div>
+								</div>
+							    </div>
+							</div>
 
-						<!-- Submit -->
-						<div class="col-sm-12">
-						    <input type="button" id="generate" style="margin-top:30px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate"/>
-						</div>
-					    </div>
+							<!-- Research Activity Section -->
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h2 class="panel-title">Research Activity</h2></div>
+							    <div class="panel-body">
+							    
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">Institution*:</label>
+								    <div class="col-sm-10"><input type="text" class="form-control" id="institution"  required/></div>
+								</div>
+								<div class="row">
+								    <label class="col-sm-2">Purpose*:</label>
+								</div>
+								<div class="row">
+								    <div class="col-sm-12">
+									<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250" required></textarea>
+								    </div>
+								</div>
 
-					    <!-- NCICT_Help Tab -->
-					    <div class="tab-pane fade" id="NCICT_help-tab">
-						<object type="text/html" data="/help.html"style="width:100%;height:1000px"></object>
-					    </div>                                                                    
-				       </div>     <!-- End of ncict-pane-->
-				</div>  <!-- End of NCICT Tab Content-->
+							    </div>
+							</div>
 
-			</div> <!-- End of NCICT -->
-        	</div> <!-- End of NCIDose Tab Content -->
+							<!-- Submit -->
+							<div class="col-sm-12">
+							    <input type="button" id="generate" style="margin-top:30px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate"/>
+							</div>
+			</div>
+        </div> <!-- End of NCIDose Tab Content -->
 	       
 	</main> <!-- End of main-->
 
