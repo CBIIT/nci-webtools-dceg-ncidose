@@ -19,6 +19,7 @@ function Create_PDF(){
 	var email=document.getElementById("email").value;
 	var institution=document.getElementById("institution").value;
 	var phone=document.getElementById("phone").value;
+	var fax=document.getElementById("fax").value;
 	var address=document.getElementById("address").value;
 	address=address.split("\n").join("<br>");
 	console.log(email);
@@ -60,7 +61,6 @@ function Create_PDF(){
 
 		data=data.replace('$[Recipient Name_sig]',full_name);
 		data=data.replace('$[Recipient Title_sig]',title);
-		data=data.replace('$[Recipient Institution]',institution);
 
 
 		data=data.replace("$[reason]", reason);

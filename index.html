@@ -46,7 +46,7 @@
 						</li>
 						<!-- Phantoms -->
 						<li class="nav" >
-							<a id="NCICT-tab-anchor" href="#Phantoms-tab" data-toggle="tab" >Phantoms</a>
+							<a id="NCICT-tab-anchor" href="#Phantoms-tab" data-toggle="tab" >Human Phantoms</a>
 						</li>
 						<!-- NCICT -->
 						<li class="nav" >
@@ -84,16 +84,7 @@
 
 			<!-- NCICT -->
 			<div class="tab-pane fade" id="NCICT-tab">
-						<h3 class="col-md-11">About NCICT</h3>
-						<span class="pull-right col-md-1">
-                        	<i class="glyphicon glyphicon-question-sign" aria-label="Help" onclick="openHelpWindow('help.html')"></i>
-                      		<a href="#">
-                        		<span style="font-size:small;"  onclick="openHelpWindow('help.html');">Help</span>
-                      		</a>
-
-         				</span>
-         				</br>
-         				</br>
+						<h3>About NCICT</h3>
 						<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).</br></p>
 				
 						<!-- Add new notes here.  Surround paragrahs with <p></p> -->
@@ -124,103 +115,80 @@
 
 			<!-- Agreement -->
 			<div class="tab-pane fade" id="Agreement-tab">
-				<h3  id="header2" class="col-md-9">Software Transfer Agreement</h3></br></br>
-				<p>If you underatand the following components please acknowledge by clicking on thech check boxes.</p>
+				<h3>Software Transfer Agreement</h3>
+							<p>Fill out the following information and click Generate to download the STA PDF.</p>
+							<div id="errorMessage"></div>
 
+							<!-- Recipient Section -->
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h2 class="panel-title">Recipient</h2></div>
+							    <div class="panel-body">
 
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">First Name*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required/></div>
+								    <label class="col-sm-2">Last Name*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required/></div>
+								    <label class="col-sm-2">Title*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="title" required></div>    
+								</div>            
 
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Agree
-				    	<span class="pull-right">
-                    <i class="cursor-pointer glyphicon glyphicon-info-sign glyphicon-blue" aria-label="Help" onclick="openHelpWindow('./content/NCI STA_lite.pdf')"></i>
-                    <a href="#">
-                    	<span style="font-size:small;"  onclick="openHelpWindow('./content/NCI STA_lite.pdf');">View STA Agreement</span>
-                    </a>
-         			</span>
-         			</h2>
-				    </div>
-				    <div class="panel-body">
-						<form id="consent" action="" method="post">
-							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> Phantoms <a class="glyphicon glyphicon-question-sign" id='Phantoms'></a></p></b></input></br>
-							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> NCICT <a class="glyphicon glyphicon-question-sign" id='NCICT'></a></p></b></input></br>
-							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> DOSE Coefficents <a class="glyphicon glyphicon-question-sign" id='DOSE'></a></p></b></input>
-						</form>
-					
-				    </div>
-				</div>
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">Email*:</label>
+								    <div class="col-sm-2"><input type="email" class="form-control" id="email" required /></div>
+								    <label class="col-sm-2">Phone*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
+								    <label class="col-sm-2">Fax*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="fax"required></div>
+								</div>
 
-				<div id="overlay" class="overlay">
-				<p>Fill out the following information and click Generate to download the STA PDF.</p>
-				<div id="errorMessage"></div>
-				<!-- Recipient Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Recipient</h2></div>
-				    <div class="panel-body">
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">Address*:</label>
+								    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required></textarea></div>
+								</div>
+							    </div>
+							</div>
 
-					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">First Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required/></div>
-					    <label class="col-sm-2">Last Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required/></div>
-					    <label class="col-sm-2">Title*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="title" required></div>    
-					</div>            
+							<!-- Investigator Section -->
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h2 class="panel-title">Investigator</h2></div>
+							    <div class="panel-body">							
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">First Name*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="first_name_inv" required/></div>
+								    <label class="col-sm-2">Last Name*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="last_name_inv"  required/></div>
+								    <label class="col-sm-2">Title*:</label>
+								    <div class="col-sm-2"><input type="text" class="form-control" id="title_inv"  required/></div>
+								</div>
+							    </div>
+							</div>
 
-					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">Email*:</label>
-					    <div class="col-sm-2"><input type="email" class="form-control" id="email" required /></div>
-					    <label class="col-sm-2">Phone*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
-					</div>
+							<!-- Research Activity Section -->
+							<div class="panel panel-default">
+							    <div class="panel-heading"><h2 class="panel-title">Research Activity</h2></div>
+							    <div class="panel-body">
+							    
+								<div class="row" style="margin-bottom:10px">
+								    <label class="col-sm-2">Institution*:</label>
+								    <div class="col-sm-10"><input type="text" class="form-control" id="institution"  required/></div>
+								</div>
+								<div class="row">
+								    <label class="col-sm-2">Purpose*:</label>
+								</div>
+								<div class="row">
+								    <div class="col-sm-12">
+									<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250" required></textarea>
+								    </div>
+								</div>
 
-					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">Address*:</label>
-					    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required></textarea></div>
-					</div>
-				    </div>
-				</div>
+							    </div>
+							</div>
 
-				<!-- Investigator Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Investigator</h2></div>
-				    <div class="panel-body">							
-					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">First Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name_inv" required/></div>
-					    <label class="col-sm-2">Last Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name_inv"  required/></div>
-					    <label class="col-sm-2">Title*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="title_inv"  required/></div>
-					</div>
-				    </div>
-				</div>
-
-				<!-- Research Activity Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Research Activity</h2></div>
-				    <div class="panel-body">
-				    
-					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">Institution*:</label>
-					    <div class="col-sm-10"><input type="text" class="form-control" id="institution"  required/></div>
-					</div>
-					<div class="row">
-					    <label class="col-sm-2">Purpose*:</label>
-					</div>
-					<div class="row">
-					    <div class="col-sm-12">
-						<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250" required></textarea>
-					    </div>
-					</div>
-
-				    </div>
-				</div>
-
-				<!-- Submit -->
-				<div class="col-sm-12">
-				    <input type="button" id="generate" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate"/>
-				</div>
-				</div>
+							<!-- Submit -->
+							<div class="col-sm-12">
+							    <input type="button" id="generate" style="margin-top:30px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate"/>
+							</div>
 			</div>
         </div> <!-- End of NCIDose Tab Content -->
 	       
@@ -272,7 +240,6 @@
 	<script type="text/javascript" src="../common/js/purify.js"></script>
 	<script type="text/javascript" src="./js/CreatePDF.js"></script>
 	<script type="text/javascript" src="./js/NCIDOSE.js"> </script>
-	<script type="text/javascript" src="./js/modal_content.js"> </script> 
 	
 	<!-- Google Analytics -->
 	<script async src='//www.google-analytics.com/analytics.js'></script>

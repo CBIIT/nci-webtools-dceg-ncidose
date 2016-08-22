@@ -1,6 +1,5 @@
  p.MsoNormal, li.MsoNormal, div.MsoNormal
     {margin:0in;
-    margin-bottom:.0001pt;
     text-autospace:none;
     font-size:12.0pt;
     font-family:"Times New Roman","serif";}
@@ -44,9 +43,13 @@ span.CommentTextChar
 @page {
   @top-right {
     content: "NCI reference# ____________";
+    font-size:9.0pt;
+    color:grey;
   }
   @bottom-center {
     content: " Page " counter(page) " of " counter(pages);
+    font-size:9.0pt;
+    color:grey;
   }
 }
 @media all {
