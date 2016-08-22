@@ -1,13 +1,11 @@
-/*disable bk logo 
+/*disable bk logo */
 .bk-logo-small {
    display:none;
 }
-*/
-header {
-	margin: 0px 0;
-}
 
 .nav-tabs {
+    width: 100%;
+    float: left;
     border-bottom-color: #d9d9d9;
 }
 
@@ -48,9 +46,15 @@ header {
 }
 
 .tab-content {
+    padding: 10px;
     width: 100%;
     min-height: 600px;
-    background: white;  
+    -webkit-overflow-scrolling: touch;
+    background: white;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    border-radius: 0 0 4px 4px;
     overflow: hidden;
 }
 
@@ -58,16 +62,63 @@ header {
     color: #566473;
 }
 
+@media ( max-width : 480px) {
+    .nav-tabs>li {
+        float: none;
+        border: 1px solid #dddddd;
+    }
+    .nav-tabs>li.active>a {
+        border: none;
+    }
+    .nav>li>a:hover, .nav>li>a:focus, .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover,
+        .nav-tabs>li.active>a:focus {
+        background: none;
+        border: none;
+    }
+}
 
-#ncict-pane .tab-content {
-    padding: 10px;   
-    border-width: 0 1px 1px 1px;
-    border-style: solid;
-    border-color: #d9d9d9;
-    border-radius: 0 0 4px 4px;   
+/* Reset bootstrap table*/
+.table > thead > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th {
+    border-top: 0px;
+    border-bottom: 0px;
+}
+}
+
+.left td {
+    text-align:left;
+}
+.ldpair-results {
+    text-align:center;
+    border: 1px solid #ddd;
+}
+
+.center-align {
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+.spacer {
+    width:10%;
 }
 
 
+td.cell-right {
+    text-align: right;
+}
+td.cell-left {
+    text-align: left;
+}
+
+td.cell-center {
+    text-align: center;
+}
+
+.cell-height-small {
+    height: 10px;
+    padding:0px;
+}
 
 .btn-file {
   position: relative;
@@ -82,6 +133,7 @@ header {
   min-height: 100%;
   font-size: 100px;
   text-align: right;
+  filter: alpha(opacity=0);
   opacity: 0;
   background: red;
   cursor: inherit;
@@ -92,14 +144,40 @@ input[readonly] {
   background-color: white !important;
   cursor: text !important;
 }
-
+/*
+table.ldhap,table.ldhap tr, table.ldhap th {
+  background-color: white !important;
+}
+*/
 .container {
   background-color: white;
 }
+.two-by-two {
+  margin-bottom:0px;
+  width:100%;
+}
 
-.logo_text
-{
-	color: DarkCyan;
+.jumbotron {
+  background-color:white;
+  padding:10px 15px;
+}
+
+table.fixed {
+    table-layout:fixed;
+    width:400px;
+    margin-bottom:15px;
+}
+table.fixed td {
+    overflow: hidden;
+}
+
+table thead td {
+  font-weight:bold;
+  text-align: center;
+}
+
+.font-weight-bold {
+  font-weight:bold;
 }
 
 img.logo {
@@ -121,6 +199,24 @@ img.graph-legend {
   margin-right: auto;
 }
 
+.multiselect-container > li {
+    padding-left: 50px;
+}
+.multiselect-item.multiselect-all {
+    padding-left: 0px;
+    text-decoration: underline;
+}
+.multiselect-item.multiselect-group {
+    padding-left: 30px;
+}
+.has-feedback .form-control {
+    padding-right: 0px;
+}
+.multiselect-container > li.multiselect-group-clickable label {
+    text-decoration: underline;
+}
+/* Tighten up snpchip platform list only*/
+/*   .btn-ldlink-multiselec  */
 .multiselect-container > li > a > label {
     padding: 0px 20px 0px 40px;
 }
@@ -130,19 +226,71 @@ img.graph-legend {
     right: -15px;
 }
 
+/* Placeholder Style */
+::-webkit-input-placeholder {
+   font-size: 90%;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   font-size: 90%;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   font-size: 90%;
+}
+
+:-ms-input-placeholder {
+    font-size: 90%;
+}
 
 
 .ffWarning {
     display: none;
 }
+/*
+.bk-plot-canvas-wrapper {
+    max-width:900px;
+    overflow-x: scroll;
+}
+*/
 
+.haplotype {
+    color: black;
+    background:#C0C0C0; /* if a multiple grouped */ 
+}
 
+/* LDhap Heat Map - Version 4 */
+/* Pastel Colors light red, light orage, light blue, and light green */
+/* Color Code: http://paletton.com/palette.php?uid=7000u0klLMWnHN3kBNFgZMYgZMY */
 
 .overflowx {
     overflow-x:auto;
 }
 .overflowy {
     overflow-y:auto;
+}
+
+.whats_new {
+    height:200px;
+    border:1px solid #566473;
+    overflow-y:auto;
+    margin-bottom:25px;
+}
+
+.table {
+    width: auto;
+    min-width: 0;
+    display: table;
+}
+.left-c {   width:auto;
+    display: inline-block;
+    vertical-align: top;
+}
+.right-c {
+    min-width:300px;
+    width:65%;
+    display: inline-block;
+    vertical-align: top;
 }
 
 
@@ -181,10 +329,39 @@ hr.header {
 }
 
 
+caption {
+    font-weight:bold;
+}
+
+
+/* Rotate the text on SNPchip table */
+th.rotate {
+  /* Something you can count on */
+  height: 142px;
+  white-space: nowrap;
+}
+
+th.rotate > div {
+  transform: 
+    translate(0px, 51px)
+    rotate(270deg);
+  width: 20px;
+}
+th.rotate > div > span {
+  /*border-bottom: 1px solid #ccc;*/
+  /*padding: 5px 10px;*/
+}
+/* These aren't needed and will be weird if transforms don't work */
+.csstransforms & th.rotate {
+  height: 142px;
+  white-space: nowrap;
+}
+
 
 span.formw > label {
     margin-bottom: 0px;
     font-family: "Lucida Grande",Verdana,Arial,sans-serif;
+    font-size: normal;
 }
 
 .platform-checkbox {
@@ -200,19 +377,69 @@ https://www.broadinstitute.org/mpg/snap/ldsearch.php */
 .underlined {
     border-bottom: 1px dotted gray;
 }
+fieldset#columnAcheckbox {
+    min-width: 450px;
+}
+fieldset#columnAcheckbox div.row span.label, fieldset#columnBcheckbox div.row span.label, fieldset.fullwidthcheckbox div.row span.label {
+    padding-top: 1px;
+    width: 20px;
+}
+fieldset#columnBcheckbox {
+    min-width: 365px;
+}
+fieldset div.row span.formw select.yesno {
+    width: 80px;
+}
+/* Custom */
+
+fieldset#columnAcheckbox > div.row,
+fieldset#columnBcheckbox > div.row {
+    margin-left:15px;
+    margin-bottom:-12px;
+    font-weight:lighter;
+    color: #333;
+    font-family: "Lucida Grande",Verdana,Arial,sans-serif;
+    font-size: smaller;
+}
 
 
-
+textarea:valid, .ok {
+    color: #555;
+}
+textarea:invalid, .error {
+    color: red;
+}
 .panel-body > h1 {
     font-size: 1.7em;
 }
 /* Testing */
-
-
+@media screen and (max-width: 767px) {
+  .dataTables_wrapper .dataTables_info,
+  .dataTables_wrapper .dataTables_paginate {
+    float: none;
+    text-align: center; }
+  .dataTables_wrapper .dataTables_paginate {
+    margin-top: 0.5em; } 
+}
+@media screen and (max-width: 640px) {
+  .dataTables_wrapper .dataTables_length,
+  .dataTables_wrapper .dataTables_filter {
+    float: none;
+    text-align: center; }
+  .dataTables_wrapper .dataTables_filter {
+    margin-top: 0.5em; } 
+}
 .legend{
 /* css for agreement*/
 font-family: Arial, Helvetica, sans-serif;
 font-size:14px;
 color:#566473;
 font-weight: bold;
+}
+
+.overlay{
+  opacity:0.5;
+  background:white;
+  pointer-events: none
+
 }
