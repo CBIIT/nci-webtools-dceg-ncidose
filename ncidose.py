@@ -43,10 +43,10 @@ def store():
 #	subprocess.call(["weasyprint", "-s", "./css/agreement.css", 
 #		("./content/NCI_STA_"+str(token_id)+".html"), 
 #		("./content/NCI_STA_"+str(token_id)+".pdf")])
-	HTML(string=page).write_pdf('./content/NCI_STA_'+str(token_id)+'.pdf',
+	HTML(string=page).write_pdf('./tmp/NCI_STA_'+str(token_id)+'.pdf',
     	stylesheets=[CSS('./css/agreement.css')])
 	
-	with open('./content/contacts.csv', 'a') as csvfile:
+	with open('./data/contacts.csv', 'a') as csvfile:
 		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
