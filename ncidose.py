@@ -13,6 +13,8 @@ import urllib
 
 
 app = Flask(__name__)
+if not os.path.exists('tmp'):
+    os.makedirs('tmp')
 
 @app.route('/')
 def index():
