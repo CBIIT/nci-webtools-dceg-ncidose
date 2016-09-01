@@ -25,13 +25,13 @@
 </head>
 
 <body role="document">
-	<header class="container">		
+	<header class="container" style="margin-bottom:0px">		
 		<a href="http://dceg.cancer.gov/" target="dceg">
 			<img class="division-logo" src="/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
 		</a>
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default" style="margin-bottom:0px">
 			<div class="container-fluid">
-				<div class="navbar-header">
+				<div class="navbar-header" >
 					<!-- a menu botton that is only shown on the small device size -->
 					<button class="btn btn-success navbar-toggle" data-toggle ="collapse" data-target=".navbar-collapse">
 						<span class="glyphicon glyphicon-chevron-down"></span>
@@ -42,7 +42,7 @@
 					<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive">
 						<!-- HOME -->
 						<li class="nav active">
-							<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">NCIDOSE</a>
+							<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">NCIDose</a>
 						</li>
 						<!-- Phantoms -->
 						<li class="nav" >
@@ -54,13 +54,16 @@
 						</li>
 						<!-- DOSE Coefficients -->
 						<li class="nav" >
-							<a id="NCICT-tab-anchor" href="#DOSE-Coefficients-tab" data-toggle="tab" >DOSE Coefficients</a>
+							<a id="NCICT-tab-anchor" href="#DOSE-Coefficients-tab" data-toggle="tab" >Dose Coefficients</a>
 						</li>
 						<!-- Agreement -->
-					<li>
-						<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
-					</li>
-
+						<li>
+							<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
+						</li>
+						<!-- References -->
+						<li>
+							<a id="References-tab-anchor" href="#References-tab" data-toggle="tab">References</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -73,13 +76,28 @@
 		<div class="tab-content">
 			<!-- Home -->
 			<div class="tab-pane fade" id="home-tab">
-				<h3>NCIDOSE (Place Holder)</h3>
-				<p id="NCIDOSE_version"></p>
+				<h3 class="col-md-11">NCIDose</h3>
+				<p  class="col-md-11" id="NCIDOSE_version"></p>
+				</br>
+				<p class="col-md-11">To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods, tools, and dose coefficients. This website is designed to release the major developments in dose assessment tools.</p></br>
+
+				<p class="col-md-11">Parties interested in commercial use of any materials on this website may contact Dr. Kevin Chang at the NCI Technology Transfer Center (changke@mail.nih.gov).</p>
+
 			</div>
 
 			<!-- Phantoms -->
 			<div class="tab-pane fade" id="Phantoms-tab">
-				<h3>Phantoms Tab (Place Holder)</h3>
+				<h3 class="col-md-11">Phantoms</h3>
+				<p class="col-md-11">National Cancer Institute computational human phantoms are now in the format of Digital Imaging and Communications in Medicine (DICOM) Radiation Therapy (RT) for radiotherapy dosimetry purpose. The original computational human phantom series is based on the computed tomography (CT) images of pediatric and adult patients whose body size was close to the International Commission on Radiological Protection (ICRP) reference data. Several international standard data including the ICRP Publication 89 (ICRP 2002) and 100 (ICRP 2006), the International Commission on Radiation Units and Measurements (ICRU) 46. The original format of the computational phantoms was converted to DICOM-RT files using an in-house processor <i>(Lee et al 2015a)</i>. The DICOM-RT files include the DICOM-image and DICOM-structure representing newborn, 1-, 5-, 10-, 15-year-old, and adult male and female reference individuals. The DICOM-structure includes more than 50 radiosensitive organs and tissues. The DICOM-RT phantoms can be directly imported to commercial treatment planning systems.
+				</p></br>
+
+				<p class="col-md-11">Citation: Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015 Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies Physics in Medicine and Biology 60 2309–24.</p>
+				</br>
+				<div style="width:55%" class="col-md-11">
+					<img src="./img/Phantoms.png" style="width:100%" ></img>
+					<p>Three dimensional visualization of the anatomical structures of the computational human phantom series, rendered by Eclipse<sup>TM</sup> Treatment Planning System (Varian Medical Systems, Palo Alto, CA)</p>
+				</div>
+
 			</div>
 
 			<!-- NCICT -->
@@ -94,38 +112,51 @@
          				</span>
          				</br>
          				</br>
-						<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).</br></p>
-				
-						<!-- Add new notes here.  Surround paragrahs with <p></p> -->
-						<p> <b>Citation</b>: Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry. Health Physics 102 292–304
+         				<div class="col-md-11">
+							<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).</br></p>
+					
+							<!-- Add new notes here.  Surround paragrahs with <p></p> -->
+							<p> <b>Citation</b>: Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry. Health Physics 102 292–304
 
-						    </br></br>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015 NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans Journal of Radiological Protection 35 891–909
+							    </br></br>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015 NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans Journal of Radiological Protection 35 891–909
 
-						    </br></br>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation Medical Physics 39 2129–46
+							    </br></br>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation Medical Physics 39 2129–46
 
-						    </br></br>Lee C, Kim K P, Long D, Fisher R, Tien C, Simon S L, Bouville A and Bolch W E 2011 Organ doses for reference adult male and female undergoing computed tomography estimated by Monte Carlo simulations Medical Physics 38 1196–206
+							    </br></br>Lee C, Kim K P, Long D, Fisher R, Tien C, Simon S L, Bouville A and Bolch W E 2011 Organ doses for reference adult male and female undergoing computed tomography estimated by Monte Carlo simulations Medical Physics 38 1196–206
 
-						    </br></br>Lee C, Lodwick D, Hasenauer D, Williams J L, Lee C and Bolch W E 2007 Hybrid computational phantoms of the male and female newborn patient: NURBS-based whole-body models Physics in Medicine and Biology 52 3309–33
+							    </br></br>Lee C, Lodwick D, Hasenauer D, Williams J L, Lee C and Bolch W E 2007 Hybrid computational phantoms of the male and female newborn patient: NURBS-based whole-body models Physics in Medicine and Biology 52 3309–33
 
-						    </br></br>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams J L and Bolch W E 2010 The UF family of reference hybrid phantoms for computational radiation dosimetry. Physics in Medicine and Biology 55 339–63
+							    </br></br>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams J L and Bolch W E 2010 The UF family of reference hybrid phantoms for computational radiation dosimetry. Physics in Medicine and Biology 55 339–63
 
-						    </br></br>Lee C, Lodwick D, Williams J L and Bolch W E 2008 Hybrid computational phantoms of the 15-year male and female adolescent: applications to CT organ dosimetry for patients of variable morphometry. Medical physics 35 2366–82
+							    </br></br>Lee C, Lodwick D, Williams J L and Bolch W E 2008 Hybrid computational phantoms of the 15-year male and female adolescent: applications to CT organ dosimetry for patients of variable morphometry. Medical physics 35 2366–82
 
-						    </br></br>Lee E, Lamart S, Little M P and Lee C 2014 Database of normalised computed tomography dose index for retrospective CT dosimetry Journal of Radiological Protection 34 363–88
+							    </br></br>Lee E, Lamart S, Little M P and Lee C 2014 Database of normalised computed tomography dose index for retrospective CT dosimetry Journal of Radiological Protection 34 363–88
 
-						    </br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901
-						</p>
+							    </br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901
+							</p>
+						</div>
 			</div>
 
 			<!-- Coefficients -->
 			<div class="tab-pane fade" id="DOSE-Coefficients-tab">
-				<h3>Coefficients Tab (Place Holder)</h3>
+         		<h3 class="col-md-11">Dose Coefficients</h3>
+         		<div class="col-md-11">
+         			<h4>EXTERNAL PHOTON</h4>
+         			<p>We calculated dose coefficients for the International Commission on Radiological Protection (ICRP) reference pediatric phantoms externally exposed to mono-energetic photon radiation (X- and gamma-rays) over a wide energy range. Calculations used Monte Carlo radiation transport techniques. Dose coefficients, i.e., organ absorbed dose per unit air kerma (mGy/mGy), were calculated for 28 organs and tissues including the active marrow (or red bone marrow) for 10 phantoms (newborn, 1-year, 5-year, 10-year, and 15-year old male and female). Radiation exposure was simulated for 33 photon mono-energies (0.01 – 20 MeV) in six irradiation geometries: Anterior-Posterior (AP), Posterior-Anterior (PA), Right Lateral (RLAT), Left Lateral (LLAT), Rotational (ROT), and Isotropic (ISO).</p></br>
+
+         			<h4>INTERNAL PHOTON/ELECTRON</h4>
+         			<p>To improve the estimates of organ doses from nuclear medicine procedures using iodine 131 (I-131), we calculated a comprehensive set of I-131 S values, defined as organ absorbed doses in target tissues per unit of nuclear transition in source regions, for different source and target combinations. We used the latest reference adult male and female voxel phantoms published by the International Commission on Radiological Protection (ICRP Publication 110) and the I-131 photon and electron spectra from the ICRP Publication 107 to perform Monte Carlo radiation transport calculations using MCNPX2.7 to compute the S values. For each phantom, we simulated 55 source regions assuming a uniform distribution of I-131. We directly computed the S values for 42 target tissues without calculating Specific Absorbed Fraction (SAF) values. From these calculations, we derived a comprehensive set of S values for I-131 for 55 source regions and 42 target tissues in the ICRP male and female voxel phantoms. The new dataset includes the S values for source regions and target tissues of interest in internal dosimetry of I-131, which are not available in the long-used stylized phantoms from Oak Ridge National Laboratory (ORNL).</p>
+
+         			<p>Citation: S Lamart, SL Simon, A Bouville, BE Moroz, and C Lee, “S values for I-131 from the ICRP adult voxel phantoms and comparison with the previous reference values,” Radiation Protection Dosimetry, 168:92-110 (2016)</p>
+         			
+         		</div>
+
 			</div>
 
 			<!-- Agreement -->
 			<div class="tab-pane fade" id="Agreement-tab">
 				<h3  id="header2" class="col-md-9">Software Transfer Agreement</h3></br></br>
-				<p>If you underatand the following components please acknowledge by clicking on thech check boxes.</p>
+				<p>If you underatand the following components please acknowledge by clicking on the check boxes.</p>
 
 
 
@@ -222,8 +253,22 @@
 				</div>
 				</div>
 			</div>
+        <div class="tab-pane fade" id="References-tab">
+     		<h3 class="col-md-11">References</h3>
+     		<div class="col-md-11" style ="text-indent:-1.5em;padding-left:2.5em">
+     			<p >Dabin J, Mencarelli A, McMillan D, Romanyukha A, Struelens L and Lee C 2016 Validation of calculation algorithms for organ doses in CT by measurements on a 5 year old paediatric phantom <i>Physics in Medicine and Biology</i> <b>61</b> 4168–82</p>
+     			<p>Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry. <i>Health Physics</i> <b>102</b> 292–304</p>
+     			<p>ICRP 2002 Basic anatomical and physiological data for use in radiological protection : reference values <i>ICRP publication 89, Ann. ICRP</i> <b>32</b> 1–277</p>
+     			<p>ICRP 2006 Human alimentary tract model for radiological protection <i>ICRP publication 100, Ann. ICRp</i> <b>36</b> 1–336</p>
+     			<p>Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015a Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies<i> Physics in Medicine and Biology</i> <b>60</b> 2309–24</p>
+     			<p>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015b NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans <i>Journal of Radiological Protection</i> <b>35</b> 891–909</p>
+     			<p>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation <i>Medical Physics</i> <b>39</b> 2129–46</p>
+
+     		</div>
         </div> <!-- End of NCIDose Tab Content -->
-	       
+       
+
+		</div>
 	</main> <!-- End of main-->
 
 	<!-- Common Footer -->
