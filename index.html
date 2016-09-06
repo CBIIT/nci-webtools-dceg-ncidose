@@ -19,9 +19,7 @@
 <link rel="stylesheet" href="../common/css/style.css">
 
 <link rel="stylesheet" href="./css/NCIDOSE.css">
-
-
-
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
 <body role="document">
@@ -29,6 +27,13 @@
 		<a href="http://dceg.cancer.gov/" target="dceg">
 			<img class="division-logo" src="/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
 		</a>
+		<div id="header" role="banner" style="margin-bottom:3%">
+        	<div id="ribbon" class="clearfix">
+          		<div class="wrapper">
+              		<h1><a>NCIDose</a></h1>
+           		</div>
+        	</div>
+    	</div>
 		<nav class="navbar navbar-default" style="margin-bottom:0px">
 			<div class="container-fluid">
 				<div class="navbar-header" >
@@ -39,10 +44,10 @@
 				</div>
 
 				<div class="navbar-collapse collapse">
-					<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive">
+					<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive" style="width:100%" >
 						<!-- HOME -->
 						<li class="nav active">
-							<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">NCIDose</a>
+							<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">Home</a>
 						</li>
 						<!-- Phantoms -->
 						<li class="nav" >
@@ -61,8 +66,8 @@
 							<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
 						</li>
 						<!-- References -->
-						<li>
-							<a id="References-tab-anchor" href="#References-tab" data-toggle="tab">References</a>
+						<li class="pull-right">
+							<a id="References-tab-anchor" href="#References-tab" data-toggle="tab" >References</a>
 						</li>
 					</ul>
 				</div>
@@ -76,25 +81,23 @@
 		<div class="tab-content">
 			<!-- Home -->
 			<div class="tab-pane fade" id="home-tab">
-				<h3 class="col-md-11">NCIDose</h3>
-				<p  class="col-md-11" id="NCIDOSE_version"></p>
 				</br>
-				<p class="col-md-11">To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods, tools, and dose coefficients. This website is designed to release the major developments in dose assessment tools.</p></br>
+				To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, <a href="http://dceg.cancer.gov/"> Division of Cancer Epidemiology and Genetics</a>, <a href="http://www.cancer.gov/">National Cancer Institute </a> develops new dosimetry methods, tools, and dose coefficients. This website is designed to release the major developments in dose assessment tools.</br></br>
 
-				<p class="col-md-11">Parties interested in commercial use of any materials on this website may contact Dr. Kevin Chang at the NCI Technology Transfer Center (changke@mail.nih.gov).</p>
+				Parties interested in commercial use of any materials on this website may contact <a href="mailto:changke@mail.nih.gov" target="_top">Dr. Kevin Chang</a> at the <a href="https://techtransfer.cancer.gov/"> NCI Technology Transfer Center</a>.
 
 			</div>
 
 			<!-- Phantoms -->
 			<div class="tab-pane fade" id="Phantoms-tab">
-				<h3 class="col-md-11">Phantoms</h3>
-				<p class="col-md-11">National Cancer Institute computational human phantoms are now in the format of Digital Imaging and Communications in Medicine (DICOM) Radiation Therapy (RT) for radiotherapy dosimetry purpose. The original computational human phantom series is based on the computed tomography (CT) images of pediatric and adult patients whose body size was close to the International Commission on Radiological Protection (ICRP) reference data. Several international standard data including the ICRP Publication 89 (ICRP 2002) and 100 (ICRP 2006), the International Commission on Radiation Units and Measurements (ICRU) 46. The original format of the computational phantoms was converted to DICOM-RT files using an in-house processor <i>(Lee et al 2015a)</i>. The DICOM-RT files include the DICOM-image and DICOM-structure representing newborn, 1-, 5-, 10-, 15-year-old, and adult male and female reference individuals. The DICOM-structure includes more than 50 radiosensitive organs and tissues. The DICOM-RT phantoms can be directly imported to commercial treatment planning systems.
+				<p ">National Cancer Institute computational human phantoms are now in the format of Digital Imaging and Communications in Medicine (DICOM) Radiation Therapy (RT) for radiotherapy dosimetry purpose. The original computational human phantom series is based on the computed tomography (CT) images of pediatric and adult patients whose body size was close to the International Commission on Radiological Protection (ICRP) reference data. Several international standard data including the ICRP Publication 89 (ICRP 2002) and 100 (ICRP 2006), the International Commission on Radiation Units and Measurements (ICRU) 46. The original format of the computational phantoms was converted to DICOM-RT files using an in-house processor <i>(Lee et al 2015a)</i>. The DICOM-RT files include the DICOM-image and DICOM-structure representing newborn, 1-, 5-, 10-, 15-year-old, and adult male and female reference individuals. The DICOM-structure includes more than 50 radiosensitive organs and tissues. The DICOM-RT phantoms can be directly imported to commercial treatment planning systems.
 				</p></br>
 
-				<p class="col-md-11">Citation: Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015 Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies Physics in Medicine and Biology 60 2309–24.</p>
-				</br>
-				<div style="width:55%" class="col-md-11">
+				<p >Citation: Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015 Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies Physics in Medicine and Biology 60 2309–24.</p>
+				
+				<div style="width:55%;margin-top:5%" class="col-md-11">
 					<img src="./img/Phantoms.png" style="width:100%" ></img>
+					</br></br>
 					<p>Three dimensional visualization of the anatomical structures of the computational human phantom series, rendered by Eclipse<sup>TM</sup> Treatment Planning System (Varian Medical Systems, Palo Alto, CA)</p>
 				</div>
 
@@ -102,7 +105,6 @@
 
 			<!-- NCICT -->
 			<div class="tab-pane fade" id="NCICT-tab">
-						<h3 class="col-md-11">About NCICT</h3>
 						<span class="pull-right col-md-1">
                         	<i class="glyphicon glyphicon-question-sign" aria-label="Help" onclick="openHelpWindow('help.html')"></i>
                       		<a href="#">
@@ -112,7 +114,6 @@
          				</span>
          				</br>
          				</br>
-         				<div class="col-md-11">
 							<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).</br></p>
 					
 							<!-- Add new notes here.  Surround paragrahs with <p></p> -->
@@ -134,13 +135,10 @@
 
 							    </br></br>Long D J, Lee C, Tien C, Fisher R, Hoerner M R, Hintenlang D and Bolch W E 2013 Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms Medical Physics 40 13901
 							</p>
-						</div>
 			</div>
 
 			<!-- Coefficients -->
 			<div class="tab-pane fade" id="DOSE-Coefficients-tab">
-         		<h3 class="col-md-11">Dose Coefficients</h3>
-         		<div class="col-md-11">
          			<h4>EXTERNAL PHOTON</h4>
          			<p>We calculated dose coefficients for the International Commission on Radiological Protection (ICRP) reference pediatric phantoms externally exposed to mono-energetic photon radiation (X- and gamma-rays) over a wide energy range. Calculations used Monte Carlo radiation transport techniques. Dose coefficients, i.e., organ absorbed dose per unit air kerma (mGy/mGy), were calculated for 28 organs and tissues including the active marrow (or red bone marrow) for 10 phantoms (newborn, 1-year, 5-year, 10-year, and 15-year old male and female). Radiation exposure was simulated for 33 photon mono-energies (0.01 – 20 MeV) in six irradiation geometries: Anterior-Posterior (AP), Posterior-Anterior (PA), Right Lateral (RLAT), Left Lateral (LLAT), Rotational (ROT), and Isotropic (ISO).</p></br>
 
@@ -149,16 +147,12 @@
 
          			<p>Citation: S Lamart, SL Simon, A Bouville, BE Moroz, and C Lee, “S values for I-131 from the ICRP adult voxel phantoms and comparison with the previous reference values,” Radiation Protection Dosimetry, 168:92-110 (2016)</p>
          			
-         		</div>
 
 			</div>
 
 			<!-- Agreement -->
 			<div class="tab-pane fade" id="Agreement-tab">
-				<h3  id="header2" class="col-md-9">Software Transfer Agreement</h3></br></br>
-				<p>If you underatand the following components please acknowledge by clicking on the check boxes.</p>
-
-
+				<h3  id="header2">Software Transfer Agreement Form</h3></br>
 
 				<div class="panel panel-default">
 				    <div class="panel-heading"><h2 class="panel-title">Agree
@@ -172,9 +166,9 @@
 				    </div>
 				    <div class="panel-body">
 						<form id="consent" action="" method="post">
-							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> Phantoms <a class="glyphicon glyphicon-question-sign" id='Phantoms'></a></p></b></input></br>
-							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> NCICT <a class="glyphicon glyphicon-question-sign" id='NCICT'></a></p></b></input></br>
-							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> DOSE Coefficents <a class="glyphicon glyphicon-question-sign" id='DOSE'></a></p></b></input>
+							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> I agree and understand the content within Phantoms <a class="glyphicon glyphicon-question-sign" id='Phantoms'></a></p></b></input></br>
+							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> I agree and understand the content within NCICT <a class="glyphicon glyphicon-question-sign" id='NCICT'></a></p></b></input></br>
+							<input type="checkbox" id="consent1" value="yes" /><b><p style="display:inline"> I agree and understand the content within DOSE Coefficents <a class="glyphicon glyphicon-question-sign" id='DOSE'></a></p></b></input>
 						</form>
 					
 				    </div>
@@ -254,8 +248,7 @@
 				</div>
 			</div>
         <div class="tab-pane fade" id="References-tab">
-     		<h3 class="col-md-11">References</h3>
-     		<div class="col-md-11" style ="text-indent:-1.5em;padding-left:2.5em">
+     		<div  style ="text-indent:-1.5em;padding-left:2.5em">
      			<p >Dabin J, Mencarelli A, McMillan D, Romanyukha A, Struelens L and Lee C 2016 Validation of calculation algorithms for organ doses in CT by measurements on a 5 year old paediatric phantom <i>Physics in Medicine and Biology</i> <b>61</b> 4168–82</p>
      			<p>Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry. <i>Health Physics</i> <b>102</b> 292–304</p>
      			<p>ICRP 2002 Basic anatomical and physiological data for use in radiological protection : reference values <i>ICRP publication 89, Ann. ICRP</i> <b>32</b> 1–277</p>
@@ -325,4 +318,3 @@
 
 </html>
 
-                                                  
