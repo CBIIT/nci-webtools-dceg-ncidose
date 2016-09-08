@@ -1,5 +1,5 @@
 {
-	"Software Transfer Agreement Form":{
+	"Acknowledge you have read and fully understood the contents of each componnent by checking off their boxes, fill out the following information and click Generate to download the STA PDF":{
 		"Phantoms" : {
 			"header": "Computational Human Phantoms",
 			"content":"Computational human phantom series, provided as binary voxel format (surface format not provided), reference anatomy models representing newborn to adult males and females, as described in Lee et al. (Phys Med Biol 55:339-363, 2010), including further improvements thereof, and related documentation."

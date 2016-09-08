@@ -51,15 +51,16 @@
     min-height: 600px;
     -webkit-overflow-scrolling: touch;
     background: white;
-    border-width: 0 1px 1px 1px;
-    border-style: solid;
+    /*border-width: 0 1px 1px 1px;
+     border-style: solid; 
     border-color: #d9d9d9;
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px; */
     overflow: hidden;
 }
 
 .tab-content .tab-pane {
     color: #566473;
+    margin: 10px 0px;
 }
 
 @media ( max-width : 480px) {
@@ -303,6 +304,10 @@ img.graph-legend {
 /* New stuff */
 
 /* Header and Footer */
+header {
+    margin: 0px;
+}
+
 .header img {
     /*
     width: 60%;
@@ -472,7 +477,8 @@ font-family: 'Fjalla One', sans-serif;
     text-shadow: none;
 }
 #ribbon {
-    color: #f6f6f6;
-    background: #BB0E3D;
-    padding: 0 24px;
+    color: #FFF;
+    font-size: 14pt;
+    background: #bf677f;;
+    padding: 5px 0 5px 10px;
 }
