@@ -1,5 +1,5 @@
 {
-	"Acknowledge you have read and fully understood the contents of each componnent by checking off their boxes, fill out the following information and click Generate to download the STA PDF":{
+	"What materials are you interested in downloading? Please fill out the following information and click Generate, a copy of the STA aggreement form will be emailed to you shorty.":{
 		"Phantoms" : {
 			"header": "Computational Human Phantoms",
 			"content":"Computational human phantom series, provided as binary voxel format (surface format not provided), reference anatomy models representing newborn to adult males and females, as described in Lee et al. (Phys Med Biol 55:339-363, 2010), including further improvements thereof, and related documentation."
