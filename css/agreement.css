@@ -57,6 +57,11 @@ span.CommentTextChar
     .page-break { display: block; page-break-before: always; }
 }
  ol
-    {margin-bottom:0in;}
+    {margin-bottom:0in;font-family:"Times New Roman","serif";font-size:12.0pt;}
 ul
-    {margin-bottom:0in;}
+    {margin-bottom:0in;font-family:"Times New Roman","serif";font-size:12.0pt;}
+
+p{
+    font-family:"Times New Roman","serif";
+    ont-size:12.0pt;
+}

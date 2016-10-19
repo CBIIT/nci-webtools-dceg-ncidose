@@ -1,0 +1,7 @@
+[Thu Aug 25 15:23:59.769931 2016] [core:notice] [pid 6620:tid 140552075655232] SELinux policy enabled; httpd running as context unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+[Thu Aug 25 15:23:59.867501 2016] [mpm_event:notice] [pid 6624:tid 140552075655232] AH00489: Apache/2.4.6 (CentOS) mod_wsgi/4.5.5 Python/2.7.5 configured -- resuming normal operations
+[Thu Aug 25 15:23:59.867827 2016] [core:notice] [pid 6624:tid 140552075655232] AH00094: Command line: 'httpd (mod_wsgi-express)   -f /analysistools/public_html/apps/ncidose/wsgi/httpd.conf -D MOD_WSGI_DIRECTORY_INDEX -D MOD_WSGI_ROTATE_LOGS -D MOD_WSGI_MULTIPROCESS -D MOD_WSGI_MPM_ENABLE_EVENT_MODULE -D MOD_WSGI_MPM_EXISTS_EVENT_MODULE -D MOD_WSGI_MPM_EXISTS_WORKER_MODULE -D MOD_WSGI_MPM_EXISTS_PREFORK_MODULE'
+[Thu Aug 25 15:24:08.762010 2016] [wsgi:error] [pid 6627:tid 140552075655232] monitor (pid=6627): Starting change monitor.
+[Thu Aug 25 15:24:09.049784 2016] [wsgi:error] [pid 6628:tid 140552075655232] monitor (pid=6628): Starting change monitor.
+[Thu Aug 25 15:24:09.283531 2016] [wsgi:error] [pid 6626:tid 140552075655232] monitor (pid=6626): Starting change monitor.
+[Thu Aug 25 15:25:16.723070 2016] [mpm_event:notice] [pid 6624:tid 140552075655232] AH00491: caught SIGTERM, shutting down
