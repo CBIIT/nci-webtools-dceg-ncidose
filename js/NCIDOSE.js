@@ -148,7 +148,7 @@ function openHelpWindow(pageURL) {
 
 $('#consent :checkbox').change(function () {
     var a = $('#consent :checked').filter(":checked").length;
-    if (a == 1) {
+    if (a >= 1) {
         $('#overlay').removeClass('overlay');
     } else {
         $('#overlay').addClass('overlay');
@@ -179,7 +179,7 @@ function addEventListeners() {
  	        return;
  	}
  	else{
- 		Create_PDF();
+ 		check_software();
  	}
  
  	})

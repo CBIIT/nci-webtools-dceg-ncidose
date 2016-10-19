@@ -5,12 +5,40 @@ var restServerUrl = restService.protocol + "://" + restService.hostname + "/"+ r
 //var importedDoc = link.import;
 //var form = importedDoc.getElementById("test");
 //var a4  =[ 595.28,  841.89];  // for a4 size paper width and height
-function Create_PDF(){
+function check_software(){
+	var checked_software={};
+	 checked_software.Granted=[];
+	var software_content=""
+
+	$("input:checkbox").each(function(){
+	    var $this = $(this);
+
+	    if($this.is(":checked")){
+	        checked_software.Granted.push($this.attr("id"));
+	    }
+	});
+
+	$(document).ready(function() {
+	var request = $.ajax({
+		type: 'GET',
+		url: './json/overlay.json',
+		contentType: 'application/json',
+	}).fail(function(response) {
+	}).always(function(response) {
+		 software_content=response
+		 	Create_PDF(checked_software,software_content)
+
+	});
+
+})
+
+}
+function Create_PDF(checked_software,software_content){
     //validation
 
 
 	var cont=""
-
+	var software=""
 	//recipient
 	var first=document.getElementById("first_name").value;
 	var last= document.getElementById("last_name").value;
@@ -21,7 +49,9 @@ function Create_PDF(){
 	var phone=document.getElementById("phone").value;
 	var address=document.getElementById("address").value;
 	address=address.split("\n").join("<br>");
-	console.log(email);
+
+	
+
 
 	//recipient investigator
 
@@ -56,6 +86,7 @@ function Create_PDF(){
 		type: 'GET',
 		async:false
 	}).success(function(data) {
+		
 		data=data.replace('$[Recipient Name]',full_name);
 		data=data.replace('$[Recipient Title]',title);
 
@@ -63,17 +94,41 @@ function Create_PDF(){
 		data=data.replace('$[Recipient Title_sig]',title);
 		data=data.replace('$[Recipient Institution]',institution);
 
-
 		data=data.replace("$[reason]", reason);
 
 		data=data.replace('$[Mailing Address]',address)
-		//data=data.replace('$[Authorized Name]',full_name_auth);
-		//data=data.replace('$[Authorized Title]',title_auth);
 		data=data.replace("$[phone]", phone);
 		data=data.replace("$[email]", email);
+		var header=$('#header2').html();
+			if(checked_software.Granted.indexOf("phantoms")!=-1){
+				data=data.replace('$[Phantoms]',software_content[header]["Phantoms"].content);
+				software+= software_content[header]["Phantoms"].content+"\n";
+
+			}
+			else{
+				data=data.replace('&#9745 $[Phantoms]',"")
+			}
+			
+			if(checked_software.Granted.indexOf("ncict")!=-1){
+				data=data.replace('$[NCICT]',software_content[header]["NCICT"].content);
+				software+= software_content[header]["NCICT"].content+"\n";
+			}
+			else{
+				data=data.replace('&#9745 $[NCICT]',"")
+			}
+
+			if(checked_software.Granted.indexOf("dose")!=-1){
+				data=data.replace('$[DOSE]',software_content[header]["DOSE"].content);
+				software+= software_content[header]["DOSE"].content+"\n";
+			}
+			else{
+				data=data.replace('&#9745 $[DOSE]',"")
+			}
+		
+
+
 		cont = data;
 	});
-
   		address=address.replace("<br>"," ");
   		address=address.replace(","," ");
   		reason=reason.replace("<br>"," ");
@@ -88,6 +143,7 @@ function Create_PDF(){
 	//	last_auth: document.getElementById("last_name_auth").value,
 	//	title_auth: document.getElementById("title_auth").value,
 		purpose: document.getElementById("reason").value,
+		software:software,
 		address: address,
 		date:today,
 		page:cont

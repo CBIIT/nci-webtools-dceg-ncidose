@@ -2,12 +2,12 @@
 	"What materials are you interested in downloading? Please fill out the following information and click Generate, a copy of the STA aggreement form will be emailed to you shorty.":{
 		"Phantoms" : {
 			"header": "Computational Human Phantoms",
-			"content":"Computational human phantom series, provided as binary voxel format (surface format not provided), reference anatomy models representing newborn to adult males and females, as described in Lee et al. (Phys Med Biol 55:339-363, 2010), including further improvements thereof, and related documentation."
+			"content":"Computational human phantom series, provided as binary voxel format or Digital Imaging and Communications in Medicine (DICOM) format (surface format not provided), reference anatomy models representing newborn to adult males and females, as described in Lee et al. (Phys Med Biol 55:339-363, 2010) and Lee et al. (Phys Med Biol 60:2309-2324, 2015), including further improvements thereof, and related documentation"
 
 		},
 		"NCICT":{
 			"header":"NCICT",
-			"content":"National Cancer Institute dosimetry system for Computed Tomography (NCICT) software (NIH Ref. No. E-082-2016/0), provided as executable code (source code not provided), a computer program to assess radiation dose to organs in pediatric and adult patients undergoing computed tomography (CT) examinations as described in Lee et al. (J Radiol Prot. 35:891-909, 2015), including further improvements thereof, and related documentation."
+			"content":"National Cancer Institute dosimetry system for Computed Tomography (NCICT) software (NIH Ref. No. E-082-2016/0), provided as executable code (source code not provided),a computer program to assess radiation dose to organs in pediatric and adult patients undergoing computed tomography (CT) examinations as described in Lee et al. (J Radiol Prot. 35:891-909, 2015), including further improvements thereof, and related documentation."
 		},
 		"DOSE":{
 			"header":"Organ DOSE Coefficents",
