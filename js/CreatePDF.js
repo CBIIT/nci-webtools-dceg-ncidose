@@ -42,7 +42,7 @@ function Create_PDF(checked_software,software_content){
 	//recipient
 	var first=document.getElementById("first_name").value;
 	var last= document.getElementById("last_name").value;
-	var full_name=document.getElementById("first_name").value +" "+ document.getElementById("last_name").value;
+	var full_name=first+" "+ last;
 	var title=document.getElementById("title").value;
 	var email=document.getElementById("email").value;
 	var institution=document.getElementById("institution").value;
@@ -63,8 +63,8 @@ function Create_PDF(checked_software,software_content){
 
 	//activity
 	var institution=document.getElementById("institution").value;
-	var reason=document.getElementById("reason").value;
-		reason=reason.replace("\n","<br>")
+	var purpose=document.getElementById("reason").value;
+		purpose=purpose.replace("\n","<br>")
 
 	var today = new Date();
     var dd = today.getDate();
@@ -102,7 +102,7 @@ function Create_PDF(checked_software,software_content){
 		var header=$('#header2').html();
 			if(checked_software.Granted.indexOf("phantoms")!=-1){
 				data=data.replace('$[Phantoms]',software_content[header]["Phantoms"].content);
-				software+= software_content[header]["Phantoms"].content+"\n";
+								software+= " Phantoms";
 
 			}
 			else{
@@ -111,7 +111,7 @@ function Create_PDF(checked_software,software_content){
 			
 			if(checked_software.Granted.indexOf("ncict")!=-1){
 				data=data.replace('$[NCICT]',software_content[header]["NCICT"].content);
-				software+= software_content[header]["NCICT"].content+"\n";
+				software+= " NCICT";
 			}
 			else{
 				data=data.replace('&#9745 $[NCICT]',"")
@@ -119,7 +119,7 @@ function Create_PDF(checked_software,software_content){
 
 			if(checked_software.Granted.indexOf("dose")!=-1){
 				data=data.replace('$[DOSE]',software_content[header]["DOSE"].content);
-				software+= software_content[header]["DOSE"].content+"\n";
+				software+= " DOSE";
 			}
 			else{
 				data=data.replace('&#9745 $[DOSE]',"")
@@ -131,18 +131,15 @@ function Create_PDF(checked_software,software_content){
 	});
   		address=address.replace("<br>"," ");
   		address=address.replace(","," ");
-  		reason=reason.replace("<br>"," ");
+  		purpose=purpose.replace("<br>"," ");
 
 		var Inputs = {
-		first : document.getElementById("first_name").value,
-		last : document.getElementById("last_name").value,
-		title: document.getElementById("title").value,
-		email: document.getElementById("email").value,
-		institution: document.getElementById("institution").value,
-	//	first_auth: document.getElementById("first_name_auth").value,
-	//	last_auth: document.getElementById("last_name_auth").value,
-	//	title_auth: document.getElementById("title_auth").value,
-		purpose: document.getElementById("reason").value,
+		first : first,
+		last : last,
+		title: title,
+		email: email,
+		institution: institution,
+		purpose: purpose,
 		software:software,
 		address: address,
 		date:today,

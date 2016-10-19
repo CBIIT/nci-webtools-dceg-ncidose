@@ -36,18 +36,10 @@ def index():
 def store():
 	mimetype = 'application/json'
 	data = json.loads(request.stream.read())
-	first = data["first"]
-	last = data["last"]
-	title = data["title"]
-	email= data["email"]
-	institution= data["institution"]
-	purpose= data["purpose"]
-	date=data["date"]
-	address=data["address"]
-	page=data["page"].encode('utf-8').strip()
- 	address="'"+address+"'"
- 	purpose="'"+purpose+"'"
 	token_id=random.randrange(1, 1000000)
+	email=data["email"]
+	date=data["date"]
+	page=data["page"].encode('utf-8').strip()
 #	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
 #	html_file.write(page)
 #	print(page)
@@ -59,25 +51,38 @@ def store():
     	stylesheets=[CSS('./css/agreement.css')])
 	
 	Send_to_recipient(email,file,date)
-	PM="Scott.goldweber@nih.gov"
-	#Send_to_PM(PM,"",date)
+	Send_to_PM(data)
 	return str("")
 
-def Send_to_PM(email,file,date):
+def Send_to_PM(data):
+	config = PropertyUtil(r"config.ini")
+	print(config)
+	email=config.getAsString("mail.admin")
+	
+	files=[]
+	first = data["first"]
+	last = data["last"]
+	title = data["title"]
+	purpose= data["purpose"]
+	date=data["date"]
+	address=data["address"]
+	institution=data["institution"]
+	software=data["software"]
+	page=data["page"].encode('utf-8').strip()
 	product_name = "NCIDose"
 	print "making message"
 
 	header = """<h2>"""+product_name+"""</h2>"""
 	body = """
 	      <div style="background-color:white;border-top:25px solid #142830;border-left:2px solid #142830;border-right:2px solid #142830;border-bottom:2px solid #142830;padding:20px">
-	        Hello,<br>
 	        <p>Dr. Lee,</p></br>
 	A user has submitted a request using the using the """+product_name+"""  web application tool on """+date+""". The details are as follows:</p>
 	<p> Recipient name: """+first+""" """+last+"""</p>
 	<p>Recipient title: """+title+"""</p>
 	<p>Recipient email: """+email+"""</p>
-	<p> Address: """+address+"""</p>
 	<p>Institution: """+institution+"""</p>
+	<p> Buisness Address: """+address+"""</p></br>
+	<p> Software request: """+software+"""</p></br>
 	<p> Purpose of request: """+purpose+"""</p></br>
 
 	      """
@@ -91,7 +96,7 @@ def Send_to_PM(email,file,date):
 	        <div style="background-color:#ffffff;color:#888888;font-size:13px;line-height:17px;font-family:sans-serif;text-align:left">
 	              <p>
 	                  <strong>About <em>"""+product_name+"""</em></strong></em><br>
-	                  A web-based tool for the NCICT (currently a Windows-based computational tool) users to register and submit a Software Transfer Agreement (STA) form in order to download and use the NCICT program.
+	                  To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios. This website is designed to share the major developments in dose assessment tools and resources with other researchers. 
 	                  <strong>For more information, visit
 	                    <a target="_blank" style="color:#888888" href="http://analysistools.nci.nih.gov">analysistools.nci.nih.gov/jpsurv</a>
 	                  </strong>
@@ -107,17 +112,17 @@ def Send_to_PM(email,file,date):
 	            """
 	message = """
 	  <head>
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 	    <title>html title</title>
 	  </head>
-	  <body>"""+header+body+footer+"""</body>"""
+	  <body>"""+header+body+footer+"""</body>""" 
 
 	print "sending"
 #	with open('./data/contacts.csv', 'a') as csvfile:
 #		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 #		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 #		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
-	composeMail(email,message,file)
+	composeMail(email,message,None)
 
 def Send_to_recipient(email,file,date):
 	product_name = "NCIDose"
@@ -127,7 +132,7 @@ def Send_to_recipient(email,file,date):
 	body = """
 	      <div style="background-color:white;border-top:25px solid #142830;border-left:2px solid #142830;border-right:2px solid #142830;border-bottom:2px solid #142830;padding:20px">
 	        Hello,<br>
-+	        <p> On """+date+""" using the """+product_name+""" web application tool, you requested to use new various dosimetry methods, tools, and dose coefficients. Attatched is the STA document outlining which of those tools you will like to have access to. Please review the PDF document and email back to Dr. Lee at leechoonsik@mail.nih.gov</p>
+	        <p> On """+date+""" using the """+product_name+""" web application tool, you requested to use new various dosimetry methods, tools, and dose coefficients. Attatched is the STA document outlining which of those tools you will like to have access to. Please review the PDF document and email back to Dr. Lee at leechoonsik@mail.nih.gov</p>
 
 	      """
 	footer = """
@@ -140,7 +145,7 @@ def Send_to_recipient(email,file,date):
 	        <div style="background-color:#ffffff;color:#888888;font-size:13px;line-height:17px;font-family:sans-serif;text-align:left">
 	              <p>
 	                  <strong>About <em>"""+product_name+"""</em></strong></em><br>
-	                  A web-based tool for the NCICT (currently a Windows-based computational tool) users to register and submit a Software Transfer Agreement (STA) form in order to download and use the NCICT program.
+	                  To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios. This website is designed to share the major developments in dose assessment tools and resources with other researchers. 
 	                  <strong>For more information, visit
 	                    <a target="_blank" style="color:#888888" href="http://analysistools.nci.nih.gov">analysistools.nci.nih.gov/jpsurv</a>
 	                  </strong>
@@ -167,6 +172,7 @@ def Send_to_recipient(email,file,date):
 #		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 #		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
 	composeMail(email,message,file)
+
 def composeMail(recipient,message,file):
  	config = PropertyUtil(r"config.ini")
 	recipient = recipient
@@ -175,12 +181,13 @@ def composeMail(recipient,message,file):
 	packet['From'] = "NCIDose <do.not.reply@nih.gov>"
 	packet['To'] = recipient
 	packet.attach(MIMEText(message,'html'))
-	with open(file,"rb") as openfile:
-		packet.attach(MIMEApplication(
-		  openfile.read(),
-		  Content_Disposition='attachment; filename="%s"' % os.path.basename(file),
-		  Name=os.path.basename(file)
-	))
+	if(file):
+		with open(file,"rb") as openfile:
+			packet.attach(MIMEApplication(
+			  openfile.read(),
+			  Content_Disposition='attachment; filename="%s"' % os.path.basename(file),
+			  Name=os.path.basename(file)
+		))
 	MAIL_HOST=config.getAsString('mail.host')
 	print MAIL_HOST
 	smtp = smtplib.SMTP(MAIL_HOST)
