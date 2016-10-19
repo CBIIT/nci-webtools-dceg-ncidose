@@ -25,10 +25,11 @@ function Create_PDF(){
 
 	//recipient investigator
 
-	var first_inv=document.getElementById("first_name_inv").value;
-	var last_inv= document.getElementById("last_name_inv").value;
-	var full_name_inv=document.getElementById("first_name_inv").value +" "+ document.getElementById("last_name_inv").value
-	var title_inv=document.getElementById("title_inv").value; 	var email=document.getElementById("email").value;
+	//var first_inv=document.getElementById("first_name_auth").value;
+	//var last_inv= document.getElementById("last_name_auth").value;
+	//var full_name_auth=document.getElementById("first_name_auth").value +" "+ document.getElementById("last_name_auth").value
+	//var title_auth=document.getElementById("title_auth").value; 	
+	var email=document.getElementById("email").value;
 
 	//activity
 	var institution=document.getElementById("institution").value;
@@ -66,8 +67,8 @@ function Create_PDF(){
 		data=data.replace("$[reason]", reason);
 
 		data=data.replace('$[Mailing Address]',address)
-		data=data.replace('$[Investigator Name]',full_name_inv);
-		data=data.replace('$[Investigator Title]',title_inv);
+		//data=data.replace('$[Authorized Name]',full_name_auth);
+		//data=data.replace('$[Authorized Title]',title_auth);
 		data=data.replace("$[phone]", phone);
 		data=data.replace("$[email]", email);
 		cont = data;
@@ -83,9 +84,9 @@ function Create_PDF(){
 		title: document.getElementById("title").value,
 		email: document.getElementById("email").value,
 		institution: document.getElementById("institution").value,
-		first_inv: document.getElementById("first_name_inv").value,
-		last_inv: document.getElementById("last_name_inv").value,
-		title_inv: document.getElementById("title_inv").value,
+	//	first_auth: document.getElementById("first_name_auth").value,
+	//	last_auth: document.getElementById("last_name_auth").value,
+	//	title_auth: document.getElementById("title_auth").value,
 		purpose: document.getElementById("reason").value,
 		address: address,
 		date:today,
@@ -93,7 +94,7 @@ function Create_PDF(){
 	};
 	$.ajax({
 		type : 'POST',
-		url : "/ncidoseRest/",
+		url : "ncidoseRest/",
 		data : JSON.stringify(Inputs),
 		contentType : 'application/json' // JSON
 		}).success(function(token){

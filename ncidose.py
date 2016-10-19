@@ -7,10 +7,22 @@ import csv
 import random
 import subprocess
 from weasyprint import HTML, CSS
+from PropertyUtil import PropertyUtil
 import urllib
+import smtplib
+
 
 # Load Env variables
-
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from twisted.internet import reactor, defer
+from PropertyUtil import PropertyUtil
+from stompest.async import Stomp
+from stompest.async.listener import SubscriptionListener
+from stompest.async.listener import DisconnectListener
+from stompest.config import StompConfig
+from stompest.protocol import StompSpec
 
 app = Flask(__name__)
 if not os.path.exists('tmp'):
@@ -29,9 +41,6 @@ def store():
 	title = data["title"]
 	email= data["email"]
 	institution= data["institution"]
-	first_inv= data["first_inv"]
-	last_inv= data["last_inv"]
-	title_inv= data["title_inv"]
 	purpose= data["purpose"]
 	date=data["date"]
 	address=data["address"]
@@ -49,12 +58,12 @@ def store():
 	HTML(string=page).write_pdf('./tmp/NCI_STA_'+str(token_id)+'.pdf',
     	stylesheets=[CSS('./css/agreement.css')])
 	
-	Send_to_recipient(email,file)
-	PM="leechoonsik@mail.nih.gov"
-	Send_to_PM(PM,"")
+	Send_to_recipient(email,file,date)
+	PM="Scott.goldweber@nih.gov"
+	#Send_to_PM(PM,"",date)
 	return str("")
 
-def Send_to_PM(email,file):
+def Send_to_PM(email,file,date):
 	product_name = "NCIDose"
 	print "making message"
 
@@ -62,15 +71,13 @@ def Send_to_PM(email,file):
 	body = """
 	      <div style="background-color:white;border-top:25px solid #142830;border-left:2px solid #142830;border-right:2px solid #142830;border-bottom:2px solid #142830;padding:20px">
 	        Hello,<br>
-+	        <p>Dr. Lee,</p></br>
+	        <p>Dr. Lee,</p></br>
 	A user has submitted a request using the using the """+product_name+"""  web application tool on """+date+""". The details are as follows:</p>
 	<p> Recipient name: """+first+""" """+last+"""</p>
 	<p>Recipient title: """+title+"""</p>
 	<p>Recipient email: """+email+"""</p>
 	<p> Address: """+address+"""</p>
 	<p>Institution: """+institution+"""</p>
-	<p> Invesigator name:  """+first_inv+""" """+last_inv+"""</p>
-	<p> Invesigator title: """+title_inv+"""</p>
 	<p> Purpose of request: """+purpose+"""</p></br>
 
 	      """
@@ -112,7 +119,7 @@ def Send_to_PM(email,file):
 #		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
 	composeMail(email,message,file)
 
-def Send_torecipient(email,file):
+def Send_to_recipient(email,file,date):
 	product_name = "NCIDose"
 	print "making message"
 
@@ -164,8 +171,8 @@ def composeMail(recipient,message,file):
  	config = PropertyUtil(r"config.ini")
 	recipient = recipient
 	packet = MIMEMultipart()
-	packet['Subject'] = "eConsent Agreement Form"
-	packet['From'] = "eConsent <do.not.reply@nih.gov>"
+	packet['Subject'] = "NCIDose STA Request Form"
+	packet['From'] = "NCIDose <do.not.reply@nih.gov>"
 	packet['To'] = recipient
 	packet.attach(MIMEText(message,'html'))
 	with open(file,"rb") as openfile:

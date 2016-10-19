@@ -93,7 +93,7 @@
 
 			<!-- Phantoms -->
 			<div class="tab-pane fade" id="Phantoms-tab">
-				<p ">National Cancer Institute computational human phantoms are now in the format of Digital Imaging and Communications in Medicine (DICOM) Radiation Therapy (RT) for radiotherapy dosimetry purpose. The original computational human phantom series is based on the Computed Tomography (CT) images of pediatric and adult patients whose body size was close to the International Commission on Radiological Protection (ICRP) reference data. Several international standard data including the ICRP Publication 89 (ICRP 2002) and 100 (ICRP 2006), the International Commission on Radiation Units and Measurements (ICRU) 46. The original format of the computational phantoms was converted to DICOM-RT files using an in-house processor <i>(Lee et al 2015a)</i>. The DICOM-RT files include the DICOM-image and DICOM-structure representing newborn, 1-, 5-, 10-, 15-year-old, and adult male and female reference individuals. The DICOM-structure includes more than 50 radiosensitive organs and tissues. The DICOM-RT phantoms can be directly imported to commercial treatment planning systems.
+				<p>National Cancer Institute computational human phantoms are now in the format of Digital Imaging and Communications in Medicine (DICOM) Radiation Therapy (RT) for radiotherapy dosimetry purpose. The original computational human phantom series is based on the computed tomography (CT) images of pediatric and adult patients whose body size was close to the International Commission on Radiological Protection (ICRP) reference data. Several international standard data including the ICRP Publication 89 (ICRP 2002) and 100 (ICRP 2006), the International Commission on Radiation Units and Measurements (ICRU) 46. The original format of the computational phantoms was converted to DICOM-RT files using an in-house processor (Lee et al 2015a). The DICOM-RT files include the DICOM-image and DICOM-structure representing newborn, 1-, 5-, 10-, 15-year-old, and adult male and female reference individuals. The DICOM-structure includes more than 50 radiosensitive organs and tissues. The DICOM-RT phantoms can be directly imported to commercial treatment planning systems.
 				</p></br>
 
 				<p >Citation: Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015 Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies Physics in Medicine and Biology 60 2309–24.</p>
@@ -116,10 +116,10 @@
 
          				</span>
          				</br>
-							<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015).</br></p>
+							<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013, Dabin et al 2016), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015b). NCICT features two computation modes: graphical user interface (GUI) Mode and Batch Calculation Mode. The GUI Mode is for users to interactively input patient and CT scanner data into NCICT and obtain organ doses instantly. The Batch Calculation Mode is designed to compute organ doses for a large number of patients by importing a set of parameters in formatted text file.</br></p>
 
 					<div class="thumbnail col-lg-6 col-md-8 col-sm-12">
-						<img src="./img/NCICT_interface.JPG" class="img-responsive">
+						<img src="./img/NCICT_home.png" class="img-responsive">
 					</div>	
 
 			</div>
@@ -150,7 +150,7 @@
 
 			<!-- Agreement -->
 			<div class="tab-pane fade" id="Agreement-tab">
-				<p id="header2">Acknowledge you have read and fully understood the contents of each componnent by checking off their boxes, fill out the following information and click Generate to download the STA PDF</p>
+				<p id="header2">What materials are you interested in downloading? Please fill out the following information and click Generate, a copy of the STA aggreement form will be emailed to you shorty.</p>
 
 				<div class="panel panel-default">
 				    <div class="panel-heading"><h2 class="panel-title">Acknowledgment
@@ -176,62 +176,47 @@
 				<div id="errorMessage"></div>
 				<!-- Recipient Section -->
 				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Recipient</h2></div>
+				    <div class="panel-heading"><h2 class="panel-title">Recipient Investigator</h2></div>
 				    <div class="panel-body">
 
 					<div class="row" style="margin-bottom:10px">
 					    <label class="col-sm-2">First Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required/></div>
+					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required value="Scott"/></div>
 					    <label class="col-sm-2">Last Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required/></div>
+					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required value="Goldweber"/></div>
 					    <label class="col-sm-2">Title*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="title" required></div>    
+					    <div class="col-sm-2"><input type="text" class="form-control" id="title" required value="master of all"></div>    
 					</div>            
 
 					<div class="row" style="margin-bottom:10px">
 					    <label class="col-sm-2">Email*:</label>
-					    <div class="col-sm-2"><input type="email" class="form-control" id="email" required /></div>
+					    <div class="col-sm-2"><input type="email" class="form-control" id="email" required value="scott.goldweber@gmail.com"/></div>
 					    <label class="col-sm-2">Phone*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
+					    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required value="111111"></div>
 					</div>
-
 					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">Address*:</label>
-					    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required></textarea></div>
+					    <label class="col-sm-2">Institution*:</label>
+					    <div class="col-sm-6"><input type="text" class="form-control" id="institution"  required value="Westeros"/></div>
+					</div>
+					<div class="row" style="margin-bottom:10px">
+					    <label class="col-sm-2">Business Address*:</label>
+					    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required >12345 lane ave</textarea></div>
 					</div>
 				    </div>
 				</div>
-
-				<!-- Investigator Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Investigator</h2></div>
-				    <div class="panel-body">							
-					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">First Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name_inv" required/></div>
-					    <label class="col-sm-2">Last Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name_inv"  required/></div>
-					    <label class="col-sm-2">Title*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="title_inv"  required/></div>
-					</div>
-				    </div>
-				</div>
+				
 
 				<!-- Research Activity Section -->
 				<div class="panel panel-default">
 				    <div class="panel-heading"><h2 class="panel-title">Research Activity</h2></div>
 				    <div class="panel-body">
-				    
-					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">Institution*:</label>
-					    <div class="col-sm-10"><input type="text" class="form-control" id="institution"  required/></div>
-					</div>
+		
 					<div class="row">
 					    <label class="col-sm-2">Purpose*:</label>
 					</div>
 					<div class="row">
 					    <div class="col-sm-12">
-						<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 250 words)" maxlength="250" required></textarea>
+						<textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required>fgffgfgf</textarea>
 					    </div>
 					</div>
 
@@ -258,8 +243,7 @@
      			<p>Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015a Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies<i> Physics in Medicine and Biology</i> <b>60</b> 2309–24</p>
      			<p>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015b NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans <i>Journal of Radiological Protection</i> <b>35</b> 891–909</p>
      			<p>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation <i>Medical Physics</i> <b>39</b> 2129–46</p>
-     			<p>Hurtado J L, Lee C, Lodwick D, Goede T, Williams J L and Bolch W E 2012 Hybrid computational phantoms representing the reference adult male and adult female: construction and applications for retrospective dosimetry.  <i>Health Physics  </i>102 292–304</p>
-				<p>Lee C, Kim K P, Long D and Bolch W E 2012 Organ doses for reference pediatric and adolescent patients undergoing computed tomography estimated by Monte Carlo simulation <i> Medical Physics </i> <b>39</b> 2129–46</p>
+     			<p>Lee C, Kim K P, Long D, Fisher R, Tien C, Simon S L, Bouville A and Bolch W E 2011 Organ doses for reference adult male and female undergoing computed tomography estimated by <i>Medical Physics</i> <b>38</b> 1196–206</p>
 				<p>Lee C, Lodwick D, Hasenauer D, Williams J L, Lee C and Bolch W E 2007 Hybrid computational phantoms of the male and female newborn patient: NURBS-based whole-body models <i> Physics in Medicine and Biology </i> <b>52</b> 3309–33</p>
 				<p>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams J L and Bolch W E 2010 The UF family of reference hybrid phantoms for computational radiation dosimetry.  <i>Physics in Medicine and Biology </i> <b>55</b> 339–63</p>
 				<p>Lee C, Lodwick D, Williams J L and Bolch W E 2008 Hybrid computational phantoms of the 15-year male and female adolescent: applications to CT organ dosimetry for patients of variable morphometry.  <i>Medical physics </i> <b>35</b> 2366–82</p>

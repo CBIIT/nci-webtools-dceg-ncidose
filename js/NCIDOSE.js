@@ -1,5 +1,5 @@
 var NCIDOSE_version = "Version 1.0";
-var fields = ['first_name','last_name','email','phone','address','first_name_inv','last_name_inv','institution','reason','title','title_inv'];
+var fields = ['first_name','last_name','email','phone','address','institution','reason','title'];
 
 var modules = [ "NCICT", "2nd Tab" ];
 
@@ -148,7 +148,7 @@ function openHelpWindow(pageURL) {
 
 $('#consent :checkbox').change(function () {
     var a = $('#consent :checked').filter(":checked").length;
-    if (a == 3) {
+    if (a == 1) {
         $('#overlay').removeClass('overlay');
     } else {
         $('#overlay').addClass('overlay');
