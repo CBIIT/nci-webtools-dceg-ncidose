@@ -3,30 +3,32 @@
 	<p align=center style='margin-bottom:8.0pt;text-align:center;font-size:12.0pt'><b>SOFTWARE TRANSFER AGREEMENT</b></p>
 	<p style="margin-bottom:8.0pt;margin-left:.5in;font-size:12.0pt">Provider: National Cancer Institute (NCI)</p>
 
-	<p style='margin-bottom:4.0pt;margin-left:.5in' >Recipient Institution: <input type="text" class="form-control" id="institution" style="width:33%;display:inline" required value="Westeros"/></p></br>
+	<p style='margin-bottom:4.0pt;margin-left:.5in' >Recipient Institution: <input type="text" class="form-control" id="institution" style="width:33%;display:inline" required/></p></br>
 
 	<p style='margin-bottom:6.0pt';><span style='font-size:12.0pt'>WHEREAS, Provider has certain proprietary software and associated material described below (hereinafter, collectively referred to as Software)<i>[Describe all
 	items being transferred such as; software, executable code, source code, documentation, data and all other associated materials]</i></span></p>
 
-		<p  style='font-size:12.0pt;layout-grid-mode:line;margin-left:.5in' ><b><span >National 
-		Cancer Institute dosimetry system for Computed Tomography (NCICT) 
-		software (NIH Ref. No. E-082-2016/0), provided as executable code (source code not provided),
-		 a computer program to assess radiation dose to organs in pediatric and adult patients undergoing computed tomography (CT) examinations as described in Lee et al. 
-		 (J Radiol Prot. 35:891-909, 2015), including further improvements thereof, and related documentation </span></b></p></br>
+		<form id="consent" action="" method="post">
+			
+			<p  style='font-size:12.0pt;layout-grid-mode:line;margin-left:.5in'><b><input type="checkbox" id="ncict" value="yes" /></input><span >  National 
+			Cancer Institute dosimetry system for Computed Tomography (NCICT) 
+			software (NIH Ref. No. E-082-2016/0), provided as executable code (source code not provided),
+			 a computer program to assess radiation dose to organs in pediatric and adult patients undergoing computed tomography (CT) examinations as described in Lee et al. 
+			 (J Radiol Prot. 35:891-909, 2015), including further improvements thereof, and related documentation </span></b></p></br>
 
-		<b><p style='margin-bottom:6.0pt;margin-left:.5in'><span style='font-size:12.0pt'>Computational 
-		human phantom series, provided as binary voxel format or Digital Imaging and Communications in 
-		Medicine (DICOM) format (surface format not provided), reference anatomy models representing newborn to adult males and females, 
-		as described in Lee et al. (Phys Med Biol 55:339-363, 2010) and Lee et al. (Phys Med Biol 60:2309-2324, 2015), 
-		including further improvements thereof, and related documentation</span></p></b>
+			<b><p style='margin-bottom:6.0pt;margin-left:.5in'><input type="checkbox" id="phantoms" value="yes" /></input><span style='font-size:12.0pt'>  Computational 
+			human phantom series, provided as binary voxel format or Digital Imaging and Communications in 
+			Medicine (DICOM) format (surface format not provided), reference anatomy models representing newborn to adult males and females, 
+			as described in Lee et al. (Phys Med Biol 55:339-363, 2010) and Lee et al. (Phys Med Biol 60:2309-2324, 2015), 
+			including further improvements thereof, and related documentation</span></p></b>
 
-		<p style='margin-bottom:6.0pt'><span style='font-size:12.0pt'>
-		and Provider agrees to transfer such Software to Recipient Investigator, to be used
-		solely in connection with the following research activity and for the following
-		reasons (hereinafter Project)<i> [Describe with specificity the scope of use
-		of Software under this agreement].</i>:</span></p>
-
-		<p style='text-decoration:underline;margin-left:0.5in'><textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required>fgffgfgf</textarea>
+			<p style='margin-bottom:6.0pt'><span style='font-size:12.0pt'>
+			and Provider agrees to transfer such Software to Recipient Investigator, to be used
+			solely in connection with the following research activity and for the following
+			reasons (hereinafter Project)<i> [Describe with specificity the scope of use
+			of Software under this agreement].</i>:</span></p>
+		</form>
+		<p style='text-decoration:underline;margin-left:0.5in'><textarea id ="reason" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required></textarea>
 </p><br>
 
 	<p style='font-size:12.0pt;'>NOW, THEREFORE, in consideration of the premises and mutual covenants contained herein, the Provider and Recipient agree as follows:</p>
@@ -88,8 +90,8 @@
 	
 	<table style="width:100%">
 		<tr>
-			<td><p>Name: <input type="text" class="form-control" id="name" style="width:33%;display:inline" required value="Scott"/></p></td>
-			<td><p>Title:  <input type="text" class="form-control" id="title" style="width:33%;display:inline" required value="master of all"></p></td> 
+			<td><p>Name: <input type="text" class="form-control" id="name" style="width:33%;display:inline" required v/></p></td>
+			<td><p>Title:  <input type="text" class="form-control" id="title" style="width:33%;display:inline" required ></p></td> 
 		</tr>
 		<tr>
 			<td><p>Signature: ______________________________________</p></td>
@@ -97,12 +99,12 @@
 		</tr>
 	</table>
 	    <p class="col-sm-12">Recipient’s Mailing Address for Legal Notices:</p>
-	    <p><div class="col-sm-12"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required >12345 lane ave</textarea></div></p>
+	    <p><div class="col-sm-12"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required ></textarea></div></p>
 </br></br></br>
 	<table style="width:100%;margin-top: 7%" >
 		<tr>
-			<td><p>Email: <input type="email" class="form-control" id="email" style="width:33%;display:inline" required value="scott.goldweber@gmail.com"/></p></td>
-			<td><p>Phone: $<input type="text" class="form-control" id="phone" style="width:33%;display:inline" required value="111111"></u></p></td> 
+			<td><p>Email: <input type="email" class="form-control" id="email" style="width:33%;display:inline" required /></p></td>
+			<td><p>Phone: <input type="text" class="form-control" id="phone" style="width:33%;display:inline" required /></u></p></td> 
 		</tr>
 	</table>
 
@@ -143,3 +145,16 @@
 		<p style="margin-bottom:0px">Phone: 240-276-5530	       Fax: 240-276-5504</p>
 		</ul>
 </div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+<script>
+
+$('#consent :checkbox').click(function () {
+    var a = $('#consent :checked').filter(":checked").length;
+    console.log('here')
+    if (a >= 1) {
+        $('#generate').removeClass('overlay');
+    } else {
+        $('#generate').addClass('overlay');
+    }
+})
+</script>
