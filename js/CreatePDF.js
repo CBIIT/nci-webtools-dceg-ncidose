@@ -152,8 +152,39 @@ function Create_PDF(checked_software,software_content){
 		contentType : 'application/json' // JSON
 		}).success(function(token){
 			console.log(token)
-		//	window.open("tmp/NCI_STA_"+token+".pdf",'_blank');
+			Confirmation_Modal();
 
 		});
 }
+
+function Confirmation_Modal(){
+	var template_string='<div class="modal fade" id="modal_confir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'
+  +'<div class="modal-dialog" role="document">'
+    +'<div class="modal-content">'
+      +'<div class="modal-header">'
+        +'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+        +'<h4 class="modal-title" id="modalTitle_confir">Modal title</h4>'
+      +'</div>'
+      +'<div class="modal-body" id="modalContent_confir">Thank you for registering with NCIDose. A confirmation email will be sent shorty with a copy of the STA Agreement in PDF format. </div><button type="button" id="ok" class="btn btn-primary btn-sm" style="display:inline-block;margin-left:50%;margin-bottom:2%" \" >Ok</button><div>'
+      +'</div></div></div></div>'
+
+  var header = "NCIDose Materials Confirmation";
+  $('body').append($(template_string));
+  $('#modalTitle_confir').html(header);
+
+  //$('#data_table').html(table_data);
+	$('#modal_confir').modal('show')
+
+  $('#modal_confir').modal({backdrop: 'static', keyboard: false}) 
+
+
+  
+  $('#ok').click(function() {
+      $('#modal_confir').modal('hide');
+      $('#home-tab-anchor').tab('show')
+
+  });
+
+}
+
 
