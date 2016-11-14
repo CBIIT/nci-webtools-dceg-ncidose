@@ -63,7 +63,7 @@ function Create_PDF(checked_software,software_content){
 
 	//activity
 	var institution=document.getElementById("institution").value;
-	var purpose=document.getElementById("reason").value;
+	var purpose=document.getElementById("purpose").value;
 		purpose=purpose.replace("\n","<br>")
 
 	var today = new Date();
@@ -94,7 +94,7 @@ function Create_PDF(checked_software,software_content){
 		data=data.replace('$[Recipient Title_sig]',title);
 		data=data.replace('$[Recipient Institution]',institution);
 
-		data=data.replace("$[reason]", reason);
+		data=data.replace("$[purpose]", purpose);
 
 		data=data.replace('$[Mailing Address]',address)
 		data=data.replace("$[phone]", phone);
@@ -132,7 +132,7 @@ function Create_PDF(checked_software,software_content){
   		address=address.replace("<br>"," ");
   		address=address.replace(","," ");
   		purpose=purpose.replace("<br>"," ");
-
+		Confirmation_Modal();
 		var Inputs = {
 		first : first,
 		last : last,
@@ -152,7 +152,7 @@ function Create_PDF(checked_software,software_content){
 		contentType : 'application/json' // JSON
 		}).success(function(token){
 			console.log(token)
-			Confirmation_Modal();
+			
 
 		});
 }
