@@ -1,5 +1,5 @@
 var NCIDOSE_version = "Version 1.0";
-var fields = ['first_name','last_name','email','phone','address','institution','reason','title'];
+var fields = ['first_name','last_name','email','phone','address','institution','purpose','title'];
 
 var modules = [ "NCICT", "2nd Tab" ];
 
