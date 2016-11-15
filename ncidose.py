@@ -50,7 +50,7 @@ def store():
 	HTML(string=page).write_pdf('./tmp/NCI_STA_'+str(token_id)+'.pdf',
     	stylesheets=[CSS('./css/agreement.css')])
 	
-	Send_to_recipient(email,file,date)
+	Send_to_recipient(email,file,date,data)
 	Send_to_PM(data)
 	return str("")
 
@@ -58,64 +58,50 @@ def Send_to_PM(data):
 	config = PropertyUtil(r"config.ini")
 	print(config)
 	email=config.getAsString("mail.admin")
-	
+	rec_email=data['email']
 	files=[]
 	first = data["first"]
 	last = data["last"]
 	title = data["title"]
 	purpose= data["purpose"]
 	date=data["date"]
+	phone=data["phone"]
 	address=data["address"]
 	institution=data["institution"]
-	software=data["software"]
+	software_string=data["software"]
 	page=data["page"].encode('utf-8').strip()
 	product_name = "NCIDose"
 	print "making message"
 
 	header = """<h2>"""+product_name+"""</h2>"""
 	body = """
-	      <div style="background-color:white;border-top:25px solid #142830;border-left:2px solid #142830;border-right:2px solid #142830;border-bottom:2px solid #142830;padding:20px">
-	        <p>Dr. Lee,</p></br>
-	A user has submitted a request using the using the """+product_name+"""  web application tool on """+date+""". The details are as follows:</p>
-	<p> Recipient name: """+first+""" """+last+"""</p>
-	<p>Recipient title: """+title+"""</p>
-	<p>Recipient email: """+email+"""</p>
-	<p>Institution: """+institution+"""</p>
-	<p> Buisness Address: """+address+"""</p></br>
-	<p> Software request: """+software+"""</p></br>
-	<p> Purpose of request: """+purpose+"""</p></br>
+	        <p>Dear Dr. Lee,</p>
+	<span>This email is to let you know a user just visited the NCIDose web site and entered the following information on the Agreement page. A STA PDF has been generated and sent to the user via email. </span>
+	<p><b><u>Materials to download</u></b></p>
+	<ul>"""+software_string+"""</ul>
+	<p><b><u>Recipient Investigator</u></b></p>
+	<ul>
+		<li>Name: """+first+""" """+last+"""</li>
+		<li>Title: """+title+"""</li>
+		<li>Email: """+rec_email+"""</li>
+		<li>Phone: """+phone+"""</li>
+		<li>Institution: """+institution+"""</li>
+		<li>Buisness Address: """+address+"""</li>
+	</ul>
+	<p><b><u>Research Activity</u></b></p>
+	<ul>
+		<li>"""+purpose+"""</li>
+	</ul>
 
 	      """
 	footer = """
-	      <div>
-	        <p>
-	          (Note:  Please do not reply to this email. If you need assistance, please contact xxxxx@mail.nih.gov)
-	        </p>
-	      </div>
-
-	        <div style="background-color:#ffffff;color:#888888;font-size:13px;line-height:17px;font-family:sans-serif;text-align:left">
-	              <p>
-	                  <strong>About <em>"""+product_name+"""</em></strong></em><br>
-	                  To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios. This website is designed to share the major developments in dose assessment tools and resources with other researchers. 
-	                  <strong>For more information, visit
-	                    <a target="_blank" style="color:#888888" href="http://analysistools.nci.nih.gov">analysistools.nci.nih.gov/jpsurv</a>
-	                  </strong>
-	              </p>
-	              <p style="font-size:11px;color:#b0b0b0">If you did not request a calculation please ignore this email.
-	Your privacy is important to us.  Please review our <a target="_blank" style="color:#b0b0b0" href="http://www.cancer.gov/policies/privacy-security">Privacy and Security Policy</a>.
-	</p>
-	              <p align="center"><a href="http://cancercontrol.cancer.gov/">Division of Cancer Control & Population Sciences</a>, 
-	              <span style="white-space:nowrap">a Division of <a href="www.cancer.gov">National Cancer Institute</a></span><br>
-	              BG 9609 MSC 9760 | 9609 Medical Center Drive | Bethesda, MD 20892-9760 | <span style="white-space:nowrap"><a target="_blank" value="+18004006916" href="tel:1-800-422-6237">1-800-4-CANCER</a></span>
-	              </p>
-	            </div>
 	            """
 	message = """
 	  <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 	    <title>html title</title>
 	  </head>
-	  <body>"""+header+body+footer+"""</body>""" 
+	  <body>"""+body+footer+"""</body>""" 
 
 	print "sending"
 #	with open('./data/contacts.csv', 'a') as csvfile:
@@ -124,47 +110,28 @@ def Send_to_PM(data):
 #		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
 	composeMail(email,message,None)
 
-def Send_to_recipient(email,file,date):
+def Send_to_recipient(email,file,date,data):
 	product_name = "NCIDose"
 	print "making message"
-
-	header = """<h2>"""+product_name+"""</h2>"""
+	first = data["first"]
+	last = data["last"]
 	body = """
-	      <div style="background-color:white;border-top:25px solid #142830;border-left:2px solid #142830;border-right:2px solid #142830;border-bottom:2px solid #142830;padding:20px">
-	        Hello,<br>
-	        <p> On """+date+""" using the """+product_name+""" web application tool, you requested to use new various dosimetry methods, tools, and dose coefficients. Attatched is the STA document outlining which of those tools you will like to have access to. Please review the PDF document and email back to Dr. Lee at leechoonsik@mail.nih.gov</p>
-
+	      
+	        Dear """+first+""" """+last+""",<br>
+	        <p> Thank you for your interest in the materials and software for the new dosimetry methods and tools developed by the <a href="https://dceg.cancer.gov/"> Division of Cancer Epidemiology and Genetics.</a> Attached is the STA form pre-filled with the information you entered on the web site and the materials you want to download. Please review the STA form and email a signed copy to Dr. Choonsik Lee at leechoonsik@mail.nih.gov. You will be receiving an email with detailed download instructions once your email has been received and reviewed by Dr. Lee</p>
 	      """
 	footer = """
 	      <div>
-	        <p>
-	          (Note:  Please do not reply to this email. If you need assistance, please contact xxxxx@mail.nih.gov)
-	        </p>
-	      </div>
-
-	        <div style="background-color:#ffffff;color:#888888;font-size:13px;line-height:17px;font-family:sans-serif;text-align:left">
-	              <p>
-	                  <strong>About <em>"""+product_name+"""</em></strong></em><br>
-	                  To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios. This website is designed to share the major developments in dose assessment tools and resources with other researchers. 
-	                  <strong>For more information, visit
-	                    <a target="_blank" style="color:#888888" href="http://analysistools.nci.nih.gov">analysistools.nci.nih.gov/jpsurv</a>
-	                  </strong>
-	              </p>
-	              <p style="font-size:11px;color:#b0b0b0">If you did not request a calculation please ignore this email.
-	Your privacy is important to us.  Please review our <a target="_blank" style="color:#b0b0b0" href="http://www.cancer.gov/policies/privacy-security">Privacy and Security Policy</a>.
-	</p>
-	              <p align="center"><a href="http://cancercontrol.cancer.gov/">Division of Cancer Control & Population Sciences</a>, 
-	              <span style="white-space:nowrap">a Division of <a href="www.cancer.gov">National Cancer Institute</a></span><br>
-	              BG 9609 MSC 9760 | 9609 Medical Center Drive | Bethesda, MD 20892-9760 | <span style="white-space:nowrap"><a target="_blank" value="+18004006916" href="tel:1-800-422-6237">1-800-4-CANCER</a></span>
-	              </p>
-	            </div>
+	        <p><i>
+	          (Note:  : Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
+	        </p></i>
 	            """
 	message = """
 	  <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	    <title>html title</title>
 	  </head>
-	  <body>"""+header+body+footer+"""</body>"""
+	  <body>"""+body+footer+"""</body>"""
 
 	print "sending"
 #	with open('./data/contacts.csv', 'a') as csvfile:
@@ -177,7 +144,7 @@ def composeMail(recipient,message,file):
  	config = PropertyUtil(r"config.ini")
 	recipient = recipient
 	packet = MIMEMultipart()
-	packet['Subject'] = "NCIDose STA Request Form"
+	packet['Subject'] = "NCICT Software Transfer Agreement Form"
 	packet['From'] = "NCIDose <do.not.reply@nih.gov>"
 	packet['To'] = recipient
 	packet.attach(MIMEText(message,'html'))
