@@ -49,8 +49,9 @@ def store():
 	file='./tmp/NCI_STA_'+str(token_id)+'.pdf';
 	HTML(string=page).write_pdf('./tmp/NCI_STA_'+str(token_id)+'.pdf',
     	stylesheets=[CSS('./css/agreement.css')])
-	
+	print("sending to recipient")
 	Send_to_recipient(email,file,date,data)
+	print("sending to PM")
 	Send_to_PM(data)
 	return str("")
 
@@ -94,8 +95,8 @@ def Send_to_PM(data):
 	</ul>
 
 	      """
-	footer = """
-	            """
+	footer = """</br><p>Sincerely,</p><p>NCIDose Webtool</p>"""
+	            
 	message = """
 	  <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
@@ -108,7 +109,7 @@ def Send_to_PM(data):
 #		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 #		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 #		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
-	composeMail(email,message,None)
+	composeMail(email,message,None,"NCIDose STA Request")
 
 def Send_to_recipient(email,file,date,data):
 	product_name = "NCIDose"
@@ -125,6 +126,8 @@ def Send_to_recipient(email,file,date,data):
 	        <p><i>
 	          (Note:  : Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
 	        </p></i>
+	       	</br><p>Sincerely,</p><p>NCIDose Webtool</p>
+
 	            """
 	message = """
 	  <head>
@@ -138,13 +141,13 @@ def Send_to_recipient(email,file,date,data):
 #		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 #		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 #		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
-	composeMail(email,message,file)
+	composeMail(email,message,file,"NCICT Software Transfer Agreement Form")
 
-def composeMail(recipient,message,file):
+def composeMail(recipient,message,file,subject):
  	config = PropertyUtil(r"config.ini")
 	recipient = recipient
 	packet = MIMEMultipart()
-	packet['Subject'] = "NCICT Software Transfer Agreement Form"
+	packet['Subject'] = subject
 	packet['From'] = "NCIDose <do.not.reply@nih.gov>"
 	packet['To'] = recipient
 	packet.attach(MIMEText(message,'html'))
