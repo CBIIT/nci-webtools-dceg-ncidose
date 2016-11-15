@@ -102,7 +102,7 @@ function Create_PDF(checked_software,software_content){
 		var header=$('#header2').html();
 			if(checked_software.Granted.indexOf("phantoms")!=-1){
 				data=data.replace('$[Phantoms]',software_content[header]["Phantoms"].content);
-								software+= " Phantoms";
+				software+= "<li>Phantoms</li>";
 
 			}
 			else{
@@ -111,7 +111,7 @@ function Create_PDF(checked_software,software_content){
 			
 			if(checked_software.Granted.indexOf("ncict")!=-1){
 				data=data.replace('$[NCICT]',software_content[header]["NCICT"].content);
-				software+= " NCICT";
+				software+= "<li>NCICT</li>";
 			}
 			else{
 				data=data.replace('&#9745 $[NCICT]',"")
@@ -119,12 +119,11 @@ function Create_PDF(checked_software,software_content){
 
 			if(checked_software.Granted.indexOf("dose")!=-1){
 				data=data.replace('$[DOSE]',software_content[header]["DOSE"].content);
-				software+= " DOSE";
+				software+= "<li>DOSE</li>";
 			}
 			else{
 				data=data.replace('&#9745 $[DOSE]',"")
 			}
-		
 
 
 		cont = data;
@@ -138,6 +137,7 @@ function Create_PDF(checked_software,software_content){
 		last : last,
 		title: title,
 		email: email,
+		phone: phone,
 		institution: institution,
 		purpose: purpose,
 		software:software,
