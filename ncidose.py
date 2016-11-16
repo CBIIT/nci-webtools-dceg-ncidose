@@ -95,7 +95,7 @@ def Send_to_PM(data):
 	</ul>
 
 	      """
-	footer = """</br><p>Sent from the NCIDose Web Tool</p>"""
+	footer = """</br><p>Sincerely,</p><p>NCIDose Webtool</p>"""
 	            
 	message = """
 	  <head>
@@ -126,7 +126,7 @@ def Send_to_recipient(email,file,date,data):
 	        <p><i>
 	          (Note:  : Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
 	        </p></i>
-	       	</br><p>Sent from the NCIDose Web Tool</p>
+	       	</br><p>Sincerely,</p><p>NCIDose Webtool</p>
 
 	            """
 	message = """
