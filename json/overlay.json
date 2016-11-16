@@ -11,7 +11,7 @@
 		},
 		"DOSE":{
 			"header":"Organ DOSE Coefficents",
-			"content":" DOSE TBD"
+			"content":"Dose coefficients for internal and external radiation sources as described in Lamart et al. (Radiat Prot Dosim 168:92-110, 2016) and Chang et al. (J Radiol Prot in press), including further improvements thereof, and related documentation"
 
 		}
 	}
