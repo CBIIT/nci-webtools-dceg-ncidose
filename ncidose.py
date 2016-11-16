@@ -126,7 +126,7 @@ def Send_to_recipient(email,file,date,data):
 	        <p><i>
 	          (Note:  : Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
 	        </p></i>
-	       	</br><p>SSent from the NCIDose Web Tool</p>
+	       	</br><p>Sent from the NCIDose Web Tool</p>
 
 	            """
 	message = """
