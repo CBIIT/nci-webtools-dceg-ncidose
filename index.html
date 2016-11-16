@@ -69,6 +69,9 @@
 						<li class="pull-right">
 							<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
 						</li>
+						<li class="pull-right">
+							<a id="Agreement-tab-anchor" href="#Agreement_Alt-tab" data-toggle="tab">Agreement Alt</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -233,7 +236,29 @@
 			<div class="tab-pane fade" id="4th-tab">
          			<h4>4th tab content goes here</h4>
 
+
+
         </div>
+         			<!--ALTERNATIVE AGGREEMENT TAB-->
+		<div class="tab-pane fade" id="Agreement_Alt-tab">
+
+				<div id="overlay">				
+				<div id="errorMessage"></div>
+				<!-- Recipient Section -->
+				<div class="panel panel-default">
+				    <div class="panel-heading">	<p align=center style='margin-bottom:1px;text-align:center;font-size:12.0pt'><b>SOFTWARE TRANSFER AGREEMENT</b></p></div>
+				    <div class="panel-body" id="agreement_form">
+				    </div>
+				
+				</div>
+
+				<!-- Submit -->
+				<div class="col-sm-12">
+				    <input type="button" id="generate2" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate overlay"/>
+				</div>
+				</div>
+			</div>
+
         <div class="tab-pane fade" id="References-tab">
      		<div  style ="text-indent:-1.5em;padding-left:2.5em">
      			<p >Dabin J, Mencarelli A, McMillan D, Romanyukha A, Struelens L and Lee C 2016 Validation of calculation algorithms for organ doses in CT by measurements on a 5 year old paediatric phantom <i>Physics in Medicine and Biology</i> <b>61</b> 4168–82</p>
@@ -297,8 +322,11 @@
 		ga.l = +new Date;
 		ga('create', 'UA-62346354-1', 'auto');
 		ga('send', 'pageview');
+		$("#agreement_form").load("./content/NCI_STA_text.html");
+
 	</script>
 	<!-- End Google Analytics -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../common/js/purify.js"></script>
 	<script type="text/javascript" src="./js/CreatePDF.js"></script>
