@@ -1,190 +1,176 @@
-var restService = {protocol:'http',hostname:document.location.hostname,fqn:"nci.nih.gov",port:8765,route : "ncictRest"}
-var restServerUrl = restService.protocol + "://" + restService.hostname + "/"+ restService.route;
-
-//var link = document.querySelector('link[rel="import"]');
-//var importedDoc = link.import;
-//var form = importedDoc.getElementById("test");
-//var a4  =[ 595.28,  841.89];  // for a4 size paper width and height
-function check_software(){
-	var checked_software={};
-	 checked_software.Granted=[];
-	var software_content=""
-
-	$("input:checkbox").each(function(){
-	    var $this = $(this);
-
-	    if($this.is(":checked")){
-	        checked_software.Granted.push($this.attr("id"));
-	    }
-	});
-
-	$(document).ready(function() {
-	var request = $.ajax({
-		type: 'GET',
-		url: './json/overlay.json',
-		contentType: 'application/json',
-	}).fail(function(response) {
-	}).always(function(response) {
-		 software_content=response
-		 	Create_PDF(checked_software,software_content)
-
-	});
-
-})
-
-}
-function Create_PDF(checked_software,software_content){
-    //validation
+import os
+import re
+import string
+from flask import Flask, render_template, request, jsonify, make_response, send_from_directory
+import json
+import csv
+import random
+import subprocess
+from weasyprint import HTML, CSS
+from PropertyUtil import PropertyUtil
+import urllib
+import smtplib
 
 
-	var cont=""
-	var software=""
-	//recipient
-	var first=document.getElementById("first_name").value;
-	var last= document.getElementById("last_name").value;
-	var full_name=first+" "+ last;
-	var title=document.getElementById("title").value;
-	var email=document.getElementById("email").value;
-	var institution=document.getElementById("institution").value;
-	var phone=document.getElementById("phone").value;
-	var address=document.getElementById("address").value;
-	address=address.split("\n").join("<br>");
+# Load Env variables
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from twisted.internet import reactor, defer
+from PropertyUtil import PropertyUtil
+from stompest.async import Stomp
+from stompest.async.listener import SubscriptionListener
+from stompest.async.listener import DisconnectListener
+from stompest.config import StompConfig
+from stompest.protocol import StompSpec
 
-	
+app = Flask(__name__)
+if not os.path.exists('tmp'):
+    os.makedirs('tmp')
+
+@app.route('/')
+def index():
+    return return_template('index.html')
+
+@app.route('/ncidoseRest/', methods = ['POST'])
+def store():
+	mimetype = 'application/json'
+	data = json.loads(request.stream.read())
+	token_id=random.randrange(1, 1000000)
+	email=data["email"]
+	date=data["date"]
+	page=data["page"].encode('utf-8').strip()
+#	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
+#	html_file.write(page)
+#	print(page)
+#	subprocess.call(["weasyprint", "-s", "./css/agreement.css", 
+#		("./content/NCI_STA_"+str(token_id)+".html"), 
+#		("./content/NCI_STA_"+str(token_id)+".pdf")])
+	file='./tmp/NCI_STA_'+str(token_id)+'.pdf';
+	HTML(string=page).write_pdf('./tmp/NCI_STA_'+str(token_id)+'.pdf',
+    	stylesheets=[CSS('./css/agreement.css')])
+	print("sending to recipient")
+	Send_to_recipient(email,file,date,data)
+	print("sending to PM")
+	Send_to_PM(data)
+	return str("")
+
+def Send_to_PM(data):
+	config = PropertyUtil(r"config.ini")
+	print(config)
+	email=config.getAsString("mail.admin")
+	rec_email=data['email']
+	files=[]
+	first = data["first"]
+	last = data["last"]
+	title = data["title"]
+	purpose= data["purpose"]
+	date=data["date"]
+	phone=data["phone"]
+	address=data["address"]
+	institution=data["institution"]
+	software_string=data["software"]
+	page=data["page"].encode('utf-8').strip()
+	product_name = "NCIDose"
+	print "making message"
+
+	header = """<h2>"""+product_name+"""</h2>"""
+	body = """
+	        <p>Dear Dr. Lee,</p>
+	<span>This email is to let you know a user just visited the NCIDose web site and entered the following information on the Agreement page. A STA PDF has been generated and sent to the user via email. </span>
+	<p><b><u>Materials to download</u></b></p>
+	<ul>"""+software_string+"""</ul>
+	<p><b><u>Recipient Investigator</u></b></p>
+	<ul>
+		<li>Name: """+first+""" """+last+"""</li>
+		<li>Title: """+title+"""</li>
+		<li>Email: """+rec_email+"""</li>
+		<li>Phone: """+phone+"""</li>
+		<li>Institution: """+institution+"""</li>
+		<li>Buisness Address: """+address+"""</li>
+	</ul>
+	<p><b><u>Research Activity</u></b></p>
+	<ul>
+		<li>"""+purpose+"""</li>
+	</ul>
+
+	      """
+	footer = """</br><p>Sent from the NCIDose Web Tool</p>"""
+	            
+	message = """
+	  <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	    <title>html title</title>
+	  </head>
+	  <body>"""+body+footer+"""</body>""" 
+
+	print "sending"
+#	with open('./data/contacts.csv', 'a') as csvfile:
+#		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
+#		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+#		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
+	composeMail(email,message,None,"NCIDose STA Request")
+
+def Send_to_recipient(email,file,date,data):
+	product_name = "NCIDose"
+	print "making message"
+	first = data["first"]
+	last = data["last"]
+	body = """
+	      
+	        Dear """+first+""" """+last+""",<br>
+	        <p> Thank you for your interest in the materials and software for the new dosimetry methods and tools developed by the <a href="https://dceg.cancer.gov/"> Division of Cancer Epidemiology and Genetics.</a> Attached is the STA form pre-filled with the information you entered on the web site and the materials you want to download. Please review the STA form and email a signed copy to Dr. Choonsik Lee at leechoonsik@mail.nih.gov. You will be receiving an email with detailed download instructions once your email has been received and reviewed by Dr. Lee</p>
+	      """
+	footer = """
+	      <div>
+	        <p><i>
+	          (Note:  : Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
+	        </p></i>
+	       	</br><p>SSent from the NCIDose Web Tool</p>
+
+	            """
+	message = """
+	  <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	    <title>html title</title>
+	  </head>
+	  <body>"""+body+footer+"""</body>"""
+
+	print "sending"
+#	with open('./data/contacts.csv', 'a') as csvfile:
+#		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
+#		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+#		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
+	composeMail(email,message,file,"NCICT Software Transfer Agreement Form")
+
+def composeMail(recipient,message,file,subject):
+ 	config = PropertyUtil(r"config.ini")
+	recipient = recipient
+	packet = MIMEMultipart()
+	packet['Subject'] = subject
+	packet['From'] = "NCIDose <do.not.reply@nih.gov>"
+	packet['To'] = recipient
+	packet.attach(MIMEText(message,'html'))
+	if(file):
+		with open(file,"rb") as openfile:
+			packet.attach(MIMEApplication(
+			  openfile.read(),
+			  Content_Disposition='attachment; filename="%s"' % os.path.basename(file),
+			  Name=os.path.basename(file)
+		))
+	MAIL_HOST=config.getAsString('mail.host')
+	print MAIL_HOST
+	smtp = smtplib.SMTP(MAIL_HOST)
+	smtp.sendmail("do.not.reply@nih.gov",recipient,packet.as_string())
+	print "sent email"
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 
 
-	//recipient investigator
-
-	//var first_inv=document.getElementById("first_name_auth").value;
-	//var last_inv= document.getElementById("last_name_auth").value;
-	//var full_name_auth=document.getElementById("first_name_auth").value +" "+ document.getElementById("last_name_auth").value
-	//var title_auth=document.getElementById("title_auth").value; 	
-	var email=document.getElementById("email").value;
-
-	//activity
-	var institution=document.getElementById("institution").value;
-	var purpose=document.getElementById("purpose").value;
-		purpose=purpose.replace("\n","<br>")
-
-	var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-
-    var yyyy = today.getFullYear();
-    if(dd<10){
-        dd='0'+dd
-    }
-    if(mm<10){
-        mm='0'+mm
-    }
-	    var today = mm+'/'+dd+'/'+yyyy;
-	console.log(today);
-
-
-	$.ajax({
-		url:'./content/NCI_STA.html',
-		type: 'GET',
-		async:false
-	}).success(function(data) {
-		
-		data=data.replace('$[Recipient Name]',full_name);
-		data=data.replace('$[Recipient Title]',title);
-
-		data=data.replace('$[Recipient Name_sig]',full_name);
-		data=data.replace('$[Recipient Title_sig]',title);
-		data=data.replace('$[Recipient Institution]',institution);
-
-		data=data.replace("$[purpose]", purpose);
-
-		data=data.replace('$[Mailing Address]',address)
-		data=data.replace("$[phone]", phone);
-		data=data.replace("$[email]", email);
-		var header=$('#header2').html();
-			if(checked_software.Granted.indexOf("phantoms")!=-1){
-				data=data.replace('$[Phantoms]',software_content[header]["Phantoms"].content);
-				software+= "<li>Phantoms</li>";
-
-			}
-			else{
-				data=data.replace('&#9745 $[Phantoms]',"")
-			}
-			
-			if(checked_software.Granted.indexOf("ncict")!=-1){
-				data=data.replace('$[NCICT]',software_content[header]["NCICT"].content);
-				software+= "<li>NCICT</li>";
-			}
-			else{
-				data=data.replace('&#9745 $[NCICT]',"")
-			}
-
-			if(checked_software.Granted.indexOf("dose")!=-1){
-				data=data.replace('$[DOSE]',software_content[header]["DOSE"].content);
-				software+= "<li>DOSE</li>";
-			}
-			else{
-				data=data.replace('&#9745 $[DOSE]',"")
-			}
-
-
-		cont = data;
-	});
-  		address=address.replace("<br>"," ");
-  		address=address.replace(","," ");
-  		purpose=purpose.replace("<br>"," ");
-		Confirmation_Modal();
-		var Inputs = {
-		first : first,
-		last : last,
-		title: title,
-		email: email,
-		phone: phone,
-		institution: institution,
-		purpose: purpose,
-		software:software,
-		address: address,
-		date:today,
-		page:cont
-	};
-	$.ajax({
-		type : 'POST',
-		url : "ncidoseRest/",
-		data : JSON.stringify(Inputs),
-		contentType : 'application/json' // JSON
-		}).success(function(token){
-			console.log(token)
-			
-
-		});
-}
-
-function Confirmation_Modal(){
-	var template_string='<div class="modal fade" id="modal_confir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'
-  +'<div class="modal-dialog" role="document">'
-    +'<div class="modal-content">'
-      +'<div class="modal-header">'
-        +'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
-        +'<h4 class="modal-title" id="modalTitle_confir">Modal title</h4>'
-      +'</div>'
-      +'<div class="modal-body" id="modalContent_confir">Thank you for registering with NCIDose. A confirmation email will be sent shorty with a copy of the STA Agreement in PDF format. </div><button type="button" id="ok" class="btn btn-primary btn-sm" style="display:inline-block;margin-left:50%;margin-bottom:2%" \" >Ok</button><div>'
-      +'</div></div></div></div>'
-
-  var header = "NCIDose Materials Confirmation";
-  $('body').append($(template_string));
-  $('#modalTitle_confir').html(header);
-
-  //$('#data_table').html(table_data);
-	$('#modal_confir').modal('show')
-
-  $('#modal_confir').modal({backdrop: 'static', keyboard: false}) 
-
-
-  
-  $('#ok').click(function() {
-      $('#modal_confir').modal('hide');
-      $('#home-tab-anchor').tab('show')
-
-  });
-
-}
-
-
+if __name__ == "__main__":
+  app.run(host = '0.0.0.0', port = 8765, debug = True)
