@@ -52,7 +52,7 @@ def store():
 	print("sending to recipient")
 	Send_to_recipient(email,file,date,data)
 	print("sending to PM")
-#	Send_to_PM(data)
+	Send_to_PM(data)
 	return str("")
 
 def Send_to_PM(data):
