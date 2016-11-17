@@ -52,7 +52,7 @@ def store():
 	print("sending to recipient")
 	Send_to_recipient(email,file,date,data)
 	print("sending to PM")
-	Send_to_PM(data)
+#	Send_to_PM(data)
 	return str("")
 
 def Send_to_PM(data):
@@ -141,7 +141,7 @@ def Send_to_recipient(email,file,date,data):
 #		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
 #		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 #		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
-	composeMail(email,message,file,"NCICT Software Transfer Agreement Form")
+	composeMail(email,message,file,"NCIDose Software Transfer Agreement Form")
 
 def composeMail(recipient,message,file,subject):
  	config = PropertyUtil(r"config.ini")
