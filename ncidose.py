@@ -37,7 +37,7 @@ def store():
 	mimetype = 'application/json'
 	data = json.loads(request.stream.read())
 	token_id=random.randrange(1, 1000000)
-	email=data["email"]
+	email=data["email"] 
 	date=data["date"]
 	page=data["page"].encode('utf-8').strip()
 #	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
@@ -52,7 +52,7 @@ def store():
 	print("sending to recipient")
 	Send_to_recipient(email,file,date,data)
 	print("sending to PM")
-	Send_to_PM(data)
+#	Send_to_PM(data)
 	return str("")
 
 def Send_to_PM(data):
@@ -95,7 +95,7 @@ def Send_to_PM(data):
 	</ul>
 
 	      """
-	footer = """</br><p>Sincerely,</p><p>NCIDose Webtool</p>"""
+	footer = """</br><p>Sincerely,</p><p>Sent from the NCIDose Web Tool</p>"""
 	            
 	message = """
 	  <head>
@@ -126,7 +126,7 @@ def Send_to_recipient(email,file,date,data):
 	        <p><i>
 	          (Note:  : Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
 	        </p></i>
-	       	</br><p>Sincerely,</p><p>NCIDose Webtool</p>
+	       	</br><p>Sincerely,</p><p>Sent from the NCIDose Web Tool</p>
 
 	            """
 	message = """
