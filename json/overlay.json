@@ -2,7 +2,7 @@
 	"Please indicate which materials you want to download, fill out the information and then click Generate. A copy of the STA agreement form will be emailed to you shortly.":{
 		"Phantoms" : {
 			"header": "Computational Human Phantoms",
-			"content":"Computational human phantom series, provided as binary voxel format or Digital Imaging and Communications in Medicine (DICOM) format (surface format not provided), reference anatomy models representing newborn to adult males and females, as described in Lee et al. (Phys Med Biol 55:339-363, 2010) and Lee et al. (Phys Med Biol 60:2309-2324, 2015), including further improvements thereof, and related documentation"
+			"content":"Computational human phantom series, provided as binary voxel format or Digital Imaging and Communications in Medicine (DICOM) format (surface format not provided), reference anatomy models representing newborn to adult males and females, as described in Lee et al. (Phys Med Biol 55:339-363, 2010) and Lee et al. (Phys Med Biol 60:2309-2324, 2015), including further improvements thereof, and related documentation."
 
 		},
 		"NCICT":{
@@ -11,7 +11,7 @@
 		},
 		"DOSE":{
 			"header":"Organ DOSE Coefficents",
-			"content":"Dose coefficients for internal and external radiation sources as described in Lamart et al. (Radiat Prot Dosim 168:92-110, 2016) and Chang et al. (J Radiol Prot in press), including further improvements thereof, and related documentation"
+			"content":"Dose coefficients for internal and external radiation sources as described in Lamart et al. (Radiat Prot Dosim 168:92-110, 2016) and Chang et al. (J Radiol Prot in press), including further improvements thereof, and related documentation."
 
 		}
 	}
