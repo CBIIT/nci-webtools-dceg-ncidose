@@ -106,7 +106,7 @@ function Create_PDF(checked_software,software_content){
 
 			}
 			else{
-				data=data.replace('&#9745 $[Phantoms]',"")
+				data=data.replace('&#9745; $[Phantoms]',"")
 			}
 			
 			if(checked_software.Granted.indexOf("ncict")!=-1){
@@ -114,7 +114,7 @@ function Create_PDF(checked_software,software_content){
 				software+= "<li>NCICT</li>";
 			}
 			else{
-				data=data.replace('&#9745 $[NCICT]',"")
+				data=data.replace('&#9745; $[NCICT]',"")
 			}
 
 			if(checked_software.Granted.indexOf("dose")!=-1){
@@ -122,7 +122,7 @@ function Create_PDF(checked_software,software_content){
 				software+= "<li>DOSE</li>";
 			}
 			else{
-				data=data.replace('&#9745 $[DOSE]',"")
+				data=data.replace('&#9745; $[DOSE]',"")
 			}
 
 
