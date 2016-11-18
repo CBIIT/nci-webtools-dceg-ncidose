@@ -150,8 +150,28 @@ $('#consent :checkbox').change(function () {
     var a = $('#consent :checked').filter(":checked").length;
     if (a >= 1) {
         $('#overlay').removeClass('overlay');
+		$('#first_name').removeAttr("disabled")        
+		$('#last_name').removeAttr("disabled")        
+		$('#title').removeAttr("disabled")        
+		$('#email').removeAttr("disabled")        
+		$('#phone').removeAttr("disabled")        
+		$('#institution').removeAttr("disabled")		       
+		$('#address').removeAttr("disabled")
+		$('#purpose').removeAttr("disabled")        
+		$('#generate').removeAttr("disabled")        
+
+
     } else {
         $('#overlay').addClass('overlay');
+        $('#first_name').prop("disabled",true)        
+		$('#last_name').prop("disabled",true)        
+		$('#title').prop("disabled",true)        
+		$('#email').prop("disabled",true)        
+		$('#phone').prop("disabled",true)        
+		$('#institution').prop("disabled",true)
+		$('#address').prop("disabled",true)                
+		$('#purpose').prop("disabled",true)        
+		$('#generate').prop("disabled",true)       
     }
 });
 function addEventListeners() {
