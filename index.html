@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 
-<html class="no-js">
+<html class="no-js" xmlns="https://www.w3.org/1999/xhtml" lang="en">
+<title>NCIDose Webtool</title>
 
 
 <head>
@@ -36,9 +37,7 @@
 			<div class="container-fluid">
 				<div class="navbar-header" >
 					<!-- a menu botton that is only shown on the small device size -->
-					<button class="btn btn-success navbar-toggle" data-toggle ="collapse" data-target=".navbar-collapse">
-						<span class="glyphicon glyphicon-chevron-down"></span>
-					</button>
+
 				</div>
 
 				<div class="navbar-collapse collapse">
@@ -89,7 +88,7 @@
 				</p>
 				<p>Parties interested in commercial use of any materials on this website may contact <a href="mailto:changke@mail.nih.gov" target="_top">Dr. Kevin Chang</a> at the <a href="https://techtransfer.cancer.gov/"> NCI Technology Transfer Center</a>.</p></br></br>
 				<div class="col-lg-6 col-md-8 col-sm-12">
-					<img src="./img/home_page.png" class="img-responsive">
+					<img src="./img/home_page.png" class="img-responsive" alt="To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios">
 				</div>			
 			</div>
 
@@ -102,7 +101,7 @@
 				<p >Citation: Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015 Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies Physics in Medicine and Biology 60 2309–24.</p>
 				
 				<div class="thumbnail col-lg-6 col-md-8 col-sm-12">
-					<img src="./img/Phantoms.png" class="img-responsive">
+					<img src="./img/Phantoms.png" class="img-responsive" alt="DICOM-structure">
 					
 					<div class="caption"><cite>Three dimensional visualization of the anatomical structures of the computational human phantom series, rendered by Eclipse<sup>TM</sup> Treatment Planning System (Varian Medical Systems, Palo Alto, CA)</cite></div>
 				</div>				
@@ -122,7 +121,7 @@
 							<p>National Cancer Institute dosimetry system for Computed Tomography (NCICT) is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans. The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that previously published including computational human phantoms (Lee et al 2007, 2008, Hurtado et al 2012, Lee et al 2010), the simulation of reference CT scanner (Lee et al 2011), the experimental validations of simulated organ dose (Long et al 2013, Dabin et al 2016), the library of normalized and weighted CTDI (Lee et al 2014), and the compilation of comprehensive dose conversion coefficients (Lee et al 2011, 2012, 2015b). NCICT features two computation modes: graphical user interface (GUI) Mode and Batch Calculation Mode. The GUI Mode is for users to interactively input patient and CT scanner data into NCICT and obtain organ doses instantly. The Batch Calculation Mode is designed to compute organ doses for a large number of patients by importing a set of parameters in formatted text file.</br></p>
 
 					<div class="thumbnail col-lg-6 col-md-8 col-sm-12">
-						<img src="./img/NCICT_home.png" class="img-responsive">
+						<img src="./img/NCICT_home.png" class="img-responsive" alt="graphical user interface of NCICT">
 							<div class="caption"><cite>The graphical user interface of NCICT showing organ dose calculations for the head scan of a newborn female patient.</cite></div>
 
 					</div>	
@@ -137,7 +136,7 @@
          			<p>Citation: LA Chang, SL Simon, TJ Jorgensen, DA Schauer, and C Lee, “Organ dose conversion coefficients for pediatric reference individuals exposed to idealized photon radiation,” Journal of Radiological Protection (in press)</p></br>
          			<div style="width:100%;display:inline-block">
 	         			<div class="thumbnail col-lg-6 col-md-8 col-sm-12">
-							<img src="./img/Dose Coefficients_external.png" class="img-responsive">
+							<img src="./img/Dose Coefficients_external.png" class="img-responsive" alt="External organ and effective dose coefficients">
 								<div class="caption"><cite>External organ and effective dose coefficients for age-dependent phantoms exposed to idealized photon beams in different irradiation geometries.</cite></div>
 						</div>
 					</div>
@@ -148,7 +147,7 @@
          			<p>Citation: S Lamart, SL Simon, A Bouville, BE Moroz, and C Lee, “S values for I-131 from the ICRP adult voxel phantoms and comparison with the previous reference values,” Radiation Protection Dosimetry, 168:92-110 (2016)</p>
 	         			<div style="width:100%;display:inline-block">
 		         			<div class="thumbnail col-lg-6 col-md-8 col-sm-12">
-								<img src="./img/Dose_Coefficients_internal.png" class="img-responsive">
+								<img src="./img/Dose_Coefficients_internal.png" class="img-responsive" alt="S values for various target organs in the ICRP adult male and female reference phantoms where I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).">
 								<div class="caption"><cite>S values for various target organs in the ICRP adult male and female reference phantoms where I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).</cite></div>
 
 							</div>	
@@ -172,9 +171,9 @@
 				    </div>
 				    <div class="panel-body">
 						<form id="consent" action="" method="post">
-							<input type="checkbox" id="phantoms" value="yes" /><p style="display:inline">  Phantoms <a class="glyphicon glyphicon-info-sign" id='Phantoms'></a></p></input></br>
-							<input type="checkbox" id="ncict" value="yes" /><p style="display:inline">  NCICT <a class="glyphicon glyphicon-info-sign" id='NCICT'></a></p></input></br>
-							<input type="checkbox" id="dose" value="yes" /><p style="display:inline">  DOSE Coefficents <a class="glyphicon glyphicon-info-sign" id='DOSE'></a></p></input>
+							<input  aria-label="phantoms" type="checkbox" id="phantoms" value="yes" /><p style="display:inline">  Phantoms <a class="glyphicon glyphicon-info-sign" id='Phantoms'></a></p></input></br>
+							<input aria-label="ncict" type="checkbox" id="ncict" value="yes" /><p style="display:inline">  NCICT <a class="glyphicon glyphicon-info-sign" id='NCICT'></a></p></input></br>
+							<input aria-label="dose" type="checkbox" id="dose" value="yes" /><p style="display:inline">  DOSE Coefficents <a class="glyphicon glyphicon-info-sign" id='DOSE'></a></p></input>
 						</form>
 					
 				    </div>
@@ -188,26 +187,26 @@
 				    <div class="panel-body">
 
 					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">First Name*:</label>
+					    <label for="first_name" class="col-sm-2">First Name*:</label>
 					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required /></div>
-					    <label class="col-sm-2">Last Name*:</label>
+					    <label for="last_name" class="col-sm-2">Last Name*:</label>
 					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required /></div>
-					    <label class="col-sm-2">Title*:</label>
+					    <label for="title" class="col-sm-2">Title*:</label>
 					    <div class="col-sm-2"><input type="text" class="form-control" id="title" required ></div>    
 					</div>            
 
 					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">Email*:</label>
+					    <label for="email" class="col-sm-2">Email*:</label>
 					    <div class="col-sm-2"><input type="email" class="form-control" id="email" required /></div>
-					    <label class="col-sm-2">Phone*:</label>
+					    <label for="phone" class="col-sm-2">Phone*:</label>
 					    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
 					</div>
 					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">Institution*:</label>
+					    <label for="institution" class="col-sm-2">Institution*:</label>
 					    <div class="col-sm-6"><input type="text" class="form-control" id="institution"  required /></div>
 					</div>
 					<div class="row" style="margin-bottom:10px">
-					    <label class="col-sm-2">Business Address*:</label>
+					    <label for="address" class="col-sm-2">Business Address*:</label>
 					    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required ></textarea></div>
 					</div>
 				    </div>
@@ -224,7 +223,7 @@
 					</div>
 					<div class="row">
 					    <div class="col-sm-12">
-						<textarea id ="purpose" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required></textarea>
+						<textarea aria-label="purpose" id ="purpose" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required></textarea>
 					    </div>
 					</div>
 
