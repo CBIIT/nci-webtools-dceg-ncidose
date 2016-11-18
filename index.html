@@ -110,10 +110,10 @@
 
 			<!-- NCICT -->
 			<div class="tab-pane fade" id="NCICT-tab">
-						<span class="pull-right col-md-1">
-                        	<i class="glyphicon glyphicon-question-sign glyphicon-blue" aria-label="Help" onclick="openHelpWindow('help.html')"></i>
+						<span class="pull-right col-md-1" onclick="openHelpWindow('help.html')">
+                        	<i class="glyphicon glyphicon-question-sign glyphicon-blue" aria-label="Help" "></i>
                       		<a href="#">
-                        		<span style="font-size:small;"  onclick="openHelpWindow('help.html');">Help</span>
+                        		<span style="font-size:small">Help</span>
                       		</a>
 
          				</span>
@@ -161,19 +161,19 @@
 
 				<div class="panel panel-default">
 				    <div class="panel-heading"><h2 class="panel-title">What materials are you interested in downloading?
-				    	<span class="pull-right">
+				    	<span class="pull-right"  onclick="openHelpWindow('./content/NCI STA_lite.pdf')";>
                     <i class="cursor-pointer glyphicon glyphicon-download-alt glyphicon-blue" aria-label="Help" onclick="openHelpWindow('./content/NCI STA_lite.pdf')"></i>
                     <a href="#">
-                    	<span style="font-size:small;"  onclick="openHelpWindow('./content/NCI STA_lite.pdf');">View STA Agreement</span>
+                    	<span style="font-size:small;" ">View STA Agreement</span>
                     </a>
          			</span>
          			</h2>
 				    </div>
 				    <div class="panel-body">
 						<form id="consent" action="" method="post">
-							<input  aria-label="phantoms" type="checkbox" id="phantoms" value="yes" /><p style="display:inline">  Phantoms <a class="glyphicon glyphicon-info-sign" id='Phantoms'></a></p></input></br>
-							<input aria-label="ncict" type="checkbox" id="ncict" value="yes" /><p style="display:inline">  NCICT <a class="glyphicon glyphicon-info-sign" id='NCICT'></a></p></input></br>
-							<input aria-label="dose" type="checkbox" id="dose" value="yes" /><p style="display:inline">  DOSE Coefficents <a class="glyphicon glyphicon-info-sign" id='DOSE'></a></p></input>
+							<input  aria-label="phantoms" type="checkbox" id="phantoms" value="yes" /><p style="display:inline">  Phantoms <a href="#" id='Phantoms'><span class="sr-only">Phantoms Info</span><i class="glyphicon glyphicon-info-sign" aria-label="Phantoms Info"></i></a></p></input></br>
+							<input aria-label="ncict" type="checkbox" id="ncict" value="yes" /><p style="display:inline">  NCICT <a href="#" id='NCICT'><span class="sr-only">NCICT Info</span><i class="glyphicon glyphicon-info-sign" aria-label="NCICT Info"></i></a></p></input></br>
+							<input aria-label="dose" type="checkbox" id="dose" value="yes" /><p style="display:inline">  Dose Coefficents <a href="#"  id='DOSE' alt="pop up definition" > <span class="sr-only">Dose Coefficents Info</span><i class="glyphicon glyphicon-info-sign" aria-label="Dose Coefficents Info"></i> </a></p></input>
 						</form>
 					
 				    </div>
@@ -188,26 +188,26 @@
 
 					<div class="row" style="margin-bottom:10px">
 					    <label for="first_name" class="col-sm-2">First Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required /></div>
+					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required disabled/></div>
 					    <label for="last_name" class="col-sm-2">Last Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required /></div>
+					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required disabled /></div>
 					    <label for="title" class="col-sm-2">Title*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="title" required ></div>    
+					    <div class="col-sm-2"><input type="text" class="form-control" id="title" required disabled></div>    
 					</div>            
 
 					<div class="row" style="margin-bottom:10px">
 					    <label for="email" class="col-sm-2">Email*:</label>
-					    <div class="col-sm-2"><input type="email" class="form-control" id="email" required /></div>
+					    <div class="col-sm-2"><input type="email" class="form-control" id="email" required disabled/></div>
 					    <label for="phone" class="col-sm-2">Phone*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="phone"required></div>
+					    <div class="col-sm-2"><input type="text" class="form-control" id="phone" required disabled></div>
 					</div>
 					<div class="row" style="margin-bottom:10px">
 					    <label for="institution" class="col-sm-2">Institution*:</label>
-					    <div class="col-sm-6"><input type="text" class="form-control" id="institution"  required /></div>
+					    <div class="col-sm-6"><input type="text" class="form-control" id="institution"  required disabled /></div>
 					</div>
 					<div class="row" style="margin-bottom:10px">
 					    <label for="address" class="col-sm-2">Business Address*:</label>
-					    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required ></textarea></div>
+					    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required disabled ></textarea></div>
 					</div>
 				    </div>
 				</div>
@@ -223,7 +223,7 @@
 					</div>
 					<div class="row">
 					    <div class="col-sm-12">
-						<textarea aria-label="purpose" id ="purpose" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required></textarea>
+						<textarea aria-label="purpose" id ="purpose" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required disabled></textarea>
 					    </div>
 					</div>
 
@@ -232,7 +232,7 @@
 
 				<!-- Submit -->
 				<div class="col-sm-12">
-				    <input type="button" id="generate" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate"/>
+				    <input type="button" id="generate" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" disabled />
 				</div>
 				</div>
 			</div>
