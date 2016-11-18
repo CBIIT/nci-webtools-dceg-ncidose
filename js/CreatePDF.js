@@ -119,7 +119,7 @@ function Create_PDF(checked_software,software_content){
 
 			if(checked_software.Granted.indexOf("dose")!=-1){
 				data=data.replace('$[DOSE]',software_content[header]["DOSE"].content);
-				software+= "<li>dOSE Coefficients</li>";
+				software+= "<li>Dose Coefficients</li>";
 			}
 			else{
 				data=data.replace('&#9745; $[DOSE]',"")
