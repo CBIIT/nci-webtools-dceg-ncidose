@@ -124,9 +124,9 @@ def Send_to_recipient(email,file,date,data):
 	footer = """
 	      <div>
 	        <p><i>
-	          (Note:  : Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
+	          (Note: Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
 	        </p></i>
-	       	</br><p>Sincerely,</p><p>Sent from the NCIDose Web Tool</p>
+	       	</br><p>Sincerely,</p><p>Sent from the NCIDose Web Tool</p><p>NCIDOSEWebAdmin@mail.nih.gov</p>
 
 	            """
 	message = """
@@ -148,7 +148,7 @@ def composeMail(recipient,message,file,subject):
 	recipient = recipient
 	packet = MIMEMultipart()
 	packet['Subject'] = subject
-	packet['From'] = "NCIDose <do.not.reply@nih.gov>"
+	packet['From'] = "NCIDose <NCIDOSEWebAdmin@mail.nih.gov>"
 	packet['To'] = recipient
 	packet.attach(MIMEText(message,'html'))
 	if(file):
