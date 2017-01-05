@@ -42,7 +42,7 @@ def store():
 #	subprocess.call(["weasyprint", "-s", "./css/agreement.css", 
 #		("./content/NCI_STA_"+str(token_id)+".html"), 
 #		("./content/NCI_STA_"+str(token_id)+".pdf")])
-	file='./tmp/NCI_STA_'+str(token_id)+'.pdf';
+	file='./tmp/NCIDose_STA_'+str(token_id)+'.pdf';
 	HTML(string=page).write_pdf('./tmp/NCI_STA_'+str(token_id)+'.pdf',
     	stylesheets=[CSS('./css/agreement.css')])
 	print("sending to recipient")
@@ -115,14 +115,14 @@ def Send_to_recipient(email,file,date,data):
 	body = """
 	      
 	        Dear """+first+""" """+last+""",<br>
-	        <p> Thank you for your interest in the materials and software developed by the Dosimetry Unit of Radiation Epidemiology Branch at the<a href="https://dceg.cancer.gov/"> Division of Cancer Epidemiology and Genetics.</a> Attached is the STA form pre-filled with the information you entered on the web site and the materials you want to receive. Please review the STA form and email a signed copy to Dr. Choonsik Lee at choonsik.lee@nih.gov. You will be receiving an email with detailed download instructions once your STA form has been received and approved by Dr. Lee and NCI Technology Transfer Center.</p>
+	        <p> Thank you for your interest in the materials and software developed by the Dosimetry Unit of Radiation Epidemiology Branch at the<a href="https://dceg.cancer.gov/"> Division of Cancer Epidemiology and Genetics.</a> Attached is the STA form pre-filled with the information you entered on the web site and the materials you want to receive. Please review the STA form and email a signed copy to Dr. Choonsik Lee at leechoonsik@mail.nih.gov. You will be receiving an email with detailed download instructions once your STA form has been received and approved by Dr. Lee and NCI Technology Tranfer Center.</p>
 	      """
 	footer = """
 	      <div>
 	        <p><i>
-	          (Note: Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at choonsik.lee@nih.gov)
+	          (Note: Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
 	        </p></i>
-	       	<p>Sincerely,</p><p>Sent from the NCIDose Web Tool</p><p>NCIDOSEWebAdmin@mail.nih.gov</p>
+	       	</br><p>Sincerely,</p><p>Sent from the NCIDose Web Tool</p><p>NCIDOSEWebAdmin@mail.nih.gov</p>
 
 	            """
 	message = """
