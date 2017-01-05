@@ -203,6 +203,14 @@ function addEventListeners() {
  	}
  
  	})
+
+ 	$('#NCIDOSE-tabs-right > li').click(function() {
+ 		$('#NCIDOSE-tabs > li').removeClass('active')
+ 	});
+
+ 	$('#NCIDOSE-tabs > li').click(function() {
+ 		$('#NCIDOSE-tabs-right > li').removeClass('active')
+ 	});
  }
  
  
