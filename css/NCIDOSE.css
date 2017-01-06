@@ -481,4 +481,6 @@ font-family: 'Fjalla One', sans-serif;
     font-size: 14pt;
     background: #bf677f;;
     padding: 5px 0 5px 10px;
+    line-height:1.42857143;
+    margin-bottom: 0
 }
