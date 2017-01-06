@@ -43,7 +43,7 @@ def store():
 #		("./content/NCI_STA_"+str(token_id)+".html"), 
 #		("./content/NCI_STA_"+str(token_id)+".pdf")])
 	file='./tmp/NCIDose_STA_'+str(token_id)+'.pdf';
-	HTML(string=page).write_pdf('./tmp/NCI_STA_'+str(token_id)+'.pdf',
+	HTML(string=page).write_pdf('./tmp/NCIDose_STA_'+str(token_id)+'.pdf',
     	stylesheets=[CSS('./css/agreement.css')])
 	print("sending to recipient")
 	Send_to_recipient(email,file,date,data)
