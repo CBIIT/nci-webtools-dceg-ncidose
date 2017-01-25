@@ -37,11 +37,14 @@
 			<div class="container-fluid">
 				<div class="navbar-header" >
 					<!-- a menu botton that is only shown on the small device size -->
+										<button class="btn btn-success navbar-toggle" data-toggle ="collapse" data-target=".navbar-collapse">
+						<span class="glyphicon glyphicon-chevron-down"></span>
+					</button>
 
 				</div>
 
 				<div class="navbar-collapse collapse" >
-					<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive" >
+					<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive"  role="menu" style="width:100%">
 						<!-- HOME -->
 						<li class="nav active" id="home-tab-anchor" role="menuitem" >
 							<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">Home</a>
@@ -59,8 +62,8 @@
 							<a id="DOSE-Coefficients-tab-anchor" href="#DOSE-Coefficients-tab" data-toggle="tab" >Dose Coefficients</a>
 						</li>
 						<!-- Agreement -->
-					</ul
->					<ul id="NCIDOSE-tabs-right" class="nav navbar-nav responsive" style="float:right;" >
+					</ul>
+					<ul id="NCIDOSE-tabs-right" class="nav navbar-nav responsive hidden-xs hidden-sm" style="float:right;" >
 						<li id="Agreement-tab-anchor">
 							<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
 						</li>
@@ -68,6 +71,17 @@
 						<li id="References-tab-anchor">
 							<a id="References-tab-anchor" href="#References-tab" data-toggle="tab" >References</a>
 						</li>
+
+					</ul>
+					<ul id="NCIDOSE-tabs-right" class="nav navbar-nav responsive visible-xs visible-sm" >
+						<li id="Agreement-tab-anchor">
+							<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
+						</li>
+							<!-- References -->
+						<li id="References-tab-anchor">
+							<a id="References-tab-anchor" href="#References-tab" data-toggle="tab" >References</a>
+						</li>
+
 					</ul>
 				</div>
 			</div>
