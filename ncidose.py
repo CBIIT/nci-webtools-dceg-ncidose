@@ -30,9 +30,14 @@ def index():
 
 @app.route('/ncidoseRest/', methods = ['POST'])
 def store():
+	print "storing"
 	mimetype = 'application/json'
 	data = json.loads(request.stream.read())
 	token_id=random.randrange(1, 1000000)
+	json_file_name='./tmp/'+str(token_id)+'_inputs.json'
+	print (json_file_name)
+	with open(json_file_name, 'w') as file_:
+		json.dump(data, file_)
 	email=data["email"] 
 	date=data["date"]
 	page=data["page"].encode('utf-8').strip()
@@ -61,11 +66,13 @@ def Send_to_PM(data):
 	last = data["last"]
 	title = data["title"]
 	purpose= data["purpose"]
+	purpose=purpose.replace("\n", "<br>")
 	date=data["date"]
 	phone=data["phone"]
 	address=data["address"]
+	address=address.replace("\n", "<br>")
 	institution=data["institution"]
-	software_string=data["software"]
+	software_string=data["software_title"]
 	page=data["page"].encode('utf-8').strip()
 	product_name = "NCIDose"
 	print "making message"
