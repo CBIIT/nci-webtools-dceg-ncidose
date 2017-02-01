@@ -48,7 +48,7 @@ function Create_PDF(checked_software,software_content){
 	var institution=document.getElementById("institution").value;
 	var phone=document.getElementById("phone").value;
 	var address=document.getElementById("address").value;
-	address=address.split("\n").join("<br>");
+	//address=address.split("\n").join("<br>");
 
 	
 
@@ -64,7 +64,7 @@ function Create_PDF(checked_software,software_content){
 	//activity
 	var institution=document.getElementById("institution").value;
 	var purpose=document.getElementById("purpose").value;
-		purpose=purpose.replace("\n","<br>")
+		//purpose=purpose.replace("\n","<br>")
 
 	var today = new Date();
     var dd = today.getDate();
@@ -99,10 +99,14 @@ function Create_PDF(checked_software,software_content){
 		data=data.replace('$[Mailing Address]',address)
 		data=data.replace("$[phone]", phone);
 		data=data.replace("$[email]", email);
+		software_title=[]
+		software_text=[]
 		var header=$('#header2').html();
 			if(checked_software.Granted.indexOf("phantoms")!=-1){
 				data=data.replace('$[Phantoms]',software_content[header]["Phantoms"].content);
 				software+= "<li>Phantoms</li>";
+				software_title.push("Phantoms")
+				software_text.push(software_content[header]["Phantoms"].content)
 
 			}
 			else{
@@ -112,6 +116,9 @@ function Create_PDF(checked_software,software_content){
 			if(checked_software.Granted.indexOf("ncict")!=-1){
 				data=data.replace('$[NCICT]',software_content[header]["NCICT"].content);
 				software+= "<li>NCICT</li>";
+				software_title.push("NCICT")
+				software_text.push(software_content[header]["NCICT"].content)
+
 			}
 			else{
 				data=data.replace('&#9745; $[NCICT]',"")
@@ -120,6 +127,9 @@ function Create_PDF(checked_software,software_content){
 			if(checked_software.Granted.indexOf("dose")!=-1){
 				data=data.replace('$[DOSE]',software_content[header]["DOSE"].content);
 				software+= "<li>Dose Coefficients</li>";
+				software_title.push("Dose Coefficients")
+				software_text.push(software_content[header]["DOSE"].content)
+
 			}
 			else{
 				data=data.replace('&#9745; $[DOSE]',"")
@@ -140,11 +150,12 @@ function Create_PDF(checked_software,software_content){
 		phone: phone,
 		institution: institution,
 		purpose: purpose,
-		software:software,
+		software_title:software,
+		software_text:software_text,
 		address: address,
-		date:today,
-		page:cont
+		date:today
 	};
+	console.log(JSON.stringify(Inputs))
 	$.ajax({
 		type : 'POST',
 		url : "ncidoseRest/",
