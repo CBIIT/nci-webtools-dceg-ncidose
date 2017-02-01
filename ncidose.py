@@ -40,18 +40,18 @@ def store():
 		json.dump(data, file_)
 	email=data["email"] 
 	date=data["date"]
-	page=data["page"].encode('utf-8').strip()
 #	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
 #	html_file.write(page)
 #	print(page)
 #	subprocess.call(["weasyprint", "-s", "./css/agreement.css", 
 #		("./content/NCI_STA_"+str(token_id)+".html"), 
 #		("./content/NCI_STA_"+str(token_id)+".pdf")])
-	file='./tmp/NCIDose_STA_'+str(token_id)+'.pdf';
-	HTML(string=page).write_pdf('./tmp/NCIDose_STA_'+str(token_id)+'.pdf',
-    	stylesheets=[CSS('./css/agreement.css')])
+	pdf_file='./tmp/NCIDose_STA_'+str(token_id)+'.pdf';
+	os.system("java -jar pdftagger.jar "+ pdf_file+ " "+  json_file_name)
+	#HTML(string=page).write_pdf('./tmp/NCIDose_STA_'+str(token_id)+'.pdf',
+    #	stylesheets=[CSS('./css/agreement.css')])
 	print("sending to recipient")
-	Send_to_recipient(email,file,date,data)
+	Send_to_recipient(email,pdf_file,date,data)
 	print("sending to PM")
 	Send_to_PM(data)
 	return str("")
@@ -73,7 +73,6 @@ def Send_to_PM(data):
 	address=address.replace("\n", "<br>")
 	institution=data["institution"]
 	software_string=data["software_title"]
-	page=data["page"].encode('utf-8').strip()
 	product_name = "NCIDose"
 	print "making message"
 
