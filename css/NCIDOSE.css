@@ -353,6 +353,19 @@ hr.header {
 
 .thumbnail {
     background-color: #F6F6F6;
+    position: relative
+}
+
+.image {
+    background-color: #F6F6F6;
+    display:table;
+    margin:0 auto;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.text {
+
 }
 
 .caption {
@@ -361,7 +374,7 @@ hr.header {
     font-weight: normal;
     font-weight: bold;
     line-height: 21px;
-    text-align: left;
+     text-align: center; 
     word-spacing: 0px;
     color: #2E2E2E;
     background-color: #F6F6F6;
