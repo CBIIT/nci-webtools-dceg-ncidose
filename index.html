@@ -102,7 +102,7 @@
 				<div class="image">
 					<!-- <div class="thumbnail col-sm-6"> -->
 						<img src="./img/home_page_new.png" class="img-responsive" alt="To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios">
-						<div class="caption">Computational Phantoms + Monte Carlo Method</div>
+						<div class="caption"><p><br>Computational Phantoms + Monte Carlo Method<br><br></p></div>
 					<!-- </div> -->
 				</div>	
 				<br>
@@ -126,23 +126,90 @@
 						Parties interested in commercial use of any materials on this website may contact  <a href="mailto:changke@mail.nih.gov" target="_top">Dr. Kevin Chang</a> at the <a href="https://techtransfer.cancer.gov/"> NCI Technology Transfer Center</a> to discuss licensing process.
 					</p>
 				</div>	
-				</br></br>	
+				<br><br>
 			</div>
 
 
 			<!-- Phantoms -->
 			<div class="tab-pane fade" id="Phantoms-tab">
-				<p>National Cancer Institute computational human phantoms are now in the format of Digital Imaging and Communications in Medicine (DICOM) Radiation Therapy (RT) for radiotherapy dosimetry purpose. The original computational human phantom series is based on the computed tomography (CT) images of pediatric and adult patients whose body size was close to the International Commission on Radiological Protection (ICRP) reference data. Several international standard data including the ICRP Publication 89 (ICRP 2002) and 100 (ICRP 2006), the International Commission on Radiation Units and Measurements (ICRU) 46. The original format of the computational phantoms was converted to DICOM-RT files using an in-house processor (Lee et al 2015a). The DICOM-RT files include the DICOM-image and DICOM-structure representing newborn, 1-, 5-, 10-, 15-year-old, and adult male and female reference individuals. The DICOM-structure includes more than 50 radiosensitive organs and tissues. The DICOM-RT phantoms can be directly imported to commercial treatment planning systems.
-				</p></br>
-
-				<p >Citation: Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015 Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies Physics in Medicine and Biology 60 2309–24.</p>
-				
-				<div class="thumbnail col-lg-6 col-md-8 col-sm-12">
-					<img src="./img/Phantoms.png" class="img-responsive" alt="DICOM-structure">
-					
-					<div class="caption">Three dimensional visualization of the anatomical structures of the computational human phantom series, rendered by Eclipse<sup>TM</sup> Treatment Planning System (Varian Medical Systems, Palo Alto, CA)</div>
-				</div>				
-
+				<div class="image">
+					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
+					<img src="./img/Phantoms_cover.png" class="img-responsive" alt="NCIPhantom cover photo">
+					 <!-- <div class="caption"><p><br><br><br></p></div>  -->
+					<!-- </div> -->
+				</div>	
+				<br>
+				<div class="text">
+					<p>
+						The role of computational representation of human anatomy, called computational human phantoms, in researches of medical radiation and radiation protection becomes more and more critical.  NCIPHANTOM is a library of computational human phantoms representing reference anatomy of children and adults with various body sizes.
+					</p>
+					<br>
+					<b>REALISM AND DETAILS</b>
+					<p>
+						<br>
+						The NCIPHANTOM library was created 100% based on patient images carefully selected from more than 1,000 CT image sets to make sure the anatomical realism<sup>1,2</sup>.  A number of organs and tissues were manually segmented and reviewed by clinical radiologists.  The NCIPHANTOM library has several detailed anatomical structures including lymphatic nodes<sup>3,4</sup>, the heart with substructures, the brain with substructures<sup>5</sup>, etc.  Those detailed models were developed based on patient CT images through months of manual contouring to achieve the best anatomical realism incorporated into the NCIPHANTOM library.  The extended phantom library was also created representing a total of 370 pediatric and adult individuals with different height and weight.2
+					</p>
+				</div>	
+				<br>
+				<div class="image">
+					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
+					<img src="./img/Phantoms_new.png" class="img-responsive" alt="Reference sizes for NCIPHANTOM Series">
+					  <div class="caption"><p><br>Reference size pediatric and adult NCIPHANTOM series<br><br></p></div>  
+					<!-- </div> -->
+				</div>
+				<br>
+				<div class="text">
+					<b>INTERNATIONAL REFERENCE</b>
+					<p>
+						<br>
+						Once developed from patient CT images, the NCIPHANTOM library was adjusted to match several international reference data including international reference body sizes<sup>6</sup>, reference organ mass<sup>6</sup>, reference elemental composition<sup>6,7</sup>, and reference dimension data of gastro-intestine structures<sup>8</sup>.  The anatomical structures of the reference children phantom series were adopted as international reference by International Commission on Radiological Protection (ICRP).
+					</p>
+					<br>
+					<b>MOST ADVANCED ARCHITECTURE</b>
+					<p>
+						<br>
+						Computational phantoms have evolved from simple stylistic forms (called mathematical or stylized phantoms) through more realistic but fixed forms (called tomographic or voxel phantoms) to realistic and flexible forms composed of polygon mesh and non-uniform rational B-spline (NURBS) format (called hybrid or Boundary Representation phantoms).  The NCIPHANTOM library was developed based on the mesh and NURBS, which is the most advanced phantom architecture to date.  The phantoms can be converted into voxel format with variable voxel resolution for Monte Carlo radiation transport.  The original format can directly be imported into surface Monte Carlo radiation transport codes.
+					</p>
+					<br>
+					<b>VERSITILE FORMAT</b>
+					<p>
+						<br>
+						The NCIPHANTOM library can be imported to different types of Monte Carlo radiation transport codes including MCNPX, MCNP6, GEANT4, etc.  Main input deck for those codes is also available for research purpose.  The NCIPHANTOM library also has been converted to DICOM-RT format which is compatible with commercial treatment planning systems.  Detailed anatomical structures are converted to DICOM-CT images with realistic Hounsfield Unit.  A total of 100+ organs and tissues are also directly imported into TPS in the format of DICOM-structure.  Users will immediately evaluate dose to multiple organs and tissues on TPS once beam planning is completed.
+					</p>
+				</div>		
+				<br>
+				<div class="image">
+					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
+					<img src="./img/Phantom_eclipse.png" class="img-responsive" alt="Male phantom in Eclipse TPS">
+					  <div class="caption"><p><br>Adult male phantom imported into Eclipse TPS for prostate treatment simulation<br><br></p></div>  
+					<!-- </div> -->
+				</div>
+				<br>
+				<br>
+				<div class="text">
+					<b>REFERENCES</b>
+					<p>
+							<ol>
+							<li>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams JL, Bolch WE. The UF family of reference hybrid phantoms for computational radiation dosimetry. <i>Phys Med Biol.</i> 2010;55(2):339-363.</li>
+							<br>
+							<li>Geyer AM, O’Reilly S, Lee C, Long DJ, Bolch WE. The UF/NCI family of hybrid computational phantoms representing the current US population of male and female children, adolescents, and adults--application to CT dosimetry. 2014;59(18):5225-5242.</li>
+							<br>
+							<li>Lee C, Lamart S, Moroz BE. Computational lymphatic node models in pediatric and adult hybrid phantoms for radiation dosimetry. <i>Phys Med Biol.</i> 2013;58(5):N59--N82.</li>
+							<br>
+							<li>Lee C, Kaufman K, Pafundi DH, Bolch WE. An Algorithm for Lymphatic Node Placement in Hybrid Computational Phantoms: Applications to Radionuclide Therapy Dosimetry. <i>Proc IEEE.</i> 2009;97(12):2098-2108. doi:10.1109/JPROC.2009.2025399.</li>
+							<br>
+							<li>Villoing D, McMillan D, Kim KP, et al. Korean pediatric and adult head computational phantoms and application to photon specific absorbed fractions calculations. <i>Radiat Prot Dosimetry.</i> February 2017:1-8. doi:10.1093/rpd/ncx009.</li>
+							<br>
+							<li>ICRP. Basic anatomical and physiological data for use in radiological protection : reference values. <i>ICRP Publ 89 Ann ICRP.</i> 2002;32(3-4):1-277.</li>
+							<br>
+							<li>ICRU. <i>Photon, Electron, Proton and Neutron Interaction Data for Body Tissues.</i> Bethesda, MD: International Commission on Radiation Units and Measurements; 1992.</li>
+							<br>
+							<li>ICRP. Human alimentary tract model for radiological protection. <i>ICRP Publ 100 Ann ICRP.</i> 2006;36(1-2):1-336. doi:10.1016/j.icrp.2006.03.004.</li>
+							<br>
+						</ul>
+					</p>
+				</div>
+				</br></br>	
 			</div>
 
 			<!-- NCICT -->
