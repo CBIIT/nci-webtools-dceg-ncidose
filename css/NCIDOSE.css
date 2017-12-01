@@ -46,7 +46,7 @@
 }
 
 body {
-     /* background-color: #F7F8F3;  */
+    background-color: #F7F8F3;  
     font-family: "Noto Sans", Arial, sans-serif;
     font-size: 15px;
     font-weight: normal;
@@ -66,7 +66,6 @@ body {
     border-color: #d9d9d9;
     border-radius: 0 0 4px 4px; */
     overflow: hidden;
-    box-shadow: 0px 1px 10px grey;
 }
 
 .tab-content .tab-pane {
@@ -315,12 +314,16 @@ img.graph-legend {
 /* New stuff */
 
 /* Header and Footer */
-header {
-    margin: 0px;
+#logo-header {
+    background-color: white;
+    width: 100%
 }
 
-body {
-    background-color: #F7F8F3;
+header {
+    margin: 0px; 
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .header img {
@@ -356,16 +359,18 @@ hr.header {
     position: relative
 }
 
-.image {
-    background-color: #F6F6F6;
-    display:table;
+.graphic {
+    background-color: white;
     margin:0 auto;
     border-style: solid;
     border-width: 1px;
+    border-color: #F6F6F6;
+    padding: 5px;
 }
 
-.text {
-
+.image {
+    display:table;
+    margin:0 auto;
 }
 
 .caption {
@@ -374,7 +379,7 @@ hr.header {
     font-weight: normal;
     font-weight: bold;
     line-height: 21px;
-     text-align: center; 
+    text-align: center; 
     word-spacing: 0px;
     color: #2E2E2E;
     background-color: #F6F6F6;
@@ -498,7 +503,7 @@ font-weight: bold;
 }
 
 #ribbon h1 {
-font-family: 'Fjalla One', sans-serif;
+    font-family: 'Fjalla One', sans-serif;
     padding: 0;
     margin: 0;
     letter-spacing: .015em;
@@ -524,6 +529,6 @@ font-family: 'Fjalla One', sans-serif;
     background: #bf677f;;
     padding: 5px 0 5px 10px;
     line-height:1.42857143;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 .skip a,.skip a:hover,.skip a:visited{position:absolute;left:-999px}.skip a:active,.skip a:focus{display:block;left:0;z-index:999;background:#fff;border:1px solid #000;padding:5px 5px 5px 5px}
