@@ -6,36 +6,47 @@
 
 
 <head>
-<script src="//assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-4b219b82c4737db0e1797b6c511cf10c802c95cb.js"></script>
-<title>NCIDose Webtool</title>
+	<script src="//assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-4b219b82c4737db0e1797b6c511cf10c802c95cb.js"></script>
+	<title>NCIDose Webtool</title>
 
-<meta name="generator" content="NCIDose">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="NCI, CBIIT">
+	<meta name="generator" content="NCIDose">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="NCI, CBIIT">
 
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="../common/css/bootstrap-multiselect.css">
-<link rel="stylesheet" href="../common/css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../common/css/bootstrap-multiselect.css">
+	<link rel="stylesheet" href="../common/css/style.css">
 
-<link rel="stylesheet" href="./css/NCIDOSE.css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="./css/NCIDOSE.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
-<body role="document">
-<a href="#home-tab" class="sr-only">Skip to main content</a> 
-<div class="skip"><a title="Skip to content" href="#home-tab">Skip to content</a></div>
-	<header class="container" style="margin-bottom:0px">		
-		<a href="https://dceg.cancer.gov/" target="dceg">
-			<img class="division-logo" src="/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
-		</a>
+<!-- <a href="#skipto-content" class="sr-only">Skip to main content</a>  -->
+<div class="skip">
+	<a title="Skip to content" href="#skipto-content">Skip to content</a>
+</div>
+<header>
+	<div id="logo-header"> 	
+		<div id="logo" class="container">	
+			<a href="https://dceg.cancer.gov/" target="dceg">
+				<img class="division-logo" src="/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
+			</a>
+		</div>
+	
 		<div id="header" role="banner">
-        	<h1 id="ribbon" class="clearfix">NCIDose</h1>
-    	</div>
+			<h1 id="ribbon" class="clearfix">
+				<div class="container">
+					NCIDose
+				</div>
+			</h1>
+		</div>
+	</div>
+	<div class="container">
 		<nav class="navbar navbar-default" style="margin-bottom:0px">
 			<div class="container-fluid">
 				<div class="navbar-header" >
@@ -45,7 +56,6 @@
 					</button>
 
 				</div>
-
 				<div class="navbar-collapse collapse" >
 					<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive">
 						<!-- HOME -->
@@ -91,21 +101,16 @@
 				</div>
 			</div>
 		</nav>
-	</header>
+	</div>
+</header>
 
+<body role="document">
 	<main class="container" role="main" >		
 
 		<!-- NCIDose Tab Content -->
-		<div class="tab-content">
+		<div class="tab-content" id="skipto-content">
 			<!-- Home -->
 			<div class="tab-pane fade" id="home-tab">
-				<div class="image">
-					<!-- <div class="thumbnail col-sm-6"> -->
-						<img src="./img/home_page_new.png" class="img-responsive" alt="To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios">
-						<div class="caption"><p><br>Computational Phantoms + Monte Carlo Method<br><br></p></div>
-					<!-- </div> -->
-				</div>	
-				<br>
 				<div class="text">
 					<p>
 						<b>NCIDOSE</b> is the collection of tools and data for medical radiation dosimetry developed by radiation physicists at the Division of Cancer Epidemiology and Genetics of the National Cancer Institute.  The resources are based on years of research and development in collaboration with a number of research institutions and clinical centers.  This website is intended to distribute the tools free of charge for research purpose.   The following resources are currently available.
@@ -119,6 +124,15 @@
 							<li>Dose coefficients for internal and external radiation exposure scenarios</li>
 						</ul>
 					</p>
+					<div class="image">
+					<!-- <div class="thumbnail col-sm-6"> -->
+						<div class="graphic">
+							<img src="./img/home_page_new.png" class="img-responsive" alt="To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios">
+						</div>
+						<div class="caption"><p><br>Computational Phantoms + Monte Carlo Method<br><br></p></div>
+					<!-- </div> -->
+					</div>	
+					<br>
 					<p>
 						Anyone who is interested in obtaining these resources for research can go to the Agreement tab and submit the Software Transfer Agreement to the NCI Technology Transfer Center.  Once the agreement is approved, please contact Dr. Choonsik Lee.  All data and tools will be available free of charge for research purpose.
 					</p>
@@ -152,9 +166,11 @@
 				</div>	
 				<br>
 				<div class="image">
+					<div class="graphic">
 					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/Phantoms_new.png" class="img-responsive" alt="Reference sizes for NCIPHANTOM Series">
-					  <div class="caption"><p><br>Reference size pediatric and adult NCIPHANTOM series<br><br></p></div>  
+						<img src="./img/Phantoms_new.png" class="img-responsive" alt="Reference sizes for NCIPHANTOM Series">
+					</div>
+					<div class="caption"><p><br>Reference size pediatric and adult NCIPHANTOM series<br><br></p></div>  
 					<!-- </div> -->
 				</div>
 				<br>
@@ -180,8 +196,10 @@
 				<br>
 				<div class="image">
 					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/Phantom_eclipse.png" class="img-responsive" alt="Male phantom in Eclipse TPS">
-					  <div class="caption"><p><br>Adult male phantom imported into Eclipse TPS for prostate treatment simulation<br><br></p></div>  
+					<div class="graphic">
+						<img src="./img/Phantom_eclipse.png" class="img-responsive" alt="Male phantom in Eclipse TPS">
+					</div>
+					<div class="caption"><p><br>Adult male phantom imported into Eclipse TPS for prostate treatment simulation<br><br></p></div>  
 					<!-- </div> -->
 				</div>
 				<br>
@@ -221,6 +239,12 @@
 					 <!-- <div class="caption"><p><br><br><br></p></div>  -->
 					<!-- </div> -->
 				</div>	
+				<span class="pull-right col-md-1" onclick="openHelpWindow('help.html')">
+					<i class="glyphicon glyphicon-question-sign glyphicon-blue" aria-label="Help"></i>
+					<a href="#">
+						<span style="font-size:small">Help</span>
+					</a>
+				</span>
 				<br>
 				<div class="text">
 					<p>
@@ -236,15 +260,19 @@
 				<br>
 				<div class="image">
 					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/NCICT_helical_simulation.png" class="img-responsive" alt="Image of simulation of helical x-ray with adult female phantom">
-					  <div class="caption"><p><br>Simulation of helical x-ray source in CT scanner combined with an adult female phantom<br><br></p></div>  
+					<div class="graphic">
+						<img src="./img/NCICT_helical_simulation.png" class="img-responsive" alt="Image of simulation of helical x-ray with adult female phantom">
+					</div>
+					<div class="caption"><p><br>Simulation of helical x-ray source in CT scanner combined with an adult female phantom<br><br></p></div>  
 					<!-- </div> -->
 				</div>
 				<br>
 				<div class="image">
 					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/NCICT_physical_phantoms.png" class="img-responsive" alt="Image of anthropomorphic physical phantoms">
-					  <div class="caption"><p><br>Anthropomorphic physical phantoms used to validate organ dose simulated in NCICT<br><br></p></div>  
+					<div class="graphic">
+						<img src="./img/NCICT_physical_phantoms.png" class="img-responsive" alt="Image of anthropomorphic physical phantoms">
+					</div>
+					<div class="caption"><p><br>Anthropomorphic physical phantoms used to validate organ dose simulated in NCICT<br><br></p></div>  
 					<!-- </div> -->
 				</div>
 				<br>
@@ -256,12 +284,6 @@
 					</p>
 					<br>
 					<h3>HASSLE-FREE INSTALLATION</h3>
-					<span class="pull-right col-md-1" onclick="openHelpWindow('help.html')">
-							<i class="glyphicon glyphicon-question-sign glyphicon-blue" aria-label="Help"></i>
-							<a href="#">
-								<span style="font-size:small">Help</span>
-							</a>
-					</span>
 					<p>
 						<br>
 						Some data involved in patient imaging are considered Protected Health Information (PHI).  Even anonymized data often tend to be prohibited from being transferred outside the Picture Archiving and Communication System (PACS).  NCICT is running on a personal computer standalone.  Users do not have to send any sensitive patient data to central servers, which do not even exist for running NCICT.  Users do not need an internet connection to run NCICT.
@@ -270,8 +292,10 @@
 				<br>
 				<div class="image">
 					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/NCICT_gui.png" class="img-responsive" alt="Screenshot of NCICT graphical user interface">
-					  <div class="caption"><p><br>The graphical user interface of NCICT showing organ dose calculation for the head scan of a<br> newborn female computational phantom<br></p></div>  
+					<div class="graphic">
+						<img src="./img/NCICT_gui.png" class="img-responsive" alt="Screenshot of NCICT graphical user interface">
+					</div>
+					<div class="caption"><p><br>The graphical user interface of NCICT showing organ dose calculation for the head scan of a<br> newborn female computational phantom<br></p></div>  
 					<!-- </div> -->
 				</div>
 				<br>
@@ -397,8 +421,10 @@
 				<br>
 				<div class="image">
 					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/Dose Coefficients_external.png" class="img-responsive" alt="External organ and effective dose coefficients">
-						<div class="caption"><p><br>External organ and effective dose coefficients for age-dependent phantoms exposed to <br>idealized photon beams in different irradiation geometries.<br><br></p></div>  
+					<div class="graphic">
+						<img src="./img/Dose Coefficients_external.png" class="img-responsive" alt="External organ and effective dose coefficients">
+					</div>	
+					<div class="caption"><p><br>External organ and effective dose coefficients for age-dependent phantoms exposed to <br>idealized photon beams in different irradiation geometries.<br><br></p></div>  
 					<!-- </div> -->
 				</div>
 				<br>
@@ -416,8 +442,10 @@
 				<br>
 				<div class="image">
 					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/Dose_Coefficients_internal.png" class="img-responsive" alt="S values for various target organs in the ICRP adult male and female reference phantoms where I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).">
-						<div class="caption"><p><br>S values for various target organs in the ICRP adult male and female reference phantoms where <br>I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).<br><br></p></div>  
+					<div class="graphic">
+						<img src="./img/Dose_Coefficients_internal.png" class="img-responsive" alt="S values for various target organs in the ICRP adult male and female reference phantoms where I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).">
+					</div>
+					<div class="caption"><p><br>S values for various target organs in the ICRP adult male and female reference phantoms where <br>I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).<br><br></p></div>  
 					<!-- </div> -->
 				</div>		
 					<!-- <h2 style="font-size:18px">EXTERNAL PHOTON</h2>
@@ -450,7 +478,7 @@
 				    	<span class="pull-right"  onclick="openHelpWindow('./content/NCIDose_STA_Preview.pdf')";>
                     <i class="cursor-pointer glyphicon glyphicon-download-alt glyphicon-blue" aria-label="Help" onclick="openHelpWindow('./content/NCI STA_lite.pdf')"></i>
                     <a href="#">
-                    	<span style="font-size:small;" ">View STA Agreement</span>
+                    	<span style="font-size:small;">View STA Agreement</span>
                     </a>
          			</span>
          			</h2>
