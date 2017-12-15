@@ -380,17 +380,17 @@ hr.header {
 }
 
 .thumbnail {
-    background-color: #F6F6F6;
+    background-color: #F5F5F5;
     position: relative
 }
 
 .graphic {
     /* background-color: white;  */
     margin:0 auto;
-    /* border-style: solid;
+    border-style: solid;
     border-width: 1px;
-    border-color: #F6F6F6; */
-    /* padding: 5px; */
+    border-color: #F5F5F5; 
+    padding: 5px; 
 }
 
 .image {
