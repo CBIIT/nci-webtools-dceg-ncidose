@@ -55,6 +55,10 @@
     font-weight: bold;
     color: #444444;
 }
+/* Override navbar collapese for narrow windows */
+.navbar-collapse.collapse {
+  display: block!important;
+}
 
 .instructions {
     text-align: center;
