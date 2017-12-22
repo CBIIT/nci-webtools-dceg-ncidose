@@ -499,90 +499,94 @@
 				</div>
 
 				<div id="overlay" class="overlay">				
-				<div id="errorMessage"></div>
-				<!-- Recipient Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Recipient Investigator</h2></div>
-				    <div class="panel-body">
+					<div id="errorMessage"></div>
+					<!-- Recipient Section -->
+					<div class="panel panel-default">
+						<div class="panel-heading"><h2 class="panel-title">Recipient Investigator</h2></div>
+						<div class="panel-body">
+							<div class="row" style="margin-bottom:10px">
+								<label for="first_name" class="col-sm-2">First Name*:</label>
+								<div class="col-sm-2"><input type="text" class="form-control" id="first_name" required disabled/></div>
+								<label for="last_name" class="col-sm-2">Last Name*:</label>
+								<div class="col-sm-2"><input type="text" class="form-control" id="last_name" required disabled /></div>
+								<label for="title" class="col-sm-2">Title*:</label>
+								<div class="col-sm-2"><input type="text" class="form-control" id="title" required disabled></div>    
+							</div>            
 
-					<div class="row" style="margin-bottom:10px">
-					    <label for="first_name" class="col-sm-2">First Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required disabled/></div>
-					    <label for="last_name" class="col-sm-2">Last Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required disabled /></div>
-					    <label for="title" class="col-sm-2">Title*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="title" required disabled></div>    
-					</div>            
+							<div class="row" style="margin-bottom:10px">
+								<label for="email" class="col-sm-2">Email*:</label>
+								<div class="col-sm-2"><input type="email" class="form-control" id="email" required disabled/></div>
+								<label for="phone" class="col-sm-2">Phone*:</label>
+								<div class="col-sm-2"><input type="text" class="form-control" id="phone" required disabled></div>
+							</div>
+							<div class="row" style="margin-bottom:10px">
+								<label for="institution" class="col-sm-2">Institution*:</label>
+								<div class="col-sm-6"><input type="text" class="form-control" id="institution"  required disabled /></div>
+							</div>
+							<div class="row" style="margin-bottom:10px">
+								<label for="address" class="col-sm-2">Business Address*:</label>
+								<div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required disabled ></textarea></div>
+							</div>
+						</div>
+					</div>
+					
 
-					<div class="row" style="margin-bottom:10px">
-					    <label for="email" class="col-sm-2">Email*:</label>
-					    <div class="col-sm-2"><input type="email" class="form-control" id="email" required disabled/></div>
-					    <label for="phone" class="col-sm-2">Phone*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="phone" required disabled></div>
+					<!-- Research Activity Section -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">Research Activity</h2>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<label for="purpose" class="col-sm-2">Purpose*:</label>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+								<textarea aria-label="purpose" id ="purpose" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required disabled></textarea>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="row" style="margin-bottom:10px">
-					    <label for="institution" class="col-sm-2">Institution*:</label>
-					    <div class="col-sm-6"><input type="text" class="form-control" id="institution"  required disabled /></div>
+					<!-- Submit -->
+					<div class="col-sm-12">
+						<input type="button" id="generate" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" disabled />
 					</div>
-					<div class="row" style="margin-bottom:10px">
-					    <label for="address" class="col-sm-2">Business Address*:</label>
-					    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required disabled ></textarea></div>
-					</div>
-				    </div>
-				</div>
+					<!-- </div>
+					</div> -->
+
+					<!-- <div class="tab-pane fade" id="4th-tab"> -->
+						<!-- <h4>4th tab content goes here</h4>  -->
+					<!-- </div> -->
+
+				</div> 
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+			</div> 
 				
-
-				<!-- Research Activity Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Research Activity</h2></div>
-				    <div class="panel-body">
-		
-					<div class="row">
-					    <label for="purpose" class="col-sm-2">Purpose*:</label>
-					</div>
-					<div class="row">
-					    <div class="col-sm-12">
-						<textarea aria-label="purpose" id ="purpose" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required disabled></textarea>
-					    </div>
-					</div>
-
-				    </div>
-				</div>
-
-				<!-- Submit -->
-				<div class="col-sm-12">
-				    <input type="button" id="generate" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" disabled />
-				</div>
-				</div>
-			</div>
-
-			<div class="tab-pane fade" id="4th-tab">
-         			<h4>4th tab content goes here</h4>
-
-
-
-        </div>
-         			<!--ALTERNATIVE AGGREEMENT TAB-->
-		<div class="tab-pane fade" id="Agreement_Alt-tab">
-
+         	<!--ALTERNATIVE AGGREEMENT TAB-->
+			<div class="tab-pane fade" id="Agreement_Alt-tab">
 				<div id="overlay">				
-				<div id="errorMessage"></div>
-				<!-- Recipient Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading">	<p align=center style='margin-bottom:1px;text-align:center;font-size:12.0pt'><b>SOFTWARE TRANSFER AGREEMENT</b></p></div>
-				    <div class="panel-body" id="agreement_form">
-				    </div>
-				
-				</div>
+					<div id="errorMessage"></div>
+					<!-- Recipient Section -->
+					<div class="panel panel-default">
+						<div class="panel-heading">	<p align=center style='margin-bottom:1px;text-align:center;font-size:12.0pt'><b>SOFTWARE TRANSFER AGREEMENT</b></p></div>
+						<div class="panel-body" id="agreement_form">
+						</div>
+					
+					</div>
 
-				<!-- Submit -->
-				<div class="col-sm-12">
-				    <input type="button" id="generate2" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate overlay"/>
-				</div>
+					<!-- Submit -->
+					<div class="col-sm-12">
+						<input type="button" id="generate2" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate overlay"/>
+					</div>
 				</div>
 			</div>
 
-        <!-- <div class="tab-pane fade" id="References-tab">
+        	<!-- <div class="tab-pane fade" id="References-tab">
      		<div  style ="text-indent:-1.5em;padding-left:2.5em">
      			<p >Dabin J, Mencarelli A, McMillan D, Romanyukha A, Struelens L and Lee C 2016 Validation of calculation algorithms for organ doses in CT by measurements on a 5 year old paediatric phantom <i>Physics in Medicine and Biology</i> <b>61</b> 4168–82</p>
      			
@@ -605,7 +609,7 @@
         </div> <!-- End of NCIDose Tab Content -->
        
 
-		</div>
+		<!-- </div> -->
 	</main> <!-- End of main-->
 
 	<!-- Common Footer -->
