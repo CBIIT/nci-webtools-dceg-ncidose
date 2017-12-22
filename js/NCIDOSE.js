@@ -223,7 +223,7 @@ function addEventListeners() {
  	}
  
  	 else if(validateTransferAgreement()&&validateEmail()==false){
- 		    $('#errorMessage').html("<font color='red'>Please fill in required field(s)</font><br><font color='red'>Please Please enter a valid email address</font>");
+ 		    $('#errorMessage').html("<font color='red'>Please fill in required field(s)</font><br><font color='red'>Please enter a valid email address</font>");
  	        $('#errorMessage').show();
  	        return;
  	}
