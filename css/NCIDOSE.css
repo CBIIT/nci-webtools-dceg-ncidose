@@ -58,7 +58,7 @@
 
 /* Override navbar collapese for narrow windows */
 .navbar-collapse.collapse {
-  display: block!important;
+    display: block!important;
 }
 
 .instructions {
@@ -161,28 +161,28 @@ td.cell-center {
 }
 
 .btn-file {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  background: red;
-  cursor: inherit;
-  display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
 }
 
 input[readonly] {
-  background-color: white !important;
-  cursor: text !important;
+    background-color: white !important;
+    cursor: text !important;
 }
 /*
 table.ldhap,table.ldhap tr, table.ldhap th {
@@ -194,13 +194,13 @@ table.ldhap,table.ldhap tr, table.ldhap th {
 }
 
 .two-by-two {
-  margin-bottom:0px;
-  width:100%;
+    margin-bottom:0px;
+    width:100%;
 }
 
 .jumbotron {
-  background-color:white;
-  padding:10px 15px;
+    background-color:white; 
+    padding:10px 15px;
 }
 
 table.fixed {
@@ -213,12 +213,12 @@ table.fixed td {
 }
 
 table thead td {
-  font-weight:bold;
-  text-align: center;
+    font-weight:bold;
+    text-align: center;
 }
 
 .font-weight-bold {
-  font-weight:bold;
+    font-weight:bold;
 }
 
 img.logo {
@@ -235,9 +235,9 @@ img.loading {
 }
 
 img.graph-legend {
-  display:block;
-  margin-left: auto;
-  margin-right: auto;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .multiselect-container > li {
@@ -434,10 +434,10 @@ th.rotate > div > span {
   /*padding: 5px 10px;*/
 }
 /* These aren't needed and will be weird if transforms don't work */
-.csstransforms & th.rotate {
+/* .csstransforms & th.rotate {
   height: 142px;
   white-space: nowrap;
-}
+} */
 
 
 span.formw > label {
@@ -558,7 +558,8 @@ font-weight: bold;
     font-size: 12pt;
     font-weight: bold;
     background: #BB0E3D;
-    padding: 5px 0 5px 10px;
+    /* padding: 5px 0 5px 10px; */
+    padding: 5px 0 5px 30px;
     line-height:1.42857143;
     margin-bottom: 0;
 }
