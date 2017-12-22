@@ -46,8 +46,8 @@ $(document).ready(function() {
 		Make_PDF(e);
 	});
 
-	setupTabs();
-
+	// setupTabs();
+	pageURL();
 
 });
 
@@ -59,8 +59,40 @@ $(document).on('change','.btn-file :file',function() {
 	}
 );
 
-
-
+// Jump to certain tab if tab is specified in URL
+function pageURL () {
+	var url = window.location.href;
+	// console.log(url);
+	var path = url.substring(url.lastIndexOf("/") + 1);
+	var tab = ""
+	switch(path) {
+		case "#phantoms":
+			tab = "#Phantoms-tab"
+			break;
+		case "#ncict":
+			tab = "#NCICT-tab"
+			break;
+		case "#dose":
+			tab = "#DOSE-Coefficients-tab"
+			break;
+		case "#agreement":
+			tab = "#Agreement-tab"
+			break;
+		default:
+			tab = "";
+	}
+	if (tab.length == 0) {
+		setupTabs();
+	}
+	else {
+		setupTabs();
+		$("#home-tab-anchor").removeClass('active');
+		$("#home-tab").removeClass('active');
+		$(tab + '-anchor').addClass('active');
+		$(tab).addClass("in").addClass('active');
+		$(tab + '-anchor').parent().addClass('active');
+	}
+}
 
 function setupTabs() {
 	//Clear the active tab on a reload
@@ -74,25 +106,28 @@ function setupTabs() {
 	if(search.length >0 ) {
 		url = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"').replace(/\n/, '\\\\n').replace(/\t/, '') + '"}');
 	}
-
 	var currentTab;
 	if(typeof url.tab !="undefined") {
 		currentTab = url.tab.toLowerCase();
 	} else {
 		currentTab = 'home';
 	}
-
-
-
 	$('#'+currentTab+'-tab').addClass("in").addClass('active');
 	$('#'+currentTab+'-tab-anchor').parent().addClass('active');
+
+	$('#'+currentTab+'-tab-anchor').addClass('active');
 
 	if(typeof url.inputs !="undefined") {
 		//console.dir(url.inputs.replace(/\t/, '').replace(/\n/, '\\\\n'));
 		updateData(currentTab, url.inputs.replace(/\t/, '').replace(/\n/, '\\\\n'));
 	}
-
 }
+
+// Shortcut for to enter agreement tab in Home-tab
+$('#Agreement-tab-link').click(function() {
+	$("#Agreement-tab-anchor").addClass('active');
+	$("#home-tab-anchor").removeClass('active');
+});
 
 
 function showFFWarning() {
