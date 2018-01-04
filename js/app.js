@@ -189,7 +189,7 @@ $('#agreement form').submit(function(e) {
 
   // send parameters to application
   $('#loading-overlay').show()
-  $.post('http://localhost:8765/submit', JSON.stringify(parameters))
+  $.post('submit/', JSON.stringify(parameters))
     .done(function(response) {
       createModal(
         'NCIDose Materials Confirmation',
