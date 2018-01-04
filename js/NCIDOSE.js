@@ -1,280 +1,214 @@
-var NCIDOSE_version = "Version 1.0";
-var fields = ['first_name','last_name','email','phone','address','institution','purpose','title'];
+/**
+ * @file Contains routing and form validation and logic for
+ * the NCIDose tool
+ * 
+ * @version 1.1
+ */
 
-var modules = [ "NCICT", "2nd Tab" ];
+/** hide loading overlay */
+$('#loading-overlay').hide()
 
-Object.size = function(obj) {
-    var size = 0, key;
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
-};
+/**
+ * Enables hash-based routing based on bootstrap tabs
+ */
+$(function enableRoutes() {
+  // navigate to the appropriate tab when the location hash is changed
+  window.onhashchange = function() {
+    $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
+    setTimeout(function() { window.scrollTo(0, 0) }, 0);
+  };
 
-$(document).ready(function() {
+  // use default route if location hash not defined
+  if (!window.location.hash)
+    window.location.hash = '#home';
 
-	updateVersion(NCIDOSE_version);
-	//addValidators();
-	$('#ldlink-tabs').on('click', 'a', function(e) {
-		//console.warn("You clicked a tab");
-		//console.info("Check for an attribute called data-url");
-		//If data-url use that.
-		var currentTab = e.target.id.substr(0, e.target.id.search('-'));
-		//console.log(currentTab);
-		var last_url_params = $("#"+currentTab+"-tab-anchor").attr("data-url-params");
-		//console.log("last_url_params: "+last_url_params);
-		if(typeof last_url_params === "undefined") {
-			window.history.pushState({},'', "?tab="+currentTab);
-		} else {
-			window.history.pushState({},'', "?"+last_url_params);
-		}
-
-	});
-	
-	
-	$('[data-toggle="popover"]').popover();
-	// Apply Bindings
-
-	$.each(modules, function(key, id) {
-		$("#"+ id + "-results-container").hide();
-		$('#'+ id + '-message').hide();
-		$('#'+ id + '-message-warning').hide();
-		$('#'+ id + "-loading").hide();
-	});
-	$('.NCICTForm').on('submit', function(e) {
-		//alert('Validate');
-		Make_PDF(e);
-	});
-
-	// setupTabs();
-	pageURL();
-
-});
-
-// Set file support trigger
-$(document).on('change','.btn-file :file',function() {
-		var input = $(this), numFiles = input.get(0).files ? 
-		input.get(0).files.length : 1, label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-		input.trigger('fileselect', [ numFiles, label ]);
-	}
-);
-
-// Jump to certain tab if tab is specified in URL
-function pageURL () {
-	var url = window.location.href;
-	// console.log(url);
-	var path = url.substring(url.lastIndexOf("/") + 1);
-	var tab = ""
-	switch(path) {
-		case "#phantoms":
-			tab = "#Phantoms-tab"
-			break;
-		case "#ncict":
-			tab = "#NCICT-tab"
-			break;
-		case "#dose":
-			tab = "#DOSE-Coefficients-tab"
-			break;
-		case "#agreement":
-			tab = "#Agreement-tab"
-			break;
-		default:
-			tab = "";
-	}
-	if (tab.length == 0) {
-		setupTabs();
-	}
-	else {
-		setupTabs();
-		$("#home-tab-anchor").removeClass('active');
-		$("#home-tab").removeClass('active');
-		$(tab + '-anchor').addClass('active');
-		$(tab).addClass("in").addClass('active');
-		$(tab + '-anchor').parent().addClass('active');
-	}
-}
-
-function setupTabs() {
-	//Clear the active tab on a reload
-	$.each(modules, function(key, id) {
-		$("#"+id+"-tab-anchor").removeClass('active');
-	});
-	$("#home-tab-anchor").removeClass('active');
-	//Look for a tab variable on the url
-	var url = "{tab:''}";
-	var search = location.search.substring(1);
-	if(search.length >0 ) {
-		url = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"').replace(/\n/, '\\\\n').replace(/\t/, '') + '"}');
-	}
-	var currentTab;
-	if(typeof url.tab !="undefined") {
-		currentTab = url.tab.toLowerCase();
-	} else {
-		currentTab = 'home';
-	}
-	$('#'+currentTab+'-tab').addClass("in").addClass('active');
-	$('#'+currentTab+'-tab-anchor').parent().addClass('active');
-
-	$('#'+currentTab+'-tab-anchor').addClass('active');
-
-	if(typeof url.inputs !="undefined") {
-		//console.dir(url.inputs.replace(/\t/, '').replace(/\n/, '\\\\n'));
-		updateData(currentTab, url.inputs.replace(/\t/, '').replace(/\n/, '\\\\n'));
-	}
-}
-
-// Shortcut for to enter agreement tab in Home-tab
-$('#Agreement-tab-link').click(function() {
-	$("#Agreement-tab-anchor").addClass('active');
-	$("#home-tab-anchor").removeClass('active');
+  // trigger hash change when page is loaded
+  window.onhashchange();
 });
 
 
-function showFFWarning() {
-	// Is this a version of Mozilla?
-	if ($.browser.mozilla) {
-		var userAgent = navigator.userAgent.toLowerCase();
-		// Is it Firefox?
-		if (userAgent.indexOf('firefox') != -1) {
-			userAgent = userAgent.substring(userAgent.indexOf('firefox/') + 8);
-			var version = userAgent.substring(0, userAgent.indexOf('.'));
-			if (version < 36) {
-				$('.ffWarning').show();
-			}
-		}
-	}
-}
-
-
-
-function updateVersion(version) {
-	$("#NCIDOSE_version").text(version);
-}
-
-
-
-
-
-function toggleChevron(e) {
-    $(e.target).prev('.panel-heading').find("i.indicator")
-        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-}
-
-Array.prototype.contains = function(v) {
-    for(var i = 0; i < this.length; i++) {
-        if(this[i] === v) return true;
-    }
-    return false;
-};
-
-Array.prototype.unique = function() {
-    var arr = [];
-    for(var i = 0; i < this.length; i++) {
-        if(!arr.contains(this[i])) {
-            arr.push(this[i]);
-        }
-    }
-    return arr; 
-}
-function openHelpWindow(pageURL) {
-    var helpWin = window.open(pageURL, "Help", "alwaysRaised,dependent,status,scrollbars,resizable,width=1000,height=800");
-    helpWin.focus();
-}
-
-$('#consent :checkbox').change(function () {
-    var a = $('#consent :checked').filter(":checked").length;
-    if (a >= 1) {
-        $('#overlay').removeClass('overlay');
-		$('#first_name').removeAttr("disabled")        
-		$('#last_name').removeAttr("disabled")        
-		$('#title').removeAttr("disabled")        
-		$('#email').removeAttr("disabled")        
-		$('#phone').removeAttr("disabled")        
-		$('#institution').removeAttr("disabled")		       
-		$('#address').removeAttr("disabled")
-		$('#purpose').removeAttr("disabled")        
-		$('#generate').removeAttr("disabled")        
-
-
-    } else {
-        $('#overlay').addClass('overlay');
-        $('#first_name').prop("disabled",true)        
-		$('#last_name').prop("disabled",true)        
-		$('#title').prop("disabled",true)        
-		$('#email').prop("disabled",true)        
-		$('#phone').prop("disabled",true)        
-		$('#institution').prop("disabled",true)
-		$('#address').prop("disabled",true)                
-		$('#purpose').prop("disabled",true)        
-		$('#generate').prop("disabled",true)       
-    }
+/**
+ * Any elements that have the data-modal attribute
+ * will show a modal dialog once clicked.
+ */
+$('[data-modal]').click(function() {
+  var data = $(this).data();
+  createModal(data.title, data.content);
 });
-function addEventListeners() {
- 	$('#email').on('keydown', function(e) {
- 		validateEmail();
- 	});
- 
- 	$('#generate').click(function() {
- 		clearTransferAgreementPage();
-    		 if(validateTransferAgreement()&&validateEmail()==true){
- 		    $('#errorMessage').html("<font color='red'>Please fill in required field(s)</font>");
- 	        $('#errorMessage').show();
- 	        return;
- 	}
- 
- 	 else if(validateTransferAgreement()&&validateEmail()==false){
- 		    $('#errorMessage').html("<font color='red'>Please fill in required field(s)</font><br><font color='red'>Please Please enter a valid email address</font>");
- 	        $('#errorMessage').show();
- 	        return;
- 	}
- 
- 	 else if(!validateTransferAgreement()&&validateEmail()==false){
- 		    $('#errorMessage').html("<font color='red'>Please enter a valid email address</font>");
- 	        $('#errorMessage').show();
- 	        return;
- 	}
- 	else{
- 		check_software();
- 	}
- 
- 	})
 
- 	$('#NCIDOSE-tabs-right > li').click(function() {
- 		$('#NCIDOSE-tabs > li').removeClass('active')
- 	});
+$('[data-open]').click(function() {
+  var url = $(this).data('open');
+  open(url, "Help", "alwaysRaised,dependent,status,scrollbars,resizable,width=1000,height=800").focus();
+})
 
- 	$('#NCIDOSE-tabs > li').click(function() {
- 		$('#NCIDOSE-tabs-right > li').removeClass('active')
- 	});
- }
- 
- 
- function clearTransferAgreementPage(){
- 	var index = 0;
- 	for(index = 0; index < fields.length; index++){
- 		$('#'+fields[index]).css("background-color","");
- 	}
- 	$('#errorMessage').hide();
- }
- function validateEmail() {
- 
- 
-       var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-   	  return regex.test($('#email').val());
- }
 
- function validateTransferAgreement(){
- 	var hasError = false;
-	var index = 0;
- 
- 	for (index = 0; index < fields.length; index++){
- 		if($.trim($('#' + fields[index]).val()).length == 0){
- 				$('#'+fields[index]).css("background-color", "yellow");
- 				hasError = true;
- 	    }
- 	}
-     return hasError;
- }
- 
- 
- addEventListeners();
+/**
+ * Creates a modal dialog with the given title, content, and template selector
+ * @param {string} title 
+ * @param {string} content 
+ * @param {string} templateSelector
+ * @returns {jQuery} The created bootstrap modal
+ */
+function createModal(title, content, templateSelector) {
+  var dialog = $(templateSelector || '#modal-template').clone();
+  dialog.find('.modal-title').html(title);
+  dialog.find('.modal-body').html(content);
+  dialog.modal('show');
+  return dialog;
+}
+
+/**
+ * Returns true if the provided form is valid, false otherwise
+ * If the form has an .error-messages element, this function
+ * populates it with any errors found
+ * 
+ * @param {HTMLFormElement} form
+ */
+function validateForm(form) {
+  // this form is invalid if any of its elements are invalid
+  var invalid = $(form).find(':invalid').length > 0;
+  $(form).toggleClass('invalid', invalid);
+
+  // if this form is invalid, generate error messages
+  var errors = [];
+  if (invalid) {
+    var invalids = $(form).find(':invalid');
+
+    // add error message for required fields
+    if (invalids.filter(function() {
+        return this.validity.valueMissing;
+      }).length)
+      errors.push('Please fill in required field(s).');
+
+    // add error message for invalid emails
+    if (invalids.filter(function() {
+        return this.type == 'email' && this.validity.typeMismatch;
+      }).length)
+      errors.push('Please ensure a valid email address has been provided.');
+  }
+
+  // populate the .error-messages element
+  $(form).find('.error-messages').html(errors.join('<br>'));
+
+  // return true if this form is valid, false otherwise
+  return !invalid;
+}
+
+
+/**
+ * If form inputs are changed, determine if the form should be disabled
+ */
+$('#agreement form input').change(function() {
+  // determine if form should be disabled
+  var disabled = $('#agreement form input:checked').length === 0;
+  $('#agreement form input:not([type="checkbox"]')
+    .add('#agreement form textarea')
+    .add('#agreement form button')
+    .add('#recipient-investigator')
+    .add('#research-activity')
+    .prop('disabled', disabled)
+    .toggleClass('disabled', disabled);
+
+  // if form is disabled, remove validation errors  
+  disabled && $('#agreement form').removeClass('invalid');
+
+}).trigger('change'); // trigger a change event to update form state
+
+
+/**
+ * Create an event handler for the form's submit event
+ */
+$('#agreement form').submit(function(e) {
+  // prevent the default submission event
+  e.preventDefault();
+
+  // prevent form submission if invalid
+  if (!validateForm(this))
+    return;
+
+  // get software descriptions
+  var software = {
+    'phantoms': {
+      displayName: 'Phantoms',
+      description: $('[data-for="phantoms"]').data('content'),
+    },
+
+    'ncict': {
+      displayName: 'NCICT',
+      description: $('[data-for="ncict"]').data('content'),
+    },
+
+    'dose-coefficients': {
+      displayName: 'Dose Coefficients',
+      description: $('[data-for="dose-coefficients"]').data('content'),
+    }
+  }
+
+  // serialize form as an object
+  var parameters = $(this).serializeArray()
+    .reduce(function(accumulator, current) {
+      var name = current.name;
+      var value = current.value;
+
+      // if a software checkbox has been checked, add its description to the list of software
+      // otherwise, assign the current key and value to the object
+      software[name] 
+        ? (accumulator.software_text.push(software[name].description),
+          accumulator.software_title.push(software[name].displayName))
+        : accumulator[name] = value
+
+      return accumulator;
+    }, {
+      software_title: [],
+      software_text: [],
+      first: null,
+      last: null,
+      title: null,
+      email: null,
+      phone: null,
+      institution: null,
+      address: null,
+      purpose: null,
+      date: null,
+    });
+
+  // separate software_titles with <br>
+  parameters.software_title = parameters.software_title
+    .map(function(title) {
+      return '<li>' + title + '</li>'
+    })
+    .join('')
+
+  // set parameter object's date
+  var date = new Date();
+  parameters.date = [
+    ('0' + (date.getMonth() + 1)).slice(-2), // ensure month is left-padded
+    ('0' + date.getDate()).slice(-2), // ensure day is left-padded
+    date.getFullYear()
+  ].join('/');
+
+  // send parameters to application
+  $('#loading-overlay').show()
+  $.post('http://localhost:8765/submit', JSON.stringify(parameters))
+    .done(function(response) {
+      createModal(
+        'NCIDose Materials Confirmation',
+        'Thank you for registering with NCIDose. A confirmation email will be sent shorty with a copy of the STA Agreement in PDF format.'
+      ).on('hidden.bs.modal', reset);
+    })
+    .fail(function(error) {
+      createModal(
+        'Error',
+        'Unfortunately there was an error during the registration process. Please <a target="_top" href="mailto: NCIDOSEWebAdmin@mail.nih.gov?subject=NCIDOSE">contact</a> the system administrator if this issue persists.'
+      ).on('hidden.bs.modal', null);
+    })
+    .always(function() {
+      $('#loading-overlay').hide();
+    });
+
+  // call reset function when confirmation modal is closed
+  function reset() {
+    $('#agreement form').trigger('reset');
+    window.location.hash = '#home';
+  }
+});
