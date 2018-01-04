@@ -1,669 +1,508 @@
-
 <!DOCTYPE html>
-
-
-<html class="no-js" xmlns="https://www.w3.org/1999/xhtml" lang="en">
-
+<html lang="en">
 
 <head>
-	<script src="//assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-4b219b82c4737db0e1797b6c511cf10c802c95cb.js"></script>
-	<title>NCIDose Webtool</title>
+  <meta charset="utf-8">
+  <meta name="author" content="NCI, CBIIT">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<meta name="generator" content="NCIDose">
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="NCI, CBIIT">
-
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="../common/css/bootstrap-multiselect.css">
-	<link rel="stylesheet" href="../common/css/style.css">
-
-	<link rel="stylesheet" href="./css/NCIDOSE.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <title>NCIDose Webtool</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.3/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/favicon.ico">
+  <script src="https://assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-4b219b82c4737db0e1797b6c511cf10c802c95cb.js"></script>
 </head>
 
-<!-- <a href="#skipto-content" class="sr-only">Skip to main content</a>  -->
-<div class="skip">
-	<a title="Skip to content" href="#skipto-content">Skip to content</a>
-</div>
-<header>
-	<div id="logo-header"> 	
-		<div id="logo" class="container">	
-			<a href="https://dceg.cancer.gov/" target="dceg">
-				<img class="division-logo" src="/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
-			</a>
-		</div>
-	
-		<div id="header" role="banner">
-			<h1 id="ribbon" class="clearfix">
-				<div class="container">
-					NCIDose
-				</div>
-			</h1>
-		</div>
-	<!-- </div> -->
-		<!-- <div class="container"> -->
-			<nav class="navbar navbar-default" style="margin-bottom:10px;">
-				<div class="container-fluid">
-					<!-- <div class="navbar-header" > -->
-						<!-- a menu botton that is only shown on the small device size -->
-											<!-- <button class="btn btn-success navbar-toggle visible-xs visible-sm"  data-toggle ="collapse" data-target=".navbar-collapse" aria-label="expand menu">
-							<span class="glyphicon glyphicon-chevron-down"></span>
-						</button> -->
+<body class="bg-light">
 
-					<!-- </div> -->
-					<div class="container">
-						<div class="navbar-collapse collapse" >
-							<ul id="NCIDOSE-tabs" class="nav navbar-nav responsive">
-								<!-- HOME -->
-								<li class="nav active" id="home-tab-anchor" role="menuitem" >
-									<a id="home-tab-anchor" href="#home-tab" data-toggle="tab">Home</a>
-								</li>
-								<!-- Phantoms -->
-								<li class="nav" role="menuitem" id="Phantoms-tab-anchor" role="menuitem"  >
-									<a id="Phantoms-tab-anchor" href="#Phantoms-tab" data-toggle="tab" >Phantoms</a>
-								</li>
-								<!-- NCICT -->
-								<li class="nav" id="NCICT-tab-anchor"  role="menuitem">
-									<a id="NCICT-tab-anchor" href="#NCICT-tab" data-toggle="tab" >NCICT</a>
-								</li>
-								<!-- DOSE Coefficients -->
-								<li class="nav" id="DOSE-Coefficients-tab-anchor" role="menuitem" >
-									<a id="DOSE-Coefficients-tab-anchor" href="#DOSE-Coefficients-tab" data-toggle="tab" >Dose Coefficients</a>
-								</li>
-								<!-- Agreement -->
-							</ul>
-							
-						
-							<ul id="NCIDOSE-tabs-right" class="nav navbar-nav responsive hidden-xs hidden-sm" style="float:right;" >
-								<li id="Agreement-tab-anchor">
-									<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
-								</li>
-									<!-- References -->
-								<!-- <li id="References-tab-anchor">
-									<a id="References-tab-anchor" href="#References-tab" data-toggle="tab" >References</a>
-								</li> -->
+  <div class="sr-only">
+    <a title="Skip to content" href="#home">Skip to content</a>
+  </div>
 
-							</ul>
-							<ul id="NCIDOSE-tabs-right" class="nav navbar-nav responsive visible-xs visible-sm" >
-								<li id="Agreement-tab-anchor">
-									<a id="Agreement-tab-anchor" href="#Agreement-tab" data-toggle="tab">Agreement</a>
-								</li>
-									<!-- References -->
-								<!-- <li id="References-tab-anchor">
-									<a id="References-tab-anchor" href="#References-tab" data-toggle="tab" >References</a>
-								</li> -->
+  <div class="container d-none d-sm-block mw-100">
+    <a href="https://dceg.cancer.gov/" target="dceg">
+      <img height="90" src="https://ncidose.nci.nih.gov/common/images/DCEG-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
+    </a>
+  </div>
 
-							</ul>
-						</div>
-					</div>
-				</div>
-			</nav>
-		<!-- </div> -->
-	</div>
-</header>
+  <div class="bg-dark-red text-light d-none d-sm-block">
+    <div class="container pt-1 pb-1">
+      <strong>NCIDose</strong>
+    </div>
+  </div>
 
-<body role="document">
-	<main class="container" role="main" >		
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand d-sm-none" href="#">NCIDose</a>
 
-		<!-- NCIDose Tab Content -->
-		<div class="tab-content" id="skipto-content">
-			<!-- Home -->
-			<div class="tab-pane fade" id="home-tab">
-				<div class="text">
-					<p>
-						<b>NCIDOSE</b> is the collection of tools and data for medical radiation dosimetry developed by radiation physicists at the Division of Cancer Epidemiology and Genetics of the National Cancer Institute.  The resources are based on years of research and development in collaboration with a number of research institutions and clinical centers.  This website is intended to distribute the tools free of charge for research purpose.   The following resources are currently available.
-					</p>
-					</p>
-						<ul>
-							<li>NCIPHANTOM, computational human phantom series</li>
-							<li>NCICT, NCI dosimetry system for computed tomography</li>
-							<li>NCINM, NCI dosimetry system for nuclear medicine (under development)</li>
-							<li>NCIRF, NCI dosimetry system for radiography and fluoroscopy (under development)</li>
-							<li>Dose coefficients for internal and external radiation exposure scenarios</li>
-						</ul>
-					</p>
-					<div class="image">
-					<!-- <div class="thumbnail col-sm-6"> -->
-						<div class="graphic">
-							<img src="./img/home_page_new.png" class="img-responsive" alt="To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios">
-						</div>
-						<div class="caption"><p><br>Computational Phantoms + Monte Carlo Method<br><br></p></div>
-					<!-- </div> -->
-					</div>	
-					<br>
-					<p>
-						Anyone who is interested in obtaining these resources for research can go to the 
-						<a href="#Agreement-tab" id="Agreement-tab-link" data-toggle="tab">Agreement tab</a>
-						 and submit the Software Transfer Agreement to the NCI Technology Transfer Center.  Once the agreement is approved, please contact Dr. Choonsik Lee.  All data and tools will be available free of charge for research purpose.
-					</p>
-					<p>
-						Parties interested in commercial use of any materials on this website may contact  <a href="mailto:changke@mail.nih.gov" target="_top">Dr. Kevin Chang</a> at the <a href="https://techtransfer.cancer.gov/"> NCI Technology Transfer Center</a> to discuss licensing process.
-					</p>
-				</div>	
-				<br><br>
-			</div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav w-100">
+
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link" href="#home">
+                Home
+              </a>
+          </li>
+
+          <!-- Phantoms -->
+          <li class="nav-item">
+            <a class="nav-link" href="#phantoms">
+                Phantoms
+              </a>
+          </li>
+
+          <!-- NCICT -->
+          <li class="nav-item">
+            <a class="nav-link" href="#ncict">
+                NCICT
+              </a>
+          </li>
+
+          <!-- Dose Coefficients -->
+          <li class="nav-item">
+            <a class="nav-link" href="#dose-coefficients">
+                Dose Coefficients
+              </a>
+          </li>
+
+          <!-- Agreement -->
+          <li class="nav-item ml-sm-auto ml-0">
+            <a class="nav-link" href="#agreement">
+                Agreement
+              </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 
-			<!-- Phantoms -->
-			<div class="tab-pane fade" id="Phantoms-tab">
-				<div class="image">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/Phantoms_cover.png" class="img-responsive" alt="NCIPhantom cover photo">
-					 <!-- <div class="caption"><p><br><br><br></p></div>  -->
-					<!-- </div> -->
-				</div>	
-				<br>
-				<div class="text">
-					<p>
-						The role of computational representation of human anatomy, called computational human phantoms, in researches of medical radiation and radiation protection becomes more and more critical.  NCIPHANTOM is a library of computational human phantoms representing reference anatomy of children and adults with various body sizes.
-					</p>
-					<br>
-					<h3>REALISM AND DETAILS</h3>
-					<p>
-						<br>
-						The NCIPHANTOM library was created 100% based on patient images carefully selected from more than 1,000 CT image sets to make sure the anatomical realism<sup>1,2</sup>.  A number of organs and tissues were manually segmented and reviewed by clinical radiologists.  The NCIPHANTOM library has several detailed anatomical structures including lymphatic nodes<sup>3,4</sup>, the heart with substructures, the brain with substructures<sup>5</sup>, etc.  Those detailed models were developed based on patient CT images through months of manual contouring to achieve the best anatomical realism incorporated into the NCIPHANTOM library.  The extended phantom library was also created representing a total of 370 pediatric and adult individuals with different height and weight.<sup>2</sup>
-					</p>
-				</div>	
-				<br>
-				<div class="image">
-					<div class="graphic">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-						<img src="./img/Phantoms_new.png" class="img-responsive" alt="Reference sizes for NCIPHANTOM Series">
-					</div>
-					<div class="caption"><p><br>Reference size pediatric and adult NCIPHANTOM series<br><br></p></div>  
-					<!-- </div> -->
-				</div>
-				<br>
-				<div class="text">
-					<h3>INTERNATIONAL REFERENCE</h3>
-					<p>
-						<br>
-						Once developed from patient CT images, the NCIPHANTOM library was adjusted to match several international reference data including international reference body sizes<sup>6</sup>, reference organ mass<sup>6</sup>, reference elemental composition<sup>6,7</sup>, and reference dimension data of gastro-intestine structures<sup>8</sup>.  The anatomical structures of the reference children phantom series were adopted as international reference by International Commission on Radiological Protection (ICRP).
-					</p>
-					<br>
-					<h3>MOST ADVANCED ARCHITECTURE</h3>
-					<p>
-						<br>
-						Computational phantoms have evolved from simple stylistic forms (called mathematical or stylized phantoms) through more realistic but fixed forms (called tomographic or voxel phantoms) to realistic and flexible forms composed of polygon mesh and non-uniform rational B-spline (NURBS) format (called hybrid or Boundary Representation phantoms).  The NCIPHANTOM library was developed based on the mesh and NURBS, which is the most advanced phantom architecture to date.  The phantoms can be converted into voxel format with variable voxel resolution for Monte Carlo radiation transport.  The original format can directly be imported into surface Monte Carlo radiation transport codes.
-					</p>
-					<br>
-					<h3>VERSITILE FORMAT</h3>
-					<p>
-						<br>
-						The NCIPHANTOM library can be imported to different types of Monte Carlo radiation transport codes including MCNPX, MCNP6, GEANT4, etc.  Main input deck for those codes is also available for research purpose.  The NCIPHANTOM library also has been converted to DICOM-RT format which is compatible with commercial treatment planning systems.  Detailed anatomical structures are converted to DICOM-CT images with realistic Hounsfield Unit.  A total of 100+ organs and tissues are also directly imported into TPS in the format of DICOM-structure.  Users will immediately evaluate dose to multiple organs and tissues on TPS once beam planning is completed.
-					</p>
-				</div>		
-				<br>
-				<div class="image">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<div class="graphic">
-						<img src="./img/Phantom_eclipse.png" class="img-responsive" alt="Male phantom in Eclipse TPS">
-					</div>
-					<div class="caption"><p><br>Adult male phantom imported into Eclipse TPS for prostate treatment simulation<br><br></p></div>  
-					<!-- </div> -->
-				</div>
-				<br>
-				<br>
-				<div class="text">
-					<h3>REFERENCES</h3>
-					<p>
-							<ol>
-								<li>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams JL, Bolch WE. The UF family of reference hybrid phantoms for computational radiation dosimetry. <i>Phys Med Biol.</i> 2010;55(2):339-363.</li>
-								<br>
-								<li>Geyer AM, O’Reilly S, Lee C, Long DJ, Bolch WE. The UF/NCI family of hybrid computational phantoms representing the current US population of male and female children, adolescents, and adults--application to CT dosimetry. 2014;59(18):5225-5242.</li>
-								<br>
-								<li>Lee C, Lamart S, Moroz BE. Computational lymphatic node models in pediatric and adult hybrid phantoms for radiation dosimetry. <i>Phys Med Biol.</i> 2013;58(5):N59--N82.</li>
-								<br>
-								<li>Lee C, Kaufman K, Pafundi DH, Bolch WE. An Algorithm for Lymphatic Node Placement in Hybrid Computational Phantoms: Applications to Radionuclide Therapy Dosimetry. <i>Proc IEEE.</i> 2009;97(12):2098-2108. doi:10.1109/JPROC.2009.2025399.</li>
-								<br>
-								<li>Villoing D, McMillan D, Kim KP, et al. Korean pediatric and adult head computational phantoms and application to photon specific absorbed fractions calculations. <i>Radiat Prot Dosimetry.</i> February 2017:1-8. doi:10.1093/rpd/ncx009.</li>
-								<br>
-								<li>ICRP. Basic anatomical and physiological data for use in radiological protection : reference values. <i>ICRP Publ 89 Ann ICRP.</i> 2002;32(3-4):1-277.</li>
-								<br>
-								<li>ICRU. <i>Photon, Electron, Proton and Neutron Interaction Data for Body Tissues.</i> Bethesda, MD: International Commission on Radiation Units and Measurements; 1992.</li>
-								<br>
-								<li>ICRP. Human alimentary tract model for radiological protection. <i>ICRP Publ 100 Ann ICRP.</i> 2006;36(1-2):1-336. doi:10.1016/j.icrp.2006.03.004.</li>
-							</ol>
-						</ul>
-					</p>
-				</div>
-				</br></br>	
-			</div>
+  <div class="container tab-content min-height-600">
+
+    <div class="tab-pane" id="home">
+      <!-- begin home tab content -->
+
+      <p class="mb-2">
+        <strong>NCIDOSE</strong> is the collection of tools and data for medical radiation dosimetry developed by radiation physicists at the Division of Cancer Epidemiology and Genetics of the National Cancer Institute. The resources are based on years of research and development in collaboration with a number of research institutions and clinical centers. This website is intended to distribute the tools free of charge for research purposes. The following resources are currently available:
+      </p>
+
+      <ul class="mb-4">
+        <li>NCIPHANTOM, computational human phantom series</li>
+        <li>NCICT, NCI dosimetry system for computed tomography</li>
+        <li>NCINM, NCI dosimetry system for nuclear medicine (under development)</li>
+        <li>NCIRF, NCI dosimetry system for radiography and fluoroscopy (under development)</li>
+        <li>Dose coefficients for internal and external radiation exposure scenarios</li>
+      </ul>
+
+      <div class="text-center mb-4">
+        <figure class="figure">
+          <img src="img/home_page_new.png" class="img-fluid" alt="To support epidemiological studies of radiation exposure but also to advance the science of radiation exposure assessment, Dosimetry Unit within the Radiation Epidemiology Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute develops new dosimetry methods and tools for medical, occupational and environmental radiation exposure scenarios">
+          <figcaption class="figure-caption">Computational Phantoms + Monte Carlo Method</figcaption>
+        </figure>
+      </div>
 
 
-			<!-- NCICT -->
-			<div class="tab-pane fade" id="NCICT-tab">
-				<div class="image">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<img src="./img/NCICT_cover.png" class="img-responsive" alt="NCICT cover photo">
-					 <!-- <div class="caption"><p><br><br><br></p></div>  -->
-					<!-- </div> -->
-				</div>	
-				<span class="pull-right col-md-1" onclick="openHelpWindow('help.html')">
-					<i class="glyphicon glyphicon-question-sign glyphicon-blue" aria-label="Help"></i>
-					<a href="#">
-						<span style="font-size:small">Help</span>
-					</a>
-				</span>
-				<br>
-				<div class="text">
-					<p>
-						Although computed tomography (CT) provides great benefits to patients, it has been always of importance to balance benefit and potential risk especially in pediatric patients who are more sensitive to radiation.  <b>National Cancer Institute dosimetry system for Computed Tomography (NCICT)</b><sup>1</sup> is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans.
-					</p>
-					<br>
-					<h3>STRONG SCIENCE</h3>
-					<p>
-						<br>
-						The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters.  NCICT is based on several key technologies that were previously published including computational human phantoms and the simulation of X-ray from a reference CT scanner.  The simulation results were rigorously validated by experimental dose measurements, which were also published in peer-reviewed journals<sup>2,3</sup>.
-					</p>
-				</div>	
-				<br>
-				<div class="image">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<div class="graphic">
-						<img src="./img/NCICT_helical_simulation.png" class="img-responsive" alt="Image of simulation of helical x-ray with adult female phantom">
-					</div>
-					<div class="caption"><p><br>Simulation of helical x-ray source in CT scanner combined with an adult female phantom<br><br></p></div>  
-					<!-- </div> -->
-				</div>
-				<br>
-				<div class="image">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<div class="graphic">
-						<img src="./img/NCICT_physical_phantoms.png" class="img-responsive" alt="Image of anthropomorphic physical phantoms">
-					</div>
-					<div class="caption"><p><br>Anthropomorphic physical phantoms used to validate organ dose simulated in NCICT<br><br></p></div>  
-					<!-- </div> -->
-				</div>
-				<br>
-				<div class="text">
-					<h3>INTERNATIONAL STANDARD PHANTOMS</h3>
-					<p>
-						<br>
-						The computational human phantoms, one of the key components in CT dose calculators, used in NCICT comply several international standard data obtained from International Commission on Radiological Protection (ICRP)<sup>4,5</sup> such as reference organ mass, elemental composition, and gastro-intestinal dimensions.  The anatomical structure in the pediatric phantom series is now adopted by ICRP as an international standard.
-					</p>
-					<br>
-					<h3>HASSLE-FREE INSTALLATION</h3>
-					<p>
-						<br>
-						Some data involved in patient imaging are considered Protected Health Information (PHI).  Even anonymized data often tend to be prohibited from being transferred outside the Picture Archiving and Communication System (PACS).  NCICT is running on a personal computer standalone.  Users do not have to send any sensitive patient data to central servers, which do not even exist for running NCICT.  Users do not need an internet connection to run NCICT.
-					</p>
-				</div>
-				<br>
-				<div class="image">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<div class="graphic">
-						<img src="./img/NCICT_gui.png" class="img-responsive" alt="Screenshot of NCICT graphical user interface">
-					</div>
-					<div class="caption"><p><br>The graphical user interface of NCICT showing organ dose calculation for the head scan of a<br> newborn female computational phantom<br></p></div>  
-					<!-- </div> -->
-				</div>
-				<br>
-				<div class="text">
-					<h3>VERSATILE RUNNING MODES</h3>
-					<p>
-						<br>
-						NCICT features two computation modes: Graphical User Interface (GUI) mode and Batch Calculation mode.  The GUI Mode is for users to interactively input patient and CT scanner data into NCICT and calculate organ doses instantly with simple graphs.  The Batch Calculation mode is designed to compute organ doses for a large number of patients by importing a set of parameters in formatted text file.  The Batch Calculation mode is also running by text command, which makes it easy to port NCICT to existing data abstraction systems.
-					</p>
-					<br>
-					<h3>FREE RESOURCE FOR WORLDWIDE USERS</h3>
-					<p>
-						<br>
-						NCICT was tested by more than 100 beta users worldwide whose feedbacks were incorporated into several revisions.  Since 2010, NCICT has been utilized by numerous medical radiation researchers worldwide for their research and publications.<sup>6–21</sup>
-					</p>
-					<br>
-					<h3>REFERENCES</h3>
-					<p>
-							<ol>
-								<li>
-									Lee C, Kim KP, Bolch WE, Moroz BE, Les Folio. NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans. <i>J Radiol Prot.</i> 2015;35(4):891-909. doi:10.1088/0952-4746/35/4/891.
-								</li>
-								<br>
-								<li>
-									Long DJ, Lee C, Tien C, et al. Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms. <i>Med Phys.</i> 2013;40(1):13901. doi:10.1118/1.4771934.
-								</li>
-								<br>
-								<li>
-									Dabin J, Mencarelli A, McMillan D, Romanyukha A, Struelens L, Lee C. Validation of calculation algorithms for organ doses in CT by measurements on a 5 year old paediatric phantom. <i>Phys Med Biol.</i> 2016;61(11):4168-4182. doi:10.1088/0031-9155/61/11/4168.
-								</li>
-								<br>
-								<li>
-									ICRP. Basic anatomical and physiological data for use in radiological protection : reference values. <i>ICRP Publ 89 Ann ICRP.</i> 2002;32(3-4):1-277.
-								</li>
-								<br>
-								<li>
-									ICRP. Human alimentary tract model for radiological protection. <i>ICRP Publ 100 Ann ICRP.</i> 2006;36(1-2):1-336. doi:10.1016/j.icrp.2006.03.004.
-								</li>
-								<br>
-								<li>
-									Pokora R, Krille L, Dreger S, et al. Computed Tomography in Germany. <i>Dtsch Arzteblatt Int.</i> 2016;113:1-9. doi:10.3238/arztebl.2016.0.
-								</li>
-								<br>
-								<li>
-									Olerud HM, Toft B, Flatabø S, Jahnen A, Lee C, Thierry-Chef I. Reconstruction of paediatric organ doses from axial CT scans performed in the 1990s – range of doses as input to uncertainty estimates. <i>Eur Radiol.</i> January 2016:1-8. doi:10.1007/s00330-015-4157-6.
-								</li>
-								<br>
-								<li>
-									Meulepas JM, Ronckers C e cile M, Smets AMJB, et al. Leukemia and brain tumors among children after radiation exposure from CT scans: design and methodological opportunities of the Dutch Pediatric CT Study. <i>Eur J Epidemiol.</i> 2014;29:293-301. doi:10.1007/s10654-014-9900-9.
-								</li>
-								<br>
-								<li>
-									de Basea MB, Pearce MS, Kesminiene A, et al. EPI-CT: design, challenges and epidemiological methods of an international study on cancer risk after paediatric and young adult CT. <i>J Radiol Prot.</i> 2015;35(3):611-628. doi:10.1088/0952-4746/35/3/611.
-								</li>
-								<br>
-								<li>
-									Thierry-Chef I, Dabin J e r e mie, Friberg E, et al. Assessing Organ Doses from Paediatric CT Scans: A Novel Approach for an Epidemiology Study (the EPI-CT Study). <i>Int J Environ Res Public Health.</i> 2013;10(2):717-728. doi:10.3390/ijerph10020717.
-								</li>
-								<br>
-								<li>
-									Pearce MS, Salotti JA, Little MP, et al. Radiation exposure from CT scans in childhood and subsequent risk of leukaemia and brain tumours: a retrospective cohort study. <i>Lancet.</i> 2012;380(9840):499-505. doi:10.1016/S0140-6736(12)60815-0.
-								</li>
-								<br>
-								<li>
-									Berrington de González A, Journy N, Lee C, et al. No association between radiation dose from pediatric CT scans and risk of subsequent Hodgkin lymphoma. <i>Cancer Epidemiol Biomarkers Prev.</i> January 2017:cebp.1011.2016-15. doi:10.1158/1055-9965.EPI-16-1011.
-								</li>
-								<br>
-								<li>
-									Journy NMY, Lee C, Harbron RW, McHugh K, Pearce MS, de Gonza acute lez AB. Projected cancer risks potentially related to past, current, and future practices in paediatric CT in the United Kingdom, 1990–2020. <i>Br J Cancer.</i> 2016;116(1):109-116. doi:10.1038/bjc.2016.351.
-								</li>
-								<br>
-								<li>
-									Journy NMY, Dreuil S, Boddaert N, et al. Individual radiation exposure from computed tomography: a survey of paediatric practice in French university hospitals, 2010–2013. <i>Eur Radiol.</i> August 2017:1-12. doi:10.1007/s00330-017-5001-y.
-								</li>
-								<br>
-								<li>
-									Romanyukha A, Les Folio, Lamart S, Simon SL, Lee C. Body size-specific effective dose conversion coefficients for CT scans. <i>Radiat Prot Dosimetry.</i> 2016;172(4):ncv511-437. doi:10.1093/rpd/ncv511.
-								</li>
-								<br>
-								<li>
-									Bahadori A, Miglioretti D, Kruger R, et al. Calculation of Organ Doses for a Large Number of Patients Undergoing CT Examinations. <i>Am J Roentgenol.</i> 2015;205(4):827-833. doi:10.2214/AJR.14.14135.
-								</li>
-								<br>
-								<li>
-									Lodwick DL, Cooper JN, Adler B, et al. How to identify high radiation burden from computed tomography: an example in obese children. <i>J Surg Res.</i> 2017;217(Supplement C):54-62.e3. doi:10.1016/j.jss.2017.04.031.
-								</li>
-								<br>
-								<li>
-									Cooper JN, Lodwick DL, Adler B, Lee C, Minneci PC, Deans KJ. Patient characteristics associated with differences in radiation exposure from pediatric abdomen-pelvis CT scans: a quantile regression analysis. <i>Comput Biol Med.</i> 2017;85(Supplement C):7-12. doi:10.1016/j.compbiomed.2017.04.003.
-								</li>
-								<br>
-								<li>
-									Krille L, Dreger S, Schindel R, et al. Risk of cancer incidence before the age of 15 years after exposure to ionising radiation from computed tomography: results from a German cohort study. <i>Radiat Environ Biophys.</i> 2015;54(1):1-12. doi:10.1007/s00411-014-0580-3.
-								</li>
-								<br>
-								<li>
-									Lee C, Flynn MJ, Judy PF, Cody DD, Bolch WE, Kruger RL. Body Size–Specific Organ and Effective Doses of Chest CT Screening Examinations of the National Lung Screening Trial. <i>Am J Roentgenol.</i> 2017;208(5):1082-1088. doi:10.2214/AJR.16.16979.
-								</li>
-								<br>
-								<li>
-									Chang LA, Miller DL, Lee C, et al. Thyroid Radiation Dose to Patients from Diagnostic Radiology Procedures over Eight Decades: 1930–2010. <i>Health Phys.</i> 2017;113(6):458–473. doi:10.1097/HP.0000000000000723.
-								</li>
-							</ol>
-						</ul>
-					</p>
-				</div>
-				</br></br>	
-			</div>
+      <p class="mb-2">
+        Anyone who is interested in obtaining these resources for research can go to the
+        <a href="#agreement">Agreement</a> tab and submit the Software Transfer Agreement to the NCI Technology Transfer Center. Once the agreement is approved, please contact Dr. Choonsik Lee. All data and tools will be available free of charge for research purpose.
+      </p>
 
-			<!-- Coefficients -->
-			<div class="tab-pane fade" id="DOSE-Coefficients-tab">
-				<div class="text">
-					<h3>EXTERNAL PHOTON</h3>
-					<p>
-						<br>
-						 We calculated dose coefficients for the International Commission on Radiological Protection (ICRP) reference pediatric phantoms externally exposed to mono-energetic photon radiation (X- and gamma-rays) over a wide energy range. Calculations used Monte Carlo radiation transport techniques. Dose coefficients, i.e., organ absorbed dose per unit air kerma (mGy/mGy), were calculated for 28 organs and tissues including the active marrow (or red bone marrow) for 10 phantoms (newborn, 1-year, 5-year, 10-year, and 15-year old male and female). Radiation exposure was simulated for 33 photon mono-energies (0.01 – 20 MeV) in six irradiation geometries: Anterior-Posterior (AP), Posterior-Anterior (PA), Right Lateral (RLAT), Left Lateral (LLAT), Rotational (ROT), and Isotropic (ISO).
-					</p>
-					<p>
-						<br>
-         				Citation: LA Chang, SL Simon, TJ Jorgensen, DA Schauer, and C Lee, “Organ dose conversion coefficients for pediatric reference individuals exposed to idealized photon radiation,” Journal of Radiological Protection (in press)
-					</p>
-				</div>	
-				<br>
-				<div class="image">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<div class="graphic">
-						<img src="./img/Dose Coefficients_external.png" class="img-responsive" alt="External organ and effective dose coefficients">
-					</div>	
-					<div class="caption"><p><br>External organ and effective dose coefficients for age-dependent phantoms exposed to <br>idealized photon beams in different irradiation geometries.<br><br></p></div>  
-					<!-- </div> -->
-				</div>
-				<br>
-				<div class="text">
-					<h3>INTERNAL PHOTON/ELECTRON</h3>
-					<p>
-						<br>
-						To improve the estimates of organ doses from nuclear medicine procedures using iodine 131 (I-131), we calculated a comprehensive set of I-131 S values, defined as organ absorbed doses in target tissues per unit of nuclear transition in source regions, for different source and target combinations. We used the latest reference adult male and female voxel phantoms published by the International Commission on Radiological Protection (ICRP Publication 110) and the I-131 photon and electron spectra from the ICRP Publication 107 to perform Monte Carlo radiation transport calculations using MCNPX2.7 to compute the S values. For each phantom, we simulated 55 source regions assuming a uniform distribution of I-131. We directly computed the S values for 42 target tissues without calculating Specific Absorbed Fraction (SAF) values. From these calculations, we derived a comprehensive set of S values for I-131 for 55 source regions and 42 target tissues in the ICRP male and female voxel phantoms. The new dataset includes the S values for source regions and target tissues of interest in internal dosimetry of I-131, which are not available in the long-used stylized phantoms from Oak Ridge National Laboratory (ORNL).
-					</p>
-					<p>
-						<br>
-						Citation: S Lamart, SL Simon, A Bouville, BE Moroz, and C Lee, “S values for I-131 from the ICRP adult voxel phantoms and comparison with the previous reference values,” Radiation Protection Dosimetry, 168:92-110 (2016)
-					</p>
-				</div>	
-				<br>
-				<div class="image">
-					<!-- <div class="thumbnail col-lg-6 col-md-8 col-sm-12"> -->
-					<div class="graphic">
-						<img src="./img/Dose_Coefficients_internal.png" class="img-responsive" alt="S values for various target organs in the ICRP adult male and female reference phantoms where I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).">
-					</div>
-					<div class="caption"><p><br>S values for various target organs in the ICRP adult male and female reference phantoms where <br>I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).<br><br></p></div>  
-					<!-- </div> -->
-				</div>		
-					<!-- <h2 style="font-size:18px">EXTERNAL PHOTON</h2>
-         			<p>We calculated dose coefficients for the International Commission on Radiological Protection (ICRP) reference pediatric phantoms externally exposed to mono-energetic photon radiation (X- and gamma-rays) over a wide energy range. Calculations used Monte Carlo radiation transport techniques. Dose coefficients, i.e., organ absorbed dose per unit air kerma (mGy/mGy), were calculated for 28 organs and tissues including the active marrow (or red bone marrow) for 10 phantoms (newborn, 1-year, 5-year, 10-year, and 15-year old male and female). Radiation exposure was simulated for 33 photon mono-energies (0.01 – 20 MeV) in six irradiation geometries: Anterior-Posterior (AP), Posterior-Anterior (PA), Right Lateral (RLAT), Left Lateral (LLAT), Rotational (ROT), and Isotropic (ISO).</p></br>
-					<p>Citation: LA Chang, SL Simon, TJ Jorgensen, DA Schauer, and C Lee, “Organ dose conversion coefficients for pediatric reference individuals exposed to idealized photon radiation,” Journal of Radiological Protection (in press)</p></br>
-         			<div style="width:100%;display:inline-block">
-	         			<div class="thumbnail col-lg-6 col-md-8 col-sm-12">
-							<img src="./img/Dose Coefficients_external.png" class="img-responsive" alt="External organ and effective dose coefficients">
-								<div class="caption">External organ and effective dose coefficients for age-dependent phantoms exposed to idealized photon beams in different irradiation geometries.</div>
-						</div>
-					</div>
-         			<h2 style="font-size:18px">INTERNAL PHOTON/ELECTRON</h2>
-         			<p>To improve the estimates of organ doses from nuclear medicine procedures using iodine 131 (I-131), we calculated a comprehensive set of I-131 S values, defined as organ absorbed doses in target tissues per unit of nuclear transition in source regions, for different source and target combinations. We used the latest reference adult male and female voxel phantoms published by the International Commission on Radiological Protection (ICRP Publication 110) and the I-131 photon and electron spectra from the ICRP Publication 107 to perform Monte Carlo radiation transport calculations using MCNPX2.7 to compute the S values. For each phantom, we simulated 55 source regions assuming a uniform distribution of I-131. We directly computed the S values for 42 target tissues without calculating Specific Absorbed Fraction (SAF) values. From these calculations, we derived a comprehensive set of S values for I-131 for 55 source regions and 42 target tissues in the ICRP male and female voxel phantoms. The new dataset includes the S values for source regions and target tissues of interest in internal dosimetry of I-131, which are not available in the long-used stylized phantoms from Oak Ridge National Laboratory (ORNL).</p>
-					<p>Citation: S Lamart, SL Simon, A Bouville, BE Moroz, and C Lee, “S values for I-131 from the ICRP adult voxel phantoms and comparison with the previous reference values,” Radiation Protection Dosimetry, 168:92-110 (2016)</p>
-	         			<div style="width:100%;display:inline-block">
-		         			<div class="thumbnail col-lg-6 col-md-8 col-sm-12">
-								<img src="./img/Dose_Coefficients_internal.png" class="img-responsive" alt="S values for various target organs in the ICRP adult male and female reference phantoms where I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).">
-								<div class="caption">S values for various target organs in the ICRP adult male and female reference phantoms where I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).</div>
+      <p class="mb-4">
+        Parties interested in commercial use of any materials on this website may contact
+        <a href="mailto:changke@mail.nih.gov" target="_top">Dr. Kevin Chang</a> at the
+        <a href="https://techtransfer.cancer.gov/"> NCI Technology Transfer Center</a> to discuss licensing process.
+      </p>
 
-							</div>	 -->
-				<br><br>
-			</div>
+      <!-- end home tab content -->
+    </div>
 
-			<!-- Agreement -->
-			<div class="tab-pane fade" id="Agreement-tab">
-				<p id="header2">Please indicate which materials you want to download, fill out the information and then click Generate. A copy of the STA agreement form will be emailed to you shortly.</p>
+    <div class="tab-pane" id="phantoms">
+      <!-- begin phantoms tab content -->
 
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">What materials are you interested in downloading?
-				    	<span class="pull-right"  onclick="openHelpWindow('./content/NCIDose_STA_Preview.pdf')";>
-                    <i class="cursor-pointer glyphicon glyphicon-download-alt glyphicon-blue" aria-label="Help" onclick="openHelpWindow('./content/NCI STA_lite.pdf')"></i>
-                    <a href="#">
-                    	<span style="font-size:small;">View Sample STA Agreement</span>
-                    </a>
-         			</span>
-         			</h2>
-				    </div>
-				    <div class="panel-body">
-						<form id="consent" action="" method="post">
-							<input  aria-label="phantoms" type="checkbox" id="phantoms" value="yes" /><p style="display:inline">  Phantoms <a href="#" id='Phantoms'><span class="sr-only">Phantoms Info</span><i class="glyphicon glyphicon-info-sign" aria-label="Phantoms Info"></i></a></p></input></br>
-							<input aria-label="ncict" type="checkbox" id="ncict" value="yes" /><p style="display:inline">  NCICT <a href="#" id='NCICT'><span class="sr-only">NCICT Info</span><i class="glyphicon glyphicon-info-sign" aria-label="NCICT Info"></i></a></p></input></br>
-							<input aria-label="dose" type="checkbox" id="dose" value="yes" /><p style="display:inline">  Dose Coefficents <a href="#"  id='DOSE' alt="pop up definition" > <span class="sr-only">Dose Coefficents Info</span><i class="glyphicon glyphicon-info-sign" aria-label="Dose Coefficents Info"></i> </a></p></input>
-						</form>
-					
-				    </div>
-				</div>
+      <div class="text-center mb-2">
+        <figure class="figure">
+          <img src="img/Phantoms_cover.png" class="img-fluid" alt="NCIPhantom cover photo">
+        </figure>
+      </div>
 
-				<div id="overlay" class="overlay">				
-				<div id="errorMessage"></div>
-				<!-- Recipient Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Recipient Investigator</h2></div>
-				    <div class="panel-body">
+      <p class="mb-4">
+        The role of computational representation of human anatomy, called computational human phantoms, in researches of medical radiation and radiation protection becomes more and more critical. NCIPHANTOM is a library of computational human phantoms representing reference anatomy of children and adults with various body sizes.
+      </p>
 
-					<div class="row" style="margin-bottom:10px">
-					    <label for="first_name" class="col-sm-2">First Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="first_name" required disabled/></div>
-					    <label for="last_name" class="col-sm-2">Last Name*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="last_name" required disabled /></div>
-					    <label for="title" class="col-sm-2">Title*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="title" required disabled></div>    
-					</div>            
+      <h4 class="mb-3 mt-5">REALISM AND DETAILS</h4>
 
-					<div class="row" style="margin-bottom:10px">
-					    <label for="email" class="col-sm-2">Email*:</label>
-					    <div class="col-sm-2"><input type="email" class="form-control" id="email" required disabled/></div>
-					    <label for="phone" class="col-sm-2">Phone*:</label>
-					    <div class="col-sm-2"><input type="text" class="form-control" id="phone" required disabled></div>
-					</div>
-					<div class="row" style="margin-bottom:10px">
-					    <label for="institution" class="col-sm-2">Institution*:</label>
-					    <div class="col-sm-6"><input type="text" class="form-control" id="institution"  required disabled /></div>
-					</div>
-					<div class="row" style="margin-bottom:10px">
-					    <label for="address" class="col-sm-2">Business Address*:</label>
-					    <div class="col-sm-6"><textarea class="form-control" id ="address" rows="4" name="comment" form="usrform" required disabled ></textarea></div>
-					</div>
-				    </div>
-				</div>
-				
+      <p class="mb-4">
+        The NCIPHANTOM library was created 100% based on patient images carefully selected from more than 1,000 CT image sets to make sure the anatomical realism<sup>1,2</sup>. A number of organs and tissues were manually segmented and reviewed by clinical radiologists. The NCIPHANTOM library has several detailed anatomical structures including lymphatic nodes<sup>3,4</sup>, the heart with substructures, the brain with substructures<sup>5</sup>, etc. Those detailed models were developed based on patient CT images through months of manual contouring to achieve the best anatomical realism incorporated into the NCIPHANTOM library. The extended phantom library was also created representing a total of 370 pediatric and adult individuals with different height and weight.<sup>2</sup>
+      </p>
 
-				<!-- Research Activity Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading"><h2 class="panel-title">Research Activity</h2></div>
-				    <div class="panel-body">
-		
-					<div class="row">
-					    <label for="purpose" class="col-sm-2">Purpose*:</label>
-					</div>
-					<div class="row">
-					    <div class="col-sm-12">
-						<textarea aria-label="purpose" id ="purpose" rows="4" style="width:100%;margin-top:10px" name="comment" form="usrform" placeholder="Describe the scope of use of this software under this agreement (maximum 500 words)" maxlength="500" required disabled></textarea>
-					    </div>
-					</div>
+      <div class="text-center mb-4">
+        <figure class="figure">
+          <img src="img/Phantoms_new.png" class="img-fluid" alt="Reference sizes for NCIPHANTOM Series">
+          <figcaption class="figure-caption">Reference size pediatric and adult NCIPHANTOM series</figcaption>
+        </figure>
+      </div>
 
-				    </div>
-				</div>
+      <h4 class="mb-3 mt-5">INTERNATIONAL REFERENCE</h4>
 
-				<!-- Submit -->
-				<div class="col-sm-12">
-				    <input type="button" id="generate" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate" disabled />
-				</div>
-				</div>
-			</div>
+      <p class="mb-4">
+        Once developed from patient CT images, the NCIPHANTOM library was adjusted to match several international reference data including international reference body sizes<sup>6</sup>, reference organ mass<sup>6</sup>, reference elemental composition<sup>6,7</sup>, and reference dimension data of gastro-intestine structures<sup>8</sup>. The anatomical structures of the reference children phantom series were adopted as international reference by International Commission on Radiological Protection (ICRP).
+      </p>
 
-			<div class="tab-pane fade" id="4th-tab">
-         			<h4>4th tab content goes here</h4>
+      <h4 class="mb-3 mt-5">VERSATILE FORMAT</h4>
 
+      <p class="mb-4">
+        The NCIPHANTOM library can be imported to different types of Monte Carlo radiation transport codes including MCNPX, MCNP6, GEANT4, etc. Main input deck for those codes is also available for research purpose. The NCIPHANTOM library also has been converted to DICOM-RT format which is compatible with commercial treatment planning systems. Detailed anatomical structures are converted to DICOM-CT images with realistic Hounsfield Unit. A total of 100+ organs and tissues are also directly imported into TPS in the format of DICOM-structure. Users will immediately evaluate dose to multiple organs and tissues on TPS once beam planning is completed.
+      </p>
 
+      <div class="text-center mb-4">
+        <figure class="figure">
+          <img src="img/Phantom_eclipse.png" class="img-fluid" alt="Male phantom in Eclipse TPS">
+          <figcaption class="figure-caption">Adult male phantom imported into Eclipse TPS for prostate treatment simulation</figcaption>
+        </figure>
+      </div>
 
+      <h4 class="mb-3 mt-5">REFERENCES</h4>
+
+      <ol class="mb-4">
+        <li class="mb-4">Lee C, Lodwick D, Hurtado J, Pafundi D, Williams JL, Bolch WE. The UF family of reference hybrid phantoms for computational radiation dosimetry. <i>Phys Med Biol.</i> 2010;55(2):339-363.</li>
+        <li class="mb-4">Geyer AM, O’Reilly S, Lee C, Long DJ, Bolch WE. The UF/NCI family of hybrid computational phantoms representing the current US population of male and female children, adolescents, and adults--application to CT dosimetry. 2014;59(18):5225-5242.</li>
+        <li class="mb-4">Lee C, Lamart S, Moroz BE. Computational lymphatic node models in pediatric and adult hybrid phantoms for radiation dosimetry. <i>Phys Med Biol.</i> 2013;58(5):N59--N82.</li>
+        <li class="mb-4">Lee C, Kaufman K, Pafundi DH, Bolch WE. An Algorithm for Lymphatic Node Placement in Hybrid Computational Phantoms: Applications to Radionuclide Therapy Dosimetry. <i>Proc IEEE.</i> 2009;97(12):2098-2108. doi:10.1109/JPROC.2009.2025399.</li>
+        <li class="mb-4">Villoing D, McMillan D, Kim KP, et al. Korean pediatric and adult head computational phantoms and application to photon specific absorbed fractions calculations. <i>Radiat Prot Dosimetry.</i> February 2017:1-8. doi:10.1093/rpd/ncx009.</li>
+        <li class="mb-4">ICRP. Basic anatomical and physiological data for use in radiological protection : reference values. <i>ICRP Publ 89 Ann ICRP.</i> 2002;32(3-4):1-277.</li>
+        <li class="mb-4">ICRU. <i>Photon, Electron, Proton and Neutron Interaction Data for Body Tissues.</i> Bethesda, MD: International Commission on Radiation Units and Measurements; 1992.</li>
+        <li class="mb-4">ICRP. Human alimentary tract model for radiological protection. <i>ICRP Publ 100 Ann ICRP.</i> 2006;36(1-2):1-336. doi:10.1016/j.icrp.2006.03.004.</li>
+      </ol>
+      </ul>
+
+      <!-- end phantoms tab content -->
+    </div>
+
+    <div class="tab-pane" id="ncict">
+      <!-- begin ncict tab content -->
+
+      <div class="text-center mb-2">
+        <figure class="figure">
+          <img src="img/NCICT_cover.png" class="img-fluid" alt="NCICT cover photo">
+          <figcaption class="figure-caption text-right">
+            <span class="text-primary" style="cursor: pointer" data-open="ncict-help.html">
+              Help &#128712;
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="mb-4">
+        Although computed tomography (CT) provides great benefits to patients, it has been always of importance to balance benefit and potential risk especially in pediatric patients who are more sensitive to radiation. <b>National Cancer Institute dosimetry system for Computed Tomography (NCICT)</b><sup>1</sup> is a computational solution to estimate organ doses for pediatric and adult patients undergoing Computed Tomography (CT) scans.
+      </p>
+
+      <h4 class="mb-3 mt-5">STRONG SCIENCE</h4>
+      <p class="mb-4">
+        The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. NCICT is based on several key technologies that were previously published including computational human phantoms and the simulation of X-ray from a reference CT scanner. The simulation results were rigorously validated by experimental dose measurements, which were also published in peer-reviewed journals<sup>2,3</sup>.
+      </p>
+
+      <div class="text-center mb-4">
+        <figure class="figure">
+          <img src="img/NCICT_helical_simulation.png" class="img-fluid" alt="Image of simulation of helical x-ray with adult female phantom">
+          <figcaption class="figure-caption">Simulation of helical x-ray source in CT scanner combined with an adult female phantom</figcaption>
+        </figure>
+      </div>
+
+      <div class="text-center mb-4">
+        <figure class="figure">
+          <img src="img/NCICT_physical_phantoms.png" class="img-fluid" alt="Image of anthropomorphic physical phantoms">
+          <figcaption class="figure-caption">Anthropomorphic physical phantoms used to validate organ dose simulated in NCICT</figcaption>
+        </figure>
+      </div>
+
+      <h4 class="mb-3 mt-5">INTERNATIONAL STANDARD PHANTOMS</h4>
+      <p class="mb-4">
+        The computational human phantoms, one of the key components in CT dose calculators, used in NCICT comply several international standard data obtained from International Commission on Radiological Protection (ICRP)<sup>4,5</sup> such as reference organ mass, elemental composition, and gastro-intestinal dimensions. The anatomical structure in the pediatric phantom series is now adopted by ICRP as an international standard.
+      </p>
+
+      <h4 class="mb-3 mt-5">HASSLE-FREE INSTALLATION</h4>
+      <p class="mb-4">
+        Some data involved in patient imaging are considered Protected Health Information (PHI). Even anonymized data often tend to be prohibited from being transferred outside the Picture Archiving and Communication System (PACS). NCICT is running on a personal computer standalone. Users do not have to send any sensitive patient data to central servers, which do not even exist for running NCICT. Users do not need an internet connection to run NCICT.
+      </p>
+
+      <div class="text-center mb-4">
+        <figure class="figure">
+          <img src="img/NCICT_gui.png" class="img-fluid" alt="Screenshot of NCICT graphical user interface">
+          <figcaption class="figure-caption">The graphical user interface of NCICT showing organ dose calculation for the head scan of a<br> newborn female computational phantom</figcaption>
+        </figure>
+      </div>
+
+      <h4 class="mb-3 mt-5">VERSATILE RUNNING MODES</h4>
+      <p class="mb-4">
+        NCICT features two computation modes: Graphical User Interface (GUI) mode and Batch Calculation mode. The GUI Mode is for users to interactively input patient and CT scanner data into NCICT and calculate organ doses instantly with simple graphs. The Batch Calculation mode is designed to compute organ doses for a large number of patients by importing a set of parameters in formatted text file. The Batch Calculation mode is also running by text command, which makes it easy to port NCICT to existing data abstraction systems.
+      </p>
+
+      <h4 class="mb-3 mt-5">FREE RESOURCE FOR WORLDWIDE USERS</h4>
+      <p class="mb-4">
+        NCICT was tested by more than 100 beta users worldwide whose feedbacks were incorporated into several revisions. Since 2010, NCICT has been utilized by numerous medical radiation researchers worldwide for their research and publications.<sup>6–21</sup>
+      </p>
+
+      <h4 class="mb-3 mt-5">REFERENCES</h4>
+
+      <ol class="mb-4">
+        <li class="mb-4">Lee C, Kim KP, Bolch WE, Moroz BE, Les Folio. NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans. <i>J Radiol Prot.</i> 2015;35(4):891-909. doi:10.1088/0952-4746/35/4/891.</li>
+        <li class="mb-4">Long DJ, Lee C, Tien C, et al. Monte Carlo simulations of adult and pediatric computed tomography exams: Validation studies of organ doses with physical phantoms. <i>Med Phys.</i> 2013;40(1):13901. doi:10.1118/1.4771934.</li>
+        <li class="mb-4">Dabin J, Mencarelli A, McMillan D, Romanyukha A, Struelens L, Lee C. Validation of calculation algorithms for organ doses in CT by measurements on a 5 year old paediatric phantom. <i>Phys Med Biol.</i> 2016;61(11):4168-4182. doi:10.1088/0031-9155/61/11/4168.</li>
+        <li class="mb-4">ICRP. Basic anatomical and physiological data for use in radiological protection : reference values. <i>ICRP Publ 89 Ann ICRP.</i> 2002;32(3-4):1-277.</li>
+        <li class="mb-4">ICRP. Human alimentary tract model for radiological protection. <i>ICRP Publ 100 Ann ICRP.</i> 2006;36(1-2):1-336. doi:10.1016/j.icrp.2006.03.004.</li>
+        <li class="mb-4">Pokora R, Krille L, Dreger S, et al. Computed Tomography in Germany. <i>Dtsch Arzteblatt Int.</i> 2016;113:1-9. doi:10.3238/arztebl.2016.0.</li>
+        <li class="mb-4">Olerud HM, Toft B, Flatabø S, Jahnen A, Lee C, Thierry-Chef I. Reconstruction of paediatric organ doses from axial CT scans performed in the 1990s – range of doses as input to uncertainty estimates. <i>Eur Radiol.</i> January 2016:1-8. doi:10.1007/s00330-015-4157-6.</li>
+        <li class="mb-4">Meulepas JM, Ronckers C e cile M, Smets AMJB, et al. Leukemia and brain tumors among children after radiation exposure from CT scans: design and methodological opportunities of the Dutch Pediatric CT Study. <i>Eur J Epidemiol.</i> 2014;29:293-301. doi:10.1007/s10654-014-9900-9.</li>
+        <li class="mb-4">de Basea MB, Pearce MS, Kesminiene A, et al. EPI-CT: design, challenges and epidemiological methods of an international study on cancer risk after paediatric and young adult CT. <i>J Radiol Prot.</i> 2015;35(3):611-628. doi:10.1088/0952-4746/35/3/611.</li>
+        <li class="mb-4">Thierry-Chef I, Dabin J e r e mie, Friberg E, et al. Assessing Organ Doses from Paediatric CT Scans: A Novel Approach for an Epidemiology Study (the EPI-CT Study). <i>Int J Environ Res Public Health.</i> 2013;10(2):717-728. doi:10.3390/ijerph10020717.</li>
+        <li class="mb-4">Pearce MS, Salotti JA, Little MP, et al. Radiation exposure from CT scans in childhood and subsequent risk of leukaemia and brain tumours: a retrospective cohort study. <i>Lancet.</i> 2012;380(9840):499-505. doi:10.1016/S0140-6736(12)60815-0.</li>
+        <li class="mb-4">Berrington de González A, Journy N, Lee C, et al. No association between radiation dose from pediatric CT scans and risk of subsequent Hodgkin lymphoma. <i>Cancer Epidemiol Biomarkers Prev.</i> January 2017:cebp.1011.2016-15. doi:10.1158/1055-9965.EPI-16-1011.</li>
+        <li class="mb-4">Journy NMY, Lee C, Harbron RW, McHugh K, Pearce MS, de Gonza acute lez AB. Projected cancer risks potentially related to past, current, and future practices in paediatric CT in the United Kingdom, 1990–2020. <i>Br J Cancer.</i> 2016;116(1):109-116. doi:10.1038/bjc.2016.351.</li>
+        <li class="mb-4">Journy NMY, Dreuil S, Boddaert N, et al. Individual radiation exposure from computed tomography: a survey of paediatric practice in French university hospitals, 2010–2013. <i>Eur Radiol.</i> August 2017:1-12. doi:10.1007/s00330-017-5001-y. </li>
+        <li class="mb-4">Romanyukha A, Les Folio, Lamart S, Simon SL, Lee C. Body size-specific effective dose conversion coefficients for CT scans. <i>Radiat Prot Dosimetry.</i> 2016;172(4):ncv511-437. doi:10.1093/rpd/ncv511. </li>
+        <li class="mb-4">Bahadori A, Miglioretti D, Kruger R, et al. Calculation of Organ Doses for a Large Number of Patients Undergoing CT Examinations. <i>Am J Roentgenol.</i> 2015;205(4):827-833. doi:10.2214/AJR.14.14135. </li>
+        <li class="mb-4">Lodwick DL, Cooper JN, Adler B, et al. How to identify high radiation burden from computed tomography: an example in obese children. <i>J Surg Res.</i> 2017;217(Supplement C):54-62.e3. doi:10.1016/j.jss.2017.04.031. </li>
+        <li class="mb-4">Cooper JN, Lodwick DL, Adler B, Lee C, Minneci PC, Deans KJ. Patient characteristics associated with differences in radiation exposure from pediatric abdomen-pelvis CT scans: a quantile regression analysis. <i>Comput Biol Med.</i> 2017;85(Supplement C):7-12. doi:10.1016/j.compbiomed.2017.04.003. </li>
+        <li class="mb-4">Krille L, Dreger S, Schindel R, et al. Risk of cancer incidence before the age of 15 years after exposure to ionising radiation from computed tomography: results from a German cohort study. <i>Radiat Environ Biophys.</i> 2015;54(1):1-12. doi:10.1007/s00411-014-0580-3. </li>
+        <li class="mb-4">Lee C, Flynn MJ, Judy PF, Cody DD, Bolch WE, Kruger RL. Body Size–Specific Organ and Effective Doses of Chest CT Screening Examinations of the National Lung Screening Trial. <i>Am J Roentgenol.</i> 2017;208(5):1082-1088. doi:10.2214/AJR.16.16979. </li>
+        <li class="mb-4">Chang LA, Miller DL, Lee C, et al. Thyroid Radiation Dose to Patients from Diagnostic Radiology Procedures over Eight Decades: 1930–2010. <i>Health Phys.</i> 2017;113(6):458–473. doi:10.1097/HP.0000000000000723. </li>
+      </ol>
+      <!-- end ncict tab content -->
+    </div>
+
+    <div class="tab-pane" id="dose-coefficients">
+      <!-- begin dose-coefficients tab content -->
+
+      <h4 class="mb-3 mt-5">EXTERNAL PHOTON</h4>
+      <p class="mb-4">
+        We calculated dose coefficients for the International Commission on Radiological Protection (ICRP) reference pediatric phantoms externally exposed to mono-energetic photon radiation (X- and gamma-rays) over a wide energy range. Calculations used Monte Carlo radiation transport techniques. Dose coefficients, i.e., organ absorbed dose per unit air kerma (mGy/mGy), were calculated for 28 organs and tissues including the active marrow (or red bone marrow) for 10 phantoms (newborn, 1-year, 5-year, 10-year, and 15-year old male and female). Radiation exposure was simulated for 33 photon mono-energies (0.01 – 20 MeV) in six irradiation geometries: Anterior-Posterior (AP), Posterior-Anterior (PA), Right Lateral (RLAT), Left Lateral (LLAT), Rotational (ROT), and Isotropic (ISO).
+      </p>
+
+      <p class="mb-4">
+        Citation: LA Chang, SL Simon, TJ Jorgensen, DA Schauer, and C Lee, “Organ dose conversion coefficients for pediatric reference individuals exposed to idealized photon radiation,” Journal of Radiological Protection (in press)
+      </p>
+
+      <div class="text-center mb-4">
+        <figure class="figure">
+          <img src="img/Dose Coefficients_external.png" class="img-fluid" alt="External organ and effective dose coefficients">
+          <figcaption class="figure-caption">External organ and effective dose coefficients for age-dependent phantoms exposed to <br>idealized photon beams in different irradiation geometries.</figcaption>
+        </figure>
+      </div>
+
+      <h4 class="mb-3 mt-5">INTERNAL PHOTON/ELECTRON</h4>
+      <p class="mb-4">
+        To improve the estimates of organ doses from nuclear medicine procedures using iodine 131 (I-131), we calculated a comprehensive set of I-131 S values, defined as organ absorbed doses in target tissues per unit of nuclear transition in source regions, for different source and target combinations. We used the latest reference adult male and female voxel phantoms published by the International Commission on Radiological Protection (ICRP Publication 110) and the I-131 photon and electron spectra from the ICRP Publication 107 to perform Monte Carlo radiation transport calculations using MCNPX2.7 to compute the S values. For each phantom, we simulated 55 source regions assuming a uniform distribution of I-131. We directly computed the S values for 42 target tissues without calculating Specific Absorbed Fraction (SAF) values. From these calculations, we derived a comprehensive set of S values for I-131 for 55 source regions and 42 target tissues in the ICRP male and female voxel phantoms. The new dataset includes the S values for source regions and target tissues of interest in internal dosimetry of I-131, which are not available in the long-used stylized phantoms from Oak Ridge National Laboratory (ORNL).
+      </p>
+
+      <p class="mb-4">
+        Citation: S Lamart, SL Simon, A Bouville, BE Moroz, and C Lee, “S values for I-131 from the ICRP adult voxel phantoms and comparison with the previous reference values,” Radiation Protection Dosimetry, 168:92-110 (2016)
+      </p>
+
+      <div class="text-center mb-4">
+        <figure class="figure">
+          <img src="img/Dose_Coefficients_internal.png" class="img-fluid" alt="S values for various target organs in the ICRP adult male and female reference phantoms where I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).">
+          <figcaption class="figure-caption">S values for various target organs in the ICRP adult male and female reference phantoms where <br>I-131 is distributed in the source organs (thyroid, urinary bladder content, small intestine content, and salivary glands).</figcaption>
+        </figure>
+      </div>
+
+      <!-- end dose-coefficients tab content -->
+    </div>
+
+    <div class="tab-pane" id="agreement">
+      <!-- begin agreement tab content -->
+
+      <form novalidate>
+        <div class="card mb-4">
+          <div class="card-header d-flex flex-wrap justify-content-between">
+            <span>What materials are you interested in downloading?</span>
+            <span class="link pull-right" data-open="content/NCIDose_STA_Preview.pdf">
+              <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Octicons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="desktop-download" fill="currentColor">
+                        <path d="M4,6 L7,6 L7,0 L9,0 L9,6 L12,6 L8,10 L4,6 L4,6 Z M15,2 L11,2 L11,3 L15,3 L15,11 L1,11 L1,3 L5,3 L5,2 L1,2 C0.45,2 0,2.45 0,3 L0,12 C0,12.55 0.45,13 1,13 L6.34,13 C6.09,13.61 5.48,14.39 4,15 L12,15 C10.52,14.39 9.91,13.61 9.66,13 L15,13 C15.55,13 16,12.55 16,12 L16,3 C16,2.45 15.55,2 15,2 L15,2 Z" id="Shape"></path>
+                    </g>
+                </g>
+              </svg><span class="ml-1">View Sample STA Agreement</span>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="phantoms-check" name="phantoms">
+              <label class="form-check-label" for="phantoms-check">
+                Phantoms
+              </label>
+              <span class="text-primary" style="cursor: pointer" data-for="phantoms" data-modal="#modal-template" data-title="Computational Human Phantoms" data-content="Computational human phantom series, provided as binary voxel format or Digital Imaging and Communications in Medicine (DICOM) format (surface format not provided), reference anatomy models representing newborn to adult males and females, as described in Lee et al. (Phys Med Biol 55:339-363, 2010) and Lee et al. (Phys Med Biol 60:2309-2324, 2015), including further improvements thereof, and related documentation.">&#128712;</span>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ncict-check" name="ncict">
+              <label class="form-check-label" for="ncict-check">
+                NCICT
+              </label>
+              <span class="text-primary" style="cursor: pointer" data-for="ncict" data-modal="#modal-template" data-title="NCICT" data-content="National Cancer Institute dosimetry system for Computed Tomography (NCICT) software (NIH Ref. No. E-082-2016/0), provided as executable code (source code not provided),a computer program to assess radiation dose to organs in pediatric and adult patients undergoing computed tomography (CT) examinations as described in Lee et al. (J Radiol Prot. 35:891-909, 2015), including further improvements thereof, and related documentation.">&#128712;</span>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="dose-coefficients-check" name="dose-coefficients">
+              <label class="form-check-label" for="dose-coefficients-check">
+                Dose coefficients
+              </label>
+              <span class="text-primary" style="cursor: pointer" data-for="dose-coefficients" data-modal="#modal-template" data-title="Organ DOSE coefficients" data-content="Dose coefficients for internal and external radiation sources as described in Lamart et al. (Radiat Prot Dosim 168:92-110, 2016) and Chang et al. (J Radiol Prot in press), including further improvements thereof, and related documentation.">&#128712;</span>
+            </div>
+          </div>
         </div>
-         			<!--ALTERNATIVE AGGREEMENT TAB-->
-		<div class="tab-pane fade" id="Agreement_Alt-tab">
 
-				<div id="overlay">				
-				<div id="errorMessage"></div>
-				<!-- Recipient Section -->
-				<div class="panel panel-default">
-				    <div class="panel-heading">	<p align=center style='margin-bottom:1px;text-align:center;font-size:12.0pt'><b>SOFTWARE TRANSFER AGREEMENT</b></p></div>
-				    <div class="panel-body" id="agreement_form">
-				    </div>
-				
-				</div>
+        <div class="error-messages text-danger mb-4"></div>
 
-				<!-- Submit -->
-				<div class="col-sm-12">
-				    <input type="button" id="generate2" style="margin-top:5px;margin-left:40%" value="Generate STA PDF" class="btn btn-default calculate overlay"/>
-				</div>
-				</div>
-			</div>
+        <div class="card mb-4" id="recipient-investigator">
+          <div class="card-header">
+            Recipient Investigator
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label class="asterisk" for="first-name">First Name</label>
+                <input type="text" class="form-control" id="first-name" name="first" placeholder="Enter First Name" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label class="asterisk" for="last-name">Last Name</label>
+                <input type="text" class="form-control" id="last-name" name="last" placeholder="Enter Last Name" required>
+              </div>
 
-        <!-- <div class="tab-pane fade" id="References-tab">
-     		<div  style ="text-indent:-1.5em;padding-left:2.5em">
-     			<p >Dabin J, Mencarelli A, McMillan D, Romanyukha A, Struelens L and Lee C 2016 Validation of calculation algorithms for organ doses in CT by measurements on a 5 year old paediatric phantom <i>Physics in Medicine and Biology</i> <b>61</b> 4168–82</p>
-     			
-     			<p>ICRP 2002 Basic anatomical and physiological data for use in radiological protection : reference values <i>ICRP publication 89, Ann. ICRP</i> <b>32</b> 1–277</p>
-     			
-     			<p>ICRP 2006 Human alimentary tract model for radiological protection <i>ICRP publication 100, Ann. ICRp</i> <b>36</b> 1–336</p>
+              <div class="form-group col-md-4">
+                <label class="asterisk" for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required>
+              </div>
+            </div>
 
-				<p>Lee C, Jung J W, Pelletier C, Pyakuryal A, Lamart S, Kim J O and Lee C 2015a Reconstruction of organ dose for external radiotherapy patients in retrospective epidemiologic studies<i> Physics in Medicine and Biology</i> <b>60</b> 2309–24</p>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label class="asterisk" for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="asterisk" for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Phone" required>
+              </div>
+            </div>
 
-				<p>Lee C, Kim K P, Bolch W E, Moroz B E and Folio Les 2015b NCICT: a computational solution to estimate organ doses for pediatric and adult patients undergoing CT scans <i>Journal of Radiological Protection</i> <b>35</b> 891–909</p>
-				
-				<p>Lee C, Lodwick D, Hurtado J, Pafundi D, Williams J L and Bolch W E 2010 The UF family of reference hybrid phantoms for computational radiation dosimetry. <i>Physics in Medicine and Biology </i> <b>55</b> 339–63</p>
-				
-				<p>Lee C, Lodwick D, Williams J L and Bolch W E 2008 Hybrid computational phantoms of the 15-year male and female adolescent: applications to CT organ dosimetry for patients of variable morphometry. <i>Medical physics </i> <b>35</b> 2366–82</p>
-				
-				<p>Lee E, Lamart S, Little M P and Lee C 2014 Database of normalised computed tomography dose index for retrospective CT dosimetry <i>Journal of Radiological Protection <b>34</b> 363–88</p>
+            <div class="form-group">
+              <label class="asterisk" for="institution">Institution</label>
+              <input type="text" class="form-control" id="institution" name="institution" placeholder="Enter Institution" required>
+            </div>
 
-
-     		</div> -->
-        </div> <!-- End of NCIDose Tab Content -->
-       
-
-		</div>
-	</main> <!-- End of main-->
-
-	<!-- Common Footer -->
-	<div class="container footer">
-		<div class="center-block">
-		    <ul class="list-inline">
-		        <li><a target="_blank" title="Home" href="https://www.cancer.gov/">Home</a></li>
-		        <li>|</li>
-		        <li><a title="Support" target="_top" href="mailto: NCIDOSEWebAdmin@mail.nih.gov?subject=NCIDOSE">Support</a></li>
-		        <li>|</li>
-		        <li><a target="_blank" title="Policies" href="https://www.cancer.gov/global/web/policies">Policies</a></li>
-		        <li>|</li>
-		        <li><a target="_blank" title="Accessibility" href="https://www.cancer.gov/global/web/policies/accessibility">Accessibility</a></li>
-		        <li>|</li>
-		        <li><a target="_blank" title="Viewing Files" href="https://cancer.gov/global/viewing-files">Viewing Files</a></li>
-		        <li>|</li>
-		        <li><a target="_blank" title="FOIA" href="https://www.cancer.gov/global/web/policies/foia">FOIA</a></li>
-		    </ul>
-		    <ul class="list-inline">
-		        <li><a target="_blank" href="https://www.hhs.gov/">U.S. Department of Health and Human Services</a></li>
-		        <li>|</li>
-		        <li><a target="_blank" href="https://www.nih.gov">National Institutes of Health</a></li>
-		        <li>|</li>
-		        <li><a target="_blank" href="https://www.cancer.gov/">National Cancer Institute</a></li>
-		        <li>|</li>
-		        <li><a target="_blank" href="https://usa.gov">USA.gov</a></li>
-		    </ul>
-		    <div class="text-center">
-		        NIH ... Turning Discovery Into Health<sup>&reg;</sup>
-		    </div>
+            <div class="form-group">
+              <label class="asterisk" for="address">Business Address</label>
+              <textarea type="text" rows="3" class="form-control" id="address" name="address" placeholder="Enter Business Address" required></textarea>
+            </div>
+          </div>
         </div>
-   	</div>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+        <div class="card mb-4" id="research-activity">
+          <div class="card-header">
+            Research Activity
+          </div>
+          <div class="card-body">
+            <label class="asterisk" for="purpose">Purpose</label>
+            <textarea type="text" rows="3" class="form-control" id="purpose" name="purpose" placeholder="Describe the scope of the use of this software under the agreement" required></textarea>
+          </div>
+        </div>
 
-	<script>
-		window.ga = window.ga || function() {
-			(ga.q = ga.q || []).push(arguments)
-		};
-		ga.l = +new Date;
-		ga('create', 'UA-62346354-1', 'auto');
-		ga('send', 'pageview');
-		//("#agreement_form").load("./content/NCI_STA_text.html");
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Generate STA PDF</button>
+        </div>
+      </form>
 
-	</script>
-	<!-- End Google Analytics -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../common/js/purify.js"></script>
-	<script type="text/javascript" src="./js/CreatePDF.js"></script>
-	<script type="text/javascript" src="./js/NCIDOSE.js"> </script>
-	<script type="text/javascript" src="./js/modal_content.js"> </script> 
-	
-	<!-- Google Analytics -->
-	<script async src='//www.google-analytics.com/analytics.js'></script>
-	<!-- DAP -->
-	<script type="text/javascript">_satellite.pageBottom();</script>
+      <!-- end agreement tab content -->
+    </div>
+  </div>
+
+  <footer class="text-left text-md-center mt-5 pt-4 pb-4 bg-dark-blue text-light">
+    <div class="container">
+
+      <ul class="list-inline">
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" title="Home" href="https://www.cancer.gov/">Home</a></li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline"><a title="Support" target="_top" href="mailto: NCIDOSEWebAdmin@mail.nih.gov?subject=NCIDOSE">Support</a></li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" title="Policies" href="https://www.cancer.gov/global/web/policies">Policies</a></li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" title="Accessibility" href="https://www.cancer.gov/global/web/policies/accessibility">Accessibility</a></li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" title="Viewing Files" href="https://cancer.gov/global/viewing-files">Viewing Files</a></li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" title="FOIA" href="https://www.cancer.gov/global/web/policies/foia">FOIA</a></li>
+      </ul>
+      <ul class="list-inline">
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" href="https://www.hhs.gov/">U.S. Department of Health and Human Services</a></li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" href="https://www.nih.gov">National Institutes of Health</a></li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" href="https://www.cancer.gov/">National Cancer Institute</a></li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline"><a target="_blank" href="https://usa.gov">USA.gov</a></li>
+      </ul>
+      <div>
+        NIH ... Turning Discovery Into Health<sup>&reg;</sup>
+      </div>
+    </div>
+
+  </footer>
+
+  <div id="modal-template" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="loading-overlay" class="fullscreen-overlay">
+    <div class="text-center">
+      <svg version="2.0" class="spinner" width="25" height="25">
+        <circle cx="12.5" cy="12.5" r="10" fill="transparent" stroke="#ccc" stroke-width="2.5" />
+        <path fill="transparent" stroke="#666" stroke-width="2.5" d="M 12.5 2.5 a 10 10 0 0 1 10 10" />
+      </svg>
+      <br>
+      Loading...
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.3/dist/js/bootstrap.bundle.js"></script>
+  <script src="js/app.js"></script>
+  <script></script>
+
+  <!-- Google Analytics -->
+  <script src='https://www.google-analytics.com/analytics.js'></script>
+  <script>
+    window.ga = window.ga || function() {
+      (ga.q = ga.q || []).push(arguments)
+    };
+    ga.l = +new Date();
+    ga('create', 'UA-62346354-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <!-- Adobe DAP -->
+  <script>
+    _satellite.pageBottom()
+  </script>
 </body>
 
 </html>
-
