@@ -70,6 +70,13 @@
   font-weight: 600;
 }
 
+/** Override figure caption font size */
+.figure-caption {
+  font-size: 100%;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 
 
 /**
