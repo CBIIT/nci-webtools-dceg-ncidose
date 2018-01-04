@@ -119,7 +119,7 @@ def submit():
             host=host,
             sender='NCIDOSEWebAdmin@mail.nih.gov',
             recipient=admin,
-            subject='subject',
+            subject='NCIDose STA Request',
             contents=pm_template.format(**data)
         )
 
@@ -128,7 +128,7 @@ def submit():
             host=host,
             sender='NCIDOSEWebAdmin@mail.nih.gov',
             recipient=data['email'],
-            subject='subject',
+            subject='NCIDose Software Transfer Agreement Form',
             contents=recipient_template.format(**data),
             attachments=[pdf_file]
         )
