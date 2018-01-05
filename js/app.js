@@ -36,6 +36,12 @@ $('[data-modal]').click(function() {
   createModal(data.title, data.content);
 });
 
+
+/**
+ * Any elements that have the data-open attribute
+ * will open a new window with the specified url
+ * once clicked.
+ */
 $('[data-open]').click(function() {
   var url = $(this).data('open');
   open(url, "Help", "alwaysRaised,dependent,status,scrollbars,resizable,width=1000,height=800").focus();
