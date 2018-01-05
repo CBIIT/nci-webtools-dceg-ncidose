@@ -9,6 +9,7 @@
 
   <title>NCIDose Webtool</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.3/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="img/favicon.ico">
   <script src="https://assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-4b219b82c4737db0e1797b6c511cf10c802c95cb.js"></script>
@@ -28,11 +29,11 @@
 
   <div class="bg-dark-red text-light d-none d-sm-block">
     <div class="container pt-1 pb-1">
-      <strong>NCIDose</strong>
+      <span style="font-size: 1.1rem; font-weight: 600">NCIDose</span>
     </div>
   </div>
 
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark-gradient">
     <div class="container">
       <a class="navbar-brand d-sm-none" href="#">NCIDose</a>
 
@@ -129,7 +130,7 @@
 
       <div class="text-center mb-2">
         <figure class="figure mw-100">
-          <img src="img/Phantoms_cover.png" class="img-fluid" alt="NCIPhantom cover photo">
+          <img src="img/Phantoms_cover.png" class="img-fluid box-shadow" alt="NCIPhantom cover photo">
         </figure>
       </div>
 
@@ -199,10 +200,10 @@
 
       <div class="text-center mb-2">
         <figure class="figure mw-100">
-          <img src="img/NCICT_cover.png" class="img-fluid" alt="NCICT cover photo">
-          <figcaption class="figure-caption text-right">
+          <img src="img/NCICT_cover.png" class="img-fluid box-shadow" alt="NCICT cover photo">
+          <figcaption class="figure-caption mt-4 text-right">
             <span class="text-primary" style="cursor: pointer; font-size: 1rem;" data-open="ncict-help.html">
-              Help &#128712;
+              Help <i class="fa fa-question-circle" aria-hidden="true"></i>
             </span>
           </figcaption>
         </figure>
