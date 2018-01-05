@@ -1,178 +1,189 @@
-import os
-import re
-import string
-from flask import Flask, render_template, request, jsonify, make_response, send_from_directory
 import json
-import csv
+import logging
+import os
 import random
-import subprocess
-from weasyprint import HTML, CSS
-from PropertyUtil import PropertyUtil
-import urllib
 import smtplib
+import subprocess
 
-
-# Load Env variables
+from ConfigParser import SafeConfigParser
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from PropertyUtil import PropertyUtil
-from stompest.config import StompConfig
-from stompest.protocol import StompSpec
+from flask import Flask, request
 
-app = Flask(__name__)
 if not os.path.exists('tmp'):
     os.makedirs('tmp')
 
-@app.route('/')
-def index():
-    return return_template('index.html')
+config = SafeConfigParser()
+config.read('config.ini')
 
-@app.route('/ncidoseRest/', methods = ['POST'])
-def store():
-	print "storing"
-	mimetype = 'application/json'
-	data = json.loads(request.stream.read())
-	token_id=random.randrange(1, 1000000)
-	json_file_name='./tmp/'+str(token_id)+'_inputs.json'
-	print (json_file_name)
-	with open(json_file_name, 'w') as file_:
-		json.dump(data, file_)
-	email=data["email"] 
-	date=data["date"]
-#	html_file = open("./content/NCI_STA_"+str(token_id)+".html", "w+")
-#	html_file.write(page)
-#	print(page)
-#	subprocess.call(["weasyprint", "-s", "./css/agreement.css", 
-#		("./content/NCI_STA_"+str(token_id)+".html"), 
-#		("./content/NCI_STA_"+str(token_id)+".pdf")])
-	pdf_file='./tmp/NCIDose_STA_'+str(token_id)+'.pdf';
-	os.system("java -jar pdftagger.jar "+ pdf_file+ " "+  json_file_name)
-	#HTML(string=page).write_pdf('./tmp/NCIDose_STA_'+str(token_id)+'.pdf',
-    #	stylesheets=[CSS('./css/agreement.css')])
-	print("sending to recipient")
-	Send_to_recipient(email,pdf_file,date,data)
-	print("sending to PM")
-	Send_to_PM(data)
-	return str("")
+app = Flask(__name__)
 
-def Send_to_PM(data):
-	config = PropertyUtil(r"config.ini")
-	print(config)
-	email=config.getAsString("mail.admin")
-	rec_email=data['email']
-	files=[]
-	first = data["first"]
-	last = data["last"]
-	title = data["title"]
-	purpose= data["purpose"]
-	purpose=purpose.replace("\n", "<br>")
-	date=data["date"]
-	phone=data["phone"]
-	address=data["address"]
-	address=address.replace("\n", "<br>")
-	institution=data["institution"]
-	software_string=data["software_title"]
-	product_name = "NCIDose"
-	print "making message"
+###############################################################################
+## email template for investigators
+###############################################################################
+recipient_template = '''
+<p>Dear {first} {last},</p>
 
-	header = """<h2>"""+product_name+"""</h2>"""
-	body = """
-	        <p>Dear Dr. Lee,</p>
-	<span>This email is to let you know a user just visited the NCIDose web site and entered the following information on the Agreement page. A STA PDF has been generated and sent to the user via email. </span>
-	<p><b><u>Materials to download</u></b></p>
-	<ul>"""+software_string+"""</ul>
-	<p><b><u>Recipient Investigator</u></b></p>
-	<ul>
-		<li>Name: """+first+""" """+last+"""</li>
-		<li>Title: """+title+"""</li>
-		<li>Email: """+rec_email+"""</li>
-		<li>Phone: """+phone+"""</li>
-		<li>Institution: """+institution+"""</li>
-		<li>Buisness Address: """+address+"""</li>
-	</ul>
-	<p><b><u>Research Activity</u></b></p>
-	<ul>
-		<li>"""+purpose+"""</li>
-	</ul>
+<p>Thank you for your interest in the materials and software developed by the Dosimetry 
+Unit of Radiation Epidemiology Branch at the <a href="https://dceg.cancer.gov/"> 
+Division of Cancer Epidemiology and Genetics.</a> Attached is the STA form pre-filled 
+with the information you entered on the web site and the materials you want to receive. 
+Please review the STA form and email a signed copy to Dr. Choonsik Lee at 
+leechoonsik@mail.nih.gov. You will be receiving an email with detailed download 
+instructions once your STA form has been received and approved by Dr. Lee and NCI 
+Technology Tranfer Center.</p>
 
-	      """
-	footer = """</br><p>Sincerely,</p><p>Sent from the NCIDose Web Tool</p>"""
-	            
-	message = """
-	  <head>
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
-	    <title>html title</title>
-	  </head>
-	  <body>"""+body+footer+"""</body>""" 
+<p><i>(Note: Please do not reply to this email. If you need assistance, 
+please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)</p></i>
 
-	print "sending"
-#	with open('./data/contacts.csv', 'a') as csvfile:
-#		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
-#		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-#		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
-	composeMail(email,message,None,"NCIDose STA Request")
+</br>
 
-def Send_to_recipient(email,file,date,data):
-	product_name = "NCIDose"
-	print "making message"
-	first = data["first"]
-	last = data["last"]
-	body = """
-	      
-	        Dear """+first+""" """+last+""",<br>
-	        <p> Thank you for your interest in the materials and software developed by the Dosimetry Unit of Radiation Epidemiology Branch at the<a href="https://dceg.cancer.gov/"> Division of Cancer Epidemiology and Genetics.</a> Attached is the STA form pre-filled with the information you entered on the web site and the materials you want to receive. Please review the STA form and email a signed copy to Dr. Choonsik Lee at leechoonsik@mail.nih.gov. You will be receiving an email with detailed download instructions once your STA form has been received and approved by Dr. Lee and NCI Technology Tranfer Center.</p>
-	      """
-	footer = """
-	      <div>
-	        <p><i>
-	          (Note: Please do not reply to this email. If you need assistance, please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)
-	        </p></i>
-	       	</br><p>Sincerely,</p><p>Sent from the NCIDose Web Tool</p><p>NCIDOSEWebAdmin@mail.nih.gov</p>
-
-	            """
-	message = """
-	  <head>
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	    <title>html title</title>
-	  </head>
-	  <body>"""+body+footer+"""</body>"""
-
-	print "sending"
-#	with open('./data/contacts.csv', 'a') as csvfile:
-#		fieldnames = ['recipient_first_name', 'recipient_last_name','recipient_title','address','email','institution','investigator_first_name','investigator_last_name','investigator_title','purpose','date']
-#		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-#		writer.writerow({'recipient_first_name':first, 'recipient_last_name':last,'recipient_title':title,'address':address,'email':email,'institution':institution,'investigator_first_name':first_inv,'investigator_last_name':last_inv,'investigator_title':title_inv,'purpose':purpose,'date':date})
-	composeMail(email,message,file,"NCIDose Software Transfer Agreement Form")
-
-def composeMail(recipient,message,file,subject):
- 	config = PropertyUtil(r"config.ini")
-	recipient = recipient
-	packet = MIMEMultipart()
-	packet['Subject'] = subject
-	packet['From'] = "NCIDose <NCIDOSEWebAdmin@mail.nih.gov>"
-	packet['To'] = recipient
-	packet.attach(MIMEText(message,'html'))
-	if(file):
-		with open(file,"rb") as openfile:
-			packet.attach(MIMEApplication(
-			  openfile.read(),
-			  Content_Disposition='attachment; filename="%s"' % os.path.basename(file),
-			  Name=os.path.basename(file)
-		))
-	MAIL_HOST=config.getAsString('mail.host')
-	print MAIL_HOST
-	smtp = smtplib.SMTP(MAIL_HOST)
-	smtp.sendmail("do.not.reply@nih.gov",recipient,packet.as_string())
-	print "sent email"
-
-@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    return response
+<p>Sincerely,</p>
+<p>Sent from the NCIDose Web Tool</p>
+<p>NCIDOSEWebAdmin@mail.nih.gov</p>
+'''
 
 
-if __name__ == "__main__":
-  app.run(host = '0.0.0.0', port = 8765, debug = True)
+###############################################################################
+## email template for Dr. Lee
+###############################################################################
+pm_template = '''
+<h2>NCIDose</h2>
+
+<p>Dear Dr. Lee,</p>
+
+<p>This email is to let you know a user just visited the NCIDose web site and entered 
+the following information on the Agreement page. A STA PDF has been generated and sent 
+to the user via email.</p>
+
+<p><b><u>Materials to download</u></b></p>
+<ul>
+    {software_title}
+</ul>
+
+<p><b><u>Recipient Investigator</u></b></p>
+<ul>
+    <li>Name: {first} {last}</li>
+    <li>Title: {title}</li>
+    <li>Email: {email}</li>
+    <li>Phone: {phone}</li>
+    <li>Institution: {institution}</li>
+    <li>Business Address: {address}</li>
+</ul>
+
+<p><b><u>Research Activity</u></b></p>
+<ul>
+    <li>{purpose}</li>
+</ul>
+
+</br>
+
+<p>Sincerely,</p>
+<p>Sent from the NCIDose Web Tool</p>
+<p>NCIDOSEWebAdmin@mail.nih.gov</p>
+'''
+
+@app.route('/submit/', methods = ['POST'], strict_slashes = False)
+def submit():
+    '''Handles form submission:
+        - stores form values
+        - generates STA pdf for investigator
+        - sends email to investigator
+        - sends form values to pm
+
+    Decorators:
+        app -- Flask route decorator
+    '''
+
+    try:
+        data = json.loads(request.stream.read())
+        token_id = random.randrange(1, 1000000)
+
+        json_file = 'tmp/%s_inputs.json' % token_id
+        pdf_file = 'tmp/NCIDose_STA_%s.pdf' % token_id
+
+        logging.info('storing parameters: ' + json_file)
+
+        with open(json_file, 'w') as _file:
+            json.dump(data, _file)
+
+        logging.info('creating pdf: ' + pdf_file)
+        subprocess.call(['java', '-jar', 'pdftagger.jar', pdf_file, json_file])
+
+        host = config.get('mail', 'host')
+        admin = config.get('mail', 'admin')
+
+        logging.info('sending email to pm')
+        send_mail(
+            host=host,
+            sender='NCIDOSEWebAdmin@mail.nih.gov',
+            recipient=admin,
+            subject='NCIDose STA Request',
+            contents=pm_template.format(**data)
+        )
+
+        logging.info('sending email to investigator')
+        send_mail(
+            host=host,
+            sender='NCIDOSEWebAdmin@mail.nih.gov',
+            recipient=data['email'],
+            subject='NCIDose Software Transfer Agreement Form',
+            contents=recipient_template.format(**data),
+            attachments=[pdf_file]
+        )
+
+        logging.info('deleting pii')
+        os.remove(json_file)
+        os.remove(pdf_file)
+
+    except BaseException as e:
+        logging.error(str(e))
+        return str(e), 400
+
+    return 'success'
+
+def send_mail(host, sender, recipient, subject, contents, attachments=None):
+    """Sends an email to the provided recipient
+
+    Arguments:
+        - host {string} -- The smtp host
+        - sender {string} -- The sender of the email
+        - recipient {string} -- The recipient of the email
+        - subject {string} -- The email's subject
+        - contents {string} -- The email's contents
+
+    Keyword Arguments:
+        - attachments {string[]} -- Filenames of attachments (default: {None})
+    """
+
+    message = MIMEMultipart()
+    message['Subject'] = subject
+    message['From'] = sender
+    message['To'] = recipient
+
+    # set text for message
+    message.attach(MIMEText(contents, 'html'))
+
+    # add attachments to message
+    if attachments is not None:
+        for attachment in attachments:
+            with open(attachment, 'rb') as _file:
+                message.attach(MIMEApplication(
+                    _file.read(),
+                    Name=os.path.basename(attachment)
+                ))
+
+    # send email
+    smtplib.SMTP(host).sendmail(sender, recipient, message.as_string())
+
+if __name__ == '__main__':
+
+    @app.after_request
+    def after_request(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+        return response
+    
+    app.run(host='0.0.0.0', port=8765, debug=True)

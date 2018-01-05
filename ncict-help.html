@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="NCI, CBIIT">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>NCIDose Webtool Help</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.3/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-4b219b82c4737db0e1797b6c511cf10c802c95cb.js"></script>
+</head>
+
+<body class="bg-light">
+  
+  <a class="sr-only" title="Skip to content" href="#content">
+    Skip to content
+  </a>
+  
+  <div id="#content" class="container">
+
+    <h5 class="mb-3 mt-3 text-primary">GRAPHICAL USER INTERFACE MODE</h5>
+
+      <div class="text-center mb-2">
+        <figure class="figure">
+          <img src="img/NCICT_interface.png" class="img-fluid" alt="The graphical user interface of NCICT showing organ dose calculations for the head scan of a newborn female patient.">
+          <figcaption class="figure-caption">
+            The graphical user interface of NCICT showing organ dose calculations for the head scan of a newborn female patient.
+          </figcaption>
+        </figure>
+      </div>
+
+      <h5 class="mb-3 mt-3 text-primary">BATCH CALCULATION MODE</h5>
+
+      <p class="mb-4">
+        The Batch Calculation Mode is designed to compute organ doses for a large number of patients. Users must generate an input file in ASCII format for batch dose calculations. Input file is composed of a series of patient and scan parameters in a certain number of columns (each column has 8 spaces). NCICT has two Batch Modes, “Batch – with CTDI<sub>vol</sub>” and “Batch – without CTDI<sub>vol</sub>” depending on the availability of CTDI<sub>vol</sub>.
+      </p>
+
+      <div class="mb-2">
+        <figure class="figure">
+          <img src="img/NCICT_build.png" width="350" alt="Interface showing how to select either batch mode">
+          <figcaption class="figure-caption">
+              Interface showing how to select either batch mode
+          </figcaption>
+        </figure>
+      </div>
+
+      <h5 class="mb-3 mt-3">Batch – without CTDI<sub>vol</sub></h5>
+      <p class="mb-4">
+        This mode is for the cases where CTDIvol is not available. Demo file “demo_no_ctdivol” is included in the software folder (C:\Program Files\National Cancer Institute\NCICT). Users can import the “batchdemo” file using “Batch – without CTDICTDI<sub>vol</sub>” menu, and then “batchdemo.o” containing organ/effective doses will be generated in the same folder. The following parameters are required for dose calculations. Eleven columns (each column has 8 spaces) contain the following parameters:
+      </p>
+      
+      <div class="mb-4 ml-4">
+        <p>Column 1-studyid</p>
+        <p>Column 2-scan start: <b>1 cm from the top of the head</b></p>
+        <p>Column 3-scan end (cm from the top of the head)</p>
+        <p>Column 5-model (see “Scanner make and model library.xlsx”)</p> 
+        <p>Column 4-CTDI<sub>vol</sub> </p>
+        <p>Column 5-age <b>Male</b></p>
+        <p>Column 6-age</p>
+        <p>Column 7 – gender ID (female=1, male=2)</p>
+        <p>Column 8-kvp<p>
+        <p>Column 9-mAs<p>
+        <p>Column 10-pitch<p>
+        <p>Column 11-filter (optional, head=1, body=2)<p>
+      </div>
+
+      <p>Here’s an example line for the head scan of a 15-year-old male.</p>
+      <div class="mb-4 ml-4 text-danger">
+        <p>Column 1-study ID: <b>10001</b></p>
+        <p>Column 2-scan start: <b>1 cm from the top of the head</b></p>
+        <p>Column 3-scan end: <b>15 cm from the top of the head</b></p>
+        <p>Column 4-make (see CTDI library): <b>GE</b></p>
+        <p>Column 5-model (see CTDI library): <b>GE HiSpeed FX/i, LX/i</b></p> 
+        <p>Column 6-age: <b>15 year-old</b></p>
+        <p>Column 7-gender (1-female, 2-male): <b>Male</b></p>
+        <p>Column 8-kvp: <b>120 kVp</b></p>
+        <p>Column 9-mAs: <b>125 mAs</b></p>
+        <p>Column 10-pitch: <b>1</b><p>
+        <p>Column 11 (optional)-<b>head filter</b></p>
+      </div>
+
+      <p>Output file contains the following results in a single row:</p>
+      <div class="mb-4 ml-4">
+        <p>Column 1-Study ID</p>
+        <p>Column 2-CTDI<sub>vol</sub></p>
+        <p>Column 3-DLP</p>
+        <p>Column 5-model (see “Scanner make and model library.xlsx”)</p> 
+        <p>Column 4 to 36-doses for 33 organs (list of organ is the same with GUI) </p>
+        <p>Column 37-effective dose based on ICRP 103 tissue weighting factors</p>
+      </div>
+
+      <h5 class="mb-3 mt-3">Batch – with CTDI<sub>vol</sub></h5>
+      <p class="mb-4">
+        This mode is designed for the cases where CTDIvol values are available from scanners. Demo file “demo_ctdivol” is included in the software folder (C:\Program Files\National Cancer Institute\NCICT). Users can import the “batchdemo” file using “Batch – with CTDIvol” menu, and then “batchdemo.o” containing organ/effective doses will be generated in the same folder. The following parameters are required for dose calculations. Eleven columns (each column has 8 spaces) contain the following parameters:
+      </p>
+
+      <div class="mb-4 ml-4">
+        <p>Column 1-studyid</p>
+        <p> Column 2-scan start: <b>1 cm from the top of the head</b></p>
+        <p>	Column 3-scan end (cm from the top of the head)</p>
+        <p> Column 4-make (see “make & model code library.xlsx”)</p> 
+        <p>	Column 4-CTDI<sub>vol</sub> </p>
+        <p>	Column 5-age <b>Male</b></p>
+        <p>	Column 6-gender (1=Female/2=Male)</p>
+        <p>Column 7-kvp</p>
+        <p>	Column 8-filter (optional, head=1, body=2)<p>
+      </div>
+      
+      <p>Here’s an example line for the head scan of a 15-year-old male.</p>
+      <p class="text-danger">Example: 10001   1       15       15.2     15      2       120    1</p>
+      <div class="mb-4 ml-4 text-danger">
+        <p>Column 1-study ID: <b>10001</b></p>
+        <p>Column 2-scan start: <b>1 cm from the top of the head</b></p>
+        <p>Column 3-scan end: <b>15 cm from the top of the head</b></p>
+        <p>Column 4-model (see CTDI library): <b>CTDI<sub>vol</sub> of 15.2 mGy</b></p> 
+        <p>Column 5-age: <b>15 year-old</b></p>
+        <p>Column 6-gender (1-female, 2-male): <b>Male</b></p>
+        <p>Column 7-kvp: <b>120 kVp</b></p>
+        <p>Column 8 (optional)-<b>head filter</b></p>
+      </div>
+  </div>
+
+  <!-- Google Analytics -->
+  <script src='https://www.google-analytics.com/analytics.js'></script>
+  <script>
+    window.ga = window.ga || function() {
+      (ga.q = ga.q || []).push(arguments)
+    };
+    ga.l = +new Date();
+    ga('create', 'UA-62346354-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <!-- Adobe DAP -->
+  <script>
+    _satellite.pageBottom()
+  </script>
+</body>
+
+</html>
