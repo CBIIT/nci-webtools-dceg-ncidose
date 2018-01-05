@@ -1,0 +1,570 @@
+/*disable bk logo */
+.bk-logo-small {
+   display:none;
+}
+
+.navbar-default {
+    font-size: 16px;
+    font-weight: bold;
+    /* letter-spacing: .01em; */
+    border-width: 0px;
+    border-radius: 0px;
+    background-color: #606060;
+    background-image: none;    
+    /* font-family: Montserrat,Arial,sans-serif; */
+}
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #c9c9c9;
+}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #8c8c8c;
+    background-color: white;
+    background-image: none;
+}
+
+.nav-tabs {
+    width: 100%;
+    float: left;
+    border-bottom-color: #d9d9d9;
+}
+
+.nav-tabs>li a {
+    text-align: center;
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: #e0e0e0;
+    background: #f2f2f2;
+    color: #444444;
+}
+
+.nav-tabs>li a:hover {
+    background: #F9F9F9;
+    border-color: #d9d9d9;
+}
+
+.nav-tabs>li.active a, .nav-tabs>li.active:hover a {
+    background: white;
+    border-color: #d9d9d9;
+    border-bottom-color: transparent;
+    font-weight: bold;
+    color: #444444;
+}
+
+/* Override navbar collapese for narrow windows */
+.navbar-collapse.collapse {
+    display: block!important;
+}
+
+.instructions {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.tabs-dropdown .dropdown-toggle {
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: #e0e0e0;
+    border-radius: 4px 4px 0 0;
+    color: #444444;
+    background: #f2f2f2;
+}
+
+body {
+    background-color: #F7F8F3;  
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 22.5px;
+    word-spacing: 0px;
+    color: #2E2E2E;
+}
+
+.tab-content {
+    padding: 10px;
+    width: 100%;
+    min-height: 600px;
+    -webkit-overflow-scrolling: touch;
+     background: #F7F8F3; 
+    /*border-width: 0 1px 1px 1px;
+     border-style: solid; 
+    border-color: #d9d9d9;
+    border-radius: 0 0 4px 4px; */
+    overflow: hidden;
+}
+
+.tab-content .tab-pane {
+    /* color: #566473; */
+    margin: 10px 0px;
+}
+
+@media ( max-width : 480px) {
+    .nav-tabs>li {
+        float: none;
+        border: 1px solid #dddddd;
+    }
+    .nav-tabs>li.active>a {
+        border: none;
+    }
+    .nav>li>a:hover, .nav>li>a:focus, .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover,
+        .nav-tabs>li.active>a:focus {
+        background: none;
+        border: none;
+    }
+}
+
+/* Reset bootstrap table*/
+.table > thead > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th {
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+.left td {
+    text-align:left;
+}
+.ldpair-results {
+    text-align:center;
+    border: 1px solid #ddd;
+}
+
+.center-align {
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+.spacer {
+    width:10%;
+}
+
+
+td.cell-right {
+    text-align: right;
+}
+td.cell-left {
+    text-align: left;
+}
+
+td.cell-center {
+    text-align: center;
+}
+
+.cell-height-small {
+    height: 10px;
+    padding:0px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+/*
+table.ldhap,table.ldhap tr, table.ldhap th {
+  background-color: white !important;
+}
+*/
+.container {
+  /* background-color: #F7F8F3; */
+}
+
+.two-by-two {
+    margin-bottom:0px;
+    width:100%;
+}
+
+.jumbotron {
+    background-color:white; 
+    padding:10px 15px;
+}
+
+table.fixed {
+    table-layout:fixed;
+    width:400px;
+    margin-bottom:15px;
+}
+table.fixed td {
+    overflow: hidden;
+}
+
+table thead td {
+    font-weight:bold;
+    text-align: center;
+}
+
+.font-weight-bold {
+    font-weight:bold;
+}
+
+img.logo {
+    max-height:150px;
+}
+
+
+img.loading {
+    height:107px;
+    max-height:10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.graph-legend {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.multiselect-container > li {
+    padding-left: 50px;
+}
+.multiselect-item.multiselect-all {
+    padding-left: 0px;
+    text-decoration: underline;
+}
+.multiselect-item.multiselect-group {
+    padding-left: 30px;
+}
+.has-feedback .form-control {
+    padding-right: 0px;
+}
+.multiselect-container > li.multiselect-group-clickable label {
+    text-decoration: underline;
+}
+/* Tighten up snpchip platform list only*/
+/*   .btn-ldlink-multiselec  */
+.multiselect-container > li > a > label {
+    padding: 0px 20px 0px 40px;
+}
+
+.form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+
+/* Placeholder Style */
+::-webkit-input-placeholder {
+   font-size: 90%;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   font-size: 90%;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   font-size: 90%;
+}
+
+:-ms-input-placeholder {
+    font-size: 90%;
+}
+
+
+.ffWarning {
+    display: none;
+}
+/*
+.bk-plot-canvas-wrapper {
+    max-width:900px;
+    overflow-x: scroll;
+}
+*/
+
+.haplotype {
+    color: black;
+    background:#C0C0C0; /* if a multiple grouped */ 
+}
+
+/* LDhap Heat Map - Version 4 */
+/* Pastel Colors light red, light orage, light blue, and light green */
+/* Color Code: http://paletton.com/palette.php?uid=7000u0klLMWnHN3kBNFgZMYgZMY */
+
+.overflowx {
+    overflow-x:auto;
+}
+.overflowy {
+    overflow-y:auto;
+}
+
+.whats_new {
+    height:200px;
+    border:1px solid #566473;
+    overflow-y:auto;
+    margin-bottom:25px;
+}
+
+.table {
+    width: auto;
+    min-width: 0;
+    display: table;
+}
+.left-c {   width:auto;
+    display: inline-block;
+    vertical-align: top;
+}
+.right-c {
+    min-width:300px;
+    width:65%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.left-c > table > tfoot > tr > td,
+.right-c > table > tfoot > tr > td {
+    font-weight:bold;
+}
+
+
+/* New stuff */
+
+/* Header and Footer */
+#logo-header {
+    background-color: white;
+    width: 100%
+}
+
+header {
+    margin: 0px; 
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.header img {
+    /*
+    width: 60%;
+    */
+}
+.header h4 {
+    color: #fff;
+    line-height: 0.5em;
+}
+.footer {
+    bottom: 0;
+    color: #FFFFFF;
+    padding: 25px 0;
+    background-color: #123E57;
+    font-weight: bold;
+    width: 100%;
+}
+.footer ul {
+    text-align: center;
+}
+.footer ul li a {
+    color: #FFFFFF;
+}
+hr.header {
+    border-top: 0.5em solid #bb0e3d;
+    margin: 0;
+}
+
+.thumbnail {
+    background-color: #F5F5F5;
+    position: relative
+}
+
+.graphic {
+    /* background-color: white;  */
+    margin:0 auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #F5F5F5; 
+    padding: 5px; 
+}
+
+.image {
+    display:table;
+    margin:0 auto;
+}
+
+.caption {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-weight: bold;
+    line-height: 21px;
+    text-align: center; 
+    word-spacing: 0px;
+    color: #2E2E2E;
+    background-color: #F5F5F5;
+}
+
+
+/* Rotate the text on SNPchip table */
+th.rotate {
+  /* Something you can count on */
+  height: 142px;
+  white-space: nowrap;
+}
+
+th.rotate > div {
+  transform: 
+    translate(0px, 51px)
+    rotate(270deg);
+  width: 20px;
+}
+th.rotate > div > span {
+  /*border-bottom: 1px solid #ccc;*/
+  /*padding: 5px 10px;*/
+}
+/* These aren't needed and will be weird if transforms don't work */
+/* .csstransforms & th.rotate {
+  height: 142px;
+  white-space: nowrap;
+} */
+
+
+span.formw > label {
+    margin-bottom: 0px;
+    font-family: "Lucida Grande",Verdana,Arial,sans-serif;
+    font-size: normal;
+}
+
+.platform-checkbox {
+    padding: 0.2em 0.6em 0.3em;
+}
+
+/* From style.css
+https://www.broadinstitute.org/mpg/snap/ldsearch.php */
+
+.bolded {
+    font-weight: bold;
+}
+.underlined {
+    border-bottom: 1px dotted gray;
+}
+fieldset#columnAcheckbox {
+    min-width: 450px;
+}
+fieldset#columnAcheckbox div.row span.label, fieldset#columnBcheckbox div.row span.label, fieldset.fullwidthcheckbox div.row span.label {
+    padding-top: 1px;
+    width: 20px;
+}
+fieldset#columnBcheckbox {
+    min-width: 365px;
+}
+fieldset div.row span.formw select.yesno {
+    width: 80px;
+}
+/* Custom */
+
+fieldset#columnAcheckbox > div.row,
+fieldset#columnBcheckbox > div.row {
+    margin-left:15px;
+    margin-bottom:-12px;
+    font-weight:lighter;
+    color: #333;
+    font-family: "Lucida Grande",Verdana,Arial,sans-serif;
+    font-size: smaller;
+}
+
+
+textarea:valid, .ok {
+    color: #555;
+}
+textarea:invalid, .error {
+    color: red;
+}
+.panel-body > h1 {
+    font-size: 1.7em;
+}
+/* Testing */
+@media screen and (max-width: 767px) {
+  .dataTables_wrapper .dataTables_info,
+  .dataTables_wrapper .dataTables_paginate {
+    float: none;
+    text-align: center; }
+  .dataTables_wrapper .dataTables_paginate {
+    margin-top: 0.5em; } 
+}
+@media screen and (max-width: 640px) {
+  .dataTables_wrapper .dataTables_length,
+  .dataTables_wrapper .dataTables_filter {
+    float: none;
+    text-align: center; }
+  .dataTables_wrapper .dataTables_filter {
+    margin-top: 0.5em; } 
+}
+.legend{
+/* css for agreement*/
+font-family: Arial, Helvetica, sans-serif;
+font-size:14px;
+color:#566473;
+font-weight: bold;
+}
+
+.overlay{
+  opacity:0.5;
+  /* background:white; */
+  pointer-events: none
+
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.glyphicon-blue {
+    color: #337ab7;
+}
+
+#ribbon h1 {
+    font-family: 'Fjalla One', sans-serif;
+    padding: 0;
+    margin: 0;
+    letter-spacing: .015em;
+    font-weight: normal;
+}
+
+#ribbon h1 a {
+    color: #f6f6f6;
+    font-size: 26px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 9px 0;
+    line-height: 1;
+    margin-right: 140px;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    transition: .3s all linear;
+    text-shadow: none;
+}
+#ribbon {
+    color: #FFF;
+    font-size: 12pt;
+    font-weight: bold;
+    background: #BB0E3D;
+    /* padding: 5px 0 5px 10px; */
+    padding: 5px 0 5px 30px;
+    line-height:1.42857143;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-weight: bold;
+}
+.skip a,.skip a:hover,.skip a:visited{position:absolute;left:-999px}.skip a:active,.skip a:focus{display:block;left:0;z-index:999;background:#fff;border:1px solid #000;padding:5px 5px 5px 5px}
