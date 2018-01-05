@@ -103,12 +103,12 @@ def submit():
         json_file = 'tmp/%s_inputs.json' % token_id
         pdf_file = 'tmp/NCIDose_STA_%s.pdf' % token_id
 
-        logging.info('storing parameters ' + json_file)
+        logging.info('storing parameters: ' + json_file)
 
         with open(json_file, 'w') as _file:
             json.dump(data, _file)
 
-        logging.info('creating pdf:' + pdf_file)
+        logging.info('creating pdf: ' + pdf_file)
         subprocess.call(['java', '-jar', 'pdftagger.jar', pdf_file, json_file])
 
         host = config.get('mail', 'host')
@@ -132,6 +132,10 @@ def submit():
             contents=recipient_template.format(**data),
             attachments=[pdf_file]
         )
+
+        logging.info('deleting pii')
+        os.remove(json_file)
+        os.remove(pdf_file)
 
     except BaseException as e:
         logging.error(str(e))
