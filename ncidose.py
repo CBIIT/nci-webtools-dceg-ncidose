@@ -65,7 +65,7 @@ to the user via email.</p>
 <p><b><u>Recipient Investigator</u></b></p>
 <ul>
     <li>Name: {first} {last}</li>
-    <li>Title: {title}</li>
+    <li>Job Title: {title}</li>
     <li>Email: {email}</li>
     <li>Phone: {phone}</li>
     <li>Institution: {institution}</li>
