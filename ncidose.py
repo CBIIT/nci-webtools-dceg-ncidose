@@ -77,9 +77,9 @@ to the user via email.</p>
     <li>{purpose}</li>
 </ul>
 
-<p><b><u>Feedback</u></b></p>
+<p><b><u>Where investigator heard about NCIDose</u></b></p>
 <ul>
-    <li>Where Investigator heard about NCIDose: {where}</li>
+    <li>{where}</li>
 </ul>
 
 </br>
