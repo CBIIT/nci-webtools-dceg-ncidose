@@ -339,19 +339,20 @@
             <li>Download the PDF agreement by clicking “Generate STA PDF” button at the bottom of this page,</li>
             <li>All required fields are automatically populated except the section that must be filled and signed by an authorized official, and</li>
             <li>Submit the form to Dr. Choonsik Lee (choonsik.lee@nih.gov)</li>
+            <li>You can check the content of the STA (except for the signature page) by clicking “View Sample STA”</li>
         </ul>
         <p>
           Once the agreement is approved by the NCI Technology Transfer Center, Dr. Lee will send you the download link.
         </p>
-
       </div>
 
       <form class="container" novalidate>
+
         <div class="card mb-4">
           <div class="card-header d-flex flex-wrap justify-content-between">
             <span>What materials are you interested in receiving?</span>
             <span class="link" data-open="content/NCIDose STA.pdf">
-              <i class="fas fa-download mr-1" aria-hidden="true"></i>View Sample STA Agreement
+              <i class="fas fa-download mr-1" aria-hidden="true"></i>View Sample STA
             </span>
           </div>
           <div class="card-body">
@@ -440,6 +441,19 @@
             <textarea type="text" rows="3" class="form-control" id="purpose" name="purpose" placeholder="Describe the scope of the use of this software under the agreement" required></textarea>
           </div>
         </div>
+
+
+        <div class="card mb-4" id="feedback">
+          <div class="card-header">
+            Feedback
+          </div>
+          <div class="card-body">
+            <label class="asterisk" for="where">Where have you heard about NCIDOSE?</label>
+            <textarea type="text" rows="3" class="form-control" id="where" name="where" placeholder="Describe where you have heard about NCIDose" required></textarea>
+          </div>
+        </div>
+
+        
 
         <div class="text-center">
           <button type="submit" class="btn btn-primary">Generate STA PDF</button>

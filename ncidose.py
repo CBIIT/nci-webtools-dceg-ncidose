@@ -77,6 +77,11 @@ to the user via email.</p>
     <li>{purpose}</li>
 </ul>
 
+<p><b><u>Feedback</u></b></p>
+<ul>
+    <li>Where Investigator heard about NCIDose: {where}</li>
+</ul>
+
 </br>
 
 <p>Sincerely,</p>

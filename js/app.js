@@ -107,11 +107,12 @@ function validateForm(form) {
 $('#agreement form input').change(function() {
   // determine if form should be disabled
   var disabled = $('#agreement form input:checked').length === 0;
-  $('#agreement form input:not([type="checkbox"]')
+  $('#agreement form input:not([type="checkbox"])')
     .add('#agreement form textarea')
     .add('#agreement form button')
     .add('#recipient-investigator')
     .add('#research-activity')
+    .add('#feedback')
     .prop('disabled', disabled)
     .toggleClass('disabled', disabled);
 
@@ -176,6 +177,7 @@ $('#agreement form').submit(function(e) {
       address: null,
       purpose: null,
       date: null,
+      where: null,
     });
 
   // separate software_titles with <br>
