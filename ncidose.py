@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import json
 import logging
 import os
@@ -5,12 +7,14 @@ import random
 import re
 import smtplib
 import subprocess
+import traceback
 
 from ConfigParser import SafeConfigParser
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from flask import Flask, request
+from string import Template
 
 if not os.path.exists('tmp'):
     os.makedirs('tmp')
@@ -18,7 +22,7 @@ if not os.path.exists('tmp'):
 config = SafeConfigParser()
 config.read('config.ini')
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='', static_url_path='')
 
 @app.route('/submit/', methods = ['POST'], strict_slashes = False)
 def submit():
@@ -65,8 +69,8 @@ def submit():
 
         logging.info('creating input file: ' + input_file)
         with open('templates/sta.html', 'r') as sta_template, \
-             open(input_file, 'w') as input_template:
-            input_template.write(sta_template.read().format(**data))
+             open(input_file, 'wb') as input_template:
+            input_template.write(Template(sta_template.read().decode('utf-8')).safe_substitute(**data))
 
         logging.info('creating output file: ' + output_file)
         subprocess.call([
@@ -88,7 +92,7 @@ def submit():
                 sender='NCIDOSEWebAdmin@mail.nih.gov',
                 recipient=admin,
                 subject='NCIDose STA Request',
-                contents=template.read().format(**data)
+                contents=Template(template.read().decode('utf-8')).safe_substitute(**data)
             )
 
         logging.info('sending email to recipient investigator')
@@ -98,7 +102,7 @@ def submit():
                 sender='NCIDOSEWebAdmin@mail.nih.gov',
                 recipient=data['email'],
                 subject='NCIDose Software Transfer Agreement Form',
-                contents=template.format(**data),
+                contents=Template(template.read().decode('utf-8')).safe_substitute(**data),
                 attachments=[output_file]
             )
 
@@ -107,7 +111,9 @@ def submit():
         os.remove(output_file)
 
     except BaseException as exception:
-        logging.error(str(exception))
+        print('------------EXCEPTION------------')
+        traceback.print_exc(1)
+
         return str(exception), 400
 
     return 'success'
@@ -155,4 +161,4 @@ if __name__ == '__main__':
         response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
         return response
 
-    app.run(host='0.0.0.0', port=8765, debug=True)
+    app.run(host='0.0.0.0', port=9200, debug=True)
