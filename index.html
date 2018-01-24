@@ -9,7 +9,7 @@
 
   <title>NCIDose Webtool</title>
   <script src="https://assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-4b219b82c4737db0e1797b6c511cf10c802c95cb.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.3/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="img/favicon.ico">
 </head>
@@ -335,7 +335,7 @@
         </p>
 
         <ul>
-            <li>Fill in the following form,</li> 
+            <li>Fill in the following form,</li>
             <li>Download the PDF agreement by clicking “Generate STA PDF” button at the bottom of this page,</li>
             <li>All required fields are automatically populated except the section that must be filled and signed by an authorized official, and</li>
             <li>Submit the form to Dr. Choonsik Lee (choonsik.lee@nih.gov)</li>
@@ -351,7 +351,7 @@
         <div class="card mb-4">
           <div class="card-header d-flex flex-wrap justify-content-between">
             <span>What materials are you interested in receiving?</span>
-            <span class="link" data-open="content/NCIDose STA.pdf">
+            <span class="link" data-open="templates/NCIDose STA.pdf">
               <i class="fas fa-download mr-1" aria-hidden="true"></i>View Sample STA
             </span>
           </div>
@@ -362,7 +362,7 @@
                 Phantoms
               </label>
               <span class="text-primary" style="cursor: pointer" data-for="phantoms" data-modal="#modal-template" data-title="Computational Human Phantoms" data-content="Computational human phantom series, provided as binary voxel format or Digital Imaging and Communications in Medicine (DICOM) format (surface format not provided), reference anatomy models representing newborn to adult males and females, as described in Lee et al. (Phys Med Biol 55:339-363, 2010) and Lee et al. (Phys Med Biol 60:2309-2324, 2015), including further improvements thereof, and related documentation.">
-                <i class="fa fa-question-circle" aria-hidden="true"></i>              
+                <i class="fa fa-question-circle" aria-hidden="true"></i>
               </span>
             </div>
             <div class="form-check">
@@ -371,7 +371,7 @@
                 NCICT
               </label>
               <span class="text-primary" style="cursor: pointer" data-for="ncict" data-modal="#modal-template" data-title="NCICT" data-content="National Cancer Institute dosimetry system for Computed Tomography (NCICT) software (NIH Ref. No. E-082-2016/0), provided as executable code (source code not provided),a computer program to assess radiation dose to organs in pediatric and adult patients undergoing computed tomography (CT) examinations as described in Lee et al. (J Radiol Prot. 35:891-909, 2015), including further improvements thereof, and related documentation.">
-                <i class="fa fa-question-circle" aria-hidden="true"></i>              
+                <i class="fa fa-question-circle" aria-hidden="true"></i>
               </span>
             </div>
             <div class="form-check">
@@ -380,7 +380,7 @@
                 Dose coefficients
               </label>
               <span class="text-primary" style="cursor: pointer" data-for="dose-coefficients" data-modal="#modal-template" data-title="Organ DOSE coefficients" data-content="Dose coefficients for internal and external radiation sources as described in Lamart et al. (Radiat Prot Dosim 168:92-110, 2016) and Chang et al. (J Radiol Prot in press), including further improvements thereof, and related documentation.">
-                <i class="fa fa-question-circle" aria-hidden="true"></i>              
+                <i class="fa fa-question-circle" aria-hidden="true"></i>
               </span>
             </div>
           </div>
@@ -404,8 +404,8 @@
               </div>
 
               <div class="form-group col-md-4">
-                <label class="asterisk" for="title">Job Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Job Title" required>
+                <label class="asterisk" for="job_title">Job Title</label>
+                <input type="text" class="form-control" id="title" name="job_title" placeholder="Enter Job Title" required>
               </div>
             </div>
 
@@ -448,12 +448,12 @@
             Feedback
           </div>
           <div class="card-body">
-            <label class="asterisk" for="where">Where have you heard about NCIDOSE?</label>
-            <textarea type="text" rows="3" class="form-control" id="where" name="where" placeholder="Describe where you have heard about NCIDose" required></textarea>
+            <label class="asterisk" for="discovery-mechanism">Where have you heard about NCIDOSE?</label>
+            <textarea type="text" rows="3" class="form-control" id="discovery-mechanism" name="discovery_mechanism" placeholder="Describe where you have heard about NCIDose" required></textarea>
           </div>
         </div>
 
-        
+
 
         <div class="text-center">
           <button type="submit" class="btn btn-primary">Generate STA PDF</button>
@@ -526,7 +526,7 @@
 
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.3/dist/js/bootstrap.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js" defer></script>
   <script src="js/app.js"></script>
   <script></script>

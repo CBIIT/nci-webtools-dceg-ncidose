@@ -1,7 +1,7 @@
 /**
  * @file Contains routing and form validation and logic for
  * the NCIDose tool
- * 
+ *
  * @version 1.1
  */
 
@@ -14,8 +14,9 @@ $('#loading-overlay').hide()
 $(function enableRoutes() {
   // navigate to the appropriate tab when the location hash is changed
   window.onhashchange = function() {
-    $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
-    setTimeout(function() { window.scrollTo(0, 0) }, 0);
+    if ($('ul.nav a[href="' + window.location.hash + '"]').tab('show').length) {
+      setTimeout(function() { window.scrollTo(0, 0) }, 0);
+    }
   };
 
   // use default route if location hash not defined
@@ -50,8 +51,8 @@ $('[data-open]').click(function() {
 
 /**
  * Creates a modal dialog with the given title, content, and template selector
- * @param {string} title 
- * @param {string} content 
+ * @param {string} title
+ * @param {string} content
  * @param {string} templateSelector
  * @returns {jQuery} The created bootstrap modal
  */
@@ -67,7 +68,7 @@ function createModal(title, content, templateSelector) {
  * Returns true if the provided form is valid, false otherwise
  * If the form has an .error-messages element, this function
  * populates it with any errors found
- * 
+ *
  * @param {HTMLFormElement} form
  */
 function validateForm(form) {
@@ -116,7 +117,7 @@ $('#agreement form input').change(function() {
     .prop('disabled', disabled)
     .toggleClass('disabled', disabled);
 
-  // if form is disabled, remove validation errors  
+  // if form is disabled, remove validation errors
   disabled && $('#agreement form').removeClass('invalid');
 
 }).trigger('change'); // trigger a change event to update form state
@@ -136,17 +137,17 @@ $('#agreement form').submit(function(e) {
   // get software descriptions
   var software = {
     'phantoms': {
-      displayName: 'Phantoms',
+      title: 'Phantoms',
       description: $('[data-for="phantoms"]').data('content'),
     },
 
     'ncict': {
-      displayName: 'NCICT',
+      title: 'NCICT',
       description: $('[data-for="ncict"]').data('content'),
     },
 
     'dose-coefficients': {
-      displayName: 'Dose Coefficients',
+      title: 'Dose Coefficients',
       description: $('[data-for="dose-coefficients"]').data('content'),
     }
   }
@@ -159,33 +160,26 @@ $('#agreement form').submit(function(e) {
 
       // if a software checkbox has been checked, add its description to the list of software
       // otherwise, assign the current key and value to the object
-      software[name] 
-        ? (accumulator.software_text.push(software[name].description),
-          accumulator.software_title.push(software[name].displayName))
+      software[name]
+        ? (accumulator.software_descriptions.push('&#x2611; ' + software[name].description),
+          accumulator.software_titles.push(software[name].title))
         : accumulator[name] = value
 
       return accumulator;
     }, {
-      software_title: [],
-      software_text: [],
+      software_titles: [],
+      software_descriptions: [],
       first: null,
       last: null,
-      title: null,
+      job_title: null,
       email: null,
       phone: null,
       institution: null,
       address: null,
       purpose: null,
       date: null,
-      where: null,
+      discovery_mechanism: null,
     });
-
-  // separate software_titles with <br>
-  parameters.software_title = parameters.software_title
-    .map(function(title) {
-      return '<li>' + title + '</li>'
-    })
-    .join('')
 
   // set parameter object's date
   var date = new Date();
@@ -217,6 +211,7 @@ $('#agreement form').submit(function(e) {
   // call reset function when confirmation modal is closed
   function reset() {
     $('#agreement form').trigger('reset');
+    $('#agreement form input').trigger('change');
     window.location.hash = '#home';
   }
 });

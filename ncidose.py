@@ -1,15 +1,21 @@
+# -*- coding: utf-8 -*-
+
+import codecs
 import json
 import logging
 import os
 import random
+import re
 import smtplib
 import subprocess
+import traceback
 
 from ConfigParser import SafeConfigParser
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from flask import Flask, request
+from string import Template
 
 if not os.path.exists('tmp'):
     os.makedirs('tmp')
@@ -17,134 +23,98 @@ if not os.path.exists('tmp'):
 config = SafeConfigParser()
 config.read('config.ini')
 
-app = Flask(__name__)
-
-###############################################################################
-## email template for investigators
-###############################################################################
-recipient_template = '''
-<p>Dear {first} {last},</p>
-
-<p>Thank you for your interest in the materials and software developed by the Dosimetry 
-Unit of Radiation Epidemiology Branch at the <a href="https://dceg.cancer.gov/"> 
-Division of Cancer Epidemiology and Genetics.</a> Attached is the STA form pre-filled 
-with the information you entered on the web site and the materials you want to receive. 
-Please review the STA form and email a signed copy to Dr. Choonsik Lee at 
-leechoonsik@mail.nih.gov. You will be receiving an email with detailed download 
-instructions once your STA form has been received and approved by Dr. Lee and NCI 
-Technology Tranfer Center.</p>
-
-<p><i>(Note: Please do not reply to this email. If you need assistance, 
-please contact Dr. Choonsik Lee at leechoonsik@mail.nih.gov)</p></i>
-
-</br>
-
-<p>Sincerely,</p>
-<p>Sent from the NCIDose Web Tool</p>
-<p>NCIDOSEWebAdmin@mail.nih.gov</p>
-'''
-
-
-###############################################################################
-## email template for Dr. Lee
-###############################################################################
-pm_template = '''
-<h2>NCIDose</h2>
-
-<p>Dear Dr. Lee,</p>
-
-<p>This email is to let you know a user just visited the NCIDose web site and entered 
-the following information on the Agreement page. A STA PDF has been generated and sent 
-to the user via email.</p>
-
-<p><b><u>Materials to download</u></b></p>
-<ul>
-    {software_title}
-</ul>
-
-<p><b><u>Recipient Investigator</u></b></p>
-<ul>
-    <li>Name: {first} {last}</li>
-    <li>Job Title: {title}</li>
-    <li>Email: {email}</li>
-    <li>Phone: {phone}</li>
-    <li>Institution: {institution}</li>
-    <li>Business Address: {address}</li>
-</ul>
-
-<p><b><u>Research Activity</u></b></p>
-<ul>
-    <li>{purpose}</li>
-</ul>
-
-<p><b><u>Where investigator heard about NCIDose</u></b></p>
-<ul>
-    <li>{where}</li>
-</ul>
-
-</br>
-
-<p>Sincerely,</p>
-<p>Sent from the NCIDose Web Tool</p>
-<p>NCIDOSEWebAdmin@mail.nih.gov</p>
-'''
+app = Flask(__name__, static_folder='', static_url_path='')
 
 @app.route('/submit/', methods = ['POST'], strict_slashes = False)
 def submit():
     '''Handles form submission:
-        - stores form values
         - generates STA pdf for investigator
         - sends email to investigator
         - sends form values to pm
+
+    The form data should be provided as a json object with the following properties: {
+        first: "investigator's first name",
+        last: "investigator's last name",
+        job_title: "investigator's job title",
+        phone: "investigator's phone number",
+        email: "investigator's email address",
+
+        institution: "investigator's institution",
+        address: "investigator's institution address",
+        purpose: "intended usage of software components",
+
+        software_titles: "array containing requested software component titles",
+        software_descriptions: "array containing requested software component descriptions",
+
+        discovery_mechanism: "how investigator discovered this software/tool",
+    }
 
     Decorators:
         app -- Flask route decorator
     '''
 
+    wrap_tag = lambda tag: \
+        lambda content: \
+            '<{tag}>{content}</{tag}>' \
+                .format(tag=tag, content=content)
+
     try:
-        data = json.loads(request.stream.read())
-        token_id = random.randrange(1, 1000000)
+        data = json.loads(re.sub(r'<[^>]*?>|\n', ', ', request.stream.read()))
+        data['software_titles'] = ''.join(map(wrap_tag('li'), data['software_titles']))
+        data['software_descriptions'] = ''.join(map(wrap_tag('p'), data['software_descriptions']))
 
-        json_file = 'tmp/%s_inputs.json' % token_id
-        pdf_file = 'tmp/NCIDose_STA_%s.pdf' % token_id
+        token_id = random.randrange(1000000, 9000000)
 
-        logging.info('storing parameters: ' + json_file)
+        input_file = 'tmp/NCIDose_STA_%s.html' % token_id
+        output_file = 'tmp/NCIDose_STA_%s.pdf' % token_id
 
-        with open(json_file, 'w') as _file:
-            json.dump(data, _file)
+        logging.info('creating input file: ' + input_file)
+        with codecs.open('templates/sta.html', mode='r', encoding='utf-8') as sta_template, \
+             codecs.open(input_file, mode='w', encoding='utf-8') as input_template:
+            input_template.write(Template(sta_template.read()).safe_substitute(**data))
 
-        logging.info('creating pdf: ' + pdf_file)
-        subprocess.call(['java', '-jar', 'pdftagger.jar', pdf_file, json_file])
+        logging.info('creating output file: ' + output_file)
+        subprocess.call([
+            'java', '-jar', 'html2pdf.jar',
+            '--input', input_file,
+            '--output', output_file,
+            '--title', 'Software Transfer Agreement',
+            '--header', 'NCI Reference # ____________',
+            '--numbered'
+        ])
 
         host = config.get('mail', 'host')
         admin = config.get('mail', 'admin')
 
-        logging.info('sending email to pm')
-        send_mail(
-            host=host,
-            sender='NCIDOSEWebAdmin@mail.nih.gov',
-            recipient=admin,
-            subject='NCIDose STA Request',
-            contents=pm_template.format(**data)
-        )
+        logging.info('sending email to provider')
+        with codecs.open('templates/provider-email.html', mode='r', encoding='utf-8') as template:
+            send_mail(
+                host=host,
+                sender='NCIDOSEWebAdmin@mail.nih.gov',
+                recipient=admin,
+                subject='NCIDose STA Request',
+                contents=Template(template.read()).safe_substitute(**data)
+            )
 
-        logging.info('sending email to investigator')
-        send_mail(
-            host=host,
-            sender='NCIDOSEWebAdmin@mail.nih.gov',
-            recipient=data['email'],
-            subject='NCIDose Software Transfer Agreement Form',
-            contents=recipient_template.format(**data),
-            attachments=[pdf_file]
-        )
+        logging.info('sending email to recipient investigator')
+        with codecs.open('templates/recipient-email.html', mode='r', encoding='utf-8') as template:
+            send_mail(
+                host=host,
+                sender='NCIDOSEWebAdmin@mail.nih.gov',
+                recipient=data['email'],
+                subject='NCIDose Software Transfer Agreement Form',
+                contents=Template(template.read()).safe_substitute(**data),
+                attachments=[output_file]
+            )
 
         logging.info('deleting pii')
-        os.remove(json_file)
-        os.remove(pdf_file)
+        os.remove(input_file)
+        os.remove(output_file)
 
-    except BaseException as e:
-        logging.error(str(e))
-        return str(e), 400
+    except BaseException as exception:
+        print('------------EXCEPTION------------')
+        traceback.print_exc(1)
+        return str(exception), 400
 
     return 'success'
 
@@ -161,7 +131,6 @@ def send_mail(host, sender, recipient, subject, contents, attachments=None):
     Keyword Arguments:
         - attachments {string[]} -- Filenames of attachments (default: {None})
     """
-
     message = MIMEMultipart()
     message['Subject'] = subject
     message['From'] = sender
@@ -190,5 +159,5 @@ if __name__ == '__main__':
         response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
         response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
         return response
-    
-    app.run(host='0.0.0.0', port=8765, debug=True)
+
+    app.run(host='0.0.0.0', port=9200, debug=True)
