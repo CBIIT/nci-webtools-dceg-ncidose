@@ -211,6 +211,7 @@ $('#agreement form').submit(function(e) {
   // call reset function when confirmation modal is closed
   function reset() {
     $('#agreement form').trigger('reset');
+    $('#agreement form input').trigger('change');
     window.location.hash = '#home';
   }
 });
