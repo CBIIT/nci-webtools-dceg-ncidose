@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import codecs
 import json
 import logging
 import os
@@ -58,7 +59,7 @@ def submit():
                 .format(tag=tag, content=content)
 
     try:
-        data = json.loads(re.sub(r'<[^>]*?>|\n', ' ', request.stream.read()))
+        data = json.loads(re.sub(r'<[^>]*?>|\n', ', ', request.stream.read()))
         data['software_titles'] = ''.join(map(wrap_tag('li'), data['software_titles']))
         data['software_descriptions'] = ''.join(map(wrap_tag('p'), data['software_descriptions']))
 
@@ -68,9 +69,9 @@ def submit():
         output_file = 'tmp/NCIDose_STA_%s.pdf' % token_id
 
         logging.info('creating input file: ' + input_file)
-        with open('templates/sta.html', 'r') as sta_template, \
-             open(input_file, 'wb') as input_template:
-            input_template.write(Template(sta_template.read().decode('utf-8')).safe_substitute(**data))
+        with codecs.open('templates/sta.html', mode='r', encoding='utf-8') as sta_template, \
+             codecs.open(input_file, mode='w', encoding='utf-8') as input_template:
+            input_template.write(Template(sta_template.read()).safe_substitute(**data))
 
         logging.info('creating output file: ' + output_file)
         subprocess.call([
@@ -86,23 +87,23 @@ def submit():
         admin = config.get('mail', 'admin')
 
         logging.info('sending email to provider')
-        with open('templates/provider-email.html') as template:
+        with codecs.open('templates/provider-email.html', mode='r', encoding='utf-8') as template:
             send_mail(
                 host=host,
                 sender='NCIDOSEWebAdmin@mail.nih.gov',
                 recipient=admin,
                 subject='NCIDose STA Request',
-                contents=Template(template.read().decode('utf-8')).safe_substitute(**data)
+                contents=Template(template.read()).safe_substitute(**data)
             )
 
         logging.info('sending email to recipient investigator')
-        with open('templates/recipient-email.html') as template:
+        with codecs.open('templates/recipient-email.html', mode='r', encoding='utf-8') as template:
             send_mail(
                 host=host,
                 sender='NCIDOSEWebAdmin@mail.nih.gov',
                 recipient=data['email'],
                 subject='NCIDose Software Transfer Agreement Form',
-                contents=Template(template.read().decode('utf-8')).safe_substitute(**data),
+                contents=Template(template.read()).safe_substitute(**data),
                 attachments=[output_file]
             )
 
@@ -113,7 +114,6 @@ def submit():
     except BaseException as exception:
         print('------------EXCEPTION------------')
         traceback.print_exc(1)
-
         return str(exception), 400
 
     return 'success'
@@ -131,7 +131,6 @@ def send_mail(host, sender, recipient, subject, contents, attachments=None):
     Keyword Arguments:
         - attachments {string[]} -- Filenames of attachments (default: {None})
     """
-
     message = MIMEMultipart()
     message['Subject'] = subject
     message['From'] = sender

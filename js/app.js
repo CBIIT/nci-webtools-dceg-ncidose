@@ -161,7 +161,7 @@ $('#agreement form').submit(function(e) {
       // if a software checkbox has been checked, add its description to the list of software
       // otherwise, assign the current key and value to the object
       software[name]
-        ? (accumulator.software_descriptions.push(software[name].description),
+        ? (accumulator.software_descriptions.push('&#x2611; ' + software[name].description),
           accumulator.software_titles.push(software[name].title))
         : accumulator[name] = value
 
@@ -171,14 +171,14 @@ $('#agreement form').submit(function(e) {
       software_descriptions: [],
       first: null,
       last: null,
-      title: null,
+      job_title: null,
       email: null,
       phone: null,
       institution: null,
       address: null,
       purpose: null,
       date: null,
-      where: null,
+      discovery_mechanism: null,
     });
 
   // set parameter object's date
