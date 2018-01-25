@@ -8,6 +8,7 @@ import random
 import re
 import smtplib
 import subprocess
+import threading
 import traceback
 
 from ConfigParser import SafeConfigParser
@@ -73,43 +74,46 @@ def submit():
              codecs.open(input_file, mode='w', encoding='utf-8') as input_template:
             input_template.write(Template(sta_template.read()).safe_substitute(**data))
 
-        logging.info('creating output file: ' + output_file)
-        subprocess.call([
-            'java', '-jar', 'html2pdf.jar',
-            '--input', input_file,
-            '--output', output_file,
-            '--title', 'Software Transfer Agreement',
-            '--header', 'NCI Reference # ____________',
-            '--numbered'
-        ])
+        def execute():
+            logging.info('creating output file: ' + output_file)
+            subprocess.call([
+                'java', '-jar', 'html2pdf.jar',
+                '--input', input_file,
+                '--output', output_file,
+                '--title', 'Software Transfer Agreement',
+                '--header', 'NCI Reference # ____________',
+                '--numbered'
+            ])
 
-        host = config.get('mail', 'host')
-        admin = config.get('mail', 'admin')
+            host = config.get('mail', 'host')
+            admin = config.get('mail', 'admin')
 
-        logging.info('sending email to provider')
-        with codecs.open('templates/provider-email.html', mode='r', encoding='utf-8') as template:
-            send_mail(
-                host=host,
-                sender='NCIDOSEWebAdmin@mail.nih.gov',
-                recipient=admin,
-                subject='NCIDose STA Request',
-                contents=Template(template.read()).safe_substitute(**data)
-            )
+            logging.info('sending email to provider')
+            with codecs.open('templates/provider-email.html', mode='r', encoding='utf-8') as template:
+                send_mail(
+                    host=host,
+                    sender='NCIDOSEWebAdmin@mail.nih.gov',
+                    recipient=admin,
+                    subject='NCIDose STA Request',
+                    contents=Template(template.read()).safe_substitute(**data)
+                )
 
-        logging.info('sending email to recipient investigator')
-        with codecs.open('templates/recipient-email.html', mode='r', encoding='utf-8') as template:
-            send_mail(
-                host=host,
-                sender='NCIDOSEWebAdmin@mail.nih.gov',
-                recipient=data['email'],
-                subject='NCIDose Software Transfer Agreement Form',
-                contents=Template(template.read()).safe_substitute(**data),
-                attachments=[output_file]
-            )
+            logging.info('sending email to recipient investigator')
+            with codecs.open('templates/recipient-email.html', mode='r', encoding='utf-8') as template:
+                send_mail(
+                    host=host,
+                    sender='NCIDOSEWebAdmin@mail.nih.gov',
+                    recipient=data['email'],
+                    subject='NCIDose Software Transfer Agreement Form',
+                    contents=Template(template.read()).safe_substitute(**data),
+                    attachments=[output_file]
+                )
 
-        logging.info('deleting pii')
-        os.remove(input_file)
-        os.remove(output_file)
+            logging.info('deleting pii')
+            os.remove(input_file)
+            os.remove(output_file)
+
+        threading.Thread(target=execute).start()
 
     except BaseException as exception:
         print('------------EXCEPTION------------')
@@ -137,7 +141,7 @@ def send_mail(host, sender, recipient, subject, contents, attachments=None):
     message['To'] = recipient
 
     # set text for message
-    message.attach(MIMEText(contents, 'html'))
+    message.attach(MIMEText(contents.encode('utf-8'), 'html', 'utf-8'))
 
     # add attachments to message
     if attachments is not None:
