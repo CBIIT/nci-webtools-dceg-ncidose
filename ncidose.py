@@ -19,7 +19,10 @@ from flask import Flask, request
 from string import Template
 
 if not os.path.exists('tmp'):
-    os.makedirs('tmp')
+    try:
+        os.makedirs('tmp')
+    except BaseException as exception:
+        traceback.print_exc(1)
 
 config = SafeConfigParser()
 config.read('config.ini')
