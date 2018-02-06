@@ -6,26 +6,32 @@
       font-family: FreeSerif, Serif;
       }
       h1 {
-      margin: 10px 0;
-      font-size: 20px;
+        margin: 10px 0;
+        font-size: 20px;
       }
       p {
-      margin: 0 0 16px;
+        margin: 0 0 16px;
       }
       .d-inline-block {
-      display: inline-block;
+        display: inline-block;
       }
       .text-center {
-      text-align: center;
+        text-align: center;
       }
       .text-underline {
-      text-decoration: underline;
+        text-decoration: underline;
+      }
+      .text-italic {
+        font-style: italic;
+      }
+      .text-grey {
+        color: #666;
       }
       .ml-40 {
-      margin-left: 40px;
+        margin-left: 40px;
       }
       .border-bottom {
-      border-bottom: 1px solid black;
+        border-bottom: 1px solid black;
       }
     </style>
   </head>
@@ -36,7 +42,7 @@
     <p>WHEREAS, Provider has certain proprietary software and associated material described below (hereinafter, collectively referred to as "Software") <i>[Describe all items being transferred such as; software, executable code, source code, documentation, data and all other associated materials]</i>:</p>
     <div class="ml-40"><b>${software_descriptions}</b></div>
     <p>Provider agrees to transfer such Software to Recipient Investigator, to be used solely in connection with the following research activity and for the following reasons (hereinafter “Project”). <i>Describe with specificity the scope of use of Software under this agreement:</i><br></p>
-    <div class="text-underline">${purpose}</div>
+    <div class="ml-40 text-underline text-grey">${purpose}</div>
     <br>
     <p>NOW, THEREFORE, in consideration of the premises and mutual covenants contained herein, the Provider and Recipient agree as follows:</p>
     <ol>
@@ -89,10 +95,10 @@
     </p>
     <p>
       <span class="d-inline-block" style="width: 50px">Name: </span>
-      <span class="d-inline-block border-bottom" style="width: 300px">${first} ${last}</span>
+      <span class="d-inline-block border-bottom text-grey text-italic" style="width: 300px">${first} ${last}</span>
       <span class="d-inline-block" style="width: 25px"></span>
       <span class="d-inline-block" style="width: 70px">Job Title: </span>
-      <span class="d-inline-block border-bottom" style="width: 180px">${job_title}</span>
+      <span class="d-inline-block border-bottom text-grey text-italic" style="width: 180px">${job_title}</span>
     </p>
     <p>
       <span class="d-inline-block" style="width: 70px">Signature: </span>
@@ -106,14 +112,14 @@
     </p>
     <p>
       <span class="d-inline-block" style="width: 62px">Address: </span>
-      <span class="d-inline-block border-bottom" style="width: 575px">${address}</span>
+      <span class="d-inline-block border-bottom text-grey text-italic" style="width: 575px">${address}</span>
     </p>
     <p>
       <span class="d-inline-block" style="width: 50px">Email: </span>
-      <span class="d-inline-block border-bottom" style="width: 250px">${email}</span>
+      <span class="d-inline-block border-bottom text-grey text-italic" style="width: 250px">${email}</span>
       <span class="d-inline-block" style="width: 25px"></span>
       <span class="d-inline-block" style="width: 50px">Phone: </span>
-      <span class="d-inline-block border-bottom" style="width: 250px">${phone}</span>
+      <span class="d-inline-block border-bottom text-grey text-italic" style="width: 250px">${phone}</span>
     </p>
     <h1>For Provider:</h1>
     <p>
@@ -157,7 +163,6 @@
       National Cancer Institute Technology Transfer Center<br>
       9609 Medical Center Dr. Rm 1E530, MSC 9702<br>
       Bethesda, MD 20892-9702<br>
-      <br>
       <span style="margin-right: 15px;">Phone: 240-276-5530</span>
       <span>Fax: 240-276-5504</span>
     </p>
