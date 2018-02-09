@@ -6,16 +6,12 @@
   background-color: white !important;
 }
 
-.bg-dark {
-  background-color: #606060 !important;
-}
-
 .bg-dark-gradient {
   background: linear-gradient(to bottom, #363636 0%, #4a4a4a 100%);
 }
 
 .bg-blue {
-  background-color: #2a71a5; 
+  background-color: #2a71a5;
 }
 
 .bg-dark-blue {
