@@ -88,8 +88,8 @@
   <div class="alert alert-warning p-1 m-0 rounded-0" style="background-color: #ffc107; font-weight: 500; border: none;">
     <div class="container d-flex justify-content-between align-items-center">
       <span>
-        This site has been migrated to the <a href="https://ncidose.cancer.gov">cancer.gov</a> domain.
-        The <a href="">ncidose.nci.nih.gov</a> url will still work until May 1, 2018.
+        This site has been migrated to the <a href="#home">cancer.gov</a> domain.
+        The <a href="#home">ncidose.nci.nih.gov</a> url will still work until May 1, 2018.
       </span>
       <div
         role="button"
@@ -207,7 +207,6 @@
         <li class="mb-4">ICRU. <i>Photon, Electron, Proton and Neutron Interaction Data for Body Tissues.</i> Bethesda, MD: International Commission on Radiation Units and Measurements; 1992.</li>
         <li class="mb-4">ICRP. Human alimentary tract model for radiological protection. <i>ICRP Publ 100 Ann ICRP.</i> 2006;36(1-2):1-336. doi:10.1016/j.icrp.2006.03.004.</li>
       </ol>
-      </ul>
 
       <!-- end phantoms tab content -->
     </div>
@@ -421,7 +420,7 @@
 
               <div class="form-group col-md-4">
                 <label class="asterisk" for="job_title">Job Title</label>
-                <input type="text" class="form-control" id="title" name="job_title" placeholder="Enter Job Title" required>
+                <input type="text" class="form-control" id="job_title" name="job_title" placeholder="Enter Job Title" required>
               </div>
             </div>
 
@@ -443,7 +442,7 @@
 
             <div class="form-group">
               <label class="asterisk" for="address">Business Address</label>
-              <textarea type="text" rows="3" class="form-control" id="address" name="address" placeholder="Enter Business Address" required></textarea>
+              <textarea rows="3" class="form-control" id="address" name="address" placeholder="Enter Business Address" required></textarea>
             </div>
           </div>
         </div>
@@ -454,10 +453,9 @@
           </div>
           <div class="card-body">
             <label class="asterisk" for="purpose">Purpose</label>
-            <textarea type="text" rows="3" class="form-control" id="purpose" name="purpose" placeholder="Describe the scope of the use of this software under the agreement" required></textarea>
+            <textarea rows="3" class="form-control" id="purpose" name="purpose" placeholder="Describe the scope of the use of this software under the agreement" required></textarea>
           </div>
         </div>
-
 
         <div class="card mb-4" id="feedback">
           <div class="card-header">
@@ -465,11 +463,9 @@
           </div>
           <div class="card-body">
             <label class="asterisk" for="discovery-mechanism">Where have you heard about NCIDOSE?</label>
-            <textarea type="text" rows="3" class="form-control" id="discovery-mechanism" name="discovery_mechanism" placeholder="Describe where you have heard about NCIDose" required></textarea>
+            <textarea rows="3" class="form-control" id="discovery-mechanism" name="discovery_mechanism" placeholder="Describe where you have heard about NCIDose" required></textarea>
           </div>
         </div>
-
-
 
         <div class="text-center">
           <button type="submit" class="btn btn-primary">Generate STA PDF</button>
@@ -486,7 +482,7 @@
       <ul class="list-inline">
         <li class="pb-1 d-block d-md-inline"><a target="_blank" href="https://www.cancer.gov/">Home</a></li>
         <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline"><a target="_top" href="mailto: NCIDOSEWebAdmin@mail.nih.gov?subject=NCIDOSE">Support</a></li>
+        <li class="pb-1 d-block d-md-inline"><a target="_top" href="mailto:NCIDOSEWebAdmin@mail.nih.gov?subject=NCIDOSE">Support</a></li>
         <li class="pb-1 d-none d-md-inline">|</li>
         <li class="pb-1 d-block d-md-inline"><a target="_blank" href="https://www.cancer.gov/global/web/policies">Policies</a></li>
         <li class="pb-1 d-none d-md-inline">|</li>
@@ -531,9 +527,9 @@
 
   <div id="loading-overlay" class="fullscreen-overlay">
     <div class="text-center">
-      <svg version="2.0" class="spinner" width="25" height="25">
-        <circle cx="12.5" cy="12.5" r="10" fill="transparent" stroke="#ccc" stroke-width="2.5" />
-        <path fill="transparent" stroke="#666" stroke-width="2.5" d="M 12.5 2.5 a 10 10 0 0 1 10 10" />
+      <svg version="1.1" class="spinner" width="25" height="25">
+        <circle cx="12.5" cy="12.5" r="10" fill="transparent" stroke="#ccc" stroke-width="2.5"></circle>
+        <path fill="transparent" stroke="#666" stroke-width="2.5" d="M 12.5 2.5 a 10 10 0 0 1 10 10"></path>
       </svg>
       <br>
       Loading...
