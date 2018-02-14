@@ -13,18 +13,22 @@ $('#loading-overlay').hide()
  */
 $(function enableRoutes() {
   // navigate to the appropriate tab when the location hash is changed
-
   $(window).on('hashchange', function() {
     // use default route if location hash not defined
-    if (!window.location.hash || window.location.hash.length < 2)
+    if (!window.location.hash || window.location.hash.length < 2) {
       window.location.hash = '#home';
-
-    else if ($('ul.nav a[href="' + window.location.hash + '"]').tab('show').length) {
-      setTimeout(function() { window.scrollTo(0, 0) }, 0);
     }
 
-  // trigger hash change when page is loaded
-  }).trigger('hashchange');
+    else if ($('nav a[href="' + window.location.hash + '"]').tab('show').length) {
+      setTimeout(function() { window.scrollTo(0, 0) }, 0);
+    }
+  }).trigger('hashchange'); // trigger hash change when page is loaded
+
+  // prevent target from scrolling into view if we change routes using a nav
+  $('nav a[href^="#"]').click(function(event) {
+    event.preventDefault();
+    window.location.hash = $(this).attr('href');
+  });
 });
 
 
