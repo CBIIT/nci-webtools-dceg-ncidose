@@ -31,6 +31,18 @@ a {
   background-color: #BB0E3D;
 }
 
+.vh-100 {
+  height: 100vh;
+}
+
+.flex-auto {
+  flex: 1 0 auto;
+}
+
+.flex-none {
+  flex: none;
+}
+
  /** Override navbar defaults */
 .navbar {
   font-size: 1em;
@@ -160,11 +172,6 @@ textarea {
   left: 0;
   opacity: 0.4;
   z-index: 1;
-}
-
-/** Ensure elements have a minimum height */
-.min-height-600 {
-  min-height: 600px;
 }
 
 /** Creates an overlay that covers the entire screen */

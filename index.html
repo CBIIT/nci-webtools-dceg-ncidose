@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/favicon.ico">
   </head>
-  <body class="bg-light">
+  <body class="bg-light d-flex flex-column vh-100">
     <h1 class="sr-only">NCIDose Webtool</h1>
     <div class="sr-only">
       <a href="#home" data-skip-link>Skip to content</a>
     </div>
-    <header>
+    <header class="flex-none">
       <div class="container d-none d-sm-block mw-100">
         <a href="https://dceg.cancer.gov/">
         <img height="90" src="img/dceg-logo.svg" alt="Division of Cancer Epidemiology &amp; Genetics">
@@ -86,8 +86,8 @@
         </div>
       </div>
     </header>
-    <div class="tab-content">
-      <div class="container tab-pane pt-4" id="home">
+    <div class="tab-content d-flex flex-column flex-auto">
+      <div class="container tab-pane pt-4 flex-auto" id="home">
         <!-- begin home tab content -->
         <p class="mb-2">
           <strong>NCIDOSE</strong> is the collection of tools and data for medical radiation dosimetry developed by radiation physicists at the Division of Cancer Epidemiology and Genetics of the National Cancer Institute. The resources are based on years of research and development in collaboration with a number of research institutions and clinical centers. This website is intended to distribute the tools free of charge for research purposes. The following resources are currently available:
@@ -117,7 +117,7 @@
         </p>
         <!-- end home tab content -->
       </div>
-      <div class="container tab-pane" id="phantoms">
+      <div class="container tab-pane flex-auto" id="phantoms">
         <!-- begin phantoms tab content -->
         <div class="text-center mb-2">
           <figure class="figure mw-100">
@@ -170,7 +170,7 @@
         </ol>
         <!-- end phantoms tab content -->
       </div>
-      <div class="container tab-pane" id="ncict">
+      <div class="container tab-pane flex-auto" id="ncict">
         <!-- begin ncict tab content -->
         <div class="text-center mb-2">
           <figure class="figure mw-100">
@@ -249,7 +249,7 @@
         </ol>
         <!-- end ncict tab content -->
       </div>
-      <div class="container tab-pane" id="dose-coefficients">
+      <div class="container tab-pane flex-auto" id="dose-coefficients">
         <!-- begin dose-coefficients tab content -->
         <h4 class="mb-3 mt-5">EXTERNAL PHOTON</h4>
         <p class="mb-4">
@@ -279,7 +279,7 @@
         </div>
         <!-- end dose-coefficients tab content -->
       </div>
-      <div class="bg-white tab-pane pt-4 pb-4" id="agreement">
+      <div class="bg-white tab-pane pt-4 pb-4 flex-auto" id="agreement">
         <!-- begin agreement tab content -->
         <div class="container">
           <p>
@@ -399,7 +399,7 @@
         <!-- end agreement tab content -->
       </div>
     </div>
-    <footer class="text-left text-md-center pt-4 pb-4 bg-dark-blue text-light">
+    <footer class="text-left text-md-center pt-4 pb-4 bg-dark-blue text-light flex-none">
       <div class="container">
         <ul class="list-inline">
           <li class="pb-1 d-block d-md-inline"><a target="_blank" href="https://www.cancer.gov/">Home</a></li>
