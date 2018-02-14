@@ -85,20 +85,20 @@
     </div>
   </nav>
 
+  <!-- Since this banner will be removed, we will use inline styles -->
   <div class="alert alert-warning p-1 m-0 rounded-0" style="background-color: #ffc107; font-weight: 500; border: none;">
     <div class="container d-flex justify-content-between align-items-center">
-      <span>
+      <div class="pr-2">
         This site has been migrated to the <a href="#">cancer.gov</a> domain.
         The <a href="#">ncidose.nci.nih.gov</a> url will still work until May 1, 2018.
-      </span>
-      <div
-        role="button"
-        class="d-flex justify-content-center align-items-center text-light bg-dark rounded-circle ml-2"
-        data-dismiss="alert"
-        aria-label="Close"
-        style="width: 20px; height: 20px; min-width: 20px; min-height: 20px; cursor: pointer;">
-        <span aria-hidden="true">&times;</span>
       </div>
+      <i
+        aria-label="Close"
+        role="button"
+        data-dismiss="alert"
+        class="fas fa-times-circle"
+        style="cursor: pointer; color: black">
+      </i>
     </div>
   </div>
 
