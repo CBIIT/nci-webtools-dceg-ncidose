@@ -2,12 +2,21 @@
  * Bootstrap overrides
  */
 
+a {
+  color: #2f6fb3;
+}
+
+.bg-light {
+  background-color: #fafafa !important;
+}
+
 .bg-white {
   background-color: white !important;
 }
 
 .bg-dark-gradient {
   background: linear-gradient(to bottom, #363636 0%, #4a4a4a 100%);
+  background-color: #363636;
 }
 
 .bg-blue {
@@ -86,8 +95,9 @@
   font-weight: 600;
 }
 
-/** Override figure caption font size */
+/** Override figure caption font */
 .figure-caption {
+  color: #43484b;
   font-size: 100%;
   font-weight: 600;
   line-height: 1.5;
@@ -150,19 +160,6 @@ textarea {
   left: 0;
   opacity: 0.4;
   z-index: 1;
-}
-
-/** Ensure links are styled with the appropriate color */
-.link {
-  stroke: steelblue;
-  fill: steelblue;
-  color: steelblue;
-  cursor: pointer;
-}
-
-/** Underline links when hovered */
-.link:hover {
-  text-decoration: underline;
 }
 
 /** Ensure elements have a minimum height */
