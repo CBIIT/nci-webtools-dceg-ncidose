@@ -131,6 +131,10 @@
         <p class="mb-4">
           Once developed from patient CT images, the NCIPHANTOM library was adjusted to match several international reference data including international reference body sizes<sup>6</sup>, reference organ mass<sup>6</sup>, reference elemental composition<sup>6,7</sup>, and reference dimension data of gastro-intestine structures<sup>8</sup>. The anatomical structures of the reference children phantom series were adopted as international reference by International Commission on Radiological Protection (ICRP).
         </p>
+        <h4 class="mb-3 mt-5">MOST ADVANCED ARCHITECTURE</h4>
+        <p class="mb-4">
+          Computational phantoms have evolved from simple stylistic forms (called mathematical or stylized phantoms) through more realistic but fixed forms (called tomographic or voxel phantoms) to realistic and flexible forms composed of polygon mesh and non-uniform rational B-spline (NURBS) format (called hybrid or Boundary Representation phantoms).  The NCIPHANTOM library was developed based on the mesh and NURBS, which is the most advanced phantom architecture to date.  The phantoms can be converted into voxel format with variable voxel resolution for Monte Carlo radiation transport.  The original format can directly be imported into surface Monte Carlo radiation transport codes.
+        </p>
         <h4 class="mb-3 mt-5">VERSATILE FORMAT</h4>
         <p class="mb-4">
           The NCIPHANTOM library can be imported to different types of Monte Carlo radiation transport codes including MCNPX, MCNP6, GEANT4, etc. Main input deck for those codes is also available for research purpose. The NCIPHANTOM library also has been converted to DICOM-RT format which is compatible with commercial treatment planning systems. Detailed anatomical structures are converted to DICOM-CT images with realistic Hounsfield Unit. A total of 100+ organs and tissues are also directly imported into TPS in the format of DICOM-structure. Users will immediately evaluate dose to multiple organs and tissues on TPS once beam planning is completed.
