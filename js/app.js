@@ -16,21 +16,11 @@ $(function enableRoutes() {
   $(window).on('hashchange', function() {
     // use default route if location hash not defined
     if (!window.location.hash || window.location.hash.length < 2) {
-      // window.location.hash = '#home';
-      window.location.hash = '';
-      // setTimeout(function() { window.scrollTo(0, 0) }, 0);
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      window.location.hash = '#home';
     }
 
     else if ($('nav a[href="' + window.location.hash + '"]').tab('show').length) {
       setTimeout(function() { window.scrollTo(0, 0) }, 0);
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
-
-    else {
-      // nothing
     }
   }).trigger('hashchange'); // trigger hash change when page is loaded
 
@@ -38,6 +28,7 @@ $(function enableRoutes() {
   $('nav a[href^="#"]').click(function(event) {
     event.preventDefault();
     window.location.hash = $(this).attr('href');
+    history.replaceState({}, '', event.target.href);
   });
 });
 
