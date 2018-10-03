@@ -28,9 +28,9 @@ $(function enableRoutes() {
         .on('shown.bs.tab', function() {
           window.scrollTo(0, 0);
         });
+      $(document.body).focus();
     }
 
-    $(document.body).focus();
   }).trigger('hashchange');
 
   var hash = window.location.hash;
