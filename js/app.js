@@ -17,6 +17,7 @@ $(function enableRoutes() {
     // use default route if location hash not defined
     if (!window.location.hash || window.location.hash.length < 2) {
       window.location.hash = '#home';
+      setTimeout(function() { window.scrollTo(0, 0) }, 0);
     }
 
     else if ($('nav a[href="' + window.location.hash + '"]').tab('show').length) {
