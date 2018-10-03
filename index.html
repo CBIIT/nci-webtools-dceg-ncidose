@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/favicon.ico">
   </head>
-  <body class="bg-light d-flex flex-column vh-100">
-    <a class="sr-only sr-only-focusable" href="#main-content" tabindex="1">Skip to main content</a>
+  <body class="bg-light d-flex flex-column vh-100" tabindex="-1">
+    <a class="sr-only sr-only-focusable" href="#main-content">Skip to main content</a>
     <!-- <h1 class="sr-only sr-only-focusable">NCIDose Webtool</h1> -->
     <header class="flex-none">
       <div class="container d-none d-sm-block mw-100">
@@ -416,7 +416,7 @@
         </div>
       </div>
     </footer>
-    <div id="modal-template" class="modal" role="dialog">
+    <div id="modal-template" class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

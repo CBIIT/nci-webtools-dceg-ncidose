@@ -12,26 +12,31 @@ $('#loading-overlay').hide()
  * Enables hash-based routing based on bootstrap tabs
  */
 $(function enableRoutes() {
-  // navigate to the appropriate tab when the location hash is changed
+
+  var routes = $('nav a').map(function(index, element) {
+    return $(element).attr('href');
+  }).get();
+
   $(window).on('hashchange', function(event) {
-    // use default route if location hash not defined
-    if (!window.location.hash || window.location.hash.length < 2) {
-      window.location.hash = '#home';
-      event.preventDefault();
-      setTimeout(function() { window.scrollTo(0, 0) }, 0);
+    console.log(event);
+    var hash = window.location.hash;
+
+    // if this is a valid route, then show the appropriate tab
+    if (routes.indexOf(hash) != -1) {
+      $('nav a[href="' + hash + '"]')
+        .tab('show')
+        .on('shown.bs.tab', function() {
+          window.scrollTo(0, 0);
+        });
     }
 
-    else if ($('nav a[href="' + window.location.hash + '"]').tab('show').length) {
-      event.preventDefault();
-      setTimeout(function() { window.scrollTo(0, 0) }, 0);
-    }
-  }).trigger('hashchange'); // trigger hash change when page is loaded
+    $(document.body).focus();
+  }).trigger('hashchange');
 
-  // prevent target from scrolling into view if we change routes using a nav
-  $('nav a[href^="#"]').click(function(event) {
-    event.preventDefault();
-    window.location.hash = $(this).attr('href');
-  });
+  var hash = window.location.hash;
+  if (!hash || hash.length < 2 || routes.indexOf(hash) == -1) {
+    window.location.hash = '#home';
+  }
 });
 
 
@@ -82,7 +87,7 @@ function createModal(title, content, templateSelector) {
 function validateForm(form) {
   // this form is invalid if any of its elements are invalid
   var invalid = $(form).find(':invalid').length > 0;
-  $(form).toggleClass('invalid', invalid);
+  $(form).toggleClass('inva/lid', invalid);
 
   // if this form is invalid, generate error messages
   var errors = [];
