@@ -159,6 +159,11 @@ $('#agreement form').submit(function(e) {
       description: $('[data-for="ncict"]').data('content'),
     },
 
+    'ncinm': {
+      title: 'NCINM',
+      description: $('[data-for="ncinm"]').data('content'),
+    },
+
     'dose-coefficients': {
       title: 'Dose Coefficients',
       description: $('[data-for="dose-coefficients"]').data('content'),
