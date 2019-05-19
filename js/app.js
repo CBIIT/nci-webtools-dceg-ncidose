@@ -79,8 +79,8 @@ function createModal(title, content, templateSelector) {
 
 /**
  * Returns true if the provided form is valid, false otherwise
- * If the form has an .error-messages element, this function
- * populates it with any errors found
+ * If the form is invalid, this function
+ * generates a modal with error messages
  *
  * @param {HTMLFormElement} form
  */
@@ -105,10 +105,13 @@ function validateForm(form) {
         return this.type == 'email' && this.validity.typeMismatch;
       }).length)
       errors.push('Please ensure a valid email address has been provided.');
-  }
 
-  // populate the .error-messages element
-  $(form).find('.error-messages').html(errors.join('<br>'));
+    // generate modal for all errors
+    createModal(
+      'Error',
+      errors.join('\n')
+    ).on('hidden.bs.modal', null);
+  }
 
   // return true if this form is valid, false otherwise
   return !invalid;
@@ -144,8 +147,9 @@ $('#agreement form').submit(function(e) {
   e.preventDefault();
 
   // prevent form submission if invalid
-  if (!validateForm(this))
+  if (!validateForm(this)) {
     return;
+  }
 
   // get software descriptions
   var software = {
