@@ -106,7 +106,7 @@ function validateForm(form) {
       }).length)
       errors.push('Please ensure a valid email address has been provided.');
 
-    // generate modal for all errors
+    // generate modal for any errors
     createModal(
       'Error',
       errors.join('\n')
