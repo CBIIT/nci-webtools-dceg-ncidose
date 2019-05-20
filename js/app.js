@@ -217,7 +217,7 @@ $('#agreement form').submit(function(e) {
     .done(function(response) {
       createModal(
         'NCIDose Materials Confirmation',
-        'Thank you for registering with NCIDose. A confirmation email will be sent shorty with a copy of the STA Agreement in PDF format.'
+        'Thank you for registering with NCIDose. A confirmation email will be sent shortly with a copy of the STA Agreement in PDF format.'
       ).on('hidden.bs.modal', reset);
     })
     .fail(function(error) {
