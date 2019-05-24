@@ -56,6 +56,12 @@ def submit():
     Decorators:
         app -- Flask route decorator
     '''
+    # create /tmp directory if does not exist already
+    if not os.path.exists('tmp'):
+        try:
+            os.makedirs('tmp')
+        except BaseException as exception:
+            traceback.print_exc(1)
 
     wrap_tag = lambda tag: \
         lambda content: \
