@@ -11,7 +11,7 @@ import subprocess
 import threading
 import traceback
 
-from ConfigParser import SafeConfigParser
+from configparser import ConfigParser
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -24,7 +24,7 @@ if not os.path.exists('tmp'):
     except BaseException as exception:
         traceback.print_exc(1)
 
-config = SafeConfigParser()
+config = ConfigParser()
 config.read('config.ini')
 
 app = Flask(__name__, static_folder='', static_url_path='')
@@ -69,7 +69,8 @@ def submit():
                 .format(tag=tag, content=content)
 
     try:
-        data = json.loads(re.sub(r'<[^>]*?>|\n', ', ', request.stream.read()))
+        input = request.stream.read().decode()
+        data = json.loads(re.sub(r'<[^>]*?>|\n', ', ', input))
         data['software_titles'] = ''.join(map(wrap_tag('li'), data['software_titles']))
         data['software_descriptions'] = ''.join(map(wrap_tag('p'), data['software_descriptions']))
 
