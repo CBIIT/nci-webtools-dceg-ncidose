@@ -135,17 +135,17 @@
           </figure>
         </div>
         <p class="mb-4">
-          Three-dimensional computerized representations of the human body, referred to as computational phantoms, have been used in the fields of medical physics and radiation protection for decades to study people exposed to medical, occupational, and environmental radiation.    
+          Three-dimensional computerized representations of the human body, referred to as computational phantoms, have been used in the fields of medical physics and radiation protection for decades to study people exposed to medical, occupational, and environmental radiation.
           <b>PHANTOMS</b> is a library of state-of-the-art whole-body computational phantoms representing children and adults of different body height and weight.  Each phantom contains more than 100 carefully delineated organs or tissues.
         </p>
         <h4 class="mb-3 mt-5">ANATOMICAL REALISM</h4>
         <p class="mb-4">
-          The <b>PHANTOMS</b> library was developed from x-ray computed tomography (CT) images of patients and was the product of a collaboration between the University of Florida and National Cancer Institute.<sup>1,2</sup> 
-          Best quality anatomical reference CT images were selected from an archive of 1,000+ patients. 
-          More than 100 organs and tissues were manually segmented and reviewed by practicing radiologists. 
-          The original <b>PHANTOMS</b> library consisted of a series of reference male and female anatomies (newborn, 1-, 5-, 10-, 15-year-old, and adult). 
-          This library was later extended to 370 phantoms representing children and adults of both genders and various heights and weights.<sup>2</sup> 
-          NCI researchers also added anatomical details such as lymphatic nodes<sup>3,4</sup>, substructures of the heart (e.g. atria, ventricles, arteries), and substructures of the brain (e.g. grey and white matter, cerebellum, brain stem).<sup>5</sup>  
+          The <b>PHANTOMS</b> library was developed from x-ray computed tomography (CT) images of patients and was the product of a collaboration between the University of Florida and National Cancer Institute.<sup>1,2</sup>
+          Best quality anatomical reference CT images were selected from an archive of 1,000+ patients.
+          More than 100 organs and tissues were manually segmented and reviewed by practicing radiologists.
+          The original <b>PHANTOMS</b> library consisted of a series of reference male and female anatomies (newborn, 1-, 5-, 10-, 15-year-old, and adult).
+          This library was later extended to 370 phantoms representing children and adults of both genders and various heights and weights.<sup>2</sup>
+          NCI researchers also added anatomical details such as lymphatic nodes<sup>3,4</sup>, substructures of the heart (e.g. atria, ventricles, arteries), and substructures of the brain (e.g. grey and white matter, cerebellum, brain stem).<sup>5</sup>
         </p>
         <div class="text-center mb-4">
           <figure class="figure mw-100">
@@ -161,20 +161,20 @@
         </div>
         <h4 class="mb-3 mt-5">INTERNATIONAL REFERENCE</h4>
         <p class="mb-4">
-          The <b>PHANTOMS</b> library was carefully adjusted to match several international reference data including reference person height and weight<sup>6</sup>, organ mass<sup>6</sup>, tissue elemental composition<sup>6,7</sup>, and dimensions of gastrointestinal structures<sup>8</sup>. 
+          The <b>PHANTOMS</b> library was carefully adjusted to match several international reference data including reference person height and weight<sup>6</sup>, organ mass<sup>6</sup>, tissue elemental composition<sup>6,7</sup>, and dimensions of gastrointestinal structures<sup>8</sup>.
           The pediatric phantoms have been adopted by International Commission on Radiological Protection (ICRP) as the international reference.        </p>
         <h4 class="mb-3 mt-5">STATE-OF-THE-ART AND VERSITLE FORMAT</h4>
         <p class="mb-2">
-          The <b>PHANTOMS</b> library was developed using mesh and non-uniform rational B-spline (NURBS) surfaces, the most advanced phantom architecture to date. 
-          The phantoms can be converted into voxel format compatible with most Monte Carlo radiation transport codes such as MCNPX, MCNP6, EGSnrc, GEANT4, PHITS. 
-          Input decks for these codes describing the phantoms are also available for release. 
-          Some Monte Carlo codes can import the original surface geometry format.        
+          The <b>PHANTOMS</b> library was developed using mesh and non-uniform rational B-spline (NURBS) surfaces, the most advanced phantom architecture to date.
+          The phantoms can be converted into voxel format compatible with most Monte Carlo radiation transport codes such as MCNPX, MCNP6, EGSnrc, GEANT4, PHITS.
+          Input decks for these codes describing the phantoms are also available for release.
+          Some Monte Carlo codes can import the original surface geometry format.
         </p>
         <p class="mb-4">
-          Simulated CT images have been derived for the entire <b>PHANTOMS</b> library and are written in Digital Imaging and Communications in Medicine (DICOM) CT format. 
-          An accompanying DICOM Structure file contains the contours for more than 100 structures included in the phantom. 
-          These files have been tested for compatibility on several commercial radiotherapy treatment planning systems (TPS). 
-          After importing into a TPS, users can create a treatment plan on the phantom CT and evaluate dose to organs of interest. 
+          Simulated CT images have been derived for the entire <b>PHANTOMS</b> library and are written in Digital Imaging and Communications in Medicine (DICOM) CT format.
+          An accompanying DICOM Structure file contains the contours for more than 100 structures included in the phantom.
+          These files have been tested for compatibility on several commercial radiotherapy treatment planning systems (TPS).
+          After importing into a TPS, users can create a treatment plan on the phantom CT and evaluate dose to organs of interest.
         </p>
         <div class="text-center mb-4">
           <figure class="figure mw-100">
@@ -197,14 +197,14 @@
           </figure>
         </div>
         <p class="mb-4">
-          Over the last three decades, the number of computed tomography (CT) examinations conducted annually has grown exponentially such that CT imaging currently represents about a quarter of the collective effective dose received by the U.S. population. 
-          To address this public health concern, it is important to have tools to assess and monitor radiation exposures from CT scans. 
+          Over the last three decades, the number of computed tomography (CT) examinations conducted annually has grown exponentially such that CT imaging currently represents about a quarter of the collective effective dose received by the U.S. population.
+          To address this public health concern, it is important to have tools to assess and monitor radiation exposures from CT scans.
           <b>NCICT</b>, the National Cancer Institute dosimetry system for Computed Tomography,<sup>9</sup> is an easy-to-use CT organ dose calculator.
         </p>
         <h4 class="mb-3 mt-5">STRONG SCIENCE</h4>
         <p class="mb-4">
-          The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters. 
-          <b>NCICT</b> combines several cutting-edge technologies including a library of computational human phantoms, the simulation of x-rays from a reference CT scanner, and a user-friendly graphical interface. 
+          The program provides absorbed dose to major radiosensitive organs and tissues based on the characteristics of patients and CT scan parameters.
+          <b>NCICT</b> combines several cutting-edge technologies including a library of computational human phantoms, the simulation of x-rays from a reference CT scanner, and a user-friendly graphical interface.
           The simulated dose results have been rigorously validated through comparison with experimental measurement.<sup>10-12</sup>
         </p>
         <div class="text-center mb-4">
@@ -221,13 +221,13 @@
         </div>
         <h4 class="mb-3 mt-5">STATE-OF-THE-ART PHANTOMS</h4>
         <p class="mb-4">
-          The <b>NCICT</b> software incorporates state-of-the-art phantoms, with enough variety to represent just about any patient. 
+          The <b>NCICT</b> software incorporates state-of-the-art phantoms, with enough variety to represent just about any patient.
           <b>NCICT</b> includes the following phantoms: the International Commission on Radiological Protection (ICRP) reference pediatric and adult series (NCICT 1.0), the <b>PHANTOMS</b> library of 370 pediatric and adult males and females of different height and weight (NCICT 2.0), and eight pregnant phantoms containing detailed fetus models at various gestations (NCICT 3.0).<sup>13</sup>
         </p>
         <h4 class="mb-3 mt-5">HASSLE-FREE INSTALLATION</h4>
         <p class="mb-4">
-          <b>NCICT</b> is a standalone software which runs on a personal computer. 
-          Users do not need an internet connection to upload sensitive patient data to a central server. 
+          <b>NCICT</b> is a standalone software which runs on a personal computer.
+          Users do not need an internet connection to upload sensitive patient data to a central server.
           <b>NCICT</b> works on multiple platforms including Windows, Mac, and LINUX.
         </p>
         <div class="text-center mb-4">
@@ -238,9 +238,9 @@
         </div>
         <h4 class="mb-3 mt-5">VERSATILE DOSE CALCULATION MODES</h4>
         <p class="mb-4">
-            <b>NCICT</b> features two computation modes: Graphical User Interface (GUI) mode and Batch Calculation mode. 
-            The GUI mode allows the user to interactively enter patient and CT scanner data and <b>NCICT</b> rapidly calculates organ doses with simple graphs. 
-            The Batch Calculation mode is designed to compute organ doses for a large number of patients by importing a set of parameters from a formatted text file. 
+            <b>NCICT</b> features two computation modes: Graphical User Interface (GUI) mode and Batch Calculation mode.
+            The GUI mode allows the user to interactively enter patient and CT scanner data and <b>NCICT</b> rapidly calculates organ doses with simple graphs.
+            The Batch Calculation mode is designed to compute organ doses for a large number of patients by importing a set of parameters from a formatted text file.
             The Batch Calculation mode also runs by text command, making it easy to connect <b>NCICT</b> with existing databases.
         </p>
         <h4 class="mb-3 mt-5">EXTENSTIVELY TESTED</h4>
@@ -257,29 +257,29 @@
           </figure>
         </div>
         <p class="mb-4">
-          Advances in Single Photon Emission Computed Tomography (SPECT) and Positron Emission Tomography (PET) imaging and the increasing number of radiopharmaceuticals have resulted in a surge of diagnostic nuclear medicine applications. 
-          Therapeutic applications are also gaining ground because of the possibility for systemic, targeted treatments. 
+          Advances in Single Photon Emission Computed Tomography (SPECT) and Positron Emission Tomography (PET) imaging and the increasing number of radiopharmaceuticals have resulted in a surge of diagnostic nuclear medicine applications.
+          Therapeutic applications are also gaining ground because of the possibility for systemic, targeted treatments.
           <b>NCINM</b>, the National Cancer Institute dosimetry system for Nuclear Medicine, has been developed to provide accurate dosimetry for patients undergoing nuclear medicine procedures.
         </p>
         <h4 class="mb-3 mt-5">STATE-OF-THE-ART PHANTOMS</h4>
         <p class="mb-4">
-            Most of the current dosimetry tools for nuclear medicine procedures are based on simplified phantoms developed in 1990s or do not account for patient body size. 
-            <b>NCINM</b> incorporates state-of-the-art pediatric and adult computational human phantoms. 
-            <b>NCINM</b> also adopts the Specific Absorbed Fraction data for the International Commission on Radiological Protection (ICRP) reference adult male and female phantoms in the ICRP Publication 133<sup>30</sup> and will be extended to the pediatric data once the ICRP data will be available. 
+            Most of the current dosimetry tools for nuclear medicine procedures are based on simplified phantoms developed in 1990s or do not account for patient body size.
+            <b>NCINM</b> incorporates state-of-the-art pediatric and adult computational human phantoms.
+            <b>NCINM</b> also adopts the Specific Absorbed Fraction data for the International Commission on Radiological Protection (ICRP) reference adult male and female phantoms in the ICRP Publication 133<sup>30</sup> and will be extended to the pediatric data once the ICRP data will be available.
             Implementation of additional non-human data including mice, canine, and primates is in progress.
         </p>
         <h4 class="mb-3 mt-5">COMPREHENSIVE DOSIMETRY DATABASE</h4>
         <p class="mb-4">
-            <b>NCINM</b> includes a comprehensive library of dose conversion coefficients for various radionuclides, called S values, which convert cumulated activities into organ absorbed dose. 
-            The program covers up to 70 source regions and 60 target regions defined within the human anatomy. 
+            <b>NCINM</b> includes a comprehensive library of dose conversion coefficients for various radionuclides, called S values, which convert cumulated activities into organ absorbed dose.
+            The program covers up to 70 source regions and 60 target regions defined within the human anatomy.
             S values are available for a total of 300 clinically-relevant radionuclides for which energy spectra were obtained from the ICRP Publication 107<sup>31</sup>.
         </p>
         <h4 class="mb-3 mt-5">INTUITIVE USER INTERFACE</h4>
         <p class="mb-4">
-            <b>NCINM</b> provides an intuitive graphical user interface allowing users to select from twelve pediatric and adult phantoms, enter the radionuclide and injected activity, and organ residence times (or cumulated activity). 
-            Data is available for 300 radionuclides, 70 source regions, and 55 target regions. 
-            <b>NCINM</b> rapidly calculates the organ dose and dose per administered activity. 
-            All input and output processes are conducted in a single window. 
+            <b>NCINM</b> provides an intuitive graphical user interface allowing users to select from twelve pediatric and adult phantoms, enter the radionuclide and injected activity, and organ residence times (or cumulated activity).
+            Data is available for 300 radionuclides, 70 source regions, and 55 target regions.
+            <b>NCINM</b> rapidly calculates the organ dose and dose per administered activity.
+            All input and output processes are conducted in a single window.
             <b>NCINM</b> runs on multiple platforms including Windows, Mac, and LINUX.
         </p>
         <div class="text-center mb-4">
@@ -294,9 +294,9 @@
         <!-- begin dose-coefficients tab content -->
         <h4 class="mb-3 mt-5">EXTERNAL PHOTON<sup>32</sup></h4>
         <p class="mb-4">
-          We calculated dose coefficients for the International Commission on Radiological Protection (ICRP) reference pediatric phantoms externally exposed to mono-energetic photon radiation (x- and gamma-rays). 
-          Calculations were performed using Monte Carlo radiation transport techniques. 
-          Dose coefficients, i.e., organ absorbed dose per unit air kerma (mGy/mGy), were calculated for 28 organs and tissues including the active marrow (or red bone marrow) for 10 phantoms (newborn, 1-year, 5-year, 10-year, and 15-year old male and female). 
+          We calculated dose coefficients for the International Commission on Radiological Protection (ICRP) reference pediatric phantoms externally exposed to mono-energetic photon radiation (x- and gamma-rays).
+          Calculations were performed using Monte Carlo radiation transport techniques.
+          Dose coefficients, i.e., organ absorbed dose per unit air kerma (mGy/mGy), were calculated for 28 organs and tissues including the active marrow (or red bone marrow) for 10 phantoms (newborn, 1-year, 5-year, 10-year, and 15-year old male and female).
           Radiation exposure was simulated for 33 photon mono-energies (0.01 – 20 MeV) in six irradiation geometries: Antero-Posterior (AP), Postero-Anterior (PA), Right-Lateral (RLAT), Left-Lateral (LLAT), Rotational (ROT), and Isotropic (ISO).
         </p>
         <div class="text-center mb-4">
@@ -307,9 +307,9 @@
         </div>
         <h4 class="mb-3 mt-5">EXTERNAL NEUTRON<sup>33</sup></h4>
         <p class="mb-4">
-          The International Commission on Radiological Protection (ICRP) Publication 116 includes adult male and female neutron fluence-to-dose coefficients for external exposures for the six idealized irradiation geometries (AP, PA, LLAT, RLAT, ROT, and ISO). 
-          These dose coefficients are not appropriate for children due to their smaller body weight and stature. 
-          We calculated neutron dose coefficients for pediatric phantoms (newborn, 1-, 5-, 10-, and 15-year-old) from the <b>PHANTOMS</b> library. 
+          The International Commission on Radiological Protection (ICRP) Publication 116 includes adult male and female neutron fluence-to-dose coefficients for external exposures for the six idealized irradiation geometries (AP, PA, LLAT, RLAT, ROT, and ISO).
+          These dose coefficients are not appropriate for children due to their smaller body weight and stature.
+          We calculated neutron dose coefficients for pediatric phantoms (newborn, 1-, 5-, 10-, and 15-year-old) from the <b>PHANTOMS</b> library.
           Calculations were performed using the MCNP6 code for neutron energies between 0.001 eV and 10 GeV, including 28 organs, two bone tissues, and the overall whole-body effective dose.
         </p>
         <div class="text-center mb-4">
@@ -368,12 +368,12 @@
           </p>
 
           <ul>
-            <li>Check the content of the Software Transfer Agreement (STA) from <a href="#" data-open="templates/NCIDose STA updated 201905.pdf">View Sample STA</a></li>
+            <li>Check the content of the Software Transfer Agreement (STA) from <a href="#" data-open="templates/NCIDose-STA-201905.pdf">View Sample STA</a></li>
             <li>Fill in the web form below and click <strong>Generate STA PDF</strong> at the bottom of this page. The generated STA PDF will be sent to you via email.</li>
-            <li>Download and print the STA document from the email and have it signed by the <strong>Recipient Investigator and the Authorized Recipient Official</strong> of your institution. 
+            <li>Download and print the STA document from the email and have it signed by the <strong>Recipient Investigator and the Authorized Recipient Official</strong> of your institution.
               <b>
                 <span style="color: red">
-                  An Authorized Recipient Official is someone who is authorized to sign legal documents on behalf of the institution; this person usually works in the Technology Transfer Department 
+                  An Authorized Recipient Official is someone who is authorized to sign legal documents on behalf of the institution; this person usually works in the Technology Transfer Department
                   or the Office of Sponsored Research.
                 </span>
               </b>
@@ -390,7 +390,7 @@
           <div class="card mb-4">
             <div class="card-header d-flex flex-wrap justify-content-between">
               <span>What materials are you interested in receiving?</span>
-              <a href="#" data-open="templates/NCIDose STA updated 201905.pdf">
+              <a href="#" data-open="templates/NCIDose-STA-201905.pdf">
               <i class="fas fa-download mr-1" aria-hidden="true"></i>View Sample STA
               </a>
             </div>
