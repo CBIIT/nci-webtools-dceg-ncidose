@@ -1,3 +1,4 @@
 ~*.docx
 *.pyc
 /tmp
+.DS_Store
