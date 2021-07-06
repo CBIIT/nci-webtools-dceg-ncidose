@@ -96,6 +96,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="#ncinm"> NCINM </a>
               </li>
+              <!-- NCIRF -->
+              <li class="nav-item">
+                <a class="nav-link" href="#ncirf"> NCIRF </a>
+              </li>
               <!-- Dose Coefficients -->
               <li class="nav-item">
                 <a class="nav-link" href="#dose-coefficients">
@@ -476,6 +480,91 @@
           </figure>
         </div>
         <!-- end ncinm tab content -->
+      </div>
+      <div class="container tab-pane flex-auto" id="ncirf">
+        <!-- begin ncirf tab content -->
+        <div class="text-center mb-2">
+          <figure class="figure mw-100">
+            <img
+              src="img/ncirf-cover.png"
+              class="img-fluid box-shadow"
+              alt="NCIRF cover photo"
+            />
+          </figure>
+        </div>
+        <p class="mb-4">
+          Because of the increasing use of diagnostic and interventional
+          fluoroscopy techniques in recent years, there has been a concern
+          regarding the radiogenic risk of cancer from the exposure source. It
+          is important to accurately estimate organ doses to optimize the
+          radiological procedures to provide the minimum dose and best image
+          quality. To meet the needs, the National Cancer Institute dosimetry
+          system for Radiography and Fluoroscopy, <b>NCIRF</b>, has been
+          developed.
+        </p>
+        <h4 class="mb-3 mt-5">STATE-OF-THE-ART PHANTOMS</h4>
+        <p class="mb-4">
+          <b>NCIRF</b> features state-of-the-art pediatric and adult
+          computational human phantoms developed by the University of Florida
+          and National Cancer Institute, representing reference individuals
+          defined by the International Commission on Radiological Protection
+          (ICRP). The phantom library will be extended to include the ICRP
+          reference phantoms, the body size-dependent phantom library, and
+          pregnant women phantoms.
+        </p>
+        <h4 class="mb-3 mt-5">ON-THE-FLY MONTE CARLO CALCULATIONS</h4>
+        <p class="mb-4">
+          Interventional fluoroscopy often involves x-ray irradiation at various
+          angles, even in a single session. Dose estimation based on
+          pre-calculated dose tables may provide substantial dosimetric errors.
+          Therefore, it is crucial to calculate organ dose using on-the-fly
+          Monte Carlo radiation transport techniques. A 3D Monte Carlo, dose
+          calculation module, based on an extensively benchmarked Monte Carlo
+          code, GEANT4, is built in <b>NCIRF</b> and running in the background.
+        </p>
+        <div class="text-center mb-4">
+          <figure class="figure mw-100">
+            <img
+              src="img/ncirf-visual.png"
+              class="img-fluid"
+              alt="Screenshot of NCICT graphical user interface"
+            />
+            <figcaption class="mt-2 figure-caption">
+              Visualization of the 10-year-old computational phantom exposed to
+              x-ray in the anteroposterior irradiation geometry (note: the
+              visualization is for a demonstration purpose, not included in
+              NCIRF).
+            </figcaption>
+          </figure>
+        </div>
+        <h4 class="mb-3 mt-5">INTUITIVE USER INTERFACE</h4>
+        <p class="mb-4">
+          <b>NCIRF</b> provides an intuitive graphical user interface allowing
+          users to select from various pediatric and adult computational
+          phantoms and enter x-ray source definition, and finally to output
+          organ doses with statistical errors. <b>NCIRF</b> is running on a
+          personal computer, but users also can export input files running
+          directly on a general-purpose Monte Carlo code, MCNP, to utilize their
+          parallel computing servers. <b>NCIRF</b> also features a batch module
+          where users can automatically run many radiation events.
+        </p>
+        <div class="text-center mb-4">
+          <figure class="figure mw-100">
+            <img
+              src="img/ncirf-gui.png"
+              class="img-fluid"
+              alt="Screenshot of NCICT graphical user interface"
+            />
+            <figcaption class="mt-2 figure-caption">
+              Graphical User Interface of <b>NCIRF</b> where users can select
+              computational human phantoms and technical parameters such as
+              x-ray energy spectrum, the size and direction of the beam field,
+              and Monte Carlo simulation parameters. The resulting organ and
+              effective doses are displayed on the right panel.
+            </figcaption>
+          </figure>
+        </div>
+        <!-- end ncirf tab content -->
       </div>
       <div class="container tab-pane flex-auto" id="dose-coefficients">
         <!-- begin dose-coefficients tab content -->
