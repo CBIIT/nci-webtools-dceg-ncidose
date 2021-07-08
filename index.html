@@ -484,13 +484,13 @@
       <div class="container tab-pane flex-auto" id="ncirf">
         <!-- begin ncirf tab content -->
         <div class="text-center mb-2">
-          <figure class="figure mw-100">
-            <img
-              src="img/ncirf-cover.png"
-              class="img-fluid box-shadow"
-              alt="NCIRF cover photo"
-            />
-          </figure>
+          <!-- <figure class="figure mw-100"> -->
+          <img
+            src="img/ncirf-cover.png"
+            class="img-fluid box-shadow w-100"
+            alt="NCIRF cover photo"
+          />
+          <!-- </figure> -->
         </div>
         <p class="mb-4">
           Because of the increasing use of diagnostic and interventional
@@ -526,7 +526,7 @@
           <figure class="figure mw-100">
             <img
               src="img/ncirf-visual.png"
-              class="img-fluid"
+              class="img-fluid w-100"
               alt="Screenshot of NCICT graphical user interface"
             />
             <figcaption class="mt-2 figure-caption">
@@ -552,7 +552,7 @@
           <figure class="figure mw-100">
             <img
               src="img/ncirf-gui.png"
-              class="img-fluid"
+              class="img-fluid w-100"
               alt="Screenshot of NCICT graphical user interface"
             />
             <figcaption class="mt-2 figure-caption">
@@ -971,6 +971,27 @@
                   data-modal="#modal-template"
                   data-title="NCINM"
                   data-content="National Cancer Institute dosimetry system for Nuclear Medicine (NCINM) software (NIH Ref. No. E-125-2019-0), provided as executable code (source code not provided), a computer program to assess radiation dose to organs in pediatric and adult patients undergoing nuclear medicine procedures, including further improvements thereof, and related documentation."
+                >
+                  <i class="fa fa-question-circle" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="ncirf-check"
+                  name="ncirf"
+                />
+                <label class="form-check-label" for="ncirf-check">
+                  NCIRF
+                </label>
+                <span
+                  class="text-primary"
+                  style="cursor: pointer"
+                  data-for="ncirf"
+                  data-modal="#modal-template"
+                  data-title="NCIRF"
+                  data-content=""
                 >
                   <i class="fa fa-question-circle" aria-hidden="true"></i>
                 </span>
